@@ -5,7 +5,7 @@
 
 using namespace std;
 
-#define MAX 10
+#define MAX 1000
 
 class SpecialStack {
     int top; int MinTop;
