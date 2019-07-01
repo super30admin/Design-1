@@ -1,10 +1,12 @@
- class HashMap{
-	
-	 KeyValue[] map;
+//hashmap implementation as array of key value class reference from LEETCODE SOLUTION.
+
+class HashMap{
+	KeyValue[] map;
 	HashMap(){
 		map = new KeyValue[1000000];
 	}
 	
+	//put key and value
 	void put(int key, int value){
 		    System.out.println("\n ");
 			System.out.println(" putting value:="+value );
@@ -13,9 +15,8 @@
 	}
 	
 
-	
+	//get element at key 
 	int get(int key) {
-		
 		if (map[key]!=null) {
 			System.out.println("Get value at Key ="+key);
 			System.out.println(" value is  ="+map[key].value);
@@ -25,6 +26,7 @@
 		}
 	}
 	
+	//remove element at key
 	void remove (int key) {	
 	System.out.println(" removed value from map at key="+key ); 
 	map[key]= null;
