@@ -13,6 +13,11 @@ class MinStack {
         s1 = new Stack();
         s2 = new Stack();
     }
+	
+       public boolean isEmpty() {
+    	
+    	return s1.isEmpty();
+    }
     
     public void push(int x) {
         s1.push(x);
