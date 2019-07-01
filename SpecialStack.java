@@ -60,12 +60,13 @@ public class SpecialStack {
         specialStack.push(10);
         specialStack.push(9);
         specialStack.push(8);
-        System.out.println(specialStack.peek());
+        System.out.println("Peek " + specialStack.peek());
         specialStack.push(20);
         specialStack.push(15);
-        System.out.println(specialStack.getMin());
+        System.out.println("Peek " + specialStack.peek());
+        System.out.println("Min " + specialStack.getMin());
         specialStack.push(1);
-        System.out.println(specialStack.getMin());
+        System.out.println("Min " + specialStack.getMin());
 
     }
 }
