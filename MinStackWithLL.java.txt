@@ -30,7 +30,7 @@ public class MinStackWithLL {
 		else
 		{
 			current.previous = top;
-			current.min = Math.min(current.data, top.data);
+			current.min = Math.min(current.data, top.min);
 			top = current;
 		}
 		
