@@ -1,6 +1,8 @@
 import java.util.*;
 class DesignStack{
 	// Logic to implement this problem was referenced from geeks for geeks
+	//Added isEmpty function
+	//Couldn't understand how to implement isFull() function
 	
 	
 	Stack<Integer> stack;
@@ -33,7 +35,7 @@ class DesignStack{
 	//Function to remove value from stack maintaining minimum in the stack
 	void pop() {
 		
-		if(stack.isEmpty()) {
+		if(isEmpty()) {
 			System.out.println("Stack is Empty, Insert an Element first");
 			return;
 		}
@@ -49,7 +51,7 @@ class DesignStack{
 	
 	//Function to print top element without deleting it from stack
 	void peek() {
-		if(stack.isEmpty()) {
+		if(isEmpty()) {
 			System.out.println("Stack is Empty, Insert an Element first");
 			return;
 		}
@@ -64,7 +66,7 @@ class DesignStack{
 	
 	//Function to get minimum value from the stack
 	void getMin() {
-		if(stack.isEmpty()) {
+		if(isEmpty()) {
 			System.out.println("Stack is Empty, Insert an Element first");
 			return;
 		}
@@ -72,6 +74,17 @@ class DesignStack{
 			System.out.println(minimum + " is the minimum value in stack");
 			
 		}
+	}
+	
+	//Function that will return true or false based on stack is empty or full
+	boolean isEmpty() {
+		if(stack.isEmpty()) {
+			return true;
+		}
+		else {
+			return false;
+		}
+		
 	}
 }
 
