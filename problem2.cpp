@@ -24,12 +24,6 @@ public:
             cout<<minimumElement<<endl;
     }
 
-    /*
-        Two scenarios to be considered.
-        1. If top is greater than/equal to min value then print it. 
-        1. If the top is the min value then 
-    
-     */
     void pop()
     {
         if(myStack.empty())
@@ -42,7 +36,6 @@ public:
             minimumElement = 2*minimumElement - top;
         else
             cout<<top;
-
     }
 
     void peek()
