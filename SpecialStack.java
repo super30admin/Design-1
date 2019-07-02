@@ -1,49 +1,34 @@
 import java.util.*;
 public class SpecialStack {
 
-    Stack<Integer> stack;
-    Stack<Integer> minStack;
+    private Stack<Integer> stack;
+    //private Stack<Integer> minStack;
+    private int min;
 
     SpecialStack(){
-        this.stack = new Stack<Integer>();
-        this.minStack = new Stack<Integer>();
+        stack = new Stack<Integer>();
+       // minStack = new Stack<Integer>();
+        min = Integer.MAX_VALUE;
+        
     }
 
-    public boolean isEmpty() 
-    {         
-        return stack.empty();
+    public boolean isEmpty(){
+        return true;
     }
 
     public void push(int x){
-
-        stack.push(x);
-        
-        // to maintain a minStack
-        Stack<Integer> tempStack = new Stack<Integer>();
-        
-        if(minStack.empty()){
-            minStack.push(x);
-            return;
+        if(x <= min){
+            stack.push(min);
+            min = x;
         }
-        if(minStack.peek() >= x){
-            minStack.push(x);
-        }
-        else{
-            while(!minStack.empty() && minStack.peek() < x ){
-                tempStack.push(minStack.pop());                
-            }
-
-            minStack.push(x);
-
-            while(!tempStack.empty()){
-                int element = (int)tempStack.pop();
-                minStack.push(element);
-            }
-        }       
+        stack.push(x);        
     }
 
-    public int pop(){
-        return stack.pop();
+    public void pop(){
+        int popped = stack.pop();
+        if(popped == min){
+            min = stack.pop();
+        }
     }
 
     public int peek(){
@@ -51,22 +36,28 @@ public class SpecialStack {
     }
 
     public int getMin(){
-        return minStack.peek();
+        return min;
     }
 
+
+
     public static void main(String[] args){
-        System.out.println("Special Stack");
+        System.out.println("Special Stack implementation");
         SpecialStack specialStack = new SpecialStack();
-        specialStack.push(10);
-        specialStack.push(9);
-        specialStack.push(8);
-        System.out.println("Peek " + specialStack.peek());
-        specialStack.push(20);
-        specialStack.push(15);
-        System.out.println("Peek " + specialStack.peek());
-        System.out.println("Min " + specialStack.getMin());
+
+        specialStack.push(0);
         specialStack.push(1);
-        System.out.println("Min " + specialStack.getMin());
+        specialStack.push(0);
+
+        System.out.println(specialStack.getMin());
+        System.out.println(specialStack.stack);
+        specialStack.pop();
+        System.out.println(specialStack.stack);
+        // System.out.println(specialStack.peek());
+
+        //specialStack.push(2);
+        System.out.println(specialStack.getMin());
+
 
     }
 }
