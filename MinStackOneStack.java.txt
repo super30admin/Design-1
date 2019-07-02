@@ -1,0 +1,43 @@
+import java.util.Stack;
+
+public class MinStack {
+   
+	
+	int min = Integer.MAX_VALUE;
+	Stack<Integer> st = new Stack<>();
+	
+	MinStack()
+	{
+		
+	}
+ 	
+	void push(int x)
+	{
+		if(x<=min)
+		{
+			st.push(min);
+			min =x;			
+		}
+		st.push(x);
+	}
+	
+	void pop()
+	{
+		int poppedElement = st.pop();
+		if(poppedElement == min)
+		{
+			min = st.pop();
+		}
+	}
+	
+	int getMin()
+	{
+		return min;
+	}
+    
+    int top()
+    {
+        return st.peek();
+    }
+	
+}
