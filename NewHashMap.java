@@ -1,4 +1,4 @@
-/keys should be positive
+//keys should be positive
 public class NewHashMap {
     boolean[] keyArr = new boolean[1000000];
     int[] valueArr = new int[100000];
