@@ -1,46 +1,60 @@
 import java.util.Stack;
 
-public class SpecialStack{
+public class SpecialStack {
+
+    /** initialize your data structure here. */
     private int count;
-    private static int MAX = 100;
+    private static int MAX = 10000;
     private int min = Integer.MAX_VALUE;
-    private Stack<Element> specialStack = new Stack<Element>();
-
-    class Element{
-        private int value;
-        private int currMin;
-
-        Element(int value, int currMin){
-            this.value = value;
-            this.currMin = min;
-        }
+    private Stack<Integer> specialStack;
+    
+    public SpecialStack() {
+       specialStack = new Stack<>();
+        
     }
     
-    public void push(int value){
+    public void push(int x) {
         if(isFull()){
             System.out.println("Stack is overflow");
             return;
         }
         if(isEmpty()){
             min = Integer.MAX_VALUE;
+            specialStack.push(min);
+             count++;
         }
-        min = Math.min(min,value);
-        specialStack.push(new Element(value, min));
+        else if(min >= x){
+            specialStack.push(min);
+             count++;
+        }
+        specialStack.push(x);
+        min = Math.min(min,x);
         count++;
     }
-    public int pop(){
+    
+    public int pop() {
         if(isEmpty()){
             return 0;
         }
-        Element element = specialStack.pop();
-        min = specialStack.peek().currMin;
+        int result = specialStack.pop();
+        if(result <= min){
+            min = specialStack.pop();  
+            count--;
+        }
         count--;
-        return element.value;
-       
+        return result;
     }
-
+    
+    public int top() {
+        return specialStack.peek();
+    }
+    
+    public int getMin() {
+        return min;
+    }
+    
     public boolean isEmpty(){
-        if(count < 0){
+        if(count <= 0){
             return true;
         }
         return false;
@@ -53,9 +67,6 @@ public class SpecialStack{
         return false;
     }
 
-    public int getMin(){
-        return min;
-    }
 
     public static void main(String[] args){
         SpecialStack obj = new SpecialStack();
