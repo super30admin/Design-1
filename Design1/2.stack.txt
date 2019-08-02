@@ -1,0 +1,78 @@
+import java.util.Stack;
+
+class IterativeQuickSort {
+
+    /** Initialize your data structure here. */
+    Stack<Integer> s=new Stack<>();
+    int min;
+    public IterativeQuickSort() {
+        
+    }
+    
+    /** Push element x onto stack. */
+    public void push(int x)
+    {
+        if(s.isEmpty())
+        {
+            min=x;
+            s.push(x);
+        }
+        if(x<min)
+        {
+            s.push(2*x-min);
+            min=x;
+        }
+        else
+            s.push(x);
+    }
+    
+    /** Removes the element on top of the stack and returns that element. */
+    public int pop()
+    {
+        int temp=s.pop();
+        if(temp<min)
+        {
+            int x2=min;
+            min=2*min-temp;
+            return x2;
+        }
+        else
+            return temp;
+    }
+    //gets the minimum value in a stack
+    public int getMin()
+    {
+        return min;
+    }
+    /** Get the top element. */
+    public int peek() {
+        if(s.peek()<min)
+            return min;
+        else
+            return s.peek();
+    }
+    public static void main(String[] args) 
+    { 
+    	IterativeQuickSort s = new IterativeQuickSort(); 
+        s.push(3); 
+        s.push(5); 
+        System.out.println(s.getMin()); 
+        s.push(2); 
+        s.push(1); 
+        System.out.println(s.getMin()); 
+        System.out.println(s.pop()); 
+        System.out.println(s.getMin()); 
+        System.out.println(s.pop()); 
+        System.out.println(s.peek()); 
+    } 
+  
+}
+
+/**
+ * Your MyStack object will be instantiated and called as such:
+ * MyStack obj = new MyStack();
+ * obj.push(x);
+ * int param_2 = obj.pop();
+ * int param_3 = obj.top();
+ * boolean param_4 = obj.empty();
+ */
