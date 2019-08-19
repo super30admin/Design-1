@@ -50,7 +50,7 @@ class HashMap:
                 else:
                     prev_node, curr_node = prev_node.next, curr_node.next
 
-# Explaination
+# Explanation
 """
 Put operation-
 This problem can be solved using linkedlist. firstly we create an array for 1000 size initially

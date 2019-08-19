@@ -34,7 +34,7 @@ Test.pop()
 print Test.top()
 print Test.getMin()
 
-# explaination
+# Explanation
 """ 
 The approach is to use one array and tuples inside the array to store each element 
 of the inputed and also store the min value in the array till the point. At each 
