@@ -1,27 +1,42 @@
 class MinStack(object):
 
     def __init__(self):
-        self.s = []
+        self.stack = []
+        self.min_stack = []
+        
 
     def push(self,x):
-        cur_min = self.getMin()
-        if cur_min == None or x < cur_min:
-            cur_min = x
-        self.s.append((x,cur_min))
+        self.stack.append(x)
+        if len(self.min_stack) == 0:
+            self.min_stack.append(x)
+        else:
+            self.min_stack.append(min(x,self.min_stack[-1]))
+        """
+        :type x: int
+        :rtype: None
+        """
+        
 
     def pop(self):
-        self.s.pop()
+        """
+        :rtype: None
+        """
+        self.stack.pop()
+        self.min_stack.pop()
+        
 
     def top(self):
-        if not self.s:
-            return None
-        return self.s[-1][0]
+        """
+        :rtype: int
+        """
+        return self.stack[-1]
+        
 
     def getMin(self):
-        if not self.s:
-            return None
-        return self.s[-1][1]
-
+        """
+        :rtype: int
+        """
+        return self.min_stack[-1]
 
 # driver code
 Test = MinStack()
