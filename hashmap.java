@@ -7,50 +7,59 @@ class MyHashMap {
     
     /** val will always be non-negative. */
     public void put(int key, int val) {
-        int bucket = getHashCode(key);
-        if(nodes[bucket] != null){
-            ListNode curr = nodes[bucket];
-            while(curr.next!=null && curr.key!=key) curr = curr.next;
-            if(curr.key == key) curr.val = val;
-            else curr.next = new ListNode(key, val);
-        } else {
-            nodes[bucket] = new ListNode(key, val);
+        int hash = getHash(key);
+        if(nodes[hash]==null){
+            nodes[hash]= new ListNode(-1,0);
+        }
+        ListNode prev=findelement(nodes[hash],key);
+        if(prev.next==null){
+            prev.next= new ListNode(key,val);
+        }
+        else{
+            prev.next.val=val;
         }
     }
     
     /** Returns the val to which the specified key is mapped, or -1 if this map contains no mapping for the key */
     public int get(int key) {
-        int bucket = getHashCode(key);
-        ListNode curr = nodes[bucket];
-        if(curr == null) return -1;
-        while(curr.next!=null && curr.key != key) curr = curr.next;
-        if(curr.key == key) return curr.val;
-        return -1;
+        int hash = getHash(key);
+        if (nodes[hash]==null){
+            return -1;
+        }
+        ListNode prev= findelement(nodes[hash],key);
+        if(prev.next==null){
+            return -1;
+        }
+        else{
+            return prev.next.val;
+        }
     }
     
     /** Removes the mapping of the specified val key if this map contains a mapping for the key */
     public void remove(int key) {
-        int bucket = getHashCode(key);
-        ListNode curr = nodes[bucket];
-        if(curr == null) return;
-        if(curr.key == key) nodes[bucket] = curr.next;
+        int hash= getHash(key);
+        if(nodes[hash]==null){
+            return ;
+        }
+        ListNode prev = findelement(nodes[hash],key);
+        if(prev.next==null){
+            return ;
+        }
         else{
-            while(curr.next!=null && curr.next.key != key) curr = curr.next;
-            if(curr.next == null) return;
-            if(curr.next.key == key){
-                if(curr.next.next == null) curr.next = null;
-                else {
-                    curr = curr.next;
-                    curr.key = curr.next.key;
-                    curr.val = curr.next.val;
-                    curr.next = curr.next.next;
-                }
-            }
+            prev.next=prev.next.next;
         }
     }
     
-    public int getHashCode(int key){
+    public int getHash(int key){
         return key % nodes.length;
+    }
+    public ListNode findelement(ListNode head, int key){
+        ListNode Node= head, prev=null;
+        while(Node!=null&&Node.key!=key){
+            prev=Node;
+            Node=Node.next;
+        }
+        return prev;
     }
 }
 
@@ -62,5 +71,3 @@ class ListNode{
         this.val = v;
     }
 }
-//Hash collisions has been handled by using separate chaining technique. Time complexity:O(1).
-//Hash collisions can also be handled by linear probing.
