@@ -1,3 +1,5 @@
+#Time complexity = O(1)
+#Code ran on leetcode with Runtime error
 class MinStack:
 
     def __init__(self):
