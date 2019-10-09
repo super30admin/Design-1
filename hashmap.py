@@ -1,3 +1,10 @@
+"""
+Approach : Use a list  of fixed size (10000) in this case because we have atmost 10000 operations.
+Given a key take the mod of 10000 and insert a BST node in the associate position
+
+Order mentioned along with the method
+"""
+
 class BSTNode(object):
     key = None
     value = None
@@ -50,6 +57,7 @@ class MyHashMap(object):
     def put(self, key, value):
         """
         value will always be non-negative.
+        O(log(n))
         :type key: int
         :type value: int
         :rtype: None
@@ -65,6 +73,7 @@ class MyHashMap(object):
         Returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key
         :type key: int
         :rtype: int
+        O(log(n))
         """
         idx = key % self.MAP_SIZE
         if not self.arr[idx]:
@@ -78,6 +87,7 @@ class MyHashMap(object):
         Removes the mapping of the specified value key if this map contains a mapping for the key
         :type key: int
         :rtype: None
+        O(log(n))
         """
         idx = key % self.MAP_SIZE
         if not self.arr[idx]:

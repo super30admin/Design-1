@@ -1,3 +1,10 @@
+"""
+Use one stack to maintain data. push min_value if min value changes
+
+push and pop are O(1)
+
+"""
+
 class MinStack(object):
     stack = [None]
     min_value = None
