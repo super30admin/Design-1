@@ -1,7 +1,7 @@
 // Time Complexity :1
 // Space Complexity :O(n)
 // Did this code successfully run on Leetcode :Yes
-// Any problem you faced while coding this :
+// Any problem you faced while coding this :Null pointer exception
 //this is new commeng-------------------
 
 // Your code here along with comments explaining your approach
@@ -27,8 +27,7 @@ class MyHashMap {
 
     /** Initialize your data structure here. */
     public MyHashMap() {
-        //hashmap is created
-         HashMap<Integer,Integer> map1=new HashMap<>();
+       
         
     }
     
