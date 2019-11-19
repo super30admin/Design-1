@@ -1,4 +1,4 @@
-# Day1
+# Design1
 
 ## Problem 1:
 Design a HashMap without using any built-in hash table libraries.
