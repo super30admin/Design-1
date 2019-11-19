@@ -1,5 +1,6 @@
 //Single stack implementation approach
-
+//Asymptotic Time Complexity: O(1)
+//Asymptotic Space Complexity: O(n)
 class MinStack {
 Stack<Integer> st = new Stack();
 // Stack<Integer> minSt = new Stack();
