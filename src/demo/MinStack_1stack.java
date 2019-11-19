@@ -20,15 +20,13 @@ class MinStack2 {
 	/** initialize your data structure here. */
 
 
-	public void push(int x) {
-		st.push(x);
-		if(x <= min ){
-			st.push(min);
-			min = x;
-		}
-
-		//        minStack.push(min);
-	}
+    public void push(int x) {
+    if(x <= min){
+        st.push(min);
+        min = x;
+    }
+    st.push(x);
+}
 
 	public void pop() {
 		int one = st.pop();
