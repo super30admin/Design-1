@@ -1,3 +1,5 @@
+//Complexity : all operations are performed at constant time : O(1) and space complexity is O(2n) - O(n) since we are maintaining two stacks of same size
+
 class MinStack {
 
     /** initialize your data structure here. */
