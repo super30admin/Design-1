@@ -1,5 +1,3 @@
-# Will update submission tomorrow with optimized solution
-
 class MyHashMap:
     def __init__(self):
         self.items = [-1]*1000001
