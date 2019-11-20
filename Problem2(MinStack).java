@@ -1,3 +1,4 @@
+
 class MinStack {
     Stack<Integer> stack1;
     Stack<Integer> stack2;
