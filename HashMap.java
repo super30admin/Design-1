@@ -1,13 +1,13 @@
 // Time Complexity :
 //      put() - O(1)
-//		get() - O()
-//		remove - O()
+//	get() - O(1)
+//	remove - O(1)
 //      
 // Space Complexity :
-//		overall - O(n)
-//      put() - O(1)
-//		get() - N/A
-//		remove - N/A
+//	overall - O(n)
+//      put() - (1)
+//	get() - N/A
+//	remove - N/A
 //
 // Did this code successfully run on Leetcode : N/A
 // Any problem you faced while coding this : No
