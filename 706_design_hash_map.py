@@ -56,7 +56,9 @@ class MyHashMap:
         // Any problem you faced while coding this :
             Was trying various approach. Was stuck at adjusting pointers
         // Your code here along with comments explaining your approach
-            I am
+            I am using the chaining method to create a hash map.
+            A list of linked lists is used to store each key and value using
+            a simple hash function.
     """
 
     def __init__(self):
