@@ -5,6 +5,9 @@
 // Did this code successfully run on Leetcode :No
 // Any problem you faced while coding this :
 
+// 23 / 33 test cases passed.
+// Status: Runtime Error
+// ArrayIndexOutOfBoundsException
 
 // Your code here along with comments explaining your approach
 // Initializing large size arrays 
