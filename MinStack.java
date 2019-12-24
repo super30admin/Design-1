@@ -1,55 +1,29 @@
 class MinStack {
+Stack<Integer> stack = new Stack<Integer>();
+Stack<Integer> min = new Stack<Integer>();
 
-    public EValue top;
+public void push(int x) {
+    if(min.empty() || x <= min.peek())
+        min.push(x);
+    stack.push(x);
+}
 
-    class EValue {
-        public int value;
-        public int min;
-        public EValue next;
-
-        public EValue (int value, int min) {
-            this.value = value;
-            this.min   = min;
-        }
+public void pop() {
+    if(!stack.empty()){
+        if((int)min.peek() == (int)stack.peek())
+            min.pop();
+        stack.pop();
     }
+}
 
-    /** initialize your data structure here. */
-    public MinStack() {
-
+public int top() {
+    if(!stack.empty()){
+        return stack.peek();
     }
+    return -1;
+}
 
-    public void push(int x) {
-        if (top == null) {
-            top = new EValue(x,x);
-        }
-        else {
-            EValue elem = new EValue (x, Math.min(x,top.min));
-            elem.next = top;
-            top = elem;
-        }
-    }
-
-    public void pop() {
-        if (top == null) {
-            return;
-        }
-        EValue temp = top.next;
-        top.next = null;
-        top = temp;
-    }
-
-    public int top() {
-        if (top == null) {
-            return -1;
-        }
-        return top.value;
-    }
-
-    public int getMin() {
-        if (top == null) {
-            return -1;
-        }
-
-        return top.min;
-    }
-} 
+public int getMin() {
+    return min.peek();
+}
+}
