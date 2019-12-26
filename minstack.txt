@@ -1,0 +1,67 @@
+#One stack solution
+#TC=O(1) for all ops
+#SC= O(n)
+import sys
+class MinStack(object):
+
+    def __init__(self):
+        """
+        initialize your data structure here.
+        """
+        self.mini=sys.maxint #current min
+        self.st=[] #stack
+        
+    def push(self, x):
+        """
+        :type x: int
+        :rtype: None
+        """
+        if(x<=self.mini): ####
+            self.st.append(self.mini)
+            self.mini=x
+        self.st.append(x)
+        
+    def pop(self):
+        """
+        :rtype: None
+        """
+        if (self.st == []):
+            print("Stack is empty")
+            return -1
+        else: 
+            popped=self.st.pop()
+            #self.st.pop()
+            if(popped==self.mini):
+                #self.st.pop()
+                self.mini=self.st.pop() #declare new min
+            return popped
+        
+        
+
+    def top(self):
+        """
+        :rtype: int
+        """
+        if (self.st==[]):
+            return None
+        else:
+            return self.st[-1]
+        
+
+    def getMin(self):
+        """
+        :rtype: int
+        """
+        if (self.st==[]):
+            return None
+        else:
+            return self.mini
+        
+
+
+# Your MinStack object will be instantiated and called as such:
+# obj = MinStack()
+# obj.push(x)
+# obj.pop()
+# param_3 = obj.top()
+# param_4 = obj.getMin()
