@@ -8,61 +8,37 @@ Design a SplStack that supports all the stack operations push, pop, isEmpty, isF
 which should return minimum element from the SplStack. All these operations must be O(1). To implement this, 
 you should only use standard Stack data structure.
 """
+import sys
 
+# One stack solution
 class MinStack:
-    def __init__(self, maxSize):
-    """Initializing the Constructor"""
-        self.stack = []                 # list implemetation of stack
-        self.maxSize = maxSize          # maximum size of the stack
-        self.CurSize = 0                # current size of the stack
-        self.minElem = None             # minimum elementon the stack
-    
-    def push(self, e):
-    """Push element e on the stack, if the stack is not full"""
-        if not self.isFull():           # append the new element only if the stack is not full
-            self.stack.append(e)
-            self.CurSize += 1           # increment current size of the stack
-            self.getMin()               # calculate minimum element at every call to push so whenver getMin()
-                                        # is called, it will alway return the minimum element
-        else:
-            print("Stack is full")
-    
-    def pop(self):
-    """Pop the element at the top, if the stack is not empty"""
-        if not self.isEmpty():          # pop element only if stack is not empty
-            self.CurSize -= 1           # decrement current size by 1
-            return self.stack.pop()
-        else:
-            return "Stack is already empty"
-            
-    def top(self):
-    """Return the element at the top of the stack"""
-        if not self.isEmpty():          # return the element at the top of the stack if the stack is not empty
-            return self.stack[-1]
-        else:
-            print("Stack is empty")
+
+    def __init__(self):
+        """
+        initialize your data structure here.
+        """
+        self.s1 = []
+        self.min = sys.maxsize 
         
-    def isEmpty(self):
-    """Checks if the stack is empty"""
-        return self.CurSize == 0        
-    
-    def isFull(self):
-    """Checks if the stack is full"""
-        return self.CurSize == self.maxSize
+    def push(self, x: int) -> None:
+        if x <= self.min:
+            self.s1.append(self.min)
+            self.min = x
+        self.s1.append(x)
         
-    def getMin(self):
-    """Gets the minimum element in the stack"""
-        if self.isEmpty():
-            return None
-        else:
-            if self.minElem == None:
-                self.minElem = self.top()
-            elif self.minElem > self.top():
-                self.minElem = self.top()
-        return self.minElem
+    def pop(self) -> None:
+        p = self.s1.pop()
+        if p == self.min:
+            self.min = self.s1.pop()
+        
+    def top(self) -> int:
+        return self.s1[-1]
+
+    def getMin(self) -> int:
+        return self.min
 
 # Testing 
-s = MinStack(5)
+s = MinStack()
 print(s.getMin())
 s.push(6)
 s.push(8)
@@ -70,16 +46,16 @@ s.push(-10)
 s.push(1)
 s.push(12)
 
-print(s.isFull())
 s.push(5)
 print(s.pop())
-print(s.isFull())
 s.push(16)
-print(s.getMin())
+print("Min: {0}".format(s.getMin()))
 print(s.pop())
 print(s.pop())
+print("Min: {0}".format(s.getMin()))
 print(s.pop())
+print("Min: {0}".format(s.getMin()))
 print(s.pop())
+print("Min: {0}".format(s.getMin()))
 print(s.pop())
 print("Popping: " + str(s.pop()))
-print("Is Stack Empty? " + str(s.isEmpty()))
