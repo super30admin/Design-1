@@ -1,4 +1,4 @@
-class MyHashMap {
+class MyHashMap{
    
     public class Node{
         int key;
