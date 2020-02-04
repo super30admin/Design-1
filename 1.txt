@@ -1,0 +1,74 @@
+// Time Complexity : O(n)
+// Space Complexity : O(n)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : None
+
+
+// Your code here along with comments explaining your approach
+
+approach -> created a main list of size 10 with all elements None. For every incoming key, the effective key is incoming_key % 10.
+ At each index in the self.arr the element is either None or a list of tuples of the form (incoming_key, value).
+
+class MyHashMap:
+
+    def __init__(self):
+        """
+        Initialize your data structure here.
+        """
+        self.arr = [None] * 10
+
+    def put(self, key: int, value: int) -> None:
+        """
+        value will always be non-negative.
+        """
+        index = key % 10
+        if self.arr[index] is None:
+            self.arr[index] = []
+
+        for curr_index, tup in enumerate(self.arr[index]):
+            k, v = tup
+            if k == key:
+                self.arr[index][curr_index] = (key, value)
+                return
+
+        self.arr[index].append((key, value))
+
+
+    def get(self, key: int) -> int:
+        """
+        Returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key
+        """
+        index = key % 10
+
+        if self.arr[index] is None:
+            return -1
+
+        for curr_index, tup in enumerate(self.arr[index]):
+            k, v = tup
+            if k == key:
+                return v
+
+        return -1
+
+
+    def remove(self, key: int) -> None:
+        """
+        Removes the mapping of the specified value key if this map contains a mapping for the key
+        """
+        index = key % 10
+
+        if self.arr[index] is None:
+            return
+
+        for curr_index, tup in enumerate(self.arr[index]):
+            k, v = tup
+            if k == key:
+                self.arr[index].pop(curr_index)
+
+
+
+# Your MyHashMap object will be instantiated and called as such:
+# obj = MyHashMap()
+# obj.put(key,value)
+# param_2 = obj.get(key)
+# obj.remove(key)
