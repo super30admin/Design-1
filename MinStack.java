@@ -1,6 +1,8 @@
 /*
 Time Complexity- O(1)
-
+Space Complexity- O(N), where N is the number of elements/items in the stack
+The code passes all test cases on Leetcode and run successfully 
+I had to work around the special case of empty stack. 
 */
 
 
