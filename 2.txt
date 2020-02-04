@@ -1,0 +1,44 @@
+// Time Complexity : O(1) for all operations
+// Space Complexity : O(n)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : None
+
+
+// Your code here along with comments explaining your approach
+
+approach : store a tuple in the stack (value, curr_min)
+
+class MinStack:
+
+    def __init__(self):
+        """
+        initialize your data structure here.
+        """
+        self.stk = []
+
+    def push(self, x: int) -> None:
+        if not self.stk:
+            self.stk.append((x, x))
+        else:
+            curr_min = min(self.stk[-1][1], x)
+            self.stk.append((x, curr_min))
+
+
+    def pop(self) -> None:
+        self.stk.pop()
+
+
+    def top(self) -> int:
+        return self.stk[-1][0]
+
+    def getMin(self) -> int:
+        return self.stk[-1][1]
+
+
+
+# Your MinStack object will be instantiated and called as such:
+# obj = MinStack()
+# obj.push(x)
+# obj.pop()
+# param_3 = obj.top()
+# param_4 = obj.getMin()
