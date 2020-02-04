@@ -1,3 +1,8 @@
+// Time Complexity : O(n)
+// Space Complexity : O(2n)=O(n)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : Forgot to add minStack pop in the pop function hence could not run in the 1st run
+
 import java.util.Stack;
 
 class MinStack {
