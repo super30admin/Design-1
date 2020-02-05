@@ -3,29 +3,35 @@
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : Forgot to add minStack pop in the pop function hence could not run in the 1st run
 
+//Using a single stack it pushes previous minimum and pushes current element accordingly. While popping up the code checks if the minimum equals the current minimum and if yes it pops one more value which is assigned to minimum. This is the previous minimum
+
 import java.util.Stack;
 
 class MinStack {
 
-    Stack<Integer> st = new Stack<Integer>();
-    Stack<Integer> minSt = new Stack<Integer>();
+    Stack<Integer> st;
+    int min = Integer.MAX_VALUE;
 
     /** initialize your data structure here. */
     public MinStack() {
 
-        minSt.push(Integer.MAX_VALUE);
+        st = new Stack<Integer>();
 
     }
 
     public void push(int x) {
+        if (x <= min) {
+            st.push(min);
+            min = x;
+        }
         st.push(x);
-        int min = Math.min(x, minSt.peek());
-        minSt.push(min);
     }
 
     public void pop() {
-        st.pop();
-        minSt.pop();
+        int pop = st.pop();
+        if (pop == min) {
+            min = st.pop();
+        }
     }
 
     public int top() {
@@ -33,7 +39,7 @@ class MinStack {
     }
 
     public int getMin() {
-        return minSt.peek();
+        return min;
     }
 }
 
