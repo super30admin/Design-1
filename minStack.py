@@ -1,8 +1,17 @@
 '''
 Time Complexity : O(1)
+
 Space Complexity : O(n)
+
 Did this code successfully run on Leetcode : Yes
+
 Any problem you faced while coding this : None
+
+Explaination: Create 2 stacks, one for maintaining the values
+and one for the maintaining the minimum values.
+When we push, we push the element in the first stack and push
+the min(incoming value, top of stack of minimum value) into the
+minimum stack. When we pop, we pop from both the stacks.
 '''
 
 import math
