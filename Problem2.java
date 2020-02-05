@@ -1,50 +1,57 @@
-// Time Complexity : O(n)
-// Space Complexity : O(2n)=O(n)
+// Time Complexity : O(1)
+// Space Complexity : O(n)
 // Did this code successfully run on Leetcode : Yes
-// Any problem you faced while coding this : Forgot to add minStack pop in the pop function hence could not run in the 1st run
+// Any problem you faced while coding this :
 
-//Using a single stack it pushes previous minimum and pushes current element accordingly. While popping up the code checks if the minimum equals the current minimum and if yes it pops one more value which is assigned to minimum. This is the previous minimum
+//Used 2 hashed functions one for mod and one as divide. Used that function to create 2 dimensinal array as required. According to the hashed value the number are added to specific locations.
 
-import java.util.Stack;
+class MyHashSet {
 
-class MinStack {
+    boolean[][] myStore;
+    int buckets = 1000;
+    int bucketItems = 1000;
 
-    Stack<Integer> st;
-    int min = Integer.MAX_VALUE;
-
-    /** initialize your data structure here. */
-    public MinStack() {
-
-        st = new Stack<Integer>();
-
+    /** Initialize your data structure here. */
+    public MyHashSet() {
+        myStore = new boolean[buckets][];
     }
 
-    public void push(int x) {
-        if (x <= min) {
-            st.push(min);
-            min = x;
+    private int hash1(int key) {
+        return key % buckets;
+    }
+
+    private int hash2(int key) {
+        return key / bucketItems;
+    }
+
+    public void add(int key) {
+        int bucket = hash1(key);
+        int bucketItem = hash2(key);
+        if (myStore[bucket] == null) {
+            myStore[bucket] = new boolean[bucketItems];
         }
-        st.push(x);
+        myStore[bucket][bucketItem] = true;
     }
 
-    public void pop() {
-        int pop = st.pop();
-        if (pop == min) {
-            min = st.pop();
+    public void remove(int key) {
+        int bucket = hash1(key);
+        int bucketItem = hash2(key);
+        if (myStore[bucket] != null) {
+            myStore[bucket][bucketItem] = false;
         }
+
     }
 
-    public int top() {
-        return st.peek();
-    }
-
-    public int getMin() {
-        return min;
+    /** Returns true if this set contains the specified element */
+    public boolean contains(int key) {
+        int bucket = hash1(key);
+        int bucketItem = hash2(key);
+        return myStore[bucket] != null && myStore[bucket][bucketItem] == true;
     }
 }
 
 /**
- * Your MinStack object will be instantiated and called as such: MinStack obj =
- * new MinStack(); obj.push(x); obj.pop(); int param_3 = obj.top(); int param_4
- * = obj.getMin();
+ * Your MyHashSet object will be instantiated and called as such: MyHashSet obj
+ * = new MyHashSet(); obj.add(key); obj.remove(key); boolean param_3 =
+ * obj.contains(key);
  */
