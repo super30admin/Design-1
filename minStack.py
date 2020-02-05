@@ -7,11 +7,20 @@ Did this code successfully run on Leetcode : Yes
 
 Any problem you faced while coding this : None
 
-Explaination: Create 2 stacks, one for maintaining the values
+Explaination:
+Solution1 - Create 2 stacks, one for maintaining the values
 and one for the maintaining the minimum values.
 When we push, we push the element in the first stack and push
 the min(incoming value, top of stack of minimum value) into the
 minimum stack. When we pop, we pop from both the stacks.
+
+Solution2 - Create 1 stack and a minimum variable to keep the
+current minimum. While pushing, If the minimum value < incoming value
+then push the minimum value into the stack and then push the new value
+else push the new value.
+While popping, pop the element and check if the popped element is the
+minimum value, if it is then pop again as the minimum value would be
+added on top the actual value to be popped if it was not the minimum value.
 '''
 
 import math
@@ -23,18 +32,20 @@ class MinStack:
         initialize your data structure here.
         """
         self.stack = []
-        self.minStack = [math.inf]
+        self.min = math.inf
 
     def push(self, x: int) -> None:
 
+        if x <= self.min:
+            self.stack.append(self.min)
+            self.min = x
         self.stack.append(x)
-        minElem = min(x, self.getMin())
-        self.minStack.append(minElem)
 
     def pop(self) -> None:
 
-        self.stack.pop()
-        self.minStack.pop()
+        temp = self.stack.pop()
+        if temp == self.min:
+            self.min = self.stack.pop()
 
     def peek(self) -> int:
 
@@ -42,7 +53,7 @@ class MinStack:
 
     def getMin(self) -> int:
 
-        return self.minStack[-1]
+        return self.min
 
     def isEmpty(self) -> int:
 
