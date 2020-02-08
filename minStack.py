@@ -1,3 +1,10 @@
+'''
+Solution:
+Use a helper min stack which pushes the minimum at the current state in parallel and also pops the minimum in parallel.
+
+--- Passed all test cases on Leetcode successfully
+'''
+
 class MinStack(object):
 
     def __init__(self):

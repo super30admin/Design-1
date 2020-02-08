@@ -89,7 +89,7 @@ class MyHashMap(object):
         """
         # O(1) in best case and O(n) in worst case Time Complexity
         # O(1) in best case and O(n) in worst case Space Complexity
-        
+
         currentNode = self.getElement(key)
         if (currentNode.next != None):
             currentNode.next = currentNode.next.next
