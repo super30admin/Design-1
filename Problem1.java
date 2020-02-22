@@ -1,5 +1,5 @@
-// Time Complexity :
-// Space Complexity : O(n) where n is the number of keys in the HashMap
+// Time Complexity : O(1) Average Case and O(n) worst Case
+// Space Complexity : O(10000 + n) where n is the number of keys in the HashMap
 // Did this code successfully run on Leetcode : Yes
 
 // Linear Chaining using Linked List
