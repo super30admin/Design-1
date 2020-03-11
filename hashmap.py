@@ -47,7 +47,7 @@ class MyHashMap:
     def print_list(self,head):
         curr = head
         while curr:
-            print((curr.key,curr.value),end = " ")
+            #print((curr.key,curr.value),end = " ")
             curr = curr.next
 
     def put(self, key: int, value: int) -> None:
@@ -71,13 +71,15 @@ class MyHashMap:
                 curr = curr.next
             if not update:
                 newnode.next = self.hashtable[hv].next
-                self.hashtable[hv].next = newnode
+                if self.hashtable[hv].next:
+                    self.hashtable[hv].next.prev = newnode
                 newnode.prev = self.hashtable[hv]
+                self.hashtable[hv].next = newnode
                 
             # curr.next = newnode
             # newnode.prev = curr
-        print("Printing for hv",hv,key,value)
-        self.print_list(self.hashtable[hv])
+        #print("Printing for hv",hv,key,value)
+        #self.print_list(self.hashtable[hv])
         #print()
 
     def get(self, key: int) -> int:
@@ -87,9 +89,12 @@ class MyHashMap:
         hv = self.get_hash_value(key)
         curr = self.hashtable[hv]
         value = -1
+        #print("GET ME THE KEY",key)
         while curr:
+            #print("Keys in the get for the key",curr.key)
             if curr.key == key:
                 value = curr.value
+                #print("KEy to fetch found for value",key,value)
             curr = curr.next
         return value
 
@@ -101,18 +106,23 @@ class MyHashMap:
         curr = self.hashtable[hv]
         while curr:
             if curr.key == key:
-                print("KEy to remove found",key)
+                #print("KEy to remove found",key)
                 break
             curr = curr.next
         
         if curr:
+            #print("curr value",curr.key,curr.value)
             if not curr.prev:
                 self.hashtable[hv] = self.hashtable[hv].next
+                if self.hashtable[hv]:
+                    self.hashtable[hv].prev = None
             else:
                 currprev = curr.prev
+                print(currprev.key,currprev.value)
                 currnext = curr.next
                 currprev.next = currnext
                 if currnext:
+                    print(currnext.key,currnext.value)
                     currnext.prev = currprev
                 #currnext.prev = currprev
                 # curr.next.prev = curr.prev
@@ -120,8 +130,8 @@ class MyHashMap:
                 
                 #curr.prev.next = currnext
         
-        print("Removing the key",key,hv)
-        self.print_list(self.hashtable[hv])
+        #print("Removing the key",key,hv)
+        #self.print_list(self.hashtable[hv])
         
 # Your MyHashMap object will be instantiated and called as such:
 # obj = MyHashMap()
