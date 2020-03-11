@@ -1,7 +1,7 @@
-// Time Complexity :
-// Space Complexity :
+// Time Complexity : O(1)
+// Space Complexity : O(n)
 // Did this code successfully run on Leetcode : Yes
-// Any problem you faced while coding this :
+// Any problem you faced while coding this : Already had solved this problem before, so none
 
 
 // Your code here along with comments explaining your approach
