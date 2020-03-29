@@ -1,31 +1,37 @@
 class Solution {
-    public int longestPalindrome(String s) {
+    public int findMaxLength(int[] nums) {
         
-        // edge case
+        // Edge case
         
-        if (s == null || s.length() == 0  ){
+        if (nums == null || nums.length == 0){
             return 0;
         }
         
-        HashSet<Character> hashSet = new HashSet<>();
+        // Key - runningCount Value - Index
+        HashMap<Integer,Integer> hashMap = new HashMap<>();
         
         int max = 0;
+        int runningSum = 0;
         
-        for (int i = 0; i < s.length(); i++){
-            Character ch = s.charAt(i);
+        // One previous element before starting of array
+        hashMap.put(0,-1);
+        
+        for (int i = 0; i < nums.length; i++){
             
-            if (hashSet.contains(ch)){
-                max += 2;
-                hashSet.remove(ch);
+            if (nums[i] == 0){
+                runningSum -= 1;
             } else {
-                hashSet.add(ch);
+                runningSum += 1;
             }
+            
+            if (hashMap.containsKey(runningSum)){
+                max = Math.max(max, i - (hashMap.get(runningSum)));
+            } else {
+                hashMap.put(runningSum, i);
+            }
+            
         }
         
-        if (!hashSet.isEmpty())
-            return max + 1;
-        else
-            return max;
-        
+        return max;
     }
 }
