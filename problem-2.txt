@@ -1,0 +1,43 @@
+#TC:O(1)
+#SC:O(N)
+
+class MinStack {
+
+    
+    Stack<Integer> s1 = new Stack<>();
+    Stack<Integer> minstack = new Stack<>();
+    /** initialize your data structure here. */
+    public MinStack() {
+        
+    }
+    
+    public void push(int x) {
+        if(s1.isEmpty()||minstack.peek()>=x)
+            minstack.push(x);
+        
+        s1.push(x);
+    }
+    
+    public void pop() {
+        if(s1.peek().equals(minstack.peek()))
+             minstack.pop();
+        s1.pop();
+    }
+    
+    public int top() {
+       return s1.peek();
+    }
+    
+    public int getMin() {
+        return minstack.peek();
+    }
+}
+
+/**
+ * Your MinStack object will be instantiated and called as such:
+ * MinStack obj = new MinStack();
+ * obj.push(x);
+ * obj.pop();
+ * int param_3 = obj.top();
+ * int param_4 = obj.getMin();
+ */
