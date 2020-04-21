@@ -1,0 +1,45 @@
+class MyHashMap {
+    
+    var array = [Int]()
+    
+    init() {
+        
+    }
+    
+    /** value will always be non-negative. */
+    func put(_ key: Int, _ value: Int) {
+        if array.count <= key {
+            array += Array(repeating: -1, count: key - array.count + 1)
+        }
+        
+        array[key] = value
+    }
+    
+    /** Returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key */
+    func get(_ key: Int) -> Int {
+        guard key < array.count else { return -1 }
+        return array[key]
+    }
+    
+    /** Removes the mapping of the specified value key if this map contains a mapping for the key */
+    func remove(_ key: Int) {
+        guard key < array.count else { return }
+        array[key] = -1
+    }
+}
+
+
+var hashmap = MyHashMap()
+hashmap.put(1, 1)
+hashmap.put(2, 1)
+print ( hashmap.get(1) ) // 1
+print ( hashmap.get(3) ) // -1
+hashmap.put(2, 1)
+hashmap.put(1, 2);
+hashmap.put(2, 3);
+hashmap.get(1);            // returns 2
+hashmap.get(3);            // returns -1 (not found)
+hashmap.put(2, 4);          // update the existing value
+hashmap.get(2);            // returns 4
+hashmap.remove(2);          // remove the mapping for 2
+hashmap.get(2);            // returns -1 (not found)
