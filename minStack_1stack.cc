@@ -1,3 +1,7 @@
+// Time Complexity : Average O(1)
+// Space Complexity : Average O(n) 
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : None
 class MinStack {
 public:
     /** initialize your data structure here. */

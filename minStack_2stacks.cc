@@ -1,3 +1,7 @@
+// Time Complexity : O(1)
+// Space Complexity : O(n) because we ignore constants 
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : None
 class MinStack {
 public:
     std::stack<int>* stack1;
