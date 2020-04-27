@@ -1,0 +1,152 @@
+
+     //O(N/K) for all the functions where N is entire range of numbers that we can put inside the hashmap and K is the number of buckets...i.e for each updation follwing things are happening :
+        // 1. I reach to the specific bucket in O(1).
+        // 2. I reach the specific element in the bucket to update that item
+        // this reaching can take at max size bucket size which is total range of numbers/no of buckets or O(N/K)
+
+class Pair<U,V>{        //pair class
+    public U first;
+    public V second;
+    
+    public Pair(U first, V second){
+        this.first = first;
+        this.second = second;
+    }
+}
+
+class Bucket{
+    private List<Pair<Integer, Integer>> bucket;
+    public Bucket(){
+        this.bucket = new LinkedList<Pair<Integer, Integer>>();
+    }
+    
+    public Integer get(Integer key){
+        
+        for(Pair<Integer, Integer> pair : bucket){
+            if(pair.first.equals(key)){
+                return pair.second;
+            }
+        }
+        return -1;
+        
+    }
+    
+    public void update(Integer key, Integer value){
+        boolean found = false;
+        for(Pair<Integer, Integer> pair : bucket){
+            if(pair.first.equals(key)){
+                pair.second = value;
+                found = true;
+            }
+        }
+        if(!found){
+            this.bucket.add(new Pair<Integer, Integer>(key,value));
+        }
+    }
+    
+    public void remove(Integer key){
+        for(Pair<Integer, Integer> pair : bucket){
+            if(pair.first.equals(key)){
+                this.bucket.remove(pair);
+                break;
+            }
+        }
+    }
+    }
+
+class MyHashMap {
+
+    /** Initialize your data structure here. */
+        
+        private int key_space;
+        private List<Bucket> hash_table;
+        
+        public MyHashMap(){
+            this.key_space = 2069;
+            this.hash_table = new ArrayList<Bucket>();
+            
+            for(int i=0; i<this.key_space; i++)
+            this.hash_table.add(new Bucket());
+            }
+            
+    public void put(int key, int value) { //O(n) time complexity
+      int hash_key = key % this.key_space;
+      this.hash_table.get(hash_key).update(key, value);
+  }
+
+    public int get(int key) {//O(n) time complexity
+      int hash_key = key % this.key_space;
+      return this.hash_table.get(hash_key).get(key);
+  }
+
+    public void remove(int key) {
+      int hash_key = key % this.key_space;
+      this.hash_table.get(hash_key).remove(key);
+  }
+            
+}
+    
+
+/**
+ * Your MyHashMap object will be instantiated and called as such:
+ * MyHashMap obj = new MyHashMap();
+ * obj.put(key,value);
+ * int param_2 = obj.get(key);
+ * obj.remove(key);
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+// MIN_STACK
+//time complexity of every operation is O(1)
+//space - O(N)
+class MinStack {
+    Stack<Integer> stack;
+    Stack<Integer> min_vals;
+        /** initialize your data structure here. */
+        public MinStack() {
+            stack = new Stack<>();
+            min_vals = new Stack<>();
+        }
+        
+        public void push(int x) {
+            if(min_vals.isEmpty() || x <= min_vals.peek())
+                min_vals.push(x);
+            stack.push(x);
+        }
+        
+        public void pop() {
+            if(stack.peek().equals(min_vals.peek()))
+            min_vals.pop();
+            
+            stack.pop();
+        }
+        
+        public int top() {
+           return stack.peek();
+        }
+        
+        public int getMin() {
+           return min_vals.peek();
+        }
+    }
+    
+    /**
+     * Your MinStack object will be instantiated and called as such:
+     * MinStack obj = new MinStack();
+     * obj.push(x);
+     * obj.pop();
+     * int param_3 = obj.top();
+     * int param_4 = obj.getMin();
+     */
