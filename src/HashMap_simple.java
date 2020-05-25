@@ -71,7 +71,7 @@ public class HashMap_simple {
     }
 
     /**
-     * if key is present then decrease the size and place dummy value in the hashed key indicating no value.
+     * if key is present then decrease the size and place dummy value in the hashed key indicating no value
      * @param key
      */
     public void remove(int key){

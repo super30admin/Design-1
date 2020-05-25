@@ -52,7 +52,7 @@ public class SplStack {
     }
 
     /**
-     * find the min ele amongst the current elements in the stack
+     * find the min ele amongst the current elements in the stack.
      * @return min ele
      */
     public int searchMin(){
