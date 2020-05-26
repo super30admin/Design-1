@@ -4,8 +4,10 @@ Maintain  Two Stack:
 one for pushing the element
 one for pushing the current minimum 
 
-Time Complexity:  O(1)
-Space Complexity : O(N)
+Time Complexity:  Push : O(1)
+                  Pop : O(1)
+                  Top : O(1)
+Space Complexity : O(2N) = O(N) where N = Input size 
 CODE Worked on leetcode : YES
 
 */

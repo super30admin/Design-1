@@ -1,3 +1,13 @@
+/*
+Time complexity : put : O(1)
+                  remove O(1)
+                  get O(1)
+Space Complexity : O(N) N = input size
+
+Is worked on leetcode : YES
+*/
+
+
 class MyHashMap {
     Integer [][] storage;
     int buckets;
@@ -53,6 +63,10 @@ class MyHashMap {
         
     }
     public static void main(String[] args) {
+        MyHashMap hm = new MyHashMap();
+        hm.put(1, 1);
+        hm.get(1);
+        
         
     }
 }

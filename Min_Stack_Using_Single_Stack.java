@@ -6,8 +6,10 @@ Maintain  single stack for maintaining current minimum :
 
 
 N =  Size of input
-Time Complexity:  O(1)
-Space Complexity : O(N)
+Time Complexity:  Push O(1) 
+                  Pop O(1)
+                  peek O(1)
+Space Complexity : O(N) N is size of input
 CODE Worked on leetcode : YES
 
 */
