@@ -1,51 +1,49 @@
+import java.util.Stack;
+
 // Time Complexity :O(n)
 // Space Complexity :O(1)
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : No
 
 
-import java.util.Stack;
-
 class MinStack {
 
-    Stack stack;
+    Stack<Integer> stack,stack2;
+    int min;
     /** initialize your data structure here. */
     public MinStack() {
-        stack = new Stack();
+        stack = new Stack<>();
+        stack2 = new Stack<>();
+        min = Integer.MAX_VALUE;
+        stack2.push(min);
     }
     
     public void push(int x) {
         stack.push(x);
+        if(min>x)
+        {
+            min = x;
+        }
+        stack2.push(min);
     }
     
     public void pop() {
         stack.pop();
+        stack2.pop();
+        min = stack2.peek();
     }
     
     public int top() {
-       return (int) stack.peek();
+       return stack.peek();
     }
     
     public int getMin() {
-        int min = top();
-        //iterate through the stack
-        for(Object obj :  stack)
+        if(!stack2.isEmpty())
         {
-            if(min> (int) obj)
-            {
-                min = (int) obj;
-            }
+            return min;
         }
 
-        return min;
+        return -1;
+        
     }
 }
-
-/**
- * Your MinStack object will be instantiated and called as such:
- * MinStack obj = new MinStack();
- * obj.push(x);
- * obj.pop();
- * int param_3 = obj.top();
- * int param_4 = obj.getMin();
- */
