@@ -7,77 +7,37 @@
 // Your code here along with comments explaining your approach
 
 class MinStack {
-	final int MAX = 10000;
-	
-	Node[] nodes;
-	int top;
-	
-	private class Node{
-		int data;
-		int minVal;
-		
-		public Node(int data, int min) {
-			this.data = data;
-			this.minVal = min;
-		}
-	}
-	
+
+    Stack<Integer> st;
+    int min;
+    
     /** initialize your data structure here. */
     public MinStack() {
-        this.nodes = new Node[MAX];
-        this.top = -1;
+       st = new Stack<>();
+       min = Integer.MAX_VALUE;
     }
     
     public void push(int x) {
-        if(top == MAX) {
-        		System.out.println("Stack overflow");
-        		return;
+        if(min >= x) {
+            st.push(min);
+            min = x;  
         }
-        
-        Node node;
-        if(top == -1) {
-        	//first element in the stack, min value is same as current value pushed
-        		node = new Node(x, x);
-        } else {
-        		//calculate new min value by comparing current min and pushed value
-        		int newMin = nodes[top].minVal > x ? x: nodes[top].minVal;
-        		node = new Node(x, newMin);
-        }
-        
-        nodes[++top] = node;
+        st.push(x);   
     }
     
     public void pop() {
-        if(top == -1) {
-        		System.out.println("Stack underflow");
-        		return;
-        } else
-        {
-        		Node topNode = nodes[top--];
-        		System.out.println("Poped out element is " + topNode.data);
+        int val = st.pop();
+        if(val == min) {
+            min = st.pop();
         }
     }
     
     public int top() {
-    	 if(top == -1) {
-     		System.out.println("Stack underflow");
-     		return -1;
-     } else
-     {
-     		Node topNode = nodes[top];
-     		return topNode.data;
-     } 
+      return st.peek();        
     }
     
     public int getMin() {
-    	if(top == -1) {
-     		System.out.println("Stack underflow");
-     		return -1;
-     } else
-     {
-     		Node topNode = nodes[top];
-     		return topNode.minVal;
-     } 
+        return min;
     }
 }
 
