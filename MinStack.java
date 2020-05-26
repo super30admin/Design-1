@@ -3,87 +3,53 @@
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : is time complexity right for this problem i am a bit confused.
 
+import java.util.Stack;
+
 class MinStack {
 
     /** initialize your data structure here. */
-    static final int MAX = 1000;
-    int top;
+    Stack minStack;
     int smallest;
-    int a[] = new int[MAX]; // Maximum size of Stack
-
+    
     public MinStack() {
-        this.top = -1;
+        minStack = new Stack();
     }
 
     public void push(int x) {
-        if (top > 1000) {
-            System.out.println("Stack OverFLow");
-        } else {
-            top = top + 1;
-            a[top] = x;
-        }
+        minStack.push(x);
     }
 
     public void pop() {
 
-        if (top == -1) {
-            System.out.print("Stack Underflow");
-        } else {
-            top = top - 1;
-
-        }
+       minStack.pop();
     }
 
     public int top() {
-        if (top == -1) {
-            System.out.print("Stack Underflow");
-            return 0;
-        } else {
-            return a[top];
-
-        }
+       return (int) minStack.peek();
 
     }
 
     public int getMin() {
-        smallest = 0;
-        if (top == -1) {
-            System.out.print("Stack Underflow");
-            return 0;
-        } else {
-            for (int i =0 ; i <= top; i++) {
-                if (a[i] < smallest) {
-                    smallest = a[i];
-                } 
+        smallest = top();
+        minStack.forEach(element->{
+        if(smallest > (int)element){
+                smallest = (int)element;
             }
+        
 
-        }
-        return smallest;
+        
+        });
+       return smallest;
     }
 
     boolean isEmpty() 
     { 
         //Write your code here 
-        if(top== -1){
-            System.out.print("Stack Underflow");
-            return true;
-        }else{
-            return false;
-        }
+        return minStack.empty();
 
     } 
 
-    boolean isFull() 
-    { 
-        //Write your code here 
-        if(top > 1000){
-            System.out.println("Stack OverFLow");
-            return true;
-        }else{
-            return false;
-        }
-
-    } 
+    
 }
 
 /**
