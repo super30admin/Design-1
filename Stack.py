@@ -7,8 +7,11 @@ Time Complexity :
 
     get_Min : O(1)
 
+    Top : O(1)
+
 Space Complexity :
-    we are not using any auxilary space so it is O(1)
+    I have used list data strcutre to implement the stack which will hold N input numbers 
+    it is O(N)
 
 is submitted in Leetcode Successfully : YES
 
