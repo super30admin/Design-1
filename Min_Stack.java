@@ -1,4 +1,14 @@
 import java.util.Stack;
+/*
+Maintain  Two Stack: 
+one for pushing the element
+one for pushing the current minimum 
+
+Time Complexity:  O(1)
+Space Complexity : O(N)
+CODE Worked on leetcode : YES
+
+*/
 
 class MinStack {
     Stack<Integer> in;
