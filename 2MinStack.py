@@ -4,51 +4,41 @@
 // Did this code successfully run on Leetcode :YES
 // Any problem you faced while coding this :NA
 """
-import sys
 class MinStack:
-  size = 100
-  def __init__(self):
-    self.stack = []
-    self.minval = sys.maxsize
 
-  def push(self, x: int) -> None:
-    if self.isFull():
-      print("Stack is full")
-    else:
-      if x < self.minval:
-        self.minval = x
-      self.stack.append(x)
+    def __init__(self):
+        self.stack = []
+        self.minstack = [ ]
+        self.minvalue = float("inf")
 
-  def pop(self) -> None:
-    if self.isEmpty():
-        print("Stack is empty")
-        return -1
-    else:
-      value = self.stack.pop()
-      self.minval = self.stack[0]
+    def push(self, x: int) -> None:
+        self.stack.append(x)
+        if x < self.minvalue:
+            self.minvalue = x
+        self.minstack.append(self.minvalue)
 
-      for i in self.stack[1:]:
-        if i< self.minval:
-          self.minval = i
-      return value
+    def pop(self) -> None:
+        #print("stack = ",self.stack,"minstack = ",self.minstack,"min =",self.minvalue)
+        self.stack.pop()
+        self.minstack.pop()
+        if len(self.minstack) > 0 :
+            self.minvalue = self.minstack[-1]
+        else:
+            self.minvalue =  float("inf")
 
-  def isEmpty(self):
-    if len(self.stack)==0:
-      return True
-    else:
-      return False
+    def top(self) -> int:
+        return self.stack[-1]
 
-  def isFull(self):
-    if len(self.stack) == self.size:
-      return True
-    else:
-      return False
+    def getMin(self) -> int:
+        return self.minvalue
 
-  def top(self) -> int:
-    return self.stack[-1]
 
-  def getMin(self) -> int:
-    return  self.minval
+# Your MinStack object will be instantiated and called as such:
+# obj = MinStack()
+# obj.push(x)
+# obj.pop()
+# param_3 = obj.top()
+# param_4 = obj.getMin()
 
 if __name__ == "__main__":
   ss = MinStack()
