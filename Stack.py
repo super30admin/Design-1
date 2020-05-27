@@ -13,7 +13,8 @@ Space Complexity :
     I have used list data strcutre to implement the stack which will hold N input numbers 
     it is O(N)
 
-is submitted in Leetcode Successfully : YES
+Did this code successfully run on Leetcode : : YES
+
 
 """
 

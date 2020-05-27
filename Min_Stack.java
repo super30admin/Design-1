@@ -1,4 +1,3 @@
-import java.util.Stack;
 /*
 Maintain  Two Stack: 
 one for pushing the element
@@ -11,6 +10,8 @@ Space Complexity : O(2N) = O(N) where N = Input size
 CODE Worked on leetcode : YES
 
 */
+
+import java.util.Stack;
 
 class MinStack {
     Stack<Integer> in;
