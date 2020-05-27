@@ -6,6 +6,7 @@ class MinStack {
     /** initialize your data structure here. */
     public MinStack() {
       stack1 = new Stack<Integer>();  
+	  min = Integer.MAX_VALUE;
     }
     
     public void push(int x) {
