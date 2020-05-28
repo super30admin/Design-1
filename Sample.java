@@ -4,8 +4,8 @@
 // n - number of keys
 //k - number of buckets
 // space complexity - O(M+K) 
-// M - unique keys
-// K - predefined buckets
+// M - unique keys // K - predefined buckets
+
 
 
 // Your code here along with comments explaining your approach
