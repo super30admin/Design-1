@@ -1,0 +1,51 @@
+// Time Complexity : All operations O(1)
+// Space Complexity : O(n)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this :    No
+
+// Your code here along with comments explaining your approach
+import java.util.Arrays;
+
+class HashMap {
+
+	static int MAX = 100000;
+
+	int[] dataStorage;
+
+    /** Initialize your data structure here. */
+    public MyHashMap() {
+
+        this.dataStorage = new int[MAX];
+        Arrays.fill(this.dataStorage, -1);
+    }
+
+    /** value will always be non-negative. */
+    public void put(int key, int value) {
+
+        int loc = key % MAX;
+        dataStorage[loc] = value;
+    }
+
+    /** Returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key */
+    public int get(int key) {
+
+        int loc = key % MAX;
+        return this.dataStorage[loc];
+    }
+
+    /** Removes the mapping of the specified value key if this map contains a mapping for the key */
+    public void remove(int key) {
+    		int loc = key % MAX;
+
+        if(this.dataStorage[loc] != -1)
+    			this.dataStorage[loc] = -1;
+    }
+}
+
+/**
+ * Your MyHashMap object will be instantiated and called as such:
+ * MyHashMap obj = new MyHashMap();
+ * obj.put(key,value);
+ * int param_2 = obj.get(key);
+ * obj.remove(key);
+ */
