@@ -7,18 +7,18 @@ class MinStack:
 		self.stack=[]
 		
 
-	def push(self, x: int) -> None:
+	def push(self,x):
 		cur_min=self.getMin()
 		if cur_min==None or x<cur_min:
 			cur_min=x
 		self.stack.append((x,cur_min))
 		
 
-	def pop(self) -> None:
+	def pop(self):
 		self.stack.pop()
 		
 
-	def top(self) -> int:
+	def top(self) :
 		if not self.stack:
 			return None
 		
@@ -26,7 +26,7 @@ class MinStack:
 		
 		
 
-	def getMin(self) -> int:
+	def getMin(self):
 		if not self.stack:
 			return None
 		#stack[-1][1] means last element (-1) and (1) here is for the minimum element
@@ -44,6 +44,8 @@ obj.push(-3)
 obj.pop()
 
 param_3 = obj.top()
-print("Top element is",param_3)
+print("Top element is")
+print(param_3)
 param_4 = obj.getMin()
-print("minimum element is",param_4)
+print("minimum element is")
+print(param_4)
