@@ -72,3 +72,92 @@ class MyHashMap {
  * int param_2 = obj.get(key);
  * obj.remove(key);
  */
+
+
+
+ // Design Problem 2 : Implement MinStack
+ // Approach 1 : Keep track of previous minimum
+ class MinStack {
+    Stack<Integer> st = new Stack<>();
+    int min = Integer.MAX_VALUE;
+    /** initialize your data structure here. */
+    public MinStack() {
+        
+    }
+    
+    public void push(int x) {
+        if(x <= min) {
+            st.push(min); // to keep track of the previous min
+            min = x; //update the current min
+        }
+        st.push(x);
+    }
+    
+    public void pop() {
+        int pop = st.pop();
+        if(pop == min) {
+            min = st.pop(); // hold the prev min as the current min is already popped
+        } 
+    }
+    
+    public int top() {
+        return st.peek();
+    }
+    
+    public int getMin() {
+        return min;
+    }
+}
+
+/**
+ * Your MinStack object will be instantiated and called as such:
+ * MinStack obj = new MinStack();
+ * obj.push(x);
+ * obj.pop();
+ * int param_3 = obj.top();
+ * int param_4 = obj.getMin();
+ */
+
+
+// Approach 2 : Keep two stacks
+
+class MinStack {
+    Stack<Integer> st1 = new Stack<>();
+    Stack<Integer> st2 = new Stack<>();
+    int min = Integer.MAX_VALUE;
+    /** initialize your data structure here. */
+    public MinStack() {
+        
+    }
+    
+    public void push(int x) {
+        if(x <= min) {
+            min = x; //update the current min
+        }
+        st1.push(x);
+        st2.push(min);
+    }
+    
+    public void pop() {
+        st2.pop(); // remove the min from the second stack too.
+        st1.pop();
+        
+    }
+    
+    public int top() {
+        return st1.peek();
+    }
+    
+    public int getMin() {
+        return st2.peek(); // the top of the second stack will have the current min.
+    }
+}
+
+/**
+ * Your MinStack object will be instantiated and called as such:
+ * MinStack obj = new MinStack();
+ * obj.push(x);
+ * obj.pop();
+ * int param_3 = obj.top();
+ * int param_4 = obj.getMin();
+ */
