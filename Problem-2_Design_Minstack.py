@@ -1,66 +1,44 @@
-# Time Complexity : O(1) - isEmpty, isFull, top, push, pop, getMin.
+# Time Complexity : O(1) - top, push, pop, getMin.
 # Space Complexity : O(n) - n : length of the stack
-# Did this code successfully run on Leetcode : Yes (on leetcode, it was slightly different - didnt have isFull, isEmpty and top functions)
-# Any problem you faced while coding this : At first I maintained min as a global variable but couldn't handle if the element popped off.
-#
+# Did this code successfully run on Leetcode : Yes
+# Any problem you faced while coding this : At first I maintained min as a global variable but couldn't handle if the element popped off. Also
+# stored 2 values - (value, min) in a node which was as same as using two stack.
 #
 # Your code here along with comments explaining your approach
 
 class MinStack:
 
-    def __init__(self, capacity):
+    def __init__(self):
         """
         initialize your data structure here.
         """
         self.stack = []
-        self.curr_size = 0
-        self.capacity = capacity
+        self.curr_min = float('inf')
 
-    # Checks if the stack is empty by curr_size global variable
-    def isEmpty(self):
-        if self.curr_size == 0:
-            return True
-        else:
-            return False
-
-    # Checks if the stack is full by curr_size and capacity global variable
-    def isFull(self):
-        if self.curr_size == self.capacity - 1:
-            return True
-        else:
-            return False
-
-    # Returns top of the stack if the stack is not empty
-    def top(self) -> int:
-        if not self.isEmpty():
-            return self.stack[-1][0]
-        else:
-            print("Stack Underflow")
-
-    # Pushes the element into stack if the stack is not overflow
+    # if the value to be pushed is less than the current minimum then, push the current minimum so as to keep track if x gets popped in future
+    # and update the current minimum and then push the element.
     def push(self, x: int) -> None:
-        if self.isFull():
-            print("Stack Overflow")
-        else:
-            if self.curr_size == 1:
-                min_elem = x
-            else:
-                min_elem = min(self.top[1], x)
-            self.stack.append((x, min_elem))
-            self.curr_size += 1
+        if x <= self.curr_min:
+            self.stack.append(self.curr_min)
+            self.curr_min = x
+        self.stack.append(x)
 
-    # Pops the top element from the stack if the stack is not empty
+    # If the element popped is same as the current minimum, then current minimum is updated which is the value before it (its the order in
+    # which we pushed) and is also popped off.
     def pop(self) -> None:
-        if self.isEmpty():
-            print("Stack Underflow")
-        else:
-            self.stack.pop(-1)
-            self.current_size -= 1
+        popped_elem = self.stack.pop(-1)
+        if popped_elem == self.curr_min:
+            self.curr_min = self.stack.pop(-1)
 
-    # Returns the min value of the entire stack
+    def top(self) -> int:
+        return self.stack[-1]
+
     def getMin(self) -> int:
-        if not self.isEmpty():
-            return self.stack[-1][1]
-        else:
-            return None
+        return self.curr_min
 
+# Your MinStack object will be instantiated and called as such:
+# obj = MinStack()
+# obj.push(x)
+# obj.pop()
+# param_3 = obj.top()
+# param_4 = obj.getMin()
