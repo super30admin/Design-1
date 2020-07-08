@@ -51,7 +51,7 @@ class MinStack {
 
     public static void main(String[] args) {
         MinStack obj = new MinStack();
-        int x=2, y=5 , z=1;
+        int x=2, y=5 , z=0;
         obj.push(x);
         obj.push(y);
         obj.push(z);
