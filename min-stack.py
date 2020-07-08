@@ -1,41 +1,50 @@
   
-# Time Complexity : for getMin: O(n)
+# Time Complexity : O(1)
 # Space Complexity : O(n)
 # Did this code successfully run on Leetcode : yes
-# Any problem you faced while coding this : Could not figure out an approach to getMin in O(1)
+# Any problem you faced while coding this : No
 
 class MinStack(object):
-    arr = []
     def __init__(self):
         """
         initialize your data structure here.
         """
-        self.arr = []
+        self.stack1 = []
+        self.stack2 = []
+        self.min = float('inf')
 
     def push(self, x):
         """
         :type x: int
         :rtype: None
         """
-        self.arr.append(x)
-
+        if x < self.min:
+            self.min = x
+        self.stack2.append(self.min)
+        self.stack1.append(x)
+        
     def pop(self):
         """
         :rtype: None
         """
-        return self.arr.pop()
+        self.stack2.pop()
+        if len(self.stack2) != 0:
+            self.min = self.stack2[-1]
+        else:
+            self.min = float('inf')
+        return self.stack1.pop()
 
     def top(self):
         """
         :rtype: int
         """
-        return self.arr[-1]
+        return self.stack1[-1]
 
     def getMin(self):
         """
         :rtype: int
         """
-        return min(self.arr)
+        return self.stack2[-1]
 
 
 # Your MinStack object will be instantiated and called as such:
