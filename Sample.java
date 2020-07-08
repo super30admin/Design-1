@@ -78,9 +78,91 @@ class MyHashMap {
 
 // Problem 2
 
-// Time Complexity : , Amortized complexity :
-// Space Complexity :
+// Time Complexity : O(1)
+// Space Complexity : O(n)
 // Did this code successfully run on Leetcode : yes
-// Any problem you faced while coding this : none
+// Any problem you faced while coding this : brute force solution is not accepted in Leetcode.
 
 // Your code here along with comments explaining your approach
+
+// My Brute force solution
+class MinStack {
+    
+    private class Node{
+        int val, min;  //stores the value and minmum at every stage
+        Node next;
+        Node(int val, int min){
+            this.val = val;
+            this.min = min;
+        }
+    }
+    
+    Node root; //points to top of stack
+    
+    /** initialize your data structure here. */
+    public MinStack() {
+        root = null;
+    }
+    
+    public void push(int x) {
+        if(root==null){
+            root = new Node(x,x);
+            root.next = null;
+        }
+        int min = Math.min(x,root.min);
+        Node node = new Node(x, min);
+        node.next = root;
+        root = node;
+    }
+    
+    public void pop() {
+        root = root.next;
+    }
+    
+    public int top() {
+        return root.val;
+    }
+    
+    public int getMin() {
+        return root.min;
+    }
+}
+
+
+//One Stack Solution
+
+class MinStack {
+
+    Stack<Integer> st;
+    int min;
+    
+    /** initialize your data structure here. */
+    public MinStack() {
+        st = new Stack<>();
+        min = Integer.MAX_VALUE;
+    }
+    
+    public void push(int x) {
+        if(x<=min){ if a new min is found store the current min into stack
+            st.push(min);
+            min = x;
+        }
+        st.push(x);
+    }
+    
+    public void pop() {
+        if(st.peek() == min){ // if top element equals current min then we have to change the min
+            st.pop();
+            min = st.peek();
+        }
+        st.pop();
+    }
+    
+    public int top() {
+        return st.peek();
+    }
+    
+    public int getMin() {
+        return min;
+    }
+}
