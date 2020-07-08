@@ -1,6 +1,6 @@
 // Time Complexity : O(1)
 // Space Complexity : O(n)
-// Did this code successfully run on Leetcode : yes
+// Did this code successfully run on Leetcode :   yes
 // problems : i was getting empty stack exception , was using min_stack.peek()>x in line 12's if condition
 import java.util.*;
 class MinStack {

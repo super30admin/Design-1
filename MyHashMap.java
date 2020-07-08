@@ -1,5 +1,5 @@
 // Time Complexity : O(1) //amortized
-// Space Complexity :
+// Space Complexity : O(n) where n is the number of elements in hashmap.
 // Did this code successfully run on Leetcode : yes
 // Any problem you faced while coding this : i was returning =>  if(nodes[index]==null) return new ListNode(-1,-1); in findElement() which was giving incorrect output. was having doubt as to why we are adding a dummy node.
 class MyHashMap {
