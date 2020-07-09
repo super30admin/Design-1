@@ -5,7 +5,12 @@ public class Design_HashMap {
 		// TODO Auto-generated method stub
 
 	}
-
+	//Approach: 1. I have considered an array of LinkedList nodes to build HashMap. 
+	//2. In put function, for every key, I will calculate an index using getIndex function, 
+	//and create an ListNode object with the key and value pair and place them in the calculated index of the array.
+	//3. For get and contains function, I will again calculate the index and check on that index in the ListNode array, 
+	//since it is a LinkedList Node, I have to iterate through it till I get my key element. 
+	
     ListNode[] nodes = new ListNode[10000];
     /** Initialize your data structure here. */
     public Design_HashMap() {
@@ -79,3 +84,7 @@ public class Design_HashMap {
  */
 
 }
+//Time Complexity : O(n) for put, remove, get operations, since by worst case we might have to iterate through the length of the Linked list nodes. 
+//Space Complexity : O(n), where n is the number of elements in the Hash Map, since we will be creating those many number of Linked list nodes 
+//Did this code successfully run on Leetcode : Yes
+//Any problem you faced while coding this :
