@@ -1,0 +1,73 @@
+class MyHashMap:
+    
+    SIZE=1000
+    nodes=[ListNode(-1) for i in range(SIZE)] 
+    
+    def __init__(self,):
+        """
+        Initialize your data structure here.
+        """
+        #self.nodes=[ListNode(-1) for i in range(self.SIZE)]
+        
+        #self.list=[[] for i in range(self.SIZE)] 
+        #self.nodes=[ListNode(-1) for i in range(1000)] 
+        
+        
+    def getindex(self, key: int):
+        return hash(key) % self.SIZE
+    
+    def find_element(self, key:int, index:int):
+        if self.nodes[index]==None:
+            self.nodes[index]=ListNode(-1)
+        else:
+            prev=self.nodes[index]
+        while prev.self.next!=None and prev.self.next.key!=key:
+            prev=prev.self.next
+            
+        return prev
+              
+    def put(self, key: int, value: int) -> None:
+        """
+        value will always be non-negative.
+        """
+        index = self.getindex(key)
+        prev = self.find_element(key,index)
+        if prev.self.next == None:
+            prev.self.next=ListNode(key,value)
+        else:
+            prev.self.next = value
+        
+    def get(self, key: int) -> int:
+        """
+        Returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key
+        """
+        index=self.getindex(key)
+        prev = self.find_element(key,index)
+        if prev.self.next !=None:
+            prev.self.next.val
+        else:
+            return -1
+        
+    def remove(self, key: int) -> None:
+        """
+        Removes the mapping of the specified value key if this map contains a mapping for the key
+        """
+        index=self.getindex(key)
+        prev = self.find_element(key,index)
+        if prev.self.next != None:
+            prev.next= prev.self.next.self.next
+    
+        
+class ListNode (object):
+    def __init__(self,key):
+        self.key=key
+        self.val=None
+        self.next=None
+
+
+
+# Your MyHashMap object will be instantiated and called as such:
+# obj = MyHashMap()
+# obj.put(key,value)
+# param_2 = obj.get(key)
+# obj.remove(key)
