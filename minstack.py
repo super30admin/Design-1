@@ -5,7 +5,33 @@
 #Space Complexity - Overall it's O(n) where n are total inputs but all function implementations are O(1)
 
 # Running on leetcode : Yes
+#Single stack solution for Minstack - similar complexity 
+class MinStack2:
 
+    def __init__(self):
+        """
+        initialize your data structure here.
+        """
+        self.stack = []
+        self.min = float('inf')
+        
+    def push(self, x: int) -> None:
+        if x<= self.min:
+            self.stack.append(self.min)
+            self.min = x 
+        self.stack.append(x)
+
+    def pop(self) -> None:
+        val = self.stack.pop()
+        if self.min==val:
+            newmin = self.stack.pop()
+            self.min = newmin
+
+    def top(self) -> int:
+        return self.stack[-1]
+
+    def getMin(self) -> int:
+        return self.min
 # Class for minstack implementation
 class MinStack:
     #Initialization of minstack with a list
@@ -33,6 +59,8 @@ class MinStack:
         if  self.size!=0:
             return self.q[-1][1]
         return sys.maxsize
+    
+    
         
 
 
