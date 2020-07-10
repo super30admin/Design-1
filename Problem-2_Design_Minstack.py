@@ -26,11 +26,17 @@ class MinStack:
     # If the element popped is same as the current minimum, then current minimum is updated which is the value before it (its the order in
     # which we pushed) and is also popped off.
     def pop(self) -> None:
+        if len(self.stack) < 1:
+            print("ERROR: Stack Underflow")
+            return
         popped_elem = self.stack.pop(-1)
         if popped_elem == self.curr_min:
             self.curr_min = self.stack.pop(-1)
 
     def top(self) -> int:
+        if len(self.stack) < 1:
+            print("ERROR: Stack Underflow")
+            return
         return self.stack[-1]
 
     def getMin(self) -> int:
