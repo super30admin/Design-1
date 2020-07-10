@@ -1,5 +1,5 @@
-# Time Complexity : O(1) - get_ind, put, get and remove functions. O(n) - find_node function where n is the length of the linked list at that
-# particular entry - arr[ind]
+# Time Complexity : O(1) - get_ind. O(n) - find_node function where n is the length of the linked list at that
+# particular entry - arr[ind]. Also, put, get and remove functions - as they internally call find_node
 # Space Complexity : O(an) - a : length of the array and n is the length of the longest linked list out of all lists at each ind of arr.
 # Did this code successfully run on Leetcode : Yes
 # Any problem you faced while coding this : Was confused whether to initialise arr with None values or with dummy nodes
