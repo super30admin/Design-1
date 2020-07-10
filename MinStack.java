@@ -1,20 +1,22 @@
 // Time Complexity :O(1) in each operation
 // Space Complexity :O(2n) worst case
-// Did this code successfully run on Leetcode :No
+// Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this :
 //  - Stack stack = new Stack(); why is this not functioning at line 14
 //  - Alternatively tried to create an object of MinStack and tried to compile throws an error
+//  - cannot find symbol st= new Stack<>();
+//  - cannot find symbol st= new Stack<>();
 
-
+import java.util.*;
 
 // Your code here along with comments explaining your approach
 class MinStack {
   int min = Integer.MAX_VALUE;
   // Stack stack = new Stack(); why is this not functioning because not instatiating object of stack
-  Stack<Integer> st = new Stack<>();
+  Stack<Integer> st;
 
     public MinStack() {
-
+      st= new Stack<>();
       // st.push(10);
       // st.push(4);
       // st.push(13);
