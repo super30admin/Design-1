@@ -13,7 +13,7 @@ class MinStack:
         """
         if incoming is less or equal to min than push(min) -> min=incoming -> push(incoming)
         """
-        if x >= self.min:
+        if x > self.min:
             self.stack.append(x)
         else:
             self.stack.append(self.min)
