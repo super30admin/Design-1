@@ -1,3 +1,9 @@
+# Time Complexity : Hash map: O(1)
+# Space Complexity : O(n)
+# Did this code successfully run on Leetcode : it runs in IDE, but fails in leetcode
+# Any problem you faced while coding this : No
+
+
 class ListNode:
 
     def __init__(self, key, value, next=None):

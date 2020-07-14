@@ -1,3 +1,9 @@
+# Time Complexity : Min Stack: O(1)
+# Space Complexity : O(n)
+# Did this code successfully run on Leetcode : it runs in IDE, but fails in leetcode
+# Any problem you faced while coding this : No
+
+
 import sys
 
 
