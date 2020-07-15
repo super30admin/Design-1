@@ -12,7 +12,7 @@ class MyHashMap:
         """
         index = self.getIndex(key)
         prev = self.findElement(index, key)
-        if prev.next == None:
+        if prev.next is None:
             prev.next = ListNode(key, value)
         else:
             prev.next.value = value
@@ -23,7 +23,7 @@ class MyHashMap:
         """
         index = self.getIndex(key)
         prev = self.findElement(index, key)
-        if prev.next != None:
+        if prev.next is not None:
             return prev.next.value
         else:
             return -1
@@ -34,7 +34,7 @@ class MyHashMap:
         """
         index = self.getIndex(key)
         prev = self.findElement(index, key)
-        if prev.next != None:
+        if prev.next is not None:
             prev.next = prev.next.next
 
     def getIndex(self, key) -> int:
@@ -44,7 +44,7 @@ class MyHashMap:
         return index
 
     def findElement(self, index, key):
-        if self.nodes[index] == None:
+        if self.nodes[index] is None:
             self.nodes[index] = ListNode(-1, -1)
             return self.nodes[index]
         prev = self.nodes[index]
