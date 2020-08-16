@@ -1,0 +1,51 @@
+class MinStack {
+    int maxsize;
+    int *stack;
+    int *mnStack;
+    int tp;
+public:
+    /** initialize your data structure here. */
+    MinStack() {
+        maxsize = 10000;
+        stack = new int[maxsize];
+        mnStack = new int[maxsize];
+        memset(stack, INT_MAX, maxsize*sizeof(int));
+        memset(mnStack, INT_MAX, maxsize*sizeof(int));
+        tp = -1;
+    }
+    
+    void push(int x) {
+        if(tp<maxsize-1){
+            int elem;
+            if(tp>-1)
+                elem = mnStack[tp];
+            else
+                elem = INT_MAX;
+            stack[++tp] = x;
+            mnStack[tp] = min(x, elem);
+        }
+    }
+    
+    void pop() {
+        if(tp>-1){
+            stack[tp--] = INT_MAX;
+        }
+    }
+    
+    int top() {
+        return stack[tp];
+    }
+    
+    int getMin() {
+        return mnStack[tp];
+    }
+};
+
+/**
+ * Your MinStack object will be instantiated and called as such:
+ * MinStack* obj = new MinStack();
+ * obj->push(x);
+ * obj->pop();
+ * int param_3 = obj->top();
+ * int param_4 = obj->getMin();
+ */
