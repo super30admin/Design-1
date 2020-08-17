@@ -23,7 +23,6 @@ class MyHashMap {
         return key % hm.length;
     }
     
-    
     /** Initialize your data structure here. */
     public MyHashMap() {
         hm = new Node[10000];
