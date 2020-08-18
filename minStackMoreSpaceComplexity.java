@@ -5,6 +5,14 @@ public class minStack{
     Stack<Integer> stack2;
     int min;
 
+    /*  Explanation
+    Time Complexity for operators : o(1)   
+    Extra Space Complexity for operators : o(n) .. The problem is for stack that's why didnt considered staxck space  
+    Did this code successfully run on Leetcode : No, 17/18 test cases passed with this approach. Only one test case failed.
+    Any problem you faced while coding this : Need to take care of corner checks like stack empty etc.
+    The implemntation consists of only two stack, the first stack will have all the elements whicl second will kepp track
+    of minimum elemements.
+    */
 
 
     public static void main(String args[]){
