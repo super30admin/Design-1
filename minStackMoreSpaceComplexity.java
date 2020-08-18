@@ -1,7 +1,8 @@
 import java.util.Stack;
 public class minStack{
 
-    Stack<Integer> stack;
+    Stack<Integer> stack1;
+    Stack<Integer> stack2;
     int min;
 
 
@@ -15,31 +16,38 @@ public class minStack{
     }   
     
     public minStack(){
-        stack = new Stack<>();
+        stack1 = new Stack<>();
+        stack2 = new Stack<>();
         min = Integer.MAX_VALUE;
     }
     
     public void push(int x) {
-        if(x<=min){
-            stack.push(x);
-            min = x;
-        }
-        stack.push(x);
 
+        if(x <= min){
+            min = x;
+            stack1.push(x);
+            stack2.push(x);
+        }else
+            stack1.push(x); 
     }
     
     public void pop() {
-        int popElement = stack.pop();
-        if(min == popElement){
-            min = stack.pop();
-        }   
+        if(!stack1.isEmpty() && stack1.peek() == min){
+            stack1.pop();
+            stack2.pop();
+            if(!stack2.isEmpty())
+              min = stack2.peek();
+        }else{
+            stack1.pop();
+        } 
     }
     
     public int top() {
-        return stack.peek();
+        return stack1.peek();
     }
     
     public int getMin() {
         return min;
     }
+
 }
