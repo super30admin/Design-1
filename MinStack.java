@@ -2,49 +2,47 @@
 // push(x), pop(), top(), getMin(): O(1)
 
 // Space Complexity
-// O(N + N) due to maintaining two stacks
+// Worst case O(2N)
 
 // Did this code successfully run on Leetcode : Yes
-// Any problem you faced while coding this : Was I supposed to do it using array or builtin?
+// Any problem you faced while coding this : No
 
 
-/**
- * MinStack using array
- */
+import java.util.Stack;
+
 class MinStack {
 
-    private static final int MAX = 100000;  // Maximum size of Stack
-    int top;                                // top of stack
-    int[] stack = new int[MAX];
-    int[] minStack = new int[MAX];
+    private Stack<Integer> stack;
+    private int minimum;
 
     /**
-     * initialize MinStack
+     * initialize your data structure here.
      */
     public MinStack() {
-        top = -1;
+        stack = new Stack<>();
+        minimum = Integer.MAX_VALUE;
     }
 
     public void push(int x) {
-        if (top < (MAX - 1)) {
-            int min = (top < 0 || x < minStack[top]) ? x : minStack[top];       // Calculate current minimum
-            top++;
-            stack[top] = x;
-            minStack[top] = min;
+        if (x <= minimum) {
+            stack.push(minimum);
+            minimum = x;
         }
+        stack.push(x);
     }
 
     public void pop() {
-        if (top >= 0) {
-            top--;
+        int x = stack.pop();
+        if (x == minimum) {
+            minimum = stack.pop();
         }
     }
 
     public int top() {
-        return stack[top];
+        return stack.peek();
     }
 
     public int getMin() {
-        return minStack[top];
+        return minimum;
     }
 }
