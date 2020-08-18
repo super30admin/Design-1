@@ -1,4 +1,4 @@
-
+/*
 
 /*Complexity will O(n/k)
  * where n = number of keys we add
@@ -6,7 +6,7 @@
  * Time Complexity  once collision occurs wont be considered as it will be less than O(n/k)
  * Space Complexity : O(n)
  * */
-
+/*
 public class designhashmap {
 	class ListNode{
 		int key,value;
@@ -54,7 +54,7 @@ public class designhashmap {
 	public int get(int key) {
 		
 		int i= idx(key);
-		if(nodes[i]==null)return -1;
+	/*	if(nodes[i]==null)return -1;
 		ListNode prev = find(nodes[i],key);
 		
 		if(prev==null)return -1;
@@ -87,4 +87,4 @@ public class designhashmap {
 		map.remove(13);
 		System.out.println(map.get(12));
 	}
-}
+}*/
