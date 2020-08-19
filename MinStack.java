@@ -22,7 +22,7 @@ Integer min;
     public void pop() {
     	mainStack.pop();
     	minStack.pop();
-        
+        min = minStack.peek();
     }
     
     public int top() {
