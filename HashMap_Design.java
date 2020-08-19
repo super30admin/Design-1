@@ -1,4 +1,15 @@
 
+/*  Explanation
+    Time Complexity for operators : o(1)   
+    Extra Space Complexity for operators : o(1)
+    Did this code successfully run on Leetcode : Yes
+    Any problem you faced while coding this : No
+    The implemntation consists of only LinkedList. It creates DummyLinkedlIst initially and then add next element next to it
+    If the hasfunction return and already existing value then  it will create an new linkedlist and add element at the end.
+    We need to treverse thru the linkedlist by using find element function for each and every operator in order to traverse from
+    the linkedlist.
+*/
+
 public class HashMap_Design {
     public static void main(String args[]){
             System.out.println("Hello");
