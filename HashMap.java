@@ -1,4 +1,4 @@
-// Time Complexity : O(k/n) where n -> number of elements in the main list and k -> number of collided elements
+// Time Complexity :  For contains add and remove all will have O(k/n) where n -> number of elements in the main list and k -> number of collided elements . This is because every function calls contains internally
 // another way is to think that if all the keys of the main list were required, we would take O(k) but since we have collisions so we will not take upall of them and hence O(k/n)
 
 // Space Complexity : O(m+k) where m is the number of unique keys that are used and k is the number of collisions that occur
