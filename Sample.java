@@ -1,5 +1,5 @@
 // Problem 1
-// Time Complexity : O(n)
+// Time Complexity : O(1)
 // Space Complexity : O(n)
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : No
@@ -42,7 +42,7 @@ class MyHashMap {
  */
 
 // Problem 2
-// Time Complexity : O(n)
+// Time Complexity : O(1)
 // Space Complexity : O(n)
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : No
