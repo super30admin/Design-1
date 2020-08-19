@@ -1,6 +1,6 @@
-// Time Complexity : 
+// Time Complexity : push O(1) pop O(1) top O(1) getMin O(1) 
 
-// Space Complexity :
+// Space Complexity : Worst case O(2n) Similar to twostack, which is eventually O(n)
 // Did this code successfully run on Leetcode : yes 
 // Any problem you faced while coding this : 
 
