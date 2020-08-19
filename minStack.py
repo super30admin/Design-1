@@ -1,3 +1,8 @@
+# // Time Complexity : O(1) for all functions
+# // Space Complexity : O(n)
+# // Did this code successfully run on Leetcode : Yes
+# // Any problem you faced while coding this : No
+
 class MinStack:
 
     def __init__(self):
