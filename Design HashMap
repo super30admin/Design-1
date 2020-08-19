@@ -1,3 +1,22 @@
+// Time Complexity : 
+put, remove, get: O(1) worst case O(n)
+
+// Space Complexity : O(n)
+
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this :
+
+for input ["MyHashMap","remove","get","put","put","put","get","put","put","put","put"] - handle this added null condition at line 80
+[[],[14],[4],[7,3],[11,1],[12,1],[7],[1,19],[0,3],[1,8],[2,6]]
+
+java.lang.NullPointerException
+  at line 112, MyHashMap.remove
+  at line 71, __Driver__.__helperSelectMethod__
+  at line 91, __Driver__.__helper__
+  at line 112, __Driver__.main
+
+// Your code here along with comments explaining your approach
+
 class MyHashMap {
 
     public class ListNode {
@@ -62,7 +81,7 @@ class MyHashMap {
     public void remove(int key) {
          int index = hashFunc(key);
          ListNode prev = findElement(index, key);
-        if (prev.next == null) { //null pointer exception for input
+        if (prev.next == null) { //null pointer exception for input added
             return;
         } else {
             prev.next = prev.next.next;
