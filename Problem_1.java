@@ -1,6 +1,6 @@
 //Time complexity-O(n)->doubt in this
 //Space complexity-O(10000)->Constant
-//used inbuilt hashfuncion of java, followed class method
+//used inbuilt hashfuncion of java, followed class method and method found on leetcode comments
 
 class MyHashMap {
         final ListNode[] nodes = new ListNode[10000];
