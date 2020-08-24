@@ -1,42 +1,54 @@
-//Time Complexity-O(1)
-//Space complexityO(n), if follwed Shaz's method which says that only if we use space apart from extra mentioned
-//submitting late because didn't get time due to my work
-class MyQueue {
-    private Stack<Integer> s1 = new Stack<>();
-    private Stack<Integer> s2 = new Stack<>();
+//Time complexity-O(n)->doubt in this
+//Space complexity-O(10000)->Constant
+//used inbuilt hashfuncion of java, followed class method
 
-    /** Initialize your data structure here. */
-    public MyQueue() {
-        
-    }
-    
-    /** Push element x to the back of queue. */
-    public void push(int x) {
-        s1.push(x);
-    }
-    
-    /** Removes the element from in front of queue and returns that element. */
-    public int pop() {
-        if (s2.isEmpty()) {
-            while (!s1.isEmpty())
-                s2.push(s1.pop());
+class MyHashMap {
+        final ListNode[] nodes = new ListNode[10000];
+
+        public void put(int key, int value) {
+            int i = idx(key);
+            if (nodes[i] == null)
+                nodes[i] = new ListNode(-1, -1);
+            ListNode prev = find(nodes[i], key);
+            if (prev.next == null)
+                prev.next = new ListNode(key, value);
+            else prev.next.val = value;
         }
-        return s2.pop();
-    }
-    
-    /** Get the front element. */
-    public int peek() {
-        if (!s2.isEmpty()) {
-            return s2.peek();
-        } else {
-            while (!s1.isEmpty())
-                s2.push(s1.pop());
+
+        public int get(int key) {
+            int i = idx(key);
+            if (nodes[i] == null)
+                return -1;
+            ListNode node = find(nodes[i], key);
+            return node.next == null ? -1 : node.next.val;
         }
-        return s2.peek();
+
+        public void remove(int key) {
+            int i = idx(key);
+            if (nodes[i] == null) return;
+            ListNode prev = find(nodes[i], key);
+            if (prev.next == null) return;
+            prev.next = prev.next.next;
+        }
+
+        int idx(int key) { return Integer.hashCode(key) % nodes.length;}
+
+        ListNode find(ListNode bucket, int key) {
+            ListNode node = bucket, prev = null;
+            while (node != null && node.key != key) {
+                prev = node;
+                node = node.next;
+            }
+            return prev;
+        }
+
+        class ListNode {
+            int key, val;
+            ListNode next;
+
+            ListNode(int key, int val) {
+                this.key = key;
+                this.val = val;
+            }
+        }
     }
-    
-    /** Returns whether the queue is empty. */
-    public boolean empty() {
-        return s1.isEmpty() && s2.isEmpty();
-    }
-}
