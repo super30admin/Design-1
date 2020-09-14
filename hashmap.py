@@ -1,3 +1,9 @@
+// Time Complexity :O(1)
+// Space Complexity :O(n)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : No
+
+
 class MyHashMap:
 
     def __init__(self):
