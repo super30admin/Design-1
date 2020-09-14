@@ -16,7 +16,6 @@ class MyHashMap {
             this.val = val;
         }
     }
-   
     private int getIndex(int key){
         
         return Integer.hashCode(key) % nodes.length;
@@ -39,7 +38,6 @@ class MyHashMap {
     nodes = new ListNode[10000];
         
     }
-    
     
     public void put(int key, int value) {
        int index = getIndex(key);
