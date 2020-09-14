@@ -18,7 +18,7 @@ class MyHashMap {
     }
     
     
-    ListNode nodes[];
+    ListNode nodes[]; 
     /** Initialize your data structure here. */
     public MyHashMap() {
       nodes = new ListNode[10001];  
