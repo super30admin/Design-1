@@ -10,7 +10,7 @@ class MinStack {
     public MinStack() {
         
     }
-    
+    //push
     public void push(int x) {
         if(x <= min){
            stack.push(min);
@@ -18,7 +18,7 @@ class MinStack {
         }
         stack.push(x);
     }
-    
+    //pop
     public void pop() {
         if(stack.pop()==min) min=stack.pop();
     }

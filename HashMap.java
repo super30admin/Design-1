@@ -37,7 +37,7 @@ class MyHashMap {
         }
     }
 
-	
+	//return hash value
     private int getIndex(int key)
     {
       return Integer.hashCode(key)% nodes.length;  
