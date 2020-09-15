@@ -1,7 +1,7 @@
-//time complexity:
-//space complexity:
+//time complexity:O(1)
+//space complexity:O(n)
 //executed on leetcode: yes
-//approach:
+//approach:using array
 //any issues faced? no
 class MyHashMap {
 public:
