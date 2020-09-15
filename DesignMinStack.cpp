@@ -1,42 +1,41 @@
-// Time Complexity : O(1)
-// Space Complexity :O(N) implemented 2 stacks 
-// Did this code successfully run on Leetcode :Yes
-// Any problem you faced while coding this : No
 class MinStack {
 public:
     /** initialize your data structure here. */
-    int mini;
-    stack<int> stk; //this is the main stack 
-    stack<int> min_stk; //this stack will contain the min values
+    int topValue; //top value will top to the top element 
+    vector<int> minimumValue,stk; //2 vector initialized one for normal coding and another for keeping the min value
     
     MinStack() 
     {
-        
+        topValue=-1; //initiallize the value to -1
     }
     
     void push(int x) 
     {
-        stk.push(x);
-        if(min_stk.empty() || x<=min_stk.top())
-        min_stk.push(x);
+        topValue++; //while pushing the value increment to -1
+         stk.push_back(x);  // push the value to the normal stack
+        if (topValue==0) { // this means it is the first insertion
+            minimumValue.push_back(x); 
+        } else {
+            minimumValue.push_back(min(minimumValue[topValue-1],x)); //compare the minimum value in the top of the stack and the current value
+        }
     }
     
     void pop() 
     {
-        int x=stk.top();
-        stk.pop();
-    
-        if(x==min_stk.top())
-            min_stk.pop();
+        if(topValue==-1) // empty stack condition
+            return;
+        minimumValue.pop_back(); 
+        stk.pop_back();
+        topValue--;
     }
     
     int top() 
     {
-        return stk.top();
+        return stk.back(); 
     }
     
     int getMin() {
-       return min_stk.top();
+       return minimumValue.back();
     }
 };
 
@@ -48,4 +47,3 @@ public:
  * int param_3 = obj->top();
  * int param_4 = obj->getMin();
  */
-// Your code here along with comments explaining your approach
