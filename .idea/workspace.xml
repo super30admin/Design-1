@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e0ca9d80-0239-4615-b0c3-2f9f8cef4441" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/design_hashmap.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/design_minstack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/design_minstack.py" beforeDir="false" afterPath="$PROJECT_DIR$/design_minstack.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,7 +12,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Design_1$design_minstack.coverage" NAME="design_minstack Coverage Results" MODIFIED="1600132489315" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Design_1$design_minstack.coverage" NAME="design_minstack Coverage Results" MODIFIED="1600151397489" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Design_1$design_hashmap.coverage" NAME="design_hashmap Coverage Results" MODIFIED="1600131834177" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FUSProjectUsageTrigger">
@@ -36,12 +35,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="1110" />
+          <entry key="py" value="1728" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="1110" />
+          <entry key="Python" value="1728" />
         </counts>
       </usages-collector>
     </session>
@@ -51,12 +50,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/design_hashmap.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="760">
-              <caret line="40" column="34" lean-forward="true" selection-start-line="40" selection-start-column="34" selection-end-line="40" selection-end-column="34" />
+            <state relative-caret-position="1064">
+              <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
               <folding>
-                <marker date="1600131834171" expanded="true" signature="886:1521" ph="..." />
-                <marker date="1600131834171" expanded="true" signature="1537:2111" ph="..." />
-                <marker date="1600131834171" expanded="true" signature="1561:1570" ph="..." />
+                <marker date="1600132648311" expanded="true" signature="943:1578" ph="..." />
+                <marker date="1600132648311" expanded="true" signature="1594:2168" ph="..." />
+                <marker date="1600132648311" expanded="true" signature="1618:1627" ph="..." />
               </folding>
             </state>
           </provider>
@@ -65,8 +64,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/design_minstack.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+            <state relative-caret-position="931">
+              <caret line="49" column="9" lean-forward="true" selection-start-line="49" selection-start-column="9" selection-end-line="49" selection-end-column="9" />
+              <folding>
+                <marker date="1600151478222" expanded="true" signature="783:909" ph="..." />
+                <marker date="1600151478222" expanded="true" signature="1089:1204" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -243,20 +246,24 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/design_hashmap.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="760">
-          <caret line="40" column="34" lean-forward="true" selection-start-line="40" selection-start-column="34" selection-end-line="40" selection-end-column="34" />
+        <state relative-caret-position="1064">
+          <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
           <folding>
-            <marker date="1600131834171" expanded="true" signature="886:1521" ph="..." />
-            <marker date="1600131834171" expanded="true" signature="1537:2111" ph="..." />
-            <marker date="1600131834171" expanded="true" signature="1561:1570" ph="..." />
+            <marker date="1600132648311" expanded="true" signature="943:1578" ph="..." />
+            <marker date="1600132648311" expanded="true" signature="1594:2168" ph="..." />
+            <marker date="1600132648311" expanded="true" signature="1618:1627" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/design_minstack.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+        <state relative-caret-position="931">
+          <caret line="49" column="9" lean-forward="true" selection-start-line="49" selection-start-column="9" selection-end-line="49" selection-end-column="9" />
+          <folding>
+            <marker date="1600151478222" expanded="true" signature="783:909" ph="..." />
+            <marker date="1600151478222" expanded="true" signature="1089:1204" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

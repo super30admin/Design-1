@@ -9,39 +9,45 @@
 """
 
 
-class MyMinStack:
+class MinStack:
     def __init__(self):
-        # initialize data structure here.
+        # initialize your data structure here.
         self.stack = []
+        self.min = float('inf') # Max finite value
 
-    def push(self, x: int) -> None:
-        # pushed and min number are same for the first instance
-        if not self.stack:
-            self.stack.append((x, x))
-            return
+    def push(self, x: int):
+        # If num is less than min, push min to stack first and then push the number to the stack
+        if x <= self.min:
+            self.stack.append(self.min)
+            self.min = x
+        self.stack.append(x)
 
-        # min is the second element from previous number
-        current_min = self.stack[-1][1]
-        self.stack.append((x, min(x, current_min)))
+    def pop(self):
+        if len(self.stack) > 0:
+            if self.stack.pop == self.min:
+                self.min = self.stack.pop
+            self.stack.pop()
 
-    def pop(self) -> None:
-        self.stack.pop()
+    def top(self):
+        if len(self.stack) > 0:
+            print("Top number in stack: ", self.stack[-1])
+        return -1
 
-    def top(self) -> int:
-        # top is the first element from previous number
-        return self.stack[-1][0]
+    def getMin(self):
+        print("Minimum number in stack: ", self.min)
 
-    def getMin(self) -> int:
-        # min is the second element from previous number
-        return self.stack[-1][1]
+    def displayStack(self):
+        print(self.stack)
 
 
 # Driver code
-obj = MyMinStack()
+obj = MinStack()
 obj.push(3)
 obj.push(5)
 obj.push(6)
 obj.push(8)
+obj.displayStack()
 obj.pop()
-print("Top number in stack: ",obj.top())
-print("Minimum number in stack", obj.getMin())
+obj.displayStack()
+obj.top()
+obj.getMin()
