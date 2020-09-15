@@ -24,9 +24,8 @@ class MinStack:
 
     def pop(self):
         if len(self.stack) > 0:
-            if self.stack.pop == self.min:
-                self.min = self.stack.pop
-            self.stack.pop()
+            if self.stack.pop() == self.min:
+                self.min = self.stack.pop()
 
     def top(self):
         if len(self.stack) > 0:
@@ -42,10 +41,10 @@ class MinStack:
 
 # Driver code
 obj = MinStack()
+obj.push(-1)
 obj.push(3)
-obj.push(5)
-obj.push(6)
-obj.push(8)
+obj.push(1)
+obj.push(-1)
 obj.displayStack()
 obj.pop()
 obj.displayStack()
