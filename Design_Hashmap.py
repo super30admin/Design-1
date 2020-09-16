@@ -1,10 +1,40 @@
+class Bucket:
+    def __init__(self):
+        self.bucket = []
+
+    def get(self, key):
+        for (k, v) in self.bucket:
+            if k == key:
+                return v
+        return -1
+
+    def update(self, key, value):
+        found = False
+        for i, kv in enumerate(self.bucket):
+            if key == kv[0]:
+                self.bucket[i] = (key, value)
+                found = True
+                break
+
+        if not found:
+            self.bucket.append((key, value))
+
+    def remove(self, key):
+        for i, kv in enumerate(self.bucket):
+            if key == kv[0]:
+                del self.bucket[i]
+
+
 class MyHashMap(object):
 
     def __init__(self):
         """
         Initialize your data structure here.
         """
-        self.dict={}
+        # better to be a prime number, less collision
+        self.key_space = 2069
+        self.hash_table = [Bucket() for i in range(self.key_space)]
+
 
     def put(self, key, value):
         """
@@ -13,7 +43,9 @@ class MyHashMap(object):
         :type value: int
         :rtype: None
         """
-        self.dict[key]=value
+        hash_key = key % self.key_space
+        self.hash_table[hash_key].update(key, value)
+
 
     def get(self, key):
         """
@@ -21,11 +53,9 @@ class MyHashMap(object):
         :type key: int
         :rtype: int
         """
-        if key in self.dict:
-            return self.dict[key]
-        else:
-            return -1
-        
+        hash_key = key % self.key_space
+        return self.hash_table[hash_key].get(key)
+
 
     def remove(self, key):
         """
@@ -33,7 +63,6 @@ class MyHashMap(object):
         :type key: int
         :rtype: None
         """
-        d={}
-        if key in self.dict:
-            self.dict[key]=-1
-        
+        hash_key = key % self.key_space
+        self.hash_table[hash_key].remove(key)
+
