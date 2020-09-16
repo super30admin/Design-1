@@ -1,96 +1,102 @@
+
 /*
    
 Design HashMap
 */
 
-//Time comlpexity - O(n/k) where n is the number of possible keys and k is the number of predefined buckets
-//space complexity - O(n+k) where n is the number of unique keys 
-// Did this code successfully run on Leetcode : Yes
+//Time comlpexity - 
+//space complexity -
+// Did this code successfully run on Leetcode : 
 /*
-Any problem you faced while coding this : None
+Any problem you faced while coding this : 
 
 */
 
 // Your code here along with comments explaining your approach
+class MyHashMap {
 
-class Pair<U, V> {
-    public U first; //key
-    public V second;//value
-  
-    public Pair(U first, V second) {
-      this.first = first; 
-      this.second = second;
+  final ListNode[] nodes = new ListNode[10000];
+
+  class ListNode
+  {
+    int key;
+    int value;
+    ListNode next;
+    ListNode(int key, int value)
+    {
+      this.key=key;
+      this.value=value;
     }
   }
+
+  /** Initialize your data structure here. */
+  public MyHashMap() {
+      
+  }
   
-  
-  //using the hash key we will find the bucket where the value should be stored
-  class Bucket {
-    private List<Pair<Integer, Integer>> bucket;
-  
-    public Bucket() {
-      this.bucket = new LinkedList<Pair<Integer, Integer>>();
+  public int getHash(int key)
+  {
+    return key%nodes.length;
+  }
+
+
+  /** value will always be non-negative. */
+  public void put(int key, int value) {
+    int hash = getHash(key);
+    if(nodes[hash] == null)
+    {
+      nodes[hash] = new ListNode(-1,-1);
     }
+    ListNode prev = findElement(key,nodes[hash]);
+    if(prev.next == null)
+    {
+      prev.next = new ListNode(key,value);
+    }
+    else
+    {
+      prev.next.value = value;
+    }
+      
+  }
   
-    public Integer get(Integer key) {
-      for (Pair<Integer, Integer> pair : this.bucket) {
-        if (pair.first.equals(key))
-          return pair.second;
-      }
+  /** Returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key */
+  public int get(int key) {
+
+    int hash = getHash(key);
+    if(nodes[hash] == null)
+    {
       return -1;
     }
-  
-    //update the value if the key value pair already exists with the new value
-    public void update(Integer key, Integer value) {
-      boolean found = false;
-      for (Pair<Integer, Integer> pair : this.bucket) {
-        if (pair.first.equals(key)) {
-          pair.second = value;
-          found = true;
-        }
-      }
-      if (!found)
-        this.bucket.add(new Pair<Integer, Integer>(key, value));
-    }
-  
-    public void remove(Integer key) {
-      for (Pair<Integer, Integer> pair : this.bucket) {
-        if (pair.first.equals(key)) {
-          this.bucket.remove(pair);
-          break;
-        }
-      }
-    }
+    ListNode prev = findElement(key,nodes[hash]);
+    if(prev.next == null) return -1;
+     return prev.next.value;
+      
   }
   
-  class MyHashMap {
-    private int key_space;
-    private List<Bucket> hash_table;
-  
-    //initialization
-    public MyHashMap() {
-      this.key_space = 2069;
-      this.hash_table = new ArrayList<Bucket>();
-      for (int i = 0; i < this.key_space; ++i) {
-        this.hash_table.add(new Bucket());
-      }
-    }
-  
-    //add value to the ht
-    public void put(int key, int value) {
-      int hash_key = key % this.key_space;
-      this.hash_table.get(hash_key).update(key, value);
-    }
-  
-    public int get(int key) {
-      int hash_key = key % this.key_space;
-      return this.hash_table.get(hash_key).get(key);
-    }
-  
-    //Removes the mapping of the specified value key if this map contains a mapping for the key already
-    public void remove(int key) {
-      int hash_key = key % this.key_space;
-      this.hash_table.get(hash_key).remove(key);
-    }
+  /** Removes the mapping of the specified value key if this map contains a mapping for the key */
+  public void remove(int key) {
+     int hash = getHash(key);
+     if(nodes[hash] == null)
+     {
+       return;
+     }
+     ListNode prev = findElement(key,nodes[hash]);
+     if(prev.next == null) return;
+     prev.next = prev.next.next;
+      
   }
-  
+
+public ListNode findElement(int key, ListNode head)
+{
+  ListNode cur = head;
+  ListNode prev = null;
+  while(cur != null && cur.key != key)
+  {
+    prev = cur;
+    cur = cur.next;
+  }
+  return prev;
+}
+
+}
+

@@ -16,36 +16,46 @@ Any problem you faced while coding this : None
 class MinStack {
     
   //initialize the stack Data Structure
-  private Stack<int[]> stack = new Stack<>();
+ Stack<Integer> stack;
+ int min;
   
-  public MinStack() { }
+  public MinStack() { 
+    stack = new Stack<Integer>();
+    min = Integer.MAX_VALUE;
+  }
   
   
   public void push(int x) {
       
     //if the stack is emoty then push x but if it is not empty
     // then enter the minimum value from the new number and the number entered last  
-    if (stack.isEmpty()) {
-          stack.push(new int[]{x, x});
-          return;
-      }
-      
-      int currentMin = stack.peek()[1];
-      stack.push(new int[]{x, Math.min(x, currentMin)});
+    if(x <= min)
+    {
+        stack.push(min);
+        min = x;
+    }
+    stack.push(x);
   }
   
   
   public void pop() {
-      stack.pop();
-  }
+      if(stack.pop() == min)
+      {
+          min = stack.pop();
+      }
+}
   
   
   public int top() {
-      return stack.peek()[0];
+      if(stack.size() > 0)
+      {
+          return stack.peek();
+      }
+      return -1;
   }
   
   
   public int getMin() {
-      return stack.peek()[1];
+      return min;
   }
 }
