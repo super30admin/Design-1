@@ -1,7 +1,12 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+// Time Complexity : O(1)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+// Your code here along with comments explaining your approach
+
+//I will take a variable and keept track of the min all the time, it the current min is less that
+// the actual min I will update the min variable.
 
 
 class MinStack {
