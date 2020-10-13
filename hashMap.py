@@ -50,8 +50,10 @@ class MyHashMap:
             if (elem.key==key):
                 print("Value for the given key:",elem.value)
                 flag = 1
+                return elem.value
         if (flag==0):
             print("Key not found in the HashMap")
+            return -1
 
     def remove(self, key: int) -> None:
         """
@@ -72,5 +74,5 @@ obj = MyHashMap()
 obj.put(5,10)
 obj.put(10,10)
 obj.put(15,10)
-obj.get(5)
+val = obj.get(5)
 obj.remove(5)
