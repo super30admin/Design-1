@@ -1,3 +1,5 @@
+# Time Complexity : push O(1) pop O(1) in worst O(n) peek O(1) 
+# Space Complexity :O(1)
 class MinStack2:
 
     def __init__(self):

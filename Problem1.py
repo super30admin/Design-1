@@ -1,4 +1,6 @@
-lass MyHashMap:
+# Time Complexity : put O(1) get O(1) remove O(1)
+# Space Complexity :???
+class MyHashMap:
 
     def __init__(self):
         """
