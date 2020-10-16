@@ -1,6 +1,6 @@
-Time complexity:O(1)
-Space complexity:O(n)
-Leetcode submission:yes
+//Time complexity:O(1)
+//Space complexity:O(n)
+//Did this code successfully run on Leetcode :yes
 
 class MyHashMap {
     class ListNode
