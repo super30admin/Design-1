@@ -1,0 +1,79 @@
+class Bucket:
+
+    def __init__(self):
+        """
+        Initialize your data structure here.
+        """
+        self.bucket = []
+
+    def put(self, key: int, value: int):
+        """
+        value will always be non-negative.
+        """
+        found = False
+
+        for i, kv in enumerate(self.bucket):
+            if kv[0] == key:
+                self.bucket[i] = (key, value)
+                found = True
+                break
+        if not found:
+            self.bucket.append((key, value))
+
+    def get(self, key: int):
+        """
+        Returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key
+        """
+        for k, v in self.bucket:
+            if k == key:
+                return v
+        return -1
+
+    def remove(self, key: int) -> None:
+        """
+        Removes the mapping of the specified value key if this map contains a mapping for the key
+        """
+        for i, kv in enumerate(self.bucket):
+            if kv[0] == key:
+                del self.bucket[i]
+
+
+class MyHashMap:
+
+    def __init__(self):
+        """
+        Initialize your data structure here.
+        """
+        self.key_space = 2069
+        self.hash_table = [Bucket() for i in range(self.key_space)]
+
+    def put(self, key: int, value: int) -> None:
+        """
+        value will always be non-negative.
+        """
+        hashkey = key % self.key_space
+        self.hash_table[hashkey].put(key, value)
+
+    def get(self, key: int) -> int:
+        """
+        Returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key
+        """
+        hashkey = key % self.key_space
+        return self.hash_table[hashkey].get(key)
+
+    def remove(self, key: int) -> None:
+        """
+        Removes the mapping of the specified value key if this map contains a mapping for the key
+        """
+        hashkey = key % self.key_space
+        self.hash_table[hashkey].remove(key)
+# Your MyHashMap object will be instantiated and called as such:
+# obj = MyHashMap()
+# obj.put(key,value)
+# param_2 = obj.get(key)
+# obj.remove(key)
+
+#time complexity- O(n)
+#space- O(n)
+# What I think abt the complexites might be wrong.
+# but I'm not convinced with the time and space complexities given in leetcode It'd be gret if you could explain/
