@@ -1,0 +1,36 @@
+# Time Complexity : O(1) to push, pop, top and getMin
+# Space Complexity : O(2n)
+# Did this code successfully run on LeetCode : Yes
+# Any problem you faced while coding this : Not sure if optimal
+
+class MinStack:
+
+    def __init__(self):
+        """
+        initialize your data structure here.
+        """
+        self.array = []
+        self.low = float("inf")
+
+    def push(self, x: int) -> None:
+        self.low = min(self.low, x)
+        self.array.append((x, self.low))
+        return
+
+    def pop(self) -> None:
+        if len(self.array) > 0:
+            self.array.pop()
+        if len(self.array) > 0:
+            self.low = self.array[-1][1]
+        else:
+            self.low = float("inf")
+        return
+
+    def top(self) -> int:
+        if len(self.array) > 0:
+            return self.array[-1][0]
+        else:
+            return None
+
+    def getMin(self) -> int:
+        return self.low if self.low != float('inf') else None
