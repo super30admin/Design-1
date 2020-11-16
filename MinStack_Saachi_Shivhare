@@ -1,0 +1,21 @@
+class MinStack:
+
+    def __init__(self):
+        """
+        initialize your data structure here.
+        """
+        self.items = []
+
+    def push(self, x: int) -> None:
+        self.items.append(x)
+
+    def pop(self) -> None:
+        self.items.pop()
+
+    def top(self) -> int:
+        stack_len = len(self.items)
+        return self.items[stack_len - 1]
+    
+    def getMin(self) -> int:
+        return min(self.items)
+        
