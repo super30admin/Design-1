@@ -1,8 +1,8 @@
-class MinStack {
+lass MinStack {
 public:
     /** initialize your data structure here. */
      stack <int> s1;
-    stack <pair <int , int> >  s2;
+    stack <int> s2;
     MinStack() {
    
     }
@@ -11,39 +11,20 @@ public:
         s1.push(x);
 
         if(s2.empty())
-            s2.push({x,1});
-        else{
-            int min = s2.top().first;
-            int freq= s2.top().second;
-            if(x < min){
-                s2.push({x,1});
+            s2.push(x);
+    
+        else if(x <= s2.top()){
+                s2.push(x);
             }
-            else if(x == min){
-                s2.pop();
-                s2.push({x, freq+1});
-            }
-        } 
+        
     }
     
     void pop() {
-        if(s1.top() == s2.top().first){
-            
-            int freq = s2.top().second;
-            if(freq==1){
-                s1.pop();
+        if(s1.top() == s2.top()){
                 s2.pop();
             }
-            else{
-                s1.pop();
-                int min= s2.top().first;
-                s2.pop();
-                s2.push({min, freq-1});
-            }
-            
-        }
-        else{
-            s1.pop();
-        }        
+        
+            s1.pop();       
     }
     
     int top() {
@@ -52,7 +33,7 @@ public:
     }
     
     int getMin() {
-        return s2.top().first;
+        return s2.top();
     }
 };
 
