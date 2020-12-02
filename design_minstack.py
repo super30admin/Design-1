@@ -52,3 +52,51 @@ class MinStack(object):
 
 #O(1) all operations
 #O(N) additional min stack
+
+
+
+#???????????????????#
+#1 stack
+# class MinStack(object):
+# O(N)
+# #1 stacks O(1) auxiliary space
+
+#     def __init__(self):
+#         """
+#         initialize your data structure here.
+#         """
+#         self.stack = []
+#         self.mini =float("inf")
+
+#     def push(self, x):
+#         """
+#         :type x: int
+#         :rtype: void
+#         """
+#         if x<=self.mini:
+#             self.stack.append(self.mini)
+#             self.mini=x
+#         self.stack.append(x)
+        
+
+#     def pop(self):
+#         """
+#         :rtype: void
+#         """
+#         ans = self.stack.pop()
+#         if ans==self.mini:
+#             self.mini=self.stack.pop()
+
+        
+
+#     def top(self):
+#         """
+#         :rtype: int
+#         """
+#         return self.stack[-1]
+
+#     def getMin(self):
+#         """
+#         :rtype: int
+#         """
+#         return self.mini
