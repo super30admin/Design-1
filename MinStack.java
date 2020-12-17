@@ -1,5 +1,8 @@
 class MinStack {
 
+    //Time Complexity: 1. O(1) to push the element 2. O(1) to pop
+    //Space Complexity: 1. O(2N)--> O(N) for 2 stacks used to monitor.
+
     /*
     We would need two stacks 1. to have normal stack for the elements to push
                              2. to check if we got minimum value in those input elements.
