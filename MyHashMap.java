@@ -1,9 +1,9 @@
 /**
 
-// Time Complexity : O(1) + O(N) => O(N)
-// Space Complexity : O(SIZE) + O(N)
-// Did this code successfully run on Leetcode : Yes
-// Any problem you faced while coding this : No
+Time Complexity : O(1) + O(N) => O(N)
+Space Complexity : O(SIZE) + O(N)
+Did this code successfully run on Leetcode : Yes
+Any problem you faced while coding this : No
 
 
 // Your code here along with comments explaining your approach
@@ -13,7 +13,9 @@ then create a array of size N
 
 each index will hold the start of the list
 
-each collision will lead to form a chain of list
+each collision will add the node to the start of the list
+
+COLLABEDIT: http://collabedit.com/fvj8x
 
 
 **/
@@ -51,6 +53,7 @@ class MyHashMap {
         
         Node start = this.headList[hash];
         Node newnode = new Node(value, key);
+
         
         
         if( start == null) {
