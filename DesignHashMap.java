@@ -40,3 +40,7 @@ class MyHashMap {
         System.out.println("Value for key 10 is : "+ob.get(10));  
     } 
 }
+
+
+// Time complexity : O(1) for put, get, remove
+// Space complexity : O(n)

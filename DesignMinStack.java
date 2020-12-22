@@ -54,3 +54,6 @@ class MinStack {
         
     } 
 }
+
+// Time complexity : O(1) for push(), pop(), top() and getMin() since we are having a track of the min element
+// Space complexity : O(N) for stack
