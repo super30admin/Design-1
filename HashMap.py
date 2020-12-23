@@ -1,4 +1,4 @@
-#// Time Complexity :O(1) for put, get and remove but storing takes o(n) time
+#// Time Complexity :O(1) for put, get and remove but storing takes O(n) time
 #// Space Complexity :O(n)
 #// Did this code successfully run on Leetcode :yes
 #// Any problem you faced while coding this :yes this is taking a lot of time, trying to find a better approach
