@@ -1,7 +1,7 @@
-#// Time Complexity :O(1) for put, get and remove but storing takes O(n) time
+#// Time Complexity :O(1) for put, get and remove
 #// Space Complexity :O(n)
 #// Did this code successfully run on Leetcode :yes
-#// Any problem you faced while coding this :yes this is taking a lot of time, trying to find a better approach
+#// Any problem you faced while coding this :no
 
 class MyHashMap:
 
@@ -10,7 +10,7 @@ class MyHashMap:
         Initialize your data structure here.
         """
         self.size=1000000
-        self.hashmap=[-1 for i in range(self.size)]
+        self.hashmap=[-1]*self.size
 
     def put(self, key: int, value: int) -> None:
         """
