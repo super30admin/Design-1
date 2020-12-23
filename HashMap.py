@@ -1,8 +1,7 @@
-#// Time Complexity :O(n)
-#// Space Complexity :O(1)
+#// Time Complexity :O(1) for put, get and remove but storing takes o(n) time
+#// Space Complexity :O(n)
 #// Did this code successfully run on Leetcode :yes
 #// Any problem you faced while coding this :yes this is taking a lot of time, trying to find a better approach
-
 
 class MyHashMap:
 
@@ -10,37 +9,27 @@ class MyHashMap:
         """
         Initialize your data structure here.
         """
-        self.hashmap=[]
-        
+        self.size=1000000
+        self.hashmap=[-1 for i in range(self.size)]
 
     def put(self, key: int, value: int) -> None:
         """
         value will always be non-negative.
         """
-        flag=False
-        for i in self.hashmap:
-            if(i[0]==key):
-                i[1]=value
-                flag=True
-        if(flag==False):
-            self.hashmap.append([key,value])
+        self.hashmap[key%self.size]=value
+        
 
     def get(self, key: int) -> int:
         """
         Returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key
         """
-        for i in self.hashmap:
-            if(i[0]==key):
-                return i[1]
-        return -1
+        return self.hashmap[key%self.size]
 
     def remove(self, key: int) -> None:
         """
         Removes the mapping of the specified value key if this map contains a mapping for the key
         """
-        for i in self.hashmap:
-            if(i[0]==key):
-                self.hashmap.remove(i)
+        self.hashmap[key%self.size]=-1
 
 
 # Your MyHashMap object will be instantiated and called as such:
