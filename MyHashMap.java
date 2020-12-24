@@ -100,5 +100,7 @@ public class MyHashMap {
         hashMap.remove(2);          // remove the mapping for 2
         System.out.println(hashMap.get(2));
 
+        //Khushal was here
+
     }
 }
