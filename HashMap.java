@@ -8,41 +8,57 @@
 public class HashMap {
 
 	//use an array since we are able to get an element in O(1) runtime
-	int[] entries;
+	private int [][] storage;
+	private int buckets;
+	private int bucketItems;
 	/** Initialize your data structure here. */
 	 /** Initialize your data structure here. */
-	//O(n) runtime to initialize HashMap
+
+
+
+
     public HashMap() {
     	//Since there is only 0 to 1000000 elements, no need for resize method
-        entries = new int[1000001];
+        buckets = 1000;
+        bucketItems = 1001;
+        storage = new int[buckets][];
         
         //since we are dealing with integers, index can be used as key
-        for(int i = 0; i < entries.length; i++) {
-        	entries[i] = -1;
-        }
+
     }
     
-    //O(1) run time since using array
+    //O(1) run time
     /** value will always be non-negative. */
     public void put(int key, int value) {
     	//get location of key-value pair
-    	
-    	entries[key] = value;    
-        
+        int bucket = key % buckets;
+        int bucketItem = key / bucketItems;
+        if(storage[bucket] == null){
+            storage[bucket] = new int [bucketItems];
+        }
+        storage[bucket][bucketItem] = value;
     }
     
     /** Returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key */
     public int get(int key) {
-
-    	int target = entries[key];
-        return target;
+        int bucket = key % buckets;
+        int bucketItem = key / bucketItems;
+        if(storage[bucket] == null){
+            return -1;
+        }
+        return storage[bucket][bucketItem];
         
     }
     
     /** Removes the mapping of the specified value key if this map contains a mapping for the key */
     public void remove(int key) {
-    	
-    	entries[key] = -1;
+        int bucket = key % buckets;
+        int bucketItem = key / bucketItems;
+        if(storage[bucket] == null){
+            return;
+        }
+        storage[bucket][bucketItem] = -1;
+
         
     }
     
