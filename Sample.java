@@ -5,3 +5,14 @@
 
 
 // Your code here along with comments explaining your approach
+public class Sample{
+	
+	public static void main(String[] args) {
+		
+		System.out.println("Hello");
+	}
+	
+}
+
+
+
