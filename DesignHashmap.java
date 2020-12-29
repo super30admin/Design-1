@@ -26,6 +26,7 @@ class MyHashMap {
         return temp2;
     }
     /** value will always be non-negative. */
+    //TC - O(n) 
     public void put(int key, int value) {
         int i = index(key);
         if(nodes[i] == null){
@@ -41,6 +42,7 @@ class MyHashMap {
     }
     
     /** Returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key */
+    //TC - O(n) 
     public int get(int key) {
         int i = index(key);
         if(nodes[i] == null) return -1;
@@ -50,6 +52,7 @@ class MyHashMap {
     }
     
     /** Removes the mapping of the specified value key if this map contains a mapping for the key */
+    //TC - O(n) 
     public void remove(int key) {
         int i = index(key);
         if(nodes[i] == null) return;
