@@ -1,0 +1,47 @@
+//Time Complexity - O(1)
+class MinStack {
+    Stack<Integer> minSt;
+    Stack<Integer> st;
+    Integer min;
+    /** initialize your data structure here. */
+    public MinStack() {
+       minSt= new Stack<>();
+        st= new Stack<>();
+        min=Integer.MAX_VALUE;
+        minSt.push(min);
+    }
+    
+    public void push(int x) {
+    st.push(x);
+    min=Math.min(min,x);
+    minSt.push(min);
+    }
+    
+    public void pop() {
+        if(!st.isEmpty()){
+        st.pop();
+        minSt.pop();
+        min=minSt.peek();}
+        else return;
+    }
+    
+    public int top() {
+        if(!st.isEmpty()){
+            return st.peek();
+        }
+        return -1;
+    }
+    
+    public int getMin() {
+        return minSt.peek();
+    }
+}
+
+/**
+ * Your MinStack object will be instantiated and called as such:
+ * MinStack obj = new MinStack();
+ * obj.push(x);
+ * obj.pop();
+ * int param_3 = obj.top();
+ * int param_4 = obj.getMin();
+ */
