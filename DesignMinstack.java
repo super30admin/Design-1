@@ -7,7 +7,7 @@ class MinStack {
      st = new Stack<>();
         min = Integer.MAX_VALUE;
     }
-    
+    //TC - O(1) 
     public void push(int x) {
         if(x <= min){
             st.push(min);
@@ -15,18 +15,18 @@ class MinStack {
         }
         st.push(x);
     }
-    
+    //TC - O(1) 
     public void pop() {
         int popped = st.pop();
         if(popped == min){
             min = st.pop();
         }
     }
-    
+    //TC - O(1) 
     public int top() {
         return st.peek();
     }
-    
+    //TC - O(1) 
     public int getMin() {
         return min;
     }
