@@ -1,26 +1,6 @@
-import java.util.Stack;
 
-// Time Complexity : O(1/(1-(n/m)))
-// Space Complexity : 
-// Did this code successfully run on Leetcode : Yes
-// Any problem you faced while coding this :
-
-
-// Your code here along with comments explaining your approach
-
-
-/*1. Design a HashMap without using any built-in hash table libraries.
-
-To be specific, your design should include these functions:
-
-put(key, value) : Insert a (key, value) pair into the HashMap. If the value already exists in the HashMap, update the value.
-get(key): Returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key.
-remove(key) : Remove the mapping for the value key if this map contains the mapping for the key.
-
-*/
-
-class MyHashMap {
-    Node[] nodes;
+public class DesignHashMap {
+	Node[] nodes;
     class Node{
         int key;
         int value;
@@ -39,7 +19,7 @@ class MyHashMap {
     }
 
     /** Initialize your data structure here. */
-    public MyHashMap() {
+    public DesignHashMap() {
         nodes = new Node[10000];
     }
     
@@ -93,68 +73,23 @@ class MyHashMap {
         Node previous = find(nodes[i], key);
         //To check when the linkedlist is present but not able to find the node
         if(previous.next == null) return;
-        previous.next = previous.next.next;
-        
+        previous.next = previous.next.next; 
     }
+    
+    public static void main(String[] args) {
+    	DesignHashMap hashMap = new DesignHashMap();
+    	hashMap.put(1, 1);          
+    	hashMap.put(2, 2);         
+    	int param_2 = hashMap.get(1);            // returns 1
+    	int param_3 = hashMap.get(3);            // returns -1 (not found)
+    	hashMap.put(2, 1);          // update the existing value
+    	int param_4 = hashMap.get(2);            // returns 1 
+    	hashMap.remove(2);          // remove the mapping for 2
+    	int param_5 = hashMap.get(2);            // returns -1 (not found) 
+
+    	System.out.println(param_2);
+    	System.out.println(param_3);
+    	System.out.println(param_4);
+    	System.out.println(param_5);
+	}
 }
-
-/**
- * Your MyHashMap object will be instantiated and called as such:
- * MyHashMap obj = new MyHashMap();
- * obj.put(key,value);
- * int param_2 = obj.get(key);
- * obj.remove(key);
- */
-
-/*
-2. Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
-
-push(x) -- Push element x onto stack.
-pop() -- Removes the element on top of the stack.
-top() -- Get the top element.
-getMin() -- Retrieve the minimum element in the stack.
-*/
-
-class MinStack {
-    Stack<Integer> stack;
-    Stack<Integer> minStack;
-    Integer minimum;
-    
-    /** initialize your data structure here. */
-    public MinStack() {
-        stack = new Stack<>();
-        minStack = new Stack<>();
-        minimum = Integer.MAX_VALUE;
-        minStack.push(minimum);
-    }
-    
-    public void push(int x) {
-        minimum = Math.min(minimum,x);
-        stack.push(x);
-        minStack.push(minimum);
-        
-    }
-    
-    public void pop() {
-        stack.pop();
-        minStack.pop();
-        minimum = minStack.peek();
-    }
-    
-    public int top() {
-        return stack.peek();
-    }
-    
-    public int getMin() {
-        return minimum;
-    }
-}
-
-/**
- * Your MinStack object will be instantiated and called as such:
- * MinStack obj = new MinStack();
- * obj.push(x);
- * obj.pop();
- * int param_3 = obj.top();
- * int param_4 = obj.getMin();
- */
