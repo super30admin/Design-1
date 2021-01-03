@@ -1,4 +1,4 @@
-//Exercise_1 : Design Hashmap
+//Exercise_1 : Design Hashmap--Using Linked List which is Linear Chaining
 // Time Complexity : O(K)  -> for all operations where K will be size of linked list
 // Space Complexity : O(N+K)=>Total Elements where N is size of parent array and K is the size of child list where value is stored(Linked List)
 // Did this code successfully run on Leetcode : Yes
