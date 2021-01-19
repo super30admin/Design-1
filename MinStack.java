@@ -1,3 +1,18 @@
+/**
+ * Time Complexity: O(1)
+ * Space Complexity: O(n)
+ */
+// Did this code successfully run on Leetcode : YES
+// Any problem you faced while coding this : NO
+
+
+// Your code here along with comments explaining your approach
+// 1. Create a new stack that has datatype of Element.
+//     Element class has an integer x and a min value.
+// 2. For every element that we push in stack we also push 
+//     min value along.
+// 3. Whenever we need min value it will be stack.peek().min
+
 class MinStack {
 
     Stack<Element> stack;
@@ -57,14 +72,6 @@ class Element {
  * int param_4 = obj.getMin();
  */
 
-/**
- * Time Complexity: O(1)
- * Space Complexity: O(n)
- */
 
-// STEPS:
-// 1. Create a new stack that has datatype of Element.
-//     Element class has an integer x and a min value.
-// 2. For every element that we push in stack we also push 
-//     min value along.
-// 3. Whenever we need min value it will be stack.peek().min
+
+
