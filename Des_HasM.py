@@ -1,3 +1,6 @@
+""" 
+Time Complexity: O(n)
+"""
 class LinkedList:
     def __init__(self, key, value):
         # create a node and initialize it here
