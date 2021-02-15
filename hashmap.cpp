@@ -1,3 +1,6 @@
+//TC: O(n) where n is number of elements in the map
+//SC: O(1) 
+
 class MyHashMap {
 public:
     /** Initialize your data structure here. */

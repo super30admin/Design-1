@@ -1,3 +1,6 @@
+//TC: O(1) for all operations
+//SC: O(n) worst case, if elements are pushed to stack in descending order.
+
 class MinStack {
 private:
     vector<int> stack;
