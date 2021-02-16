@@ -1,27 +1,62 @@
 class MyHashMap {
 
     /** Initialize your data structure here. */
-    private int[] arr;    
+    Node[] nodes;
     public MyHashMap() {
-        arr = new int[1000001];
+        nodes = new Node[10000];
     }
     
     /** value will always be non-negative. */
-    // Time Complexity: O(1)
     public void put(int key, int value) {
-        arr[key] = value+1;
+        int index = hash_function(key);
+        Node prev = find(index, key);
+        if(prev.next == null)
+            prev.next = new Node(key, value);
+        else
+            prev.next.val = value;
     }
     
     /** Returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key */
-    // Time Complexity: O(1)
     public int get(int key) {
-        return arr[key]-1;
+        int index = hash_function(key);
+        Node prev = find(index, key);
+        if(prev.next != null)
+            return prev.next.val;
+        return -1;
     }
     
     /** Removes the mapping of the specified value key if this map contains a mapping for the key */
-    // Time Complexity: O(1)
     public void remove(int key) {
-        arr[key] = 0;
+        int index = hash_function(key);
+        Node prev = find(index, key);
+        if(prev.next != null){
+            prev.next = prev.next.next;
+        }
+    }
+    
+    private static class Node{
+        int key;
+        int val;
+        Node next;
+        
+        Node(int key, int val){
+            this.key = key;
+            this.val = val;
+        }
+    }
+    
+    private int hash_function(int key){
+        return key % nodes.length;
+    }
+    
+    private Node find(int index, int key){
+        if(nodes[index] == null)
+            return nodes[index] = new Node(-1, -1);
+        Node prev = nodes[index];
+        while(prev.next != null && prev.next.key != key){
+            prev = prev.next;
+        }
+        return prev;
     }
 }
 
