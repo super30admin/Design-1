@@ -1,41 +1,48 @@
-//TC: O(n) where n is number of elements in the map
-//SC: O(1) 
+//TC: O(n/k) where n is number of elements in the map, k is number of buckets
+//SC: O(n) extra space 
 
 class MyHashMap {
 public:
     /** Initialize your data structure here. */
     
-    vector<pair<int, int>> hshmap;
+    vector<vector<pair<int, int>>> hshmap;
     
     MyHashMap() {
+        
+        hshmap.resize(100);
         
     }
     
     /** value will always be non-negative. */
     void put(int key, int value) {
         
+        int bucket = key%100;
+        
+        
         int i =0; bool found = false;
-        for(i=0; i<hshmap.size(); i++){
-            if(hshmap[i].first == key)
+        for(i=0; i<hshmap[bucket].size(); i++){
+            if(hshmap[bucket][i].first == key)
             {
-                hshmap[i].second = value;
+                hshmap[bucket][i].second = value;
                 return;
             }
         }
         
         
-        hshmap.push_back({key, value});
+        hshmap[bucket].push_back({key, value});
         
     }
     
     /** Returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key */
     int get(int key) {
         
+        int bucket = key%100;
+        
         int i =0; bool found = false;
-        for(i=0; i<hshmap.size(); i++){
-            if(hshmap[i].first == key)
+        for(i=0; i<hshmap[bucket].size(); i++){
+            if(hshmap[bucket][i].first == key)
             {
-                return hshmap[i].second;
+                return hshmap[bucket][i].second;
             }
         }
         
@@ -47,10 +54,13 @@ public:
     /** Removes the mapping of the specified value key if this map contains a mapping for the key */
     void remove(int key) {
         int i = 0;
-        for(i=0; i<hshmap.size(); i++){
-            if(hshmap[i].first == key)
+        
+        int bucket = key%100;
+        
+        for(i=0; i<hshmap[bucket].size(); i++){
+            if(hshmap[bucket][i].first == key)
             {
-                hshmap.erase(hshmap.begin() + i);
+                hshmap[bucket].erase(hshmap[bucket].begin() + i);
             }
         }
         
