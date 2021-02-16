@@ -5,7 +5,7 @@
 
 
 // Your code here along with comments explaining your approach
-// Used double hashing technique here with a 2-d arr
+// Used double hashing technique here with a 2-d array
 //we use two hash functions here for both inner array and outer array
 
 
