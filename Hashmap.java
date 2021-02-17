@@ -1,7 +1,8 @@
-// Time Complexity :
-// Space Complexity :
+// Time Complexity : O(n)+ for all cases
+// Space Complexity : ~O(n) for all cases
 // Did this code successfully run on Leetcode : Yes
-// Any problem you faced while coding this : 
+// Any problem you faced while coding this : Understood from the class, but coded the get and put on my own.remove was easy in this method as i didn't have to change any pointers.
+//Had to do it another time using LinkedList to understand in a broader way
 
 
 // Your code here along with comments explaining your approach
