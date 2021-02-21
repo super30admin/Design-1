@@ -32,7 +32,8 @@ class MinStack {
         return min;
     }
 }
-
+//time complexity - O(1)
+//space complexity - O(N) if we push all duplicates into the stack
 /**
  * Your MinStack object will be instantiated and called as such:
  * MinStack obj = new MinStack();
