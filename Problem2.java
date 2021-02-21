@@ -57,7 +57,8 @@ class MyHashMap {
         return prev;
     }
 }
-
+//time - O(N) for finding element which is required for get, remove and put
+//space - O(N^2), ex: 10k * 10k for this question!!! correct me if wrong:)
 /**
  * Your MyHashMap object will be instantiated and called as such:
  * MyHashMap obj = new MyHashMap();
