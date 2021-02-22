@@ -99,3 +99,87 @@ class MyHashMap {
  * int param_2 = obj.get(key);
  * obj.remove(key);
  */
+ 
+ ////////
+ class MyHashMap {
+    class Node{
+        int key;
+        int val;
+        Node next;
+        Node(int ke,int v){
+            this.key=ke;
+            this.val=v;
+            this.next=null;
+        }
+    }
+    
+    Node[] buckets;
+
+    /** Initialize your data structure here. */
+    public MyHashMap() {
+        buckets=new Node[10000];
+    }
+    
+    public int getIndex(int key){
+        return Integer.hashCode(key)%buckets.length;
+    }
+    
+    public Node findElement(int index,int key){
+        if(buckets[index]==null){
+            buckets[index]=new Node(-1,-1);
+        }
+        Node temp=buckets[index];
+        Node prev=null;
+        while(temp!=null && temp.key!=key){
+            prev=temp;
+            temp=temp.next;
+        }
+        
+        return temp==null?null:prev;
+    }
+    
+    /** value will always be non-negative. */
+    public void put(int key, int value) {
+        int index=getIndex(key);
+        Node node=findElement(index,key);
+        if(node==null){
+            Node temp=buckets[index];
+            while(temp.next!=null){
+                temp=temp.next;
+            }
+            temp.next=new Node(key,value);
+        }else{
+            node.next.val=value;
+        }
+    }
+    
+    /** Returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key */
+    public int get(int key) {
+        int index=getIndex(key);
+        Node temp=buckets[index];
+        while(temp!=null){
+            if(temp.key==key){
+                return temp.val;
+            }
+            temp=temp.next;
+        }
+        return -1;
+    }
+    
+    /** Removes the mapping of the specified value key if this map contains a mapping for the key */
+    public void remove(int key) {
+        int index=getIndex(key);
+        Node node=findElement(index,key);
+        if(node!=null){
+            node.next=node.next.next;
+        }
+    }
+}
+
+/**
+ * Your MyHashMap object will be instantiated and called as such:
+ * MyHashMap obj = new MyHashMap();
+ * obj.put(key,value);
+ * int param_2 = obj.get(key);
+ * obj.remove(key);
+ */
