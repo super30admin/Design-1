@@ -1,6 +1,6 @@
 #Design minstack
 
-# Design Hashmap
+
 ''' Time Complexity : O(1) for all operations
 // Space Complexity : O(n) # n - size of minstack
 // Did this code successfully run on Leetcode : YES
