@@ -7,7 +7,7 @@
 class Node:# linked list to create buckets
     def __init__(self,data):
         self.data = data # data contains both key and value
-        self. next = None
+        self. next = None 
         
 class MyHashMap:
     ''' 1. find hash key _hash function -  criteria should be min numbe rof collision.           h(k) = k mod m. let m be size = 10.
