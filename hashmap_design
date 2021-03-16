@@ -1,0 +1,56 @@
+class MyHashMap {
+    List<int[]>[] mymap;
+    int mod;
+    /** Initialize your data structure here. */
+    public MyHashMap() {
+        mod=749;
+        mymap=new ArrayList[mod];
+        for(int i=0;i<mod;i++)
+        {
+            mymap[i]=new ArrayList<>();
+        }
+    }
+    
+    /** value will always be non-negative. */
+    public void put(int key, int value) {
+        int mykey=key%mod;
+        for(int i=0;i<mymap[mykey].size();i++)
+        {
+            if(mymap[mykey].get(i)[0]==key)
+            {
+                mymap[mykey].get(i)[1]=value;
+                return;
+            }
+        }
+        mymap[mykey].add(new int[]{key,value});
+    }
+    
+    /** Returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key */
+    public int get(int key) {
+        int mykey=key%mod;
+        for(int i=0;i<mymap[mykey].size();i++)
+        {
+            if(mymap[mykey].get(i)[0]==key)
+                return mymap[mykey].get(i)[1];
+        }
+        return -1;
+    }
+    
+    /** Removes the mapping of the specified value key if this map contains a mapping for the key */
+    public void remove(int key) {
+        int mykey=key%mod;
+        for(int i=0;i<mymap[mykey].size();i++)
+        {
+            if(mymap[mykey].get(i)[0]==key)
+                mymap[mykey].remove(i);
+        }
+    }
+}
+
+/**
+ * Your MyHashMap object will be instantiated and called as such:
+ * MyHashMap obj = new MyHashMap();
+ * obj.put(key,value);
+ * int param_2 = obj.get(key);
+ * obj.remove(key);
+ */
