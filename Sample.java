@@ -6,60 +6,50 @@
 
 // Your code here along with comments explaining your approach
 class MinStack {
-    Stack<Integer> stack;
-    int minEle;
+
     /** initialize your data structure here. */
+    Stack<Integer> stack;
+    Stack<Integer> minStack;
     public MinStack() {
         stack = new Stack<>();
+        minStack = new Stack<>();
     }
 
     public void push(int x) {
-        if(stack.isEmpty()) {
-            stack.push(x);
-            minEle = x;
+        stack.push(x);
+        if(minStack.isEmpty()) {
+            minStack.push(x);
         }
         else {
-            if(x >= minEle) {
-                stack.push(x);
-            }
-            else {
-                stack.push(2*x-minEle);
-                minEle = x;
+            if(minStack.peek() >= x) {
+                minStack.push(x);
             }
         }
     }
 
     public void pop() {
-        System.out.println("The value of stack.peek() is "+ stack.peek() + " " + minEle);
-        if(stack.peek() >= minEle) {
-            stack.pop();
-        }
-        else {
-            minEle = 2*minEle - stack.pop();
+        int ele = stack.pop();
+        if(ele == minStack.peek()) {
+            minStack.pop();
         }
 
     }
 
     public int top() {
-        if(stack.peek() >= minEle) {
-            return stack.peek();
+        if(stack.isEmpty()) {
+            return -1;
         }
         else {
-            return minEle;
+            return stack.peek();
         }
-
     }
 
     public int getMin() {
-        return minEle;
+        if(minStack.isEmpty()) {
+            return -1;
+        }
+        else {
+            return minStack.peek();
+        }
     }
 }
-
-/**
- * Your MinStack object will be instantiated and called as such:
- * MinStack obj = new MinStack();
- * obj.push(x);
- * obj.pop();
- * int param_3 = obj.top();
- * int param_4 = obj.getMin();
- */
