@@ -1,3 +1,8 @@
+# Time Complexity : O(1)
+# Space Complexity : O(n), where n is the number of elements in the stack
+# Did this code successfully run on Leetcode : Yes
+# Any problem you faced while coding this : No
+
 import sys
 
 
@@ -23,10 +28,3 @@ class MinStack:
 
     def getMin(self) -> int:
         return self.min_stack[-1]
-
-# Your MinStack object will be instantiated and called as such:
-# obj = MinStack()
-# obj.push(x)
-# obj.pop()
-# param_3 = obj.top()
-# param_4 = obj.getMin()
