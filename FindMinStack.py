@@ -1,3 +1,13 @@
+'''
+
+Time Complexity : O(1)
+Space Complexity : O(N), grows linearly with the number of elements being added, get Min() is O(1) though
+Did this code successfully run on Leetcode : Yes
+Any problem you faced while coding this : Yes, I spent a considerable amount of time in the push method to pen down the condition to put the current element as the min element,
+was using if len(self.stack) <= 0 or not self.getMin(): instead of if len(self.stack) <= 0 and not self.getMin():
+'''
+
+
 class MinStack:
 
     def __init__(self):
