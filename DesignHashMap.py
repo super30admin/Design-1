@@ -1,3 +1,17 @@
+'''
+
+Time Complexity : O(N), since there is one for loop  while putting the elements in HM
+Space Complexity : O(N), grows linearly with the number of elements being added
+Did this code successfully run on Leetcode : Yes
+Any problem you faced while coding this : Yes, I eas returning None in the get method if the key was absent a
+whereas I had to return -1, should have read the question properly.
+
+'''
+
+
+
+
+
 class MyHashMap:
 
     def __init__(self):
