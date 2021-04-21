@@ -1,12 +1,5 @@
-# Design-1
+# Leetcode
 
-## Problem 1:
-Design Hashmap (https://leetcode.com/problems/design-hashmap/)
-
-
-
-## Problem 2:
-Design MinStack (https://leetcode.com/problems/min-stack/)
-
-
-
+| # | Title | Solution | Runtime |
+|---| ----- | -------- | ------- |
+|155|[ Min Stack](https://leetcode.com/problems/min-stack/)|[Java](./solutions/155.%20Min%20Stack.java)|5 ms|
