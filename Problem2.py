@@ -4,7 +4,9 @@
 ''' Time Complexity : O(1) for all operations
 // Space Complexity : O(2n) # n - size of minstack and mainstack
 // Did this code successfully run on Leetcode : YES
-// Any problem you faced while coding this : Took some time to understand the concept and key hashing'''
+// Any problem you faced while coding this : No''
+
+#approach - take 2 stacks. have a 1:1 mapping between main stack and minstack. minstack contains the minimum element so far.
 
 class MinStack:
     
