@@ -2,7 +2,7 @@
 
 
 ''' Time Complexity : O(1) for all operations
-// Space Complexity : O(n) # n - size of minstack
+// Space Complexity : O(2n) # n - size of minstack and mainstack
 // Did this code successfully run on Leetcode : YES
 // Any problem you faced while coding this : Took some time to understand the concept and key hashing'''
 
