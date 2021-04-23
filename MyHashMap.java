@@ -8,27 +8,26 @@
 
 class MyHashMap {
 
-    // a 2-D array reprsenting our set
+    // a 2-D array reprsenting our hashMap
     int[][] set;
-    //represents the hash1 locations
+    //number of bucket
     int bucket;
-    //represents the hash2 locations
+    //number of items within bucket
     int bucketItem;
 
     // Initializing
     public MyHashMap() {
-        //since there can be at max 10^6 elements and each bucket can hold 1000 elements
-        // 10^3 * 10^3 = 10^6, hence we have 1000 buckets
+        //initializing number of buckets
         this.bucket = 1000;
-        //initilizing our set
+        //initilizing our hashMap
         this.set = new int[this.bucket][];
     }
 
-    // first hash function
+    /// first hash function to fetch bucket number
     public int hash1(int key){
         return key%1000;
     }
-    //second hash function
+    //second hash function to find item location inside bucket
     public int hash2(int key){
         return key/1000;
     }
@@ -39,7 +38,7 @@ class MyHashMap {
         int bucket = this.hash1(key);
         //checking if the bucket doesn't exists
         if(this.set[bucket]==null){
-            //create a bucket with 1000 length
+            //create a bucket
             this.bucketItem = 1001;
             this.set[bucket] = new int[this.bucketItem];
 
@@ -50,7 +49,7 @@ class MyHashMap {
         }
         //get item index within bucket
         int bucketItem = this.hash2(key);
-        //mark item as available
+        //add item
         this.set[bucket][bucketItem] = value;
     }
 
