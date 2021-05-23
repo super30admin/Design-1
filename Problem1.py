@@ -68,6 +68,9 @@ At most 10^4 calls will be made to put, get, and remove.
 # Explanation:
 #-------------
 # Use array to implement hashtable
+# Use bucketing to avoid using array of size[max_itemsize]
+# Can't use too many buckets or else it will be the same as using an array
+# Find a balance between max_keysize and max_itemsize
 
 #-----------------
 # Time Complexity: 
