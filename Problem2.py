@@ -50,6 +50,7 @@ At most 3 * 10^4 calls will be made to push, pop, top, and getMin.
 #-------------
 # Use two stacks. 
 # One to store items (item_stack), one to store mins (min_stack).
+
 # Naive approach: 
 #   - Append new item to item_stack, 
 #   - If new item is less than top of min_stack, push new item to min_stack
