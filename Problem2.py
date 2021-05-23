@@ -207,62 +207,33 @@ class MinStack:
 # obj.push(-2)
 # obj.push(0)
 # obj.push(-3)
-# obj.push(1)
-# obj.push(9)
-
-# obj.printStack()
 
 
 # param_3 = obj.top()
 # print("Top:", param_3)
 # obj.pop()
 
-# param_3 = obj.top()
-# print("Top:", param_3)
 
-# obj.pop()
+# command_list = ["MinStack","push","push","getMin","getMin","push","getMin","getMin","top","getMin","pop","push","push","getMin","push","pop","top","getMin","pop"]
+# arg_list = [[],[-10],[14],[],[],[-20],[],[],[],[],[],[10],[-7],[],[-7],[],[],[],[]]
 
-# param_3 = obj.top()
-# print("Top:", param_3)
-
-# obj.pop()
-
-# param_3 = obj.top()
-# print("Top:", param_3)
-
-# obj.pop()
-
-# param_3 = obj.top()
-# print("Top:", param_3)
+# obj = MinStack()
+# command_list = command_list[1:]
+# arg_list = arg_list[1:]
+# output_list = []
+# output_list.append([])
 
 
-# obj.printStack()
-
-# param_4 = obj.getMin()
-
-# print("Min:", param_4)
-
-
-command_list = ["MinStack","push","push","getMin","getMin","push","getMin","getMin","top","getMin","pop","push","push","getMin","push","pop","top","getMin","pop"]
-arg_list = [[],[-10],[14],[],[],[-20],[],[],[],[],[],[10],[-7],[],[-7],[],[],[],[]]
-
-obj = MinStack()
-command_list = command_list[1:]
-arg_list = arg_list[1:]
-output_list = []
-output_list.append([])
-
-
-for command, args in zip(command_list, arg_list):
-    print (command)
-    if len(args)>0:
-        for arg in args:
-            args = int(arg)
-            exec(f'''output = obj.{command}({args})''')
-            output_list.append([output])
-            break
-    else:
-        output_list.append([exec(f'''output = obj.{command}()''')])
-        output_list.append([output])
+# for command, args in zip(command_list, arg_list):
+#     print (command)
+#     if len(args)>0:
+#         for arg in args:
+#             args = int(arg)
+#             exec(f'''output = obj.{command}({args})''')
+#             output_list.append([output])
+#             break
+#     else:
+#         output_list.append([exec(f'''output = obj.{command}()''')])
+#         output_list.append([output])
     
-print(output_list)
+# print(output_list)
