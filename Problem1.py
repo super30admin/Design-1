@@ -82,9 +82,9 @@ At most 10^4 calls will be made to put, get, and remove.
 # Every operation within that bucket takes linear time
 # Every bucket has approx. N/K items
 
-#-----------------
+#------------------
 # Space Complexity: 
-#-----------------
+#------------------
 # O(K+M)
 
 # Fixed cost of creating K buckets = K
