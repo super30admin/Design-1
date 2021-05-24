@@ -6,9 +6,9 @@
 # Cannnot find optimal solution for space
 // Your code here along with comments explaining your approach
 #Logic
-# Use two stack,One to maintain the order and other to keep track of minimum.
-# While pushing always check whether there is a minimum and push into both the stacks.
-# While popping if the minimum is on top then pop from both the stacks.
+Use two stack,One to maintain the order and other to keep track of minimum.
+While pushing always check whether there is a minimum and push into both the stacks.
+While popping if the minimum is on top then pop from both the stacks.
 class MinStack:
     def __init__(self):
         """
@@ -40,6 +40,14 @@ class MinStack:
 
     def getMin(self) -> int:
         return self.minStack[-1]
+
+
+# Your MinStack object will be instantiated and called as such:
+# obj = MinStack()
+# obj.push(val)
+# obj.pop()
+# param_3 = obj.top()
+# param_4 = obj.getMin()
 
 
 
