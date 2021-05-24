@@ -3,52 +3,52 @@
 # Did this code successfully run on Leetcode : Yes
 # Any problem you faced while coding this : I did this problem already so there was
 # no problem but first time i tried for so long and refered the solution(it was long back)
-class Node:
-    def __init__(self,val):
-        self.next = None
-        self.val = val
+
 class MinStack:
 
     def __init__(self):
         """
         initialize your data structure here.
         """
-        self.head = None
-        self.len = 0
-        self.m = None
+        self.stack = []
+        self.min = 0
+        
 
     def push(self, val: int) -> None:
-        if self.len == 0:
-            self.head = Node(val)
-            self.m = val
-            self.len = 1
+        if len(self.stack) == 0:
+            self.min = val
+            self.stack.append(val)
         else:
-            node = None
-            if val < self.m:
-                v = 2*val - self.m
-                self.m = val
-                node = Node(v)     
+            if self.min > val:
+                self.stack.append(2*val - self.min)
+                self.min = val
             else:
-                node = Node(val)
-            node.next = self.head
-            self.head = node
-            self.len = self.len + 1
+                self.stack.append(val)
 
     def pop(self) -> None:
-        if self.len != 0:
-            if self.head.val < self.m:
-                self.m = 2 * self.m - self.head.val
-            self.head = self.head.next
-            self.len = self.len - 1
+        if len(self.stack) == 0:
+            return None
+        if self.stack[len(self.stack)-1] <= self.min:
+            x = self.min
+            self.min = 2*self.min - self.stack[len(self.stack)-1]
+            self.stack.pop()
+            return x
+        else:
+            return self.stack.pop()
 
     def top(self) -> int:
-        if self.head.val < self.m:
-            return self.m
+        if len(self.stack) == 0:
+            return None
+        x = self.stack[len(self.stack) - 1]
+        if x < self.min:
+            return self.min
         else:
-            return self.head.val
+            return x
 
     def getMin(self) -> int:
-        return self.m
+        if self.top() == None:
+            return None
+        return self.min
 
 
 # Your MinStack object will be instantiated and called as such:
