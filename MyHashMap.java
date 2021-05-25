@@ -2,7 +2,7 @@
 Created HashMap DS using LinkedList Node --> key, value, next
 Time Complexity: O(1) average and O(n) for worst-case
 Space Complexity:O(1)
-Ran on LeetCode: Yes, accepted solution without issues
+Ran on LeetCode: Yes, accepted solution without issue
 */
 
 class MyHashMap {
