@@ -1,5 +1,7 @@
 import java.util.Arrays;
 
+// Time Complexity : O(1)
+// Space Complexity : O(N)
 class MyHashMap {
     
     int arr[];
