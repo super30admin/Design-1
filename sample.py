@@ -48,5 +48,5 @@ class MyHashMap(object):
         for id, k in enumerate(self.keys):
                 if(k == key):
                     self.hashMap.remove(self.hashMap[id])
-                    self.keys.remove(k)
+                    self.keys.remove(self.keys[id])
                     return None
