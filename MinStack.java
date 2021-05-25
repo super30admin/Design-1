@@ -1,3 +1,9 @@
+  
+// Time Complexity : O(N)
+// Space Complexity : O(N)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : Confused if I should use two stacks or one stack
+
 class MinStack {
 
     /** initialize your data structure here. */
