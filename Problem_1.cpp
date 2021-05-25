@@ -6,10 +6,11 @@ public:
     void put(int key, int value) {
         if (key >= base.size()) {
             base.resize(key+1, -1);
-            base[key] = value;
+            //this is inefficient approach, will be working on more efficient one
+            base[key%base.size()] = value;
         }
         else
-            base[key] = value;
+            base[key%base.size()] = value;
     }
     
     int get(int key) {
