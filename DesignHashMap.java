@@ -1,3 +1,6 @@
+// Time Complexity : O(1)
+// Space Complexity : O(N) where N is the size of the initial array
+
 class DesignHashMap{
   int[] array;
 

@@ -1,3 +1,6 @@
+// Time Complexity : O(1)
+// Space Complexity : O(N)
+
 class DesignMinStack{
 
   Stack<int[]> stack;
