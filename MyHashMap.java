@@ -15,6 +15,7 @@ public class MyHashMap {
     
     /** Initialize your data structure here. */
     public MyHashMap() {
+        map = new int[1000][];
         outerSize = 1000;
         innerSize = 1000;
     }
