@@ -1,6 +1,6 @@
 # Time Complexity: O(1)
-# Space Complexity: O(1000)
-# Did this code successfully run on Leetcode: 27/36 test cases passed
+# Space Complexity: O(n)
+# Did this code successfully run on Leetcode: All test cases passed
 # Any problem you faced while coding this: No
 
 # Your code here along with comments explaining your approach
