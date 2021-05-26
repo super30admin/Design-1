@@ -1,4 +1,3 @@
-# this code gives O(1) time complexity and it was submitted in leetcode as well.
 class MyHashMap:
 
     def __init__(self):
@@ -62,3 +61,4 @@ class MyHashMap:
         hash_bucket = self.arr[hashval]
         if hash_bucket != None and self.arr[hashval][nestedhashval] is not None:
             self.arr[hashval][nestedhashval] = None
+# this code gives O(1) time complexity and it was submitted in leetcode as well.
