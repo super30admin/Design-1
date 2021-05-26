@@ -1,5 +1,5 @@
-// Time Complexity : O(1) faster than 99.37% on leetcode
-// Space Complexity : O(1) less than 98.92% on leetcode
+// Time Complexity : O(1)
+// Space Complexity : O(1)
 // Did this code successfully run on Leetcode : yes
 // Any problem you faced while coding this : yes, Did not handled remove method case to make bucket empty if all elements removed. Fixed it later
 
