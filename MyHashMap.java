@@ -4,6 +4,8 @@ import java.util.Arrays;
 // Space Complexity : O(n)
 // Did this code successfully run on Leetcode : Yes
 
+
+//before I thought of taking two
 class MyHashMap {
 
     
@@ -13,9 +15,7 @@ class MyHashMap {
         
          dict = new int[1000001];
          Arrays.fill(dict,-1);
-         
-        
-        
+           
     }
     
     /** value will always be non-negative. */
