@@ -1,4 +1,4 @@
-
+# this code gives O(1) time complexity and it was submitted in leetcode as well.
 class MyHashMap:
 
     def __init__(self):
@@ -34,7 +34,7 @@ class MyHashMap:
         if self.arr[hashval] == None:
             self.arr[hashval] = self.create_nestedarr(hashval)
         # if self.arr[hashval][nestedhashval] == None:
-        self.arr[hashval][nestedhashval] = value
+        self.arr[hashval][nestedhashval] = (key, value)
         
 
     def get(self, key: int) -> int:
@@ -47,9 +47,8 @@ class MyHashMap:
         if hash_bucket == None:
             # print("No Elements")
             return -1
-        elif self.arr[hashval][nestedhashval] is not None:
-            # print(self.arr[hashval][nestedhashval])
-            return self.arr[hashval][nestedhashval]
+        elif self.arr[hashval][nestedhashval] is not None and self.arr[hashval][nestedhashval][0] == key:
+            return self.arr[hashval][nestedhashval][1]
         else:
             # print("None")
             return -1
@@ -62,20 +61,4 @@ class MyHashMap:
         nestedhashval = self.get_nested_hashvalue(key)
         hash_bucket = self.arr[hashval]
         if hash_bucket != None and self.arr[hashval][nestedhashval] is not None:
-            print(self.arr[hashval][nestedhashval])
             self.arr[hashval][nestedhashval] = None
-            print(self.arr[hashval][nestedhashval])
-       
-# Your MyHashMap object will be instantiated and called as such:
-# obj = MyHashMap()
-# obj.put(1,1)
-# obj.put(2,2)
-# obj.get(1)
-# obj.get(2)
-# obj.get(3)
-# obj.put(2,1)
-# obj.get(2)
-# obj.remove(2)
-# obj.get(2)
-
-# this code gives O(1) time complexity and it was submitted in leetcode as well.
