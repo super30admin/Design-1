@@ -1,3 +1,8 @@
+// Time Complexity : O(1) - All operations
+// Space Complexity : O(2*n)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : -
+
 class MinStack {
 private:
     stack<int> normalStack;
