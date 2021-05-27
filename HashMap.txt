@@ -1,0 +1,62 @@
+class MyHashMap {
+    KeyValue pair;
+    int arr[][];
+    class KeyValue{
+int key;
+int value;
+    
+    public KeyValue(int key, int value){
+        this.value=value;
+        this.key=key;
+    }
+    }
+    /** Initialize your data structure here. */
+    public MyHashMap() {
+       this.arr= new int[1000][];
+    }
+    
+    /** value will always be non-negative. */
+    public void put(int key, int value) {
+       int a=hash(key);
+        int b=hashNested(key);
+        if(arr[a]==null){
+            arr[a]=new int[1000];
+        }
+        arr[a][b]=value;
+    }
+    public int hash(int key){
+        return key%1000;
+    }
+    public int hashNested(int key){
+        return key/1000;
+    }
+    
+    /** Returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key */
+    public int get(int key) {
+        int a=hash(key);
+        int b=hashNested(key);
+        if(arr[a]==null){
+           //rr[a]=new arr[1000];
+            return -1;
+        }
+          return arr[a][b]; 
+    }
+    
+    /** Removes the mapping of the specified value key if this map contains a mapping for the key */
+    public void remove(int key) {
+        int a=hash(key);
+        int b=hashNested(key);
+        if(arr[a]==null){
+            return ;
+        }
+           arr[a][b]=-1;
+    }
+}
+
+/**
+ * Your MyHashMap object will be instantiated and called as such:
+ * MyHashMap obj = new MyHashMap();
+ * obj.put(key,value);
+ * int param_2 = obj.get(key);
+ * obj.remove(key);
+ */
