@@ -5,8 +5,8 @@ class MyHashMap:
         Initialize your data structure here.
         """
         self.modulo = 1000
-        self.map = [None]*self.modulo
-        self.mapitems = [None]
+        self.map = [-1]*self.modulo
+        self.mapitems = [-1]
         
     def hash(self,key):
         return key%self.modulo
@@ -20,8 +20,11 @@ class MyHashMap:
         """
         index = self.hash(key)
         nested_index = self.hash_nest(key)
-        if self.map[index] == None:
-            self.map[index] = self.mapitems*self.modulo
+        if self.map[index] == -1:
+            if index == 0:
+                self.map[index] = self.mapitems*(self.modulo + 1)
+            else:
+                self.map[index] = self.mapitems*self.modulo
         self.map[index][nested_index] = value
         
 
@@ -31,10 +34,14 @@ class MyHashMap:
         """
         index = self.hash(key)
         nested_index = self.hash_nest(key)
-        if self.map[index] == None: 
+        if self.map[index] is not -1: 
+            
+            return self.map[index][nested_index]
+        
+        else:
             return -1
         
-        return self.map[index][nested_index]
+        
 
 
     def remove(self, key: int) -> None:
@@ -43,9 +50,9 @@ class MyHashMap:
         """
         index = self.hash(key)
         nested_index = self.hash_nest(key)
-        if self.map[index] is None:
+        if self.map[index] is -1:
             return
-        self.map[index][nested_index] = None
+        self.map[index][nested_index] = -1
       
 
 
