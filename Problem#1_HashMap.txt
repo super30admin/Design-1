@@ -1,0 +1,93 @@
+// Time Complexity : 0(n)
+// Space Complexity : 0(n)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+
+class MyHashMap
+{
+	ListNode[] nodes;
+    
+	/** Initialize your data structure here. */
+    public MyHashMap() {
+        nodes = new ListNode[10000];
+    }
+    
+	// getting the value of hashmap
+	public int get(int key)
+	{
+		int index = getIndex(key);   // find the bucket in which the key after hashing falls
+		ListNode prev = findElement(index, key); // find the node where the next value can be key or null
+		return prev.next == null ? -1 : prev.next.val; // check if next node is null is or not
+	}
+	
+	// add item to hashmap
+	public void put(int key, int value)
+	{
+		int index = getIndex(key);  // get hashCode of the key
+		ListNode prev = findElement(index, key);  //get teh position where key value pair can be entered
+		
+		if (prev.next == null)    // if the bucket doesnt have the key value add new node with key and value
+			prev.next = new ListNode(key, value);
+		else                      // if key is already present then change the value
+			prev.next.val = value;
+	}
+
+    // remove key from hashmap
+	public void remove(int key)
+	{
+		int index = getIndex(key);         // get hashcode of the key
+        ListNode prev = findElement(index, key);  // search if the key is present
+			
+        if(prev.next != null)          // if key is present then change the pointer
+		    prev.next = prev.next.next; // hence the key will be ignored now
+	}
+    
+	// get hashcode of key
+	private int getIndex(int key)
+	{	
+		return Integer.hashCode(key) % nodes.length;
+	}
+    
+	
+	// to find element in specific bucket
+	private ListNode findElement(int index, int key)
+	{
+		// if bucket is empty return new node with (-1,-1)
+		if(nodes[index] == null)
+			return nodes[index] = new ListNode(-1, -1);
+        
+		// if not null then iterate till the next pointer is null or next key is equal to key value
+        ListNode prev = nodes[index];
+		
+		while(prev.next != null && prev.next.key != key)
+		{
+			prev = prev.next;
+		}
+		
+		// return node
+		return prev;
+	}
+
+    // class to store key, val and pointer to next node 
+	private static class ListNode
+	{
+		int key, val;
+		ListNode next;
+
+		ListNode(int key, int val)
+		{
+			this.key = key;
+			this.val = val;
+		}
+	}
+}
+
+
+/**
+ * Your MyHashMap object will be instantiated and called as such:
+ * MyHashMap obj = new MyHashMap();
+ * obj.put(key,value);
+ * int param_2 = obj.get(key);
+ * obj.remove(key);
+ */

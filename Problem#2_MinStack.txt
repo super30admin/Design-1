@@ -1,0 +1,72 @@
+// Time Complexity : O(1)
+// Space Complexity : O(n)
+// Did this code successfully run on Leetcode :Yes
+// Any problem you faced while coding this : No
+
+// Node class defined which stores val, min value and pointer to next Node
+class Node{
+    int val;
+    Node next;
+    int min;
+    Node(int val,int min){
+        this.val = val;
+        this.min = min;
+        this.next = null;
+    }
+}
+class MinStack {
+
+    Node head;
+    /** initialize your data structure here. */
+    public MinStack() {
+     head = null;
+    }
+  
+    // whenever the push operation is performed, it is added to head of LL  
+    public void push(int x) {
+        
+        //if head is null then that new node is head
+        if(head == null)
+            head = new Node(x,x);
+        
+        // else the new value is entered and make that node as head
+        else{
+            Node temp = new Node(x,Math.min(x,head.min));
+            temp.next = head;
+        head = temp;
+        }
+    }
+    
+    // In pop operation change head to head.next
+    public void pop() {
+       
+        if(head == null)
+            return;
+        else head = head.next;
+    }
+    
+    // in top operation head value is returned
+    public int top() {
+        if(head == null)
+            return -1;
+        else
+            return head.val;
+    }
+    
+    // in get min the head.min value is returned
+    public int getMin() {
+        if(head == null)
+            return -1;
+        else
+            return head.min;        
+    }
+}
+
+/**
+ * Your MinStack object will be instantiated and called as such:
+ * MinStack obj = new MinStack();
+ * obj.push(x);
+ * obj.pop();
+ * int param_3 = obj.top();
+ * int param_4 = obj.getMin();
+ */
