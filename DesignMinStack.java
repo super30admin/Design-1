@@ -1,40 +1,42 @@
-class MinStack {
-    
-    Stack<int[]> stack = new Stack<>();
+/*
+    Time Complexity
+    O(1) for all operations
+    Space Complexity
+    O(n)
+*/
 
-    /** initialize your data structure here. */
+class MinStack {
+
+    Stack<Integer> stack;
+    int min;
+
     public MinStack() {
-        
+        stack = new Stack<>();
+        min = Integer.MAX_VALUE;
     }
-    
+
+    //Before pushing if min is being updated or is equal to min (handle duplicates) we push the prev min
     public void push(int val) {
-        if (stack.isEmpty()) {
-            stack.push(new int[] {val, val});
-            return;
+        if (val <= min) {
+            stack.add(min);
+            min = val;
         }
-        
-        int min = stack.peek()[1];
-        stack.push(new int[] {val, Math.min(val, min)});
+
+        stack.add(val);
+
     }
-    
+    //If the value is equal to min we pop 2 becuase we need to pop the element and the previous min and set it to min
     public void pop() {
-        stack.pop();
+        if (stack.pop() == min) {
+            min = stack.pop();
+        }
     }
-    
+
     public int top() {
-        return stack.peek()[0];
+        return stack.peek();
     }
-    
+
     public int getMin() {
-        return stack.peek()[1];
+        return min;
     }
 }
-
-/**
- * Your MinStack object will be instantiated and called as such:
- * MinStack obj = new MinStack();
- * obj.push(val);
- * obj.pop();
- * int param_3 = obj.top();
- * int param_4 = obj.getMin();
- */

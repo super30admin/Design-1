@@ -1,62 +1,89 @@
+/*
+    Time Complexity
+    O(max length of linked list, 10^6 / 10^4 = 10^2), since all three functions use find function
+    Space Complexity
+    O(n)
+*/
+
 class MyHashMap {
 
-    ArrayList <Item> list;
-        
-        class Item {
-            int[] itemArray;
-            public Item () {
-                itemArray = new int[2];
-            }
-         }
-        
-        
-    /** Initialize your data structure here. */
+    class Node {
+        int key;
+        int val;
+        Node next;
+
+        public Node(int key, int val) {
+            this.key = key;
+            this.val = val;
+        }
+    }
+
+    Node[] nodes;
     public MyHashMap() {
-        list = new ArrayList<>();
+        nodes = new Node[10000];
     }
-    
-    /** value will always be non-negative. */
+
+    private int index(int key) {
+        return Integer.hashCode(key) % nodes.length;
+    }
+
+    private Node find(Node head, int key) {
+        Node prev = null;
+        Node curr = head;
+
+        while (curr != null && curr.key != key) {
+
+            prev = curr;
+            curr = curr.next;
+        }
+
+        return prev;
+    }
+
     public void put(int key, int value) {
-        
-        for (int i=0; i<list.size(); i++) {
-            int listKey = list.get(i).itemArray[0];
-            
-            if (listKey == key) {
-                list.get(i).itemArray[1] = value;
-                break;
-            }
+        int hashingIndex = index(key);
+
+        if (nodes[hashingIndex] == null) {
+            nodes[hashingIndex] = new Node(-1, -1);
         }
-        
-        Item newItem = new Item();
-        newItem.itemArray[0] = key;
-        newItem.itemArray[1] = value;
-        list.add(newItem);
-        
+
+        Node prev = find(nodes[hashingIndex], key);
+
+        if (prev.next != null) {
+            prev.next.val = value;
+        } else {
+            prev.next = new Node(key, value);
+        }
     }
-    
-    /** Returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key */
+
     public int get(int key) {
-        
-        for (int i=0; i<list.size(); i++) {
-            int listKey = list.get(i).itemArray[0];
-            
-            if (listKey == key) {
-                return list.get(i).itemArray[1];
-            }
+
+        int hashingIndex = index(key);
+        if (nodes[hashingIndex] == null) {
+            return -1;
         }
-        
-        return -1;
+
+        Node prev = find(nodes[hashingIndex], key);
+        if (prev.next == null) {
+            return -1;
+        }
+
+        return prev.next.val;
+
     }
-    
-    /** Removes the mapping of the specified value key if this map contains a mapping for the key */
+
     public void remove(int key) {
-        for (int i=0; i<list.size(); i++) {
-            int listKey = list.get(i).itemArray[0];
-            
-            if (listKey == key) {
-                list.remove(list.get(i));
-                break;
-            }
+        int hashingIndex = index(key);
+
+        if (nodes[hashingIndex] == null) {
+            return;
         }
+
+        Node prev = find(nodes[hashingIndex], key);
+        if (prev.next == null) {
+            return;
+        }
+        prev.next = prev.next.next;
+
     }
 }
