@@ -1,4 +1,7 @@
 class MinStack {
+
+    // Time Complexity : O(1)
+    // Space Complexity : O(n)
     
     Stack<Integer> st;
     int min = Integer.MAX_VALUE;
