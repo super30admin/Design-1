@@ -1,3 +1,11 @@
+// Time Complexity : O(1)
+// Space Complexity : O(n)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : no
+
+
+// Your code here along with comments explaining your approach
+
 //I am using two stacks to implement the Min Stack. 
 //First stack contains all the elements pushed into the stack. 
 //Second stack is used to keep track of the minimum element in the stack.
