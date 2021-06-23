@@ -13,7 +13,7 @@
 
 class MyHashMap {
 
- int arr[];
+ int[] arr;
  /** Initialize your data structure here. */
  public MyHashMap() {
   arr = new int[1000001];
