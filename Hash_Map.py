@@ -28,14 +28,17 @@ class MyHashMap:
 
     def __init__(self):
         """
-        Initialize your data structure here.
+        We use a list to store key value pair for same hash key values.
+        Initialized the hash map size for a prime number
         """
+        #Total no of keys: "N", "K" is the size of array containing 9973 buckets
         self.key_width = 9973
         self.hash_table = [Map() for i in range(self.key_width)]
     
     def put(self, key: int, value: int) -> None:
         """
         value will always be non-negative.
+        Time Complexity: O(N/K)
         """
         key_position = key%self.key_width
         self.hash_table[key_position].update(key,value)
@@ -44,6 +47,7 @@ class MyHashMap:
     def get(self, key: int) -> int:
         """
         Returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key
+        Time Complexity: O(N/K)
         """
         key_position = key%self.key_width
         return self.hash_table[key_position].get(key)
@@ -52,9 +56,12 @@ class MyHashMap:
     def remove(self, key: int) -> None:
         """
         Removes the mapping of the specified value key if this map contains a mapping for the key
+        Time Complexity: O(N/K)
         """
         key_position = key%self.key_width
         self.hash_table[key_position].remove(key)
+        
+#Space_Complexity is O(K + M) (K is no of buckets, M is Unique keys inserted)
 
 
 # Your MyHashMap object will be instantiated and called as such:

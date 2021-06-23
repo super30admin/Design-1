@@ -5,6 +5,7 @@ class MinStack(object):
         """
         initialize your data structure here.
         """
+        #Size Comlpexity is O(n + n) -> O(2n) -> O(n)
         self.stack = deque()
         self.min_stack = deque()
         
@@ -14,6 +15,7 @@ class MinStack(object):
         :type x: int
         :rtype: None
         """
+        #O(1)
         if len(self.stack) == 0:
             self.stack.append(x)
             self.min_stack.append(x)
@@ -28,6 +30,7 @@ class MinStack(object):
         """
         :rtype: None
         """
+        #O(1)
         val = self.stack.pop()
         if self.min_stack[-1] == val:
             self.min_stack.pop()
@@ -37,12 +40,14 @@ class MinStack(object):
         """
         :rtype: int
         """
+        #O(1)
         return self.stack[-1]
 
     def getMin(self):
         """
         :rtype: int
         """
+        #O(1)
         return self.min_stack[-1]
 
 
