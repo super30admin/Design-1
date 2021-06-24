@@ -8,6 +8,7 @@
 //If we initialize all nodes in array,then its memory wastage
 //Pick an array size,not as the the max size mentioned 10 to the 6,but in the middle 
 //Pick Modulo as 1000 to calculate hashcode
+//In code we used Integer.hashCode(key)%hashMap.length
 //Write helper function that calculate the previous node to easily do the put,remove and get
 
 class MyHashMap {
@@ -83,7 +84,7 @@ class ListNode{
         
         int index = index(key);
         ListNode prev = getPosition(index,key);
-        while(prev.next != null)
+        if(prev.next != null)
             prev.next = prev.next.next;
         
     }
