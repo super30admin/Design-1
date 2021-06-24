@@ -1,57 +1,57 @@
-# Crude implementation of (int, int) hashMap
+# S30 approach
 
-class hashMap:
+class Node:
+    def __init__(self, key, val):
+        self.key = key
+        self.val = val
+        self.next = None
+
+class MyHashMap:
     def __init__(self):
-        self.size = 6
-        self.map = [None] * self.size
+        self.hashmap = [None]*10000 
     
-    def hashF(self, key):
-        return (key%self.size)
+    def index(self, key):
+        return key%len(self.hashmap)
     
-    def insert(self, key, value):
-        hash_key = self.hashF(key)
-        paired_data = [key, [value]]
+    def getPrev(self, index, key):
+        if(self.hashmap[index] is None):
+            self.hashmap[index] = Node(-1, -1)
         
-        if self.map[hash_key] is None:
-            self.map[hash_key] = paired_data
-            print(self.map)
+        prev = self.hashmap[index] 
+        
+        while((prev.next is not None) and (prev.next.key != key)):
+            prev = prev.next
+        
+        return prev
+    
+    def put(self, key, value):
+        index = self.index(key)
+        prev = self.getPrev(index, key)
+        
+        # if exists, then change the value, else add new node
+        
+        if(prev.next is None): 
+            prev.next = Node(key, value)
         else:
-            if self.map[hash_key][0] == key and value in self.map[hash_key][1]:
-                print(self.map)
-            elif self.map[hash_key][0] == key and value not in self.map[hash_key][1]:
-                self.map[hash_key][1].append(value)
-                print(self.map)
+            prev.next.val = value
     
-    def getMap(self):
-        print(self.map)
+    def get(self, key):
+        index = self.index(key)
+        prev = self.getPrev(index, key)
+        
+        # return the value if key is there, else return -1
+        
+        return (-1 if prev.next is None else prev.next.val)
     
-    def getValues(self, key):
-        hash_key = self.hashF(key)
+    def remove(self, key):
+        index = self.index(key)
+        prev = self.getPrev(index, key)
         
-        if self.map[hash_key] is not None:
-            print("Values at key " + str(key) + " are: ")
-            for i in self.map[hash_key][1]:
-                print("(" + str(key) + ", " + str(i) + ")")
-        else:
-            print("No values available for key number " + str(key))
-    
-    def delete(self, key):
-        hash_key = self.hashF(key)
+        if prev.next is not None: # checking so that prev.next.next does not throw null pointer exception
+            prev.next = prev.next.next
+           
         
-        if self.map[hash_key] is None:
-            print("Index " + str(key) + " is empty.")
-        
-        self.map[hash_key][1].pop()
-        
-        if len(self.map[hash_key][1])==0:
-            self.map[hash_key] = None
-        
-            
-a = hashMap()
-a.insert(1,3)
-a.insert(1, 5)
-a.getValues(1)
-a.delete(1)
-a.getMap()
-a.delete(1)
-a.getMap()
+# Space complexity: O(M+K) where M is the size of array and K is the size of LinkedList
+# Since size of array is fixed, Space complexity is just O(K)
+
+# Let size of array be M and you have N (k, v pairs). Then, time complexity would be O(N/M)
