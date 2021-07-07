@@ -1,0 +1,37 @@
+class Stack {
+    var stackArray = [String]()
+    
+    //Create push function
+    func push(stringToPush: String){
+        self.stackArray.append(stringToPush)
+    }
+    
+    //Create pop function
+    func pop() -> String? {
+        if self.stackArray.last != nil {
+            let stringToReturn = self.stackArray.last
+            self.stackArray.removeLast()
+            return stringToReturn!
+        } else {
+            return nil
+        }
+    }
+    
+    // Verifies if the stack is empty.
+    var isEmpty: Bool {
+        return stackArray.isEmpty
+    }
+    
+    var count: Int {
+        return stackArray.count
+    }
+    
+}
+
+var myStack = Stack()
+myStack.push(stringToPush: "First")  //["First"]
+myStack.push(stringToPush: "Second")  //["First","Second"]
+myStack.push(stringToPush: "Third") //["First","Second","Third"]
+myStack.pop()  //"Third"
+myStack.isEmpty
+myStack.count
