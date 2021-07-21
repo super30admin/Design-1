@@ -24,12 +24,9 @@ public:
     void pop() {
         if(minStack.top() == minVal){
             minStack.pop();
-            minVal = minStack.top();
-            minStack.pop();
+            minVal = minStack.top();  
         }
-        else{
-            minStack.pop();
-        }
+        minStack.pop();
     }
     
     int top() {
