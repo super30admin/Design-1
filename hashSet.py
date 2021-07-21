@@ -1,3 +1,11 @@
+
+# Time Complexity : Add:amortized O(1) Remove: O(n) Contain:O(n)
+# Space Complexity : O(n)
+# Code ran successfully run on Leetcode 
+# Issue in finding out Space complexity. Also trying to optimize code to O(1)
+# I am using simple hashing function which stores element in the index key % 100 of the list.
+# Whole Hash table is a 2D list , with each bucket being 1D list. If element is already there is bucket, then another element 
+# is appended in the 1D list.
 class MyHashSet:
 
     def __init__(self):
