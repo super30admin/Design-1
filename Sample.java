@@ -1,52 +1,124 @@
 // Time Complexity :for all the operations the Time complexity is O(1)
-// Space Complexity :I have used an array of length 1000001. so constant.
+// Space Complexity :O(10^6) in worst case.
 // Did this code successfully run on Leetcode : yes
-// Any problem you faced while coding this : I feel memory is the issue.
+// Any problem you faced while coding this : no
 
 
 // Your code here along with comments explaining your approach
-class MyHashMap {
-
+class MyHashSet {
+    int buckets;
+    int bucketItems;
+    boolean storage[][];
     /** Initialize your data structure here. */
-    int hash_array[][];
-    public MyHashMap() {
-        hash_array=new int[1000001][2];//created an array and initialised with -1.
-        for(int i=0;i<1000001;i++){
-            hash_array[i][0]=-1;
-            hash_array[i][1]=-1;
+    public MyHashSet() {
+        buckets=1000;
+        bucketItems=1000;
+        storage=new boolean[buckets][];
+        
+    }
+    public int getKey1(int val){
+        return val%1000;
+    }
+    public int getKey2(int val){
+        return val/1000;
+    }
+    
+    public void add(int key) {
+        int bucket=getKey1(key);
+        int bucketItem=getKey2(key);
+       
+        if(storage[bucket]==null){
+            if(bucket==0){
+            storage[bucket]=new boolean[bucketItems+1]; 
         }
-        
-        
-    }
-    
-    /** value will always be non-negative. */
-    public void put(int key, int value) {
-        hash_array[key][0]=key;//using index 0 as key and index 1 as value
-        hash_array[key][1]=value;
-        
-    }
-    
-    /** Returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key */
-    public int get(int key) {
-        if(hash_array[key][0]==-1){
-            return -1;
+            else{
+            storage[bucket]=new boolean[bucketItems];
+           }
         }
-        return hash_array[key][1];
-        
-    }
+         storage[bucket][bucketItem]=true;
+        }
     
-    /** Removes the mapping of the specified value key if this map contains a mapping for the key */
     public void remove(int key) {
-        hash_array[key][0]=-1;//for remove, assigning -1 as key and value.
-        hash_array[key][1]=-1;
+        int bucket=getKey1(key);
+        int bucketItem=getKey2(key);
+        if(storage[bucket]==null){
+            return;
+        }
+        storage[bucket][bucketItem]=false;
+        
+    }
+    
+    /** Returns true if this set contains the specified element */
+    public boolean contains(int key) {
+        int bucket=getKey1(key);
+        int bucketItem=getKey2(key);
+        if(storage[bucket]!=null){
+        return storage[bucket][bucketItem];
+        }
+        return false;
+        
+    }
+}
+
+
+
+
+// Time Complexity :for all the operations the Time complexity is O(1)
+// Space Complexity :O(n)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : .
+
+
+// Your code here along with comments explaining your approach
+
+class MinStack {
+    Stack<Integer> stack;
+    int min;;
+    
+
+    /** initialize your data structure here. */
+    public MinStack() {
+        stack=new Stack<Integer>();
+        min=Integer.MAX_VALUE;
+    }
+    
+    public void push(int val) {
+        if(val<=min){
+             stack.push(min);
+              min=val;
+            
+        }
+        stack.push(val);
+        }
+    
+    public void pop() {
+        if(stack.peek()==min){
+            stack.pop();
+            min=stack.pop();
+        }
+        else{
+        stack.pop();
+        }
+        
+        
+    }
+    
+    public int top() {
+        return stack.peek();
+        
+    }
+    
+    public int getMin() {
+        return min;
         
     }
 }
 
 /**
- * Your MyHashMap object will be instantiated and called as such:
- * MyHashMap obj = new MyHashMap();
- * obj.put(key,value);
- * int param_2 = obj.get(key);
- * obj.remove(key);
+ * Your MinStack object will be instantiated and called as such:
+ * MinStack obj = new MinStack();
+ * obj.push(val);
+ * obj.pop();
+ * int param_3 = obj.top();
+ * int param_4 = obj.getMin();
  */
