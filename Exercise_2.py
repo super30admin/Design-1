@@ -10,8 +10,7 @@ YES, The code successfully ran on Leetcode
 The problem was on how to have the minimum of the array at the time the x was added.
 
 Approach - My approach is pretty clever, I wanted to store the minimum of the array at every moment of
-addition therefore, i went with the idea of making an tuple where the second index in tuple is a
-the current minimum at that moment.
+addition therefore, i went with the idea of adding the current min with the push if applicable
 """
 
 
@@ -21,27 +20,26 @@ class MinStack:
         """
         initialize your data structure here.
         """
-        self.ans = []
-        self.size = 0
+        self.stack = []
+        self.cmin = None
 
-    def push(self, x: int) -> None:
-
-        if self.size == 0:
-            self.ans.append((x, x))
+    def push(self, val: int) -> None:
+        if len(self.stack) == 0:
+            self.cmin = val
         else:
-            if x < self.getMin():
-                self.ans.append((x, x))
-            else:
-                self.ans.append((x, self.getMin()))
-        self.size += 1
+            if val <= self.cmin:
+                self.stack.append(self.cmin)
+                self.cmin = val
+        self.stack.append(val)
 
     def pop(self) -> None:
-        self.ans.pop()
-        self.size -= 1
+        t = self.stack.pop()
+        if t == self.cmin:
+            if len(self.stack) > 1:
+                self.cmin = self.stack.pop()
 
     def top(self) -> int:
-        return self.ans[len(self.ans) - 1][0]
+        return self.stack[-1]
 
     def getMin(self) -> int:
-        return self.ans[len(self.ans) - 1][1]
-
+        return self.cmin

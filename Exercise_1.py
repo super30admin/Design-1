@@ -1,18 +1,15 @@
 """
 Time Complexity:
-    - Put - O(n)
-    - get - O(n)
-    - Remove - O(n)
+    - Put - O(1)
+    - get - O(1)
+    - Remove - O(1)
 Space Complexity:
-    - Size of the array - 1000000
+    - Size of the array - 10^3 * 10^3
 YES, The code successfully ran on Leetcode
-I faced a lot of problems especially learning how efficient should my hashing key should be. I would
-love to know the most effecient ans and how to approach the collision problem.
-
 
 Approach - My approach is pretty straight forward, I am making a hash function by modulus by size.
-and then storing the key on the hash key index, if the key exist then update but if not then add it
-into the bucket at index.
+and then storing the key on the key // size index, if the key exist then update but if not then add it
+into the bucket at double hashed index.
 """
 
 
@@ -22,7 +19,7 @@ class MyHashMap:
         """
         Initialize your data structure here.
         """
-        self.size = 1000000
+        self.size = 1000
         self.hashmap = [None] * self.size
 
     def put(self, key: int, value: int) -> None:
@@ -31,13 +28,12 @@ class MyHashMap:
         """
         hashed = key % self.size
         if self.hashmap[hashed] is None:
-            self.hashmap[hashed] = [(key, value)]
-        else:
-            for i in range(len(self.hashmap[hashed])):
-                if self.hashmap[hashed][i][0] == key:
-                    self.hashmap[hashed][i] = (key, value)
-                    return
-            self.hashmap[hashed].append((key, value))
+            if hashed == 0:
+                self.hashmap[hashed] = [None] * 1001
+            else:
+                self.hashmap[hashed] = [None] * 1000
+        double_hashed = key // self.size
+        self.hashmap[hashed][double_hashed] = value
 
     def get(self, key: int) -> int:
         """
@@ -47,22 +43,19 @@ class MyHashMap:
         if self.hashmap[hashed] is None:
             return -1
         else:
-            for i in range(len(self.hashmap[hashed])):
-                if self.hashmap[hashed][i][0] == key:
-                    return self.hashmap[hashed][i][1]
-            return -1
+            double_hashed = key // self.size
+            if self.hashmap[hashed][double_hashed] is None:
+                return -1
+            else:
+                return self.hashmap[hashed][double_hashed]
+        return -1
 
     def remove(self, key: int) -> None:
         """
         Removes the mapping of the specified value key if this map contains a mapping for the key
         """
         hashed = key % self.size
-
         if self.hashmap[hashed] is not None:
-            if len(self.hashmap[hashed]) == 1:
-                self.hashmap[hashed] = None
-            else:
-                for i in range(len(self.hashmap[hashed])):
-                    if self.hashmap[hashed][i][0] == key:
-                        self.hashmap[hashed].pop(i)
-                        break
+            double_hashed = key // self.size
+            if self.hashmap[hashed][double_hashed] is not None:
+                self.hashmap[hashed][double_hashed] = None
