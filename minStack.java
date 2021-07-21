@@ -1,3 +1,11 @@
+// Time Complexity : O(1) for all operations
+// Space Complexity : O(N). Where N = size of stack.
+// Did this code successfully run on Leetcode : YES
+// LC submission link: https://leetcode.com/submissions/detail/526195044/
+// Any problem you faced while coding this : None.
+
+import java.util.Stack;
+
 class MinStack {
         Stack<Integer> myStack;
         int minValue;
@@ -25,7 +33,7 @@ class MinStack {
 
             //this case will not happen in Leetcode but its always good to mention in interview
             if(myStack.empty()){
-                throw new Exception("Top was called on an empty stack");
+                throw new Exception("top method was called on an empty stack");
             }
             return myStack.peek();
         }
@@ -34,7 +42,7 @@ class MinStack {
 
             //this case will not happen in Leetcode but its always good to mention in interview
             if (minValue == Integer.MAX_VALUE) {
-                throw new Exception("Min was called on an empty stack");
+                throw new Exception("getMin method was called on an empty stack");
             }
             return minValue;
         }
