@@ -1,5 +1,8 @@
 import java.util.Stack;
 
+// Time Complexity : O(1) for push,pop,top,getMin
+// Space Complexity : O(n)
+
 class MinStack {
 
     /** initialize your data structure here. */
