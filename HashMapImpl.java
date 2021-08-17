@@ -59,9 +59,10 @@ class HashMapImpl{
     		System.out.println("reached a non-existent key");
     		return -1;
     	}
-    	
-    	return (int)baseList.get(key).get(0);
-    	
+    	else {
+    		
+    		return (int)baseList.get(key).get(0);
+    	}
         
     }
     
@@ -69,6 +70,7 @@ class HashMapImpl{
     public void remove(int key) {
     	
     	baseList.remove(key);
+    	baseList.add(key, null);
         
     }
     
@@ -76,15 +78,14 @@ class HashMapImpl{
     {
     	HashMapImpl obj = new HashMapImpl();
     	obj.put(1,1);
-    	obj.put(3,3);
-    	obj.put(13,13);
-    	obj.put(12,12);
-    	obj.put(11,11);
-    	obj.put(10,10);
-    	System.out.println("Element is: " + obj.get(1));	
-    	System.out.println("Non existent element is: " + obj.get(4));
-    	obj.remove(10);
-    	System.out.println("Non existent element is: " + obj.get(10));
+    	obj.put(2,2);
+    	obj.get(1);
+    	obj.get(3);
+    	obj.put(2,1);
+    	obj.get(2);
+        obj.remove(2);
+        
+    	System.out.println("Element is: " + obj.get(2));	
     	
     }
 }
