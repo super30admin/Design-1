@@ -3,7 +3,7 @@ import java.util.LinkedList;
 
 // Time Complexity :
 // Space Complexity :
-// Did this code successfully run on Leetcode :
+// Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this :
 
 
@@ -77,6 +77,8 @@ class HashMapImpl{
     public static void main(String [] args) 
     {
     	HashMapImpl obj = new HashMapImpl();
+    	
+    	//Test case from LeetCode
     	obj.put(1,1);
     	obj.put(2,2);
     	obj.get(1);
