@@ -2,14 +2,14 @@ class MyHashMap:
 
     def __init__(self):
         """
-        Initialize your data structure here.
+        Initialize your data structure here
         """
         self.myHash = dict()
         
 
     def put(self, key: int, value: int) -> None:
         """
-        value will always be non-negative.
+        value will always be non-negative
         """
         self.myHash[key] = value
         
