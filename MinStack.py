@@ -1,9 +1,22 @@
+#  Time Complexity : Constant time for all the operations, but not sure for the pop operation,
+# because it will take O(n) if the minimum element is the same while is deleted and for finding minimum element
+# it will be iterated through out the stack
+#  Space Complexity :
+#  Did this code successfully run on Leetcode : Yes
+#  Any problem you faced while coding this : No
+#  Your code here along with comments explaining your approach
+
 class Node:
     def __init__(self, data):
         self.data = data
         self.next = None
 
 class MinStack:
+    '''
+    Using Linked list for implementing stack
+    1. Push the last element on the head.
+    2. Removing the head element on pop operation.
+    '''
 
     def __init__(self):
         """initialize your data structure here."""

@@ -1,15 +1,13 @@
 #  Time Complexity :
 #  Space Complexity :
-#  Did this code successfully run on Leetcode :
-#  Any problem you faced while coding this :
+#  Did this code successfully run on Leetcode : Yes
+#  Any problem you faced while coding this : No
 #  Your code here along with comments explaining your approach
-
 
 class MyHashMap:
     def __init__(self):
         """Initialize your data structure here."""
         self.hashmap = {}
-        
 
     def put(self, key: int, value: int):
         """value will always be non-negative."""
