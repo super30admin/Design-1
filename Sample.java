@@ -100,22 +100,20 @@ class MinStack {
     public void push(int val) {
         arr.add(val);
         if (val <= min){
-            minimumArray.add(min);
             min = val;
-
+            minimumArray.add(min);
         }
-        minimumArray.add(val);
 
 
     }
 
     public void pop() {
-        if(minimumArray.get(minimumArray.size()-1) == min){
-
-            min = minimumArray.get(minimumArray.size()-2);
-            // minimumArray.remove(minimumArray.size()-1);
-        }
-        arr.remove(arr.size()-1);
+        // int m = arr.get(arr.size()-1);
+        arr.remove(arr.size() -1);
+        // if (minimumArray.contains(m)){
+        //     int pos =minimumArray.indexOf(m);
+        // minimumArray.remove(pos);
+        // }
 
     }
 
@@ -125,7 +123,12 @@ class MinStack {
     }
 
     public int getMin() {
-        return min;
+
+        ArrayList<Integer> tempArray = new ArrayList<Integer>();
+        tempArray = (ArrayList)arr.clone();
+        Collections.sort(tempArray);
+        return tempArray.get(0);
+
     }
 }
 
