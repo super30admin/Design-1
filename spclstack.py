@@ -1,9 +1,7 @@
 # // Time Complexity :O(1)
-# // Space Complexity :O(1)
-# // Did this code successfully run on Leetcode : Yes,got accepted
-# // Any problem you faced while coding this : Got the solution too fast, but since it is a medium level qn I think there is some mistake
-
-
+# // Space Complexity :O(n)
+# // Did this code successfully run on Leetcode : Yes
+# // Any problem you faced while coding this : no
 class MinStack:
 
     def __init__(self):
@@ -11,13 +9,20 @@ class MinStack:
         initialize your data structure here.
         
         """
-        self.arr=[]
-        self.min=0
+        self.min_st=[]
+        self.mini=inf
         
 
     def push(self, val: int) -> None:
         
-        self.arr.append(val)
+        if val<=self.mini:
+            self.min_st.append(self.mini)
+            self.mini=val
+        self.min_st.append(val)
+        
+        
+        
+        
         
                 
             
@@ -28,20 +33,21 @@ class MinStack:
         
 
     def pop(self) -> None:
+        a=self.min_st.pop()
+        if a==self.mini:
+            self.mini=self.min_st.pop()
         
-        self.arr.pop()
+            
         
         
         
 
     def top(self) -> int:
-        a=self.arr[-1]
-        return a
-        
+        return self.min_st[-1]
 
     def getMin(self) -> int:
         
-        return min(self.arr)
+        return self.mini
         
 
 
@@ -51,3 +57,4 @@ class MinStack:
 # obj.pop()
 # param_3 = obj.top()
 # param_4 = obj.getMin()
+
