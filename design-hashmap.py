@@ -1,5 +1,4 @@
 
-
 # Time Complexity : O(1)
 # Space Complexity : 
 #Did this code successfully run on Leetcode : No
@@ -8,65 +7,64 @@
 #Your code here along with comments explaining your approach
 
 
-class MyHashMap:
+class MyHashSet:
 
     def __init__(self):
 
-        self.hash = [None for i in range(10)]
+        self.hash = [None for i in range(1000)]
+
+        self.hashblock = [False for i in range(10)]
 
         self.length = 10
 
         self.current = 0
 
-    def put(self, key, value):
+    def add(self, key, value):
 
-        if(key > self.length):
+        temp = int(key % 1000)
+        temp1 = int(key / 1000)
 
-            for i in range(key-self.length):
+        if(self.hash[temp] == None):
 
-                self.hash.append(None)
-
-            self.hash[key] = value
-
-        else:
-
-            self.hash[key] = value
-
-        return 'Value inserted'
+            self.hash[temp] = self.hashblock
+            self.hash[temp][temp1] = True
 
     
-    def get(self, key):
+    def contains(self, key):
 
-        if(self.hash[key] != None):
-
-            return self.hash[key]
-
-        return -1
+        temp = int(key % 1000)
+        temp1 = int(key / 1000)
+        if(self.hash[temp] != None):
+            if(self.hash[temp][temp1] == True):
+                return True
+        return False
 
     def remove(self, key):
 
-        if(self.hash[key] != None ):
+        temp = int(key % 1000)
+        temp1 = int(key / 1000)
 
-            self.hash[key] = None
+        if(self.hash[temp]!= None):
 
-        return -1
+            if(self.hash[temp][temp1] == True):
+                print('key removed', key)
+                self.hash[temp][temp1] = False
+        return False
 
-
-
-hashMap = MyHashMap()
-temp = hashMap.put(1, 2)
+hashSet = MyHashSet()
+temp = hashSet.add(1, 2)
 print(temp)
-temp = hashMap.put(2, 3)
+temp = hashSet.add(2, 3)
 print(temp)
-temp = hashMap.get(1)
+temp = hashSet.contains(1)
 print(temp)
-temp = hashMap.get(3)
+temp = hashSet.contains(3)
+print('3',temp)
+temp = hashSet.add(2, 4)
 print(temp)
-temp = hashMap.put(2, 4)
+temp = hashSet.contains(2)
 print(temp)
-temp = hashMap.get(2)
+temp = hashSet.remove(2)
 print(temp)
-temp = hashMap.remove(2)
-print(temp)
-temp = hashMap.get(2)
+temp = hashSet.contains(2)
 print(temp)
