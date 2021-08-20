@@ -3,12 +3,10 @@
 
 class MinStack:
 
-    MAX = 10
-
     def __init__(self):
 
         self.min = None
-        self.stack = [None for i in range(MinStack.MAX)]
+        self.stack = []
         self.minstack = [None]
         self.count = 0
 
@@ -17,20 +15,18 @@ class MinStack:
         if(self.min == None):
             
             self.min = val
-            self.stack[self.count] = val
+            self.stack.append(val)
             self.minstack.append(val)
             
-        elif(self.min > val):
+        elif(self.min >= val):
             
             self.min = val
-            self.stack[self.count] = val
+            self.stack.append(val)
             self.minstack.append(val)
             
         else:
             
-            self.stack[self.count] = val
-
-        self.count = self.count + 1
+            self.stack.append(val)
 
         print('Min',self.minstack)
         print('Stack',self.stack)
@@ -38,14 +34,15 @@ class MinStack:
 
     def pop(self):
 
-        self.stack.pop()
-        print(self.minstack[-1])
-        if(self.min == self.minstack[-1] and self.min != None):
+        if(self.min == self.stack[-1] and self.min != None):
 
             self.minstack.pop()
             self.min = self.minstack[-1]
-
-        
+            self.stack.pop()
+            print('Elements in stack',self.minstack)
+        else:
+            print('Elements in stack',self.stack)
+            self.stack.pop()
 
     def top(self):
 
@@ -53,7 +50,6 @@ class MinStack:
 
             return self.stack[-1]
         
-
     def getMin(self):
         
         return self.min
@@ -61,10 +57,11 @@ class MinStack:
 
 # Your MinStack object will be instantiated and called as such:
 obj = MinStack()
+obj.push(0)
 obj.push(1)
-obj.push(-2)
-obj.pop()
+obj.push(0)
 param_3 = obj.top()
-obj.push(-3)
+print(param_3)
+obj.pop()
 param_4 = obj.getMin()
 print(param_4)
