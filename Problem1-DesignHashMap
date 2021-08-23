@@ -1,0 +1,34 @@
+// Time Complexity : O(1)
+// Space Complexity : O(n)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : Could think of different solution using mod, linked list, simple array but couldn't finalize on optimal solution
+
+
+// Your code here along with comments explaining your approach
+
+
+var MyHashMap = function() {
+    this._keys = [];
+    this._val = [];
+};
+MyHashMap.prototype.put = function(key, value) {
+    if (this._keys[key] === undefined) {
+        this._val.push(value);
+        this._keys[key] = this._val.length - 1;
+    } else {
+      this._val[this._keys[key]] = value;
+    }
+};
+MyHashMap.prototype.get = function(key) {
+    if (this._keys[key] === undefined) {
+        return -1;
+    } else {
+      return this._val[this._keys[key]];
+    }
+};
+MyHashMap.prototype.remove = function(key) {
+    if (this._keys[key] !== undefined) {
+      this._val[this._keys[key]] = undefined;
+      this._keys[key] = undefined;
+    }
+};
