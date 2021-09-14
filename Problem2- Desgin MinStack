@@ -52,3 +52,4 @@ class MinStack {
 //spaceComplexity :O(n) 
 //No issues for implementation
 //ran successfully on leetcode
+//Approach: Using Two diffirent Stack 
