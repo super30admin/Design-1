@@ -6,7 +6,6 @@ class MinStack {
     public MinStack() {
         stack = new Stack<Integer>();
         minStack = new Stack<Integer>();
-        
     }
     
     public void push(int val) {
