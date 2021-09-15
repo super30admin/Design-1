@@ -1,0 +1,53 @@
+class MinStack {
+    
+    private Stack<Integer> stack = null;
+    private Stack<Integer> minStack= null;
+    /** initialize your data structure here. */
+    public MinStack() {
+        stack = new Stack<Integer>();
+        minStack = new Stack<Integer>();
+    }
+    
+    public void push(int val) {
+        stack.push(val);
+        if(minStack.isEmpty())
+        {
+            minStack.push(val);
+        }else{
+           if(minStack.peek()>=val){
+              minStack.push(val);
+           } 
+        }
+   
+    }
+    
+    public void pop() {
+        int val = stack.pop();
+        if(val==minStack.peek()){
+          minStack.pop();  
+        }
+    }
+    
+    public int top() {
+        return stack.peek();
+    }
+    
+    public int getMin() {
+        return minStack.peek();
+    }
+}
+
+/**
+ * Your MinStack object will be instantiated and called as such:
+ * MinStack obj = new MinStack();
+ * obj.push(val);
+ * obj.pop();
+ * int param_3 = obj.top();
+ * int param_4 = obj.getMin();
+ */
+
+//timeComplexity : O(1)
+//spaceComplexity :O(n) 
+//No issues for implementation
+//ran successfully on leetcode
+//Approach: Using Two diffirent Stack 
