@@ -1,7 +1,6 @@
 '''
 // Time Complexity : O(1) 
-// Space Complexity : O(m + k) where M is the size of array, 
-                    k is the size of linked list
+// Space Complexity : O(m + k) where "m" is the size of array "k" is the size of linked list
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : No
 
