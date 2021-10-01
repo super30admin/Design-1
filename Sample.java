@@ -14,6 +14,7 @@ class MyHashMap {
             this.value = value;
         }
     }
+
     Node[] nodes;
 
     public MyHashMap() {
