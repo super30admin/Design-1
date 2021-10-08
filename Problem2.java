@@ -1,68 +1,102 @@
-import java.util.Stack;
-
 //Time Complexity : 
 	/*
-	 * push(): O(1)
-	 * peek(): O(N)
-	 * pop(): O(N)
+	 * put(): O(k) where k = no of values/no of operations in this case 
+	 * 							10^6/10^4 = 10^2
+	 * remove(): O(k) where k same as put()
+	 * get(): O(k) where k same as put()
 	 */
 //Space Complexity : O(N)
-//Did this code successfully run on Leetcode : Yes
-//Any problem you faced while coding this : later optimised the code 
+//Did this code successfully run on Leetcode : No
+//Any problem you faced while coding this : 
 
 
 //Your code here along with comments explaining your approach
 /*
-* Need to store popped elements from primary stack
-* to reverse the order of elements and function as queue
-* in secondary stack
-* 
-*/
+ * 1. hashcode function to create hash of key(user input)
+ * 2. A linkedlist to store user input K,V at hashedIndex
+ * 3. search functionality to return previous pointer
+ *    to ease put and remove function 
+ */
 
-class MyQueue {
-
-    Stack<Integer> st1;
-    //Using stack 2 for temporary storing of elements
-    Stack<Integer> st2 = new Stack<>();
+class MyHashMap {
     
-    public MyQueue() {
-       st1 = new Stack<>();
-    }
-    
-    public void push(int x) {
-        st1.push(x);
-    }
-    
-    public int pop() {
-        if(st2.isEmpty()){
-            //transfer elements from st1 --> st2
-            while(!st1.empty()){
-                st2.push(st1.pop()); 
-            } 
+    class Node{
+        int key;
+        int value;
+        Node next;
+        
+        public Node(int key, int value){
+            this.key = key;
+            this.value = value;
         }
-        return (Integer) st2.pop();   
     }
     
-    public int peek() {
-        if(st2.isEmpty()){
-            //transfer elements from st1 --> st2
-            while(!st1.empty()){
-                st2.push(st1.pop()); 
-            } 
+    Node[] hashMap;
+    
+    public MyHashMap() {
+        hashMap = new Node[10000];
+    }
+    
+    //generate hash for index using key
+    public int index(int key){
+        return Integer.hashCode(key) % 10000;
+    }
+    
+    public Node search(int key){
+        int i = index(key);
+        
+        Node head = hashMap[i];
+        Node prev = head;
+        Node curr = head; 
+        
+        while( head != null && curr.next != null && key != curr.key){
+            prev = curr;
+            curr = curr.next;
+        } 
+        return prev;
+    }
+    
+    public void put(int key, int value) {
+        int i = index(key);
+        
+        //if hashMap bucket is empty then initialize root node
+        if(hashMap[i] == null) {
+            Node root = new Node(-1,-1);
+            hashMap[i] = root;
+            root.next = new Node(key, value);
+        } else {
+            Node ptr = search(key);
+            if (ptr.next == null) ptr.next = new Node(key,value);
+            else ptr.next.value = value;
         }
-        return (Integer) st2.peek();
+     }
+    
+    public int get(int key) {
+        int i = index(key);
+        if(hashMap[i] == null)  return -1;
+        
+        Node ptr = search(key);
+        
+        return ptr.next == null ? -1 : ptr.next.value ;
     }
     
-    public boolean empty() {
-        return st1.isEmpty() && st2.isEmpty();
+    public void remove(int key) {
+        int i = index(key);
+        //if hashIndex exists perform deletion
+        if(hashMap[i] != null) {
+            Node ptr = search(key);
+            //if key exists remove it
+            if(ptr.next != null){
+                ptr.next = ptr.next.next;
+            }
+        }
     }
 }
 
 /**
- * Your MyQueue object will be instantiated and called as such:
- * MyQueue obj = new MyQueue();
- * obj.push(x);
- * int param_2 = obj.pop();
- * int param_3 = obj.peek();
- * boolean param_4 = obj.empty();
+ * Your MyHashMap object will be instantiated and called as such:
+ * MyHashMap obj = new MyHashMap();
+ * obj.put(key,value);
+ * int param_2 = obj.get(key);
+ * obj.remove(key);
  */
