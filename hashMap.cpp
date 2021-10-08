@@ -1,5 +1,5 @@
 // Time Complexity : O(1)
-// Space Complexity : O(1n
+// Space Complexity : O(n)
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : Couldn't find a C++ built-in function to generate hashcode as in Java
 
@@ -19,7 +19,7 @@ class MyHashMap{
             this->next = NULL;
         }
     };
-//Node* hashMap[10000]; -- comment line 38 
+//Node* hashMap[10000];
 Node** hashMap; 
 int size;
 
