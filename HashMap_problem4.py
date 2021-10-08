@@ -1,3 +1,6 @@
+# Time Complexity: O(1)     during all get, put & remove operations
+# Space Complexity: O(1)    during all get, put & remove operations
+
 class MyHashMap:
 
     def __init__(self):
