@@ -1,5 +1,5 @@
 # Time Complexity: O(1)     during all get, put & remove operations
-# Space Complexity: O(1)    during all get, put & remove operations
+# Space Complexity: O(n)    bcz of the use of additional list of list data structure.
 
 class MyHashMap:
 
