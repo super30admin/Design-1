@@ -9,7 +9,7 @@ import java.util.LinkedList;
 
 // Your code here along with comments explaining your approach
 
-class MinStack {
+class MinStack_155 {
 
     /** initialize your data structure here. */
     
@@ -17,7 +17,7 @@ class MinStack {
     ArrayList<Integer> min;
     
     
-    public MinStack() {
+    public MinStack_155() {
         this.list = new LinkedList<>();
         this.min = new ArrayList<>();
         this.min.add(Integer.MAX_VALUE);
