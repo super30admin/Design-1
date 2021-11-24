@@ -1,3 +1,7 @@
+#Time Complexity: O(n)
+#Space complexity: O(n)
+#Approach: The approach was that I created a Extra Stack to store the minimum value. the minimum value is always store in the mins stack and just return that ones the getMins() function is called
+
 class MinStack:
     def __init__(self):
         self.s = []
