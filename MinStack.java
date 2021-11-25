@@ -9,7 +9,6 @@
 class MinStack {
     Stack<Integer> stack;
     int minVal;
-    int top;
 
     // Intialisation
     // minval intialised to Max value
