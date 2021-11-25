@@ -1,5 +1,5 @@
-import java.util.Stack;
-// Time Complexity : O(1)
+
+// Time Complexity : Amortized O(1)
 // Space Complexity :O(n)
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : No
@@ -7,44 +7,79 @@ import java.util.Stack;
 
 // Your code here along with comments explaining your approach
 
-class MinStack {
+class MyHashMap {
+    static class Node {
+        int key;
+        int value;
+        Node next;
+        public Node(int key,int value){
+            this.key = key;
+            this.value = value;
+        }
+    }
+    int bucketsize;
+    Node[] arr;
+    public MyHashMap() {
+         bucketsize = 10000;
+         arr = new Node[bucketsize];
 
-    Stack<Integer> main_stack;
-    int min;
-        public MinStack() {
-            main_stack = new Stack<Integer>() ;
-            min = Integer.MAX_VALUE;
+    }
+    public int getHash(int key){
+        return key%bucketsize;
+    }
+    public Node find(int key, Node node){
+       Node prev = node;
+       Node curr = node.next;
+       while(curr!=null && curr.key != key){
+           prev= curr;
+           curr = curr.next;
+       }
+       return prev;
+    }
+    
+    public void put(int key, int value) {
+        int hash = getHash(key);
+        if(arr[hash]==null){
+            arr[hash]= new Node(-1,-1);
         }
-        
-        public void push(int val) {
-            if(min>=val){
-                main_stack.push(min);
-                min = val;
-            }
-            main_stack.push(val);
+        Node prev = find(key, arr[hash]);
+        if(prev.next ==null){
+            prev.next = new Node(key, value);
         }
-        
-        public void pop() {
-            if(min ==main_stack.pop()){
-                min = main_stack.pop();
-            }
-            
-        }       
-        
-        public int top() {
-            return main_stack.peek();
-        }
-        
-        public int getMin() {
-            return min;
+        else{
+            prev.next.value = value;
         }
     }
     
-    /**
-     * Your MinStack object will be instantiated and called as such:
-     * MinStack obj = new MinStack();
-     * obj.push(val);
-     * obj.pop();
-     * int param_3 = obj.top();
-     * int param_4 = obj.getMin();
-     */
+    public int get(int key) {
+        int hash = getHash(key);
+        if(arr[hash]!=null){
+            Node prev = find(key, arr[hash]);
+            if(prev.next!=null){
+                return prev.next.value;
+            }
+
+        }
+        return -1;
+        
+    }
+    
+    public void remove(int key) {
+        int hash = getHash(key);
+        if(arr[hash]!=null){
+            Node prev = find(key, arr[hash]);
+            if(prev.next!=null){
+                prev.next= prev.next.next;
+            }
+
+        }
+    }
+}
+
+/**
+ * Your MyHashMap object will be instantiated and called as such:
+ * MyHashMap obj = new MyHashMap();
+ * obj.put(key,value);
+ * int param_2 = obj.get(key);
+ * obj.remove(key);
+ */
