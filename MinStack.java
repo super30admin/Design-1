@@ -27,7 +27,6 @@ class MinStack {
         if(popped==min){
             min = s.pop();
         }
-        
     }
     
     public int top() {

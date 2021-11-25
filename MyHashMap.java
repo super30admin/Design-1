@@ -13,6 +13,7 @@ class MyHashMap {
             this.key = key;
             this.value = value;
         }
+        
     }
     
     Node[] nodes;
