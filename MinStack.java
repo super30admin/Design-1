@@ -19,7 +19,6 @@ public class MinStack {
         minimum=new Stack<Integer>();
         
     }
-    
     public void push(int val) {
        
         int topvalue=val;
