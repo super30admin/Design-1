@@ -3,12 +3,11 @@
 // Did this code successfully run on Leetcode :yes
 // Any problem you faced while coding this :no
 
-// Your code here along with comments explaining your approach
 // Min stack using two stacks
 class MinStack {
-    Stack<Integer> stack;
-    Stack<Integer> minStack;
-    int min;
+    private Stack<Integer> stack;
+    private Stack<Integer> minStack;
+    private int min;
 
     public MinStack() {
         stack = new Stack<>();
@@ -50,16 +49,16 @@ class MinStack {
     public void push(int val) {
         // to handle duplicate values use equals
         if(val <= min){ // add both min and value such that we can keep track of all mins
-            stack.push(min);
-            min = val;
+            stack.push(min); // push old minimum
+            min = val; // update minimum
         }
         stack.push(val);
     }
 
     public void pop() {
         int val = stack.pop();
-        if(min == val){
-            min = stack.pop();
+        if(min == val){ // if we are poping minimum 
+            min = stack.pop(); // update min to old minimum
         }
     }
 
