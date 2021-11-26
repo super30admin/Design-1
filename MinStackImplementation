@@ -1,0 +1,42 @@
+class MinStack {
+    
+    Stack <Integer> stack = new Stack();
+    Stack<Integer>min_values = new Stack();
+
+    
+    public void push(int val) {
+        if (min_values.isEmpty() || val <= min_values.peek()){
+            min_values.push(val);
+        }
+        stack.push(val);
+        System.out.println(val + " is pushed to stack");
+        
+    }
+    
+    public void pop() {
+        if (stack.peek().equals(min_values.peek())){
+            min_values.pop();
+        }
+        stack.pop();      
+    }
+    
+    public int top(){
+        return stack.peek();
+    }
+    
+    public int getMin() {
+        return min_values.peek();      
+    }
+}
+
+public static void main(String[] args){
+    MinStack m = new MinStack();
+    m.push(10);
+    m.push(20);
+    m.push(30);
+    m.pop();
+    m.top();
+    m.getMin();
+
+}
+
