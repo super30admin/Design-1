@@ -1,0 +1,105 @@
+// Time Complexity : O(N)
+// Space Complexity : O(N)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : No
+
+class MyHashMap {
+    
+    class Node
+    {
+        int key,value;
+        Node next;
+       public Node(int key, int value)
+        {
+            this.key=key;
+            this.value=value;
+        }
+    }
+
+    Node [] nodes;
+    int buckets;
+    
+  
+    public MyHashMap() {
+        buckets=10000;
+        nodes = new Node[buckets];
+    }
+    
+    private int getHash(int key)
+    {
+        return Integer.hashCode(key)%buckets;
+    }
+    
+    private Node find(Node node, int key)
+    {
+        Node prev=node;
+        Node curr=node.next;
+        while(curr!=null && curr.key!=key)
+        {
+            prev=curr;
+            curr=prev.next;
+        }
+       return prev;     
+    }
+    
+    public void put(int key, int value) {
+      int index= getHash(key);
+        if(nodes[index]==null)
+        {
+            nodes[index] = new Node(-1,-1);
+        }
+        Node prev= find(nodes[index],key);
+        if(prev.next!=null)
+        {
+             prev.next.value = value;
+           
+          
+        }
+        else
+        {
+                prev.next= new Node(key,value);
+        }
+    }
+    
+    public int get(int key) {
+        int index= getHash(key);
+        if(nodes[index]==null)
+            return -1;
+        else{
+             Node prev= find(nodes[index],key);
+             if(prev.next!=null)
+             {
+                 return prev.next.value;
+             }
+            else
+            {
+                return -1;
+            }
+        }
+        
+    }
+    
+    public void remove(int key) {
+              int index= getHash(key);
+        if(nodes[index]==null)
+            return;
+        else{
+            
+        
+              Node prev= find(nodes[index],key);
+             if(prev.next!=null)
+             {
+                prev.next=prev.next.next;
+             }
+        }
+        
+    }
+}
+
+/**
+ * Your MyHashMap object will be instantiated and called as such:
+ * MyHashMap obj = new MyHashMap();
+ * obj.put(key,value);
+ * int param_2 = obj.get(key);
+ * obj.remove(key);
+ */
