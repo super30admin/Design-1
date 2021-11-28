@@ -1,7 +1,7 @@
 //With Linear Chaning
 //TC: Auxilary TC Size of the linked List, here 100 nodes can be at max to the Linked List so O(1);
 //SC: O(1) 10^4 soze given auxilary LinkedList length will be space Complexity;
-//If running in Leetcode: Yes, for most of the use cases;
+//If running in Leetcode: Yes, for most of the use-cases;
 
 class MyHashMap {
 
