@@ -13,7 +13,8 @@ class MyHashMap {
        }
    }
     
-    Node[] nodes;   //array of Node class naming nodes;
+    Node[] nodes; 
+    //array of Node class naming nodes as a reference for our Node Classes();
     int buckets;
     
     private int getHash(int key){
@@ -23,8 +24,8 @@ class MyHashMap {
     private Node find(Node node, int key){
         Node prev=node;
         Node curr=node.next;
-        if(curr!=null && prev.next.value!=key)
-            //&& opertaion is imp as it checks if curr.val is null first and then                   //proceeds forward;
+        if(curr!=null && prev.next.key!=key)
+            //&& opertaion is imp as it checks if curr.val is null first and then                   //checks if the value we need is found or not;
         {
            prev=curr;
             curr=curr.next;
@@ -35,6 +36,8 @@ class MyHashMap {
     public MyHashMap() {
         buckets=10000;
         nodes=new Node[buckets];
+        //Each of Type Node class with key, value, next;
+        //Array of all the Node class Array each who's type is of class Node;
     }
     
     public void put(int key, int value) {
@@ -45,15 +48,13 @@ class MyHashMap {
             // nodes[bucket].key=-1; 
             // nodes[bucket].value=-1;
             // nodes[bucket].next=null;
-        }else{
+        }
             Node prev=find(nodes[bucket],key);
             if(prev.next==null){
                 prev.next=new Node(key,value);
             }else{
                 prev.next.value=value;
-            }
-        }
-        
+            }   
     }
     
     public int get(int key) {
@@ -65,7 +66,7 @@ class MyHashMap {
         if(prev.next==null){
             return -1;
         }
-        System.out.println(prev.next.value);
+        //System.out.println(prev.next.value);
         return prev.next.value;
     }
     
