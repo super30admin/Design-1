@@ -2,8 +2,8 @@
 # and an operation getMin() which should return minimum element from the SplStack. 
 # All these operations must be O(1). To implement this, you should only use standard Stack data structure.
 
-# Time Complexity :
-# Space Complexity :
+# Time Complexity : O(1)
+# Space Complexity : O(n)
 # Did this code successfully run on Leetcode :
 # Any problem you faced while coding this :
 
