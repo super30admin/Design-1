@@ -1,7 +1,7 @@
-# Time Complexity :
-# Space Complexity :
-# Did this code successfully run on Leetcode :
-# Any problem you faced while coding this :
+# Time Complexity : O(n)
+# Space Complexity : O(n)
+# Did this code successfully run on Leetcode : Yes
+# Any problem you faced while coding this : I was confused at first but figured out eventually
 
 class MinStack:
     def __init__(self):
