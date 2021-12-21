@@ -1,7 +1,10 @@
 package design1;
 
 import java.util.Stack;
-
+//Time Complexity : O(1)
+//Space Complexity : O(n) for stack
+//Did this code successfully run on Leetcode : Yes
+//Any problem you faced while coding this : No
 public class MinStackUsingStack {
 	int minVal;
     Stack<Integer> stack;
