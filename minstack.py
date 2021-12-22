@@ -1,3 +1,9 @@
+"""
+# Time Complexity : push, pop, top: O(1), getmin: O(N)
+# Space Complexity : don't know how to calculate
+# Did this code successfully run on Leetcode : yes
+# Any problem you faced while coding this : no
+"""
 class MinStack(object):
 
     def __init__(self):
