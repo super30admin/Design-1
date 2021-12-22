@@ -28,10 +28,10 @@ class MinStack:
     # Pushing new element on min stack too if its less than or equal to current min element
     def push(self, val: int) -> None:
 
-        if len(self.list) < size_limit:
+        if len(self.list) < self.size_limit:
             self.list.append(val)
 
-            if val <= self.min_list[-1]
+            if not self.min_list or val <= self.min_list[-1]:
                 self.min_list.append(val)
 
         # Else cannot push element as stack is full
@@ -62,7 +62,7 @@ class MinStack:
     def show(self):
         return self.list
 
-s = MinStack()
+s = MinStack(5)
 s.push('3')
 s.push('2')
 print(s.getMin())
@@ -71,4 +71,6 @@ s.push('0')
 print(s.getMin())
 s.pop()
 print(s.getMin())
+s.push('4')
+s.push('5')
 print(s.show())
