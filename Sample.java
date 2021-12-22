@@ -13,7 +13,7 @@
 
 
 import java.util.Arrays;
-
+import  java.util.Stack;
 class MyHashMap {
     int baseArray[][];
     int counter=0;
@@ -85,64 +85,48 @@ class MyHashMap {
 //executed in leetcode
 class MinStack {
 
-    int baseArray[];
+    private Stack <Integer>st;
+    private Stack<Integer>minStack;
     int minstackarray[];
     int topIndex;
     int minimumElement;
 
     public MinStack() {
+        st=new Stack<>();
+        minStack=new Stack<>();
         minimumElement=Integer.MAX_VALUE;
-        topIndex=-1;
-baseArray=new int[100001];
-Arrays.fill(baseArray,-1);
+        minStack.push(minimumElement);
+
+
     }
 
     public void push(int val) {
-if(this.topIndex==-1){
-    baseArray[this.topIndex+1]=val;
-this.topIndex=this.topIndex+1;
+st.push(val);
+if(val<minStack.peek()){
+    minStack.push(val);
 }else{
-    this.baseArray[this.topIndex+1]=val;
-    this.topIndex=this.topIndex+1;
+    minStack.push(minStack.peek());
 }
-if(val<this.minimumElement){
-    this.minimumElement=val;
-}
-        System.out.println("Push Successfull");
     }
 
     public void pop() {
-
- if(this.baseArray[this.topIndex]==this.minimumElement){
-     this.resetMinimumElement();
- }
-
-this.baseArray[this.topIndex]=Integer.MAX_VALUE;
-this.topIndex=this.topIndex-1;
-        System.out.println("Pop Successfull");
-
+        if(st.peek()!=null){
+            st.pop();
+            minStack.pop();
+        }else{
+            System.out.println("no elements in the stack");
+        }
     }
 
     public int top() {
-        System.out.println("inside top = "+ this.baseArray[this.topIndex]);
-return this.baseArray[this.topIndex];
+   return st.peek();
     }
 
     public int getMin() {
-        System.out.println("inside getmin = "+this.minimumElement);
-return this.minimumElement;
+        return minStack.peek();
     }
 
-    public void resetMinimumElement( ){
-        this.minimumElement=Integer.MAX_VALUE;
-        System.out.println("inside resetmin element");
-        for (int i=0;i<this.topIndex;i++){
-            if(this.minimumElement>baseArray[i]){
-                System.out.println("inside condition min element");
-                this.minimumElement=baseArray[i];
-            }
-        }
-    }
+
     public static void main(String args[])
     {
         MinStack obj = new MinStack();
