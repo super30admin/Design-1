@@ -2,7 +2,7 @@
 # Space Complexity : O(1)
 # Did this code successfully run on Leetcode : Yes
 # Any problem you faced while coding this : I was confused at first but figured out eventually
-
+# still have to change it to the right one 
 class MinStack:
     def __init__(self):
         self.stack = []
