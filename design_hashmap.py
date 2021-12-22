@@ -1,22 +1,31 @@
 
+
 class MyHashSet:
 
     def __init__(self):
-        self.arr = bytearray(1000001)
+        self.arr = [ [] for i in range(1000) ]
+        self.h1 = 1000
+        self.h2 = 1000
 
     def add(self, key: int) -> None:
-        self.arr[key] = 1
+        hash1 = key % self.h1
+
+        if not self.arr[hash1]:
+            if hash1 == 0:
+                self.arr[hash1] = [0]*1001
+            else:
+                self.arr[hash1] = [0]*1000
+        hash2 = key // self.h2
+        self.arr[hash1][hash2] = 1            
 
     def remove(self, key: int) -> None:
-        self.arr[key] = 0 
-        
-    def contains(self, key: int) -> bool:
-        return self.arr[key]
-            
- 
+        hash1 = key % self.h1 
+        hash2 = key // self.h2 
+        if self.arr[hash1]:
+            self.arr[hash1][hash2] = 0
 
-# Your MyHashSet object will be instantiated and called as such:
-# obj = MyHashSet()
-# obj.add(key)
-# obj.remove(key)
-# param_3 = obj.contains(key)
+    def contains(self, key: int) -> bool:
+        hash1 = key % self.h1 
+        hash2 = key // self.h2 
+        return False if not self.arr[hash1] else self.arr[hash1][hash2] 
+            
