@@ -1,3 +1,5 @@
+# Time Complexity o(1) for all
+
 class MinStack:
 
     def __init__(self):
