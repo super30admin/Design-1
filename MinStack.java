@@ -1,68 +1,45 @@
-//Time Complexity => for all operations push(), pop(), top(), getMin() = O(1)
-//Space Complexity = O(n) where n is size of the stack
+//Time complexity for push, pop, top, pop, getMin o(1)
+//Space complesity o(n)
 
-//MinStack is being implemented at granular level without using any in built stack functions
-
-
+//I am using 2 stacks, one stack-pimary stack will hold all the elements in chronological order(LIFO), secondary stack will hold minimum value pushed into primary stack till then
 class MinStack {
     
-    //Top of the stack or last entered element in the stack(LIFO)
-    StackNode top;
-
-    //basic structure of element in the stack
-    class StackNode { 
-        
-        //holds value of the data pushed to stack
-        int val;
-        //holds minimum value of data pushed till that particular entry in the stack
-        int min;
-        //holds link to the previous element pushed to the stack
-        StackNode prev;
-        StackNode(int val) 
-        { 
-          this.val = val;
-          this.prev = null;
-        } 
-    }
+    Stack<Integer> primary;
+    Stack<Integer> secondary;
     
-    public MinStack() {        
-        //Initializing stack to empty top
-        top = null;     
+    public MinStack() {
+        primary = new Stack();
+        secondary = new Stack();
     }
     
     public void push(int val) {
-        
-        //create a new StackNode
-        StackNode temp = new StackNode(val);
-        
-        //if no value is pushed till now, value which is going to be pushed will be the minimum else update the minimum upto this  entry by check top.min and temp.min
-        if(top != null){
-           if(top.min > val) temp.min = val;
-            else temp.min = top.min;
-        } else temp.min = val;
-        
-        //link newly pushed entry to previous element 
-        temp.prev = top; 
-        //move top to latest entry
-        top = temp;
-       
+        if(secondary.isEmpty()){
+            secondary.push(val);
+        } else {
+            if(secondary.peek() < val){
+                secondary.push(secondary.peek());
+            } else {
+                secondary.push(val);
+            }
+        }
+        primary.push(val);
     }
     
     public void pop() {
-        
-        //move top top previous entry
-        top = top.prev;
-        
+        //pop from both primary and secondary stacks
+        primary.pop();
+        secondary.pop();
     }
     
     public int top() {
-       //return value at the top 
-       return top.val; 
+        if(primary.isEmpty()) return Integer.MAX_VALUE;
+        else return primary.peek();
     }
     
     public int getMin() {
-        //return min value if stack is not empty else return max value of integer 
-        return (top == null ?  Integer.MAX_VALUE : top.min);
+        //top value of secondary stack is always the minimum value entered
+        if(secondary.isEmpty()) return Integer.MAX_VALUE;
+        else return secondary.peek();
     }
 }
 
