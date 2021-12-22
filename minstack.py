@@ -1,3 +1,18 @@
+'''
+Time Complexity: 
+
+push - O(1)
+pop - O(1)
+top - O(1)
+min - O(1)
+
+Space Complexity:
+
+O(N)
+
+Ran on Leetcode : yes
+'''
+
 class Node(object):
     def __init__(self, val):
         self.val = val

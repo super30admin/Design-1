@@ -1,3 +1,16 @@
+'''
+Time Complexity: 
+
+put - O(1)
+get - O(1)
+remove - O(1)
+
+Space Complexity:
+
+O(1000000)
+
+Ran on Leetcode : yes
+'''
 class MyHashMap:
 
     def __init__(self):
