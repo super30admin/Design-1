@@ -1,3 +1,9 @@
+//Time Complexity
+//push O(1)
+//pop O(1)
+//top O(1)
+//getMin O(1)
+
 class MinStack {
     private Stack<Integer> stack;
     private int min=Integer.MAX_VALUE;
