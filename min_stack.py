@@ -1,5 +1,5 @@
 
-# avg time complexity O(n)
+# avg time complexity O(1) worst O(n)
 # avg space complexity O(n)
 
 class MinStack:

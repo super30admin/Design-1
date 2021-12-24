@@ -1,5 +1,5 @@
 # avg time complexity O(n)
-# avg space complexity O(n)
+# space complexity O(n * n) 
 class MyHashMap:
 
     def __init__(self):
