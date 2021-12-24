@@ -1,4 +1,7 @@
 
+# avg time complexity O(n)
+# avg space complexity O(n)
+
 class MinStack:
 
     def __init__(self):
