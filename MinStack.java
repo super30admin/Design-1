@@ -1,4 +1,7 @@
 //  Time Complexity O(1) for PUSH, POP, TOP, GETMIN. Also avg space complexity O(1)
+// Approach 
+// While pushing we check for condition if the pushing value is less than current minimum, we push both the min and the value changing the min flag to new min.
+// While poping we check for if the min value equals current pop element we update the minimun flag. 
 
 class MinStack {
 private Stack<Integer> st;
