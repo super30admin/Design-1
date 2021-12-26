@@ -30,8 +30,8 @@ class MyHashMap:
         
         if not self.bucket[bucket]:
             self.bucket[bucket] = [-1 for bucket in range(self.item_length)]
-        if bucket == 0:
-            self.bucket[bucket].append(-1)
+            if bucket == 0:
+                self.bucket[bucket].append(-1)
             
         self.bucket[bucket][item] = value
         
