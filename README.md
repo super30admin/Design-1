@@ -3,7 +3,61 @@
 ## Problem 1:
 Design Hashmap (https://leetcode.com/problems/design-hashmap/)
 
+class MyHashMap:
+    
+    def __init__(self):
+        self.buckets = 10000
+        self.nodes = [None]*self.buckets
+        
+    def hashfunc(self,key):
+        return key%self.buckets
+    
+    def find(self,key,node):
+        prev = None
+        curr = node
+        while curr!=None and curr.key!=key:
+            prev = curr
+            curr = curr.next
+        return prev
+    
+    def put(self, key: int, value: int) -> None:
+        hashval = self.hashfunc(key)
+        if self.nodes[hashval]==None:
+            self.nodes[hashval] = ListNode(-1,-1)
 
+        prev = self.find(key,self.nodes[hashval])
+        if prev.next==None:   # prev will be at the end
+            prev.next = ListNode(key,value)
+        else:                 # node is already there in the linkedlist
+            prev.next.value = value
+
+    def get(self, key: int) -> int:
+        hashval = self.hashfunc(key)
+        if self.nodes[hashval]==None:
+            return -1
+        prev = self.find(key,self.nodes[hashval])
+        if prev.next==None:
+            return -1
+        else:
+            return prev.next.value
+            
+
+    def remove(self, key: int) -> None:
+        hashval = self.hashfunc(key)
+        if self.nodes[hashval]==None:
+            return
+        prev = self.find(key,self.nodes[hashval])
+        if prev.next==None:
+            return
+        else:
+            prev.next = prev.next.next
+
+class ListNode:
+
+    def __init__(self, key, value):
+        self.key = key
+        self.value = value
+        self.next = None
 
 ## Problem 2:
 Design MinStack (https://leetcode.com/problems/min-stack/)
