@@ -1,5 +1,5 @@
 # // Time Complexity :O(1)
-# // Space Complexity :O(n)
+# // Space Complexity :O(1000)
 # // Did this code successfully run on Leetcode :yes
 # // Any problem you faced while coding this :no, but you can still check
 
