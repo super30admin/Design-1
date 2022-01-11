@@ -4,8 +4,8 @@
 
 # Time Complexity : O(1)
 # Space Complexity : O(n)
-# Did this code successfully run on Leetcode :
-# Any problem you faced while coding this :
+# Did this code successfully run on Leetcode : Yes
+# Any problem you faced while coding this : No
 
 
 class MinStack:
@@ -62,6 +62,7 @@ class MinStack:
     def show(self):
         return self.list
 
+
 s = MinStack(5)
 s.push('3')
 s.push('2')
@@ -71,6 +72,5 @@ s.push('0')
 print(s.getMin())
 s.pop()
 print(s.getMin())
-s.push('4')
 s.push('5')
 print(s.show())
