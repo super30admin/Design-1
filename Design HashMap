@@ -1,0 +1,106 @@
+/ Time Complexity : O(1) for get(), put() and remove()
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : no
+
+
+// Your code here along with comments explaining your approach
+
+class MyHashMap {
+    class Node
+    {
+        int key;
+        int val;
+        Node next;
+
+        public Node(int key, int val)
+        {
+            this.key = key;
+            this.val = val;
+            this.next = null;
+        }
+    }
+
+    private Node[] storage;
+    private int mainSize;
+    
+    public MyHashMap() {
+        mainSize = 10000;
+        storage = new Node[mainSize];
+    }
+    
+    public int getIndex(int key)
+    {
+        // return Integer.hashCode(key) % mainSize; ----> best when our key is other than int. Key can be string or array. Integer.hashCode(key) -> converts key to int and then generates hash code
+        
+        return key % mainSize;
+    }
+    
+    public Node find(int key, Node node)
+    {
+        Node prev = null;
+        Node curr = node;
+        while(curr != null && curr.key != key)
+        {
+            prev = curr;
+            curr = curr.next;
+        }
+        return prev;
+    }
+    
+    // TC - O(1)
+    public void put(int key, int value) {
+        int index = getIndex(key);
+        if(storage[index] == null)
+        {
+            storage[index] = new Node(-1, -1);
+        }
+        Node prev = find(key, storage[index]);
+        
+        // we have reached at end
+        if(prev.next == null)
+        {
+            prev.next = new Node(key, value);
+        }
+        else
+        {
+            // we have found the node
+            prev.next.val = value;
+        }
+    }
+    
+    // TC - O(1)
+    public int get(int key) {
+        int index = getIndex(key);
+        if(storage[index] == null)
+            return -1;
+        
+        Node prev = find(key, storage[index]);
+        
+        if(prev.next == null)
+            return -1;
+        else
+            return prev.next.val;
+    }
+    
+    // TC - O(1)
+    public void remove(int key) {
+        int index = getIndex(key);
+        if(storage[index] == null)
+            return;
+        Node prev = find(key, storage[index]);
+        
+        if(prev.next == null)
+            return;
+        else
+            prev.next = prev.next.next;
+    }
+}
+
+/**
+ * Your MyHashMap object will be instantiated and called as such:
+ * MyHashMap obj = new MyHashMap();
+ * obj.put(key,value);
+ * int param_2 = obj.get(key);
+ * obj.remove(key);
+ */
