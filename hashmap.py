@@ -6,6 +6,7 @@
 
 class MyHashMap:
 
+    # initialize hash table using bucket class
     def __init__(self):
         self.key_size = 769
         self.hash_tab = [Bucket() for i in range(self.key_size)]
@@ -27,12 +28,14 @@ class Bucket:
     def __init__(self):
         self.bucket = []
         
+    # iterate through bucket to get the key value
     def get(self, key):
         for (k, v) in self.bucket:
             if k == key:
                 return v
         return -1
         
+    # enumerate the bucket to find the key value pair and  update them if exists
     def update(self, key, value):
         found = False
         for i, kv in enumerate(self.bucket):
@@ -40,7 +43,8 @@ class Bucket:
                 self.bucket[i] = (key, value)
                 found = True
                 break
-                
+        
+        # if not append the pair
         if not found:
             self.bucket.append((key, value))
             

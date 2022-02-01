@@ -7,14 +7,17 @@
 class MinStack:
 
     def __init__(self):
-        self.minStack = []
+        # Initialize stack
+        self.minStack = []   
 
     def push(self, val: int) -> None:
         
+        # if empty stack append val for both vaa and min
         if not self.minStack:
             self.minStack.append((val,val))
             return
         
+        # compare the val with current min
         current_min = self.minStack[-1][1]
         self.minStack.append((val, min(current_min, val)))
 
