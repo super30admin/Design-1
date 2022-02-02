@@ -1,6 +1,8 @@
 //o(2(n)) space
 // o(1) time
-//add min and val in same stack, if min is current popped then remove the next element and make it min
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+//Approach : add min and val in same stack, if min is current popped then remove the next element and make it min
 
 import java.util.Stack;
 class MinStack{

@@ -1,6 +1,9 @@
 
 // o(n space)
 // o(n) for all operation
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+//Approach : Using linear sepearte chaining for collison resolution strategy.
 class MyHashMap {
 
   class Entry{
@@ -79,6 +82,20 @@ class MyHashMap {
         }
         root = root.next;
       }
+
+    }
+
+    public boolean containsKey(int key) {
+      int index = getIndex(key);
+      Node root = map[index];
+
+      while(root != null){
+        if(root != null && root.e.key == key){
+          return true;
+        }
+        root = root.next;
+      }
+      return false;
 
     }
 
