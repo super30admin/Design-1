@@ -126,3 +126,96 @@ class MinStack {
  * int param_3 = obj.top();
  * int param_4 = obj.getMin();
  */
+ 
+ 
+ /**
+
+Optimal approach using single stack.
+
+// Time Complexity :
+    push- O(1)
+    pop - O(1)
+    top - O(1)
+    getMinimum O(1) 
+// Space Complexity :
+    Total space complexity = in worst case O(2n - 1) where n is the size of stack. Wrst case happens when incoming elements is alway <= minSofar.
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+push- O(1)
+top - O(1)
+pop - O(1)
+get - O(1)
+
+5 5 4 4 3 3 2       5 4 3 2
+
+min = 2
+
+
+**/
+class MinStack {
+    
+    Stack<Integer> splStack;
+    int min = Integer.MAX_VALUE;
+
+    public MinStack() {
+        splStack = new Stack<>();
+    }
+    
+    public void push(int val) {
+        
+        if (min == Integer.MAX_VALUE)
+        {
+            min = val;
+            splStack.push(val);
+            return;
+        }
+        
+        if (val <= min)
+        {
+            splStack.push(min);
+            min = val;
+        }
+        
+        splStack.push(val);
+    }
+    
+    public void pop() {
+        
+        if (splStack.peek() == min)
+        {
+            splStack.pop();
+            
+            if (!splStack.isEmpty())
+            {
+                min = splStack.pop();
+            }
+            else
+            {
+                min = Integer.MAX_VALUE;
+            }
+            
+            return;
+        }
+        
+        splStack.pop();
+    }
+    
+    public int top() {
+
+        return splStack.peek();
+    }
+    
+    public int getMin() {
+        return min;
+    }
+}
+
+/**
+ * Your MinStack object will be instantiated and called as such:
+ * MinStack obj = new MinStack();
+ * obj.push(val);
+ * obj.pop();
+ * int param_3 = obj.top();
+ * int param_4 = obj.getMin();
+ */
