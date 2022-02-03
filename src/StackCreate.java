@@ -22,25 +22,25 @@ class minStack
     public void push(int val) {
         if(min >= val)
         {
-            stk.push(min) ;
+            stk.push(min) ;                                                     // Pushing extra value(current min)
             min = val ;
         }
-        stk.push(val) ;
+        stk.push(val) ;                                                         // Pushing value
     }
 
     public void pop() {
-        int temp = stk.pop() ;
+        int temp = stk.pop() ;                                                  // Popping top element
         System.out.println("Popped item from main stack is " + temp);
-        if(temp == min)
+        if(temp == min)                                                         // Popping extra value(old min) pushed earlier
             min = stk.pop() ;
     }
 
     public int top() {
-        return stk.peek() ;
+        return stk.peek() ;                                                     // Getting top element
     }
 
     public int getMin() {
-        return min ;
+        return min ;                                                            // Getting minimum value
     }
     public void printStack()
     {
@@ -50,7 +50,7 @@ class minStack
 //                    System.out.println(""+k);
 //                }
 //        );
-        System.out.println(stk);
+        System.out.println(stk);                                                // Printing Stack elements
     }
 }
 
