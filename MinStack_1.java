@@ -1,3 +1,4 @@
+
 // Time Complexity : Push - O(1), Pop - O(n) since after popping the elem, checking iterating to find the min element present in the loop
 // Space Complexity : O(N) - size of stack
 // Did this code successfully run on Leetcode : Yes
