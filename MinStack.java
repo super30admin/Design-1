@@ -1,7 +1,7 @@
-// Time Complexity : 
+// Time Complexity : All operations are O(1)
 // Space Complexity : O(n)
 // Did this code successfully run on Leetcode : Yes
-// Any problem you faced while coding this :
+// Any problem you faced while coding this : Nothing
 
 
 // Your code here along with comments explaining your approach
@@ -48,11 +48,8 @@ class MinStack {
   }
 }
 
-/**
-* Your MinStack object will be instantiated and called as such:
-* MinStack obj = new MinStack();
-* obj.push(val);
-* obj.pop();
-* int param_3 = obj.top();
-* int param_4 = obj.getMin();
+/*
+I have used a stack of class objects, 
+where the class object has two fields: 
+the value and the minimum element in the stack when the value was added.
 */
