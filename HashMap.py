@@ -1,3 +1,5 @@
+#I referred Lettcode Discussuions to solve this.
+#Time complexity for each opeartion: O(N/k) where N is number of possible keys, k- predfined hashing_value (no. of buckets - 3699 in my case).
 
 
 class Bucket:
