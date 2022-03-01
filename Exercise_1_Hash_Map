@@ -1,0 +1,59 @@
+# Time Complexity : O(1)
+#  Space Complexity : O(N)
+#  Did this code successfully run on Leetcode : Yes
+#  Any problem you faced while coding this : No
+class MyHashMap(object):
+
+    def __init__(self):
+        self.size = 1000
+        self.hashMap = [-1]*self.size
+        
+    def put(self, key, value):
+        """
+        :type key: int
+        :type value: int
+        :rtype: None
+        """
+        hash_first = self.hashMod(key)
+        hash_second = self.hashDiv(key)
+        if self.hashMap[hash_first] == -1:
+            if hash_first == 0:
+                self.hashMap[hash_first] = [-1]*(self.size+1)
+            else:
+                self.hashMap[hash_first] = [-1]*(self.size)
+        self.hashMap[hash_first][hash_second] = value
+
+    def get(self, key):
+        """
+        :type key: int
+        :rtype: int
+        """
+        hash_first = self.hashMod(key)
+        if self.hashMap[hash_first] != -1:
+            hash_second = self.hashDiv(key)
+            if self.hashMap[hash_first][hash_second] != -1:
+                return self.hashMap[hash_first][hash_second]
+        return -1
+
+    def remove(self, key):
+        """
+        :type key: int
+        :rtype: None
+        """
+        if self.get(key) != -1:
+            hash_first = self.hashMod(key)
+            hash_second = self.hashDiv(key)
+            self.hashMap[hash_first][hash_second] = -1
+    
+    def hashMod(self,key):
+        return key % self.size
+    
+    def hashDiv(self,key):
+        return key // self.size
+
+
+# Your MyHashMap object will be instantiated and called as such:
+# obj = MyHashMap()
+# obj.put(key,value)
+# param_2 = obj.get(key)
+# obj.remove(key)
