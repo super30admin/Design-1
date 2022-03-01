@@ -1,3 +1,16 @@
+// Time Complexity : All the operations are done in O(1)
+// Space Complexity : O(n)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+
+// Your code here along with comments explaining your approach
+/* APPROACH:
+All the operations could be done in O(1) except the getMin. For that we maintaine a separate stack in which only values that are less than it's peak value get added.
+Now to maintain what value gets invalid when popped from the stack, we maintain a size parameter.
+If while popping value from stack, the size of the original stack gets less than the MinStack's peek value, then only we pop from MinStack.
+ */
+
 import java.util.ArrayDeque;
 import java.util.Deque;
 
