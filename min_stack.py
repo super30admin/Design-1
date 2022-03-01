@@ -1,3 +1,7 @@
+# Time Complexity O(1) for all operation except the finding minimum
+# Space Complexity O(n) overall
+# Issues -> Getting the minimum value in O(1) time frame
+
 class MinStack:
 
     def __init__(self):
