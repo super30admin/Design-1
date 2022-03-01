@@ -1,7 +1,7 @@
 #Time complexity: All operations are O(1).
 #Space Complexity: O(n).
 
-#I implemented the stack in such a way that whenever push operatioin is called, element along with current smallest element is added to the stack.
+#I implemented the stack in such a way that whenever push operation is called element along with current smallest element is added to the stack.
 #[[val,smallest_val]]
 
 
