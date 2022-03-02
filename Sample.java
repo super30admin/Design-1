@@ -50,4 +50,74 @@ class MinStack {
     }
 
 }
+//Implement hashmap without using built in hash table libraries
+//LeetCode tested
 
+
+class MyHashMap {
+    LinkedList<Element>[] map;
+    public static int SIZE = 769;
+    public MyHashMap() {
+        map = new LinkedList[SIZE];
+    }
+
+    public void put(int key, int value) {
+        int bucket = key % SIZE;
+        if(map[bucket] == null){
+            map[bucket] = new LinkedList<Element>();
+            map[bucket].add(new Element(key,value));
+        }else{
+            for (Element element:map[bucket]) {
+                if(element.key == key){
+                    element.value = value;
+                    return;
+                }
+            }
+            map[bucket].add(new Element(key,value));
+        }
+    }
+
+    public int get(int key) {
+        int bucket = key % SIZE;
+        LinkedList<Element> currentBucket = map[bucket];
+        if(currentBucket == null) return -1;
+        for (Element element:currentBucket) {
+            if(element.key == key) return element.value;
+        }
+        return -1;
+    }
+
+    public void remove(int key) {
+        int bucket = key % SIZE;
+        if(map[bucket] == null) return;
+        else{
+            Element removedElement = null;
+            for (Element element:map[bucket]) {
+                if(element.key == key)
+                    removedElement = element;
+            }
+            if(removedElement != null){
+                map[bucket].remove(removedElement);
+            }
+        }
+    }
+}
+
+class Element{
+    public int key;
+    public int value;
+
+    public Element(int key,int value){
+        this.key = key;
+        this.value = value;
+    }
+}
+
+
+/**
+ * Your MyHashMap object will be instantiated and called as such:
+ * MyHashMap obj = new MyHashMap();
+ * obj.put(key,value);
+ * int param_2 = obj.get(key);
+ * obj.remove(key);
+ */
