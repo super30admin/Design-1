@@ -13,6 +13,9 @@ const (
 // either I ran an o(n) loop to make defaults all -1 instead of 0( which collides with value being 0)
 // or
 // use a ptr to figure out whether a key exists or not
+// had to use a custom type for type assertion
+// because I could not figure how to initialize nested
+// fixed sized array in golang without pre-allocating initially
 type myIntVal *int
 type MyHashMap struct {
 	items [bucketSize]interface{}
