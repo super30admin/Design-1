@@ -7,42 +7,52 @@
 
 var MinStack = function () {
   this.stack = [];
-  this.currentIndex = 0;
-}; //O(1)
+  this.minStack = [];
+  this.min = Number.MAX_VALUE;
+  this.minStack.push(this.min);
+};
 
 /**
  * @param {number} val
  * @return {void}
  */
 MinStack.prototype.push = function (val) {
-  this.stack[this.currentIndex] = val;
-  this.currentIndex++;
-}; //O(1)
+  this.stack.push(val);
+  this.min = Math.min(this.min, val);
+  this.minStack.push(this.min);
+};
 
 /**
  * @return {void}
  */
 MinStack.prototype.pop = function () {
-  this.currentIndex -= 1;
-}; //O(1)
+  this.stack.pop();
+  this.minStack.pop();
+  this.min = this.minStack[this.minStack.length - 1];
+};
 
 /**
  * @return {number}
  */
 MinStack.prototype.top = function () {
-  return this.stack[this.currentIndex - 1];
-}; //O(1)
+  return this.stack[this.stack.length - 1];
+};
 
 /**
  * @return {number}
  */
 MinStack.prototype.getMin = function () {
-  let min = 99999999999999999999;
-  for (let i = this.currentIndex - 1; i >= 0; i--) {
-    min = this.stack[i] <= min ? this.stack[i] : min;
-  }
-  return min;
-}; //O(n)
+  return this.min;
+};
+
+/**
+ * Your MinStack object will be instantiated and called as such:
+ * var obj = new MinStack()
+ * obj.push(val)
+ * obj.pop()
+ * var param_3 = obj.top()
+ * var param_4 = obj.getMin()
+ */
 
 /**
  * Your MinStack object will be instantiated and called as such:
