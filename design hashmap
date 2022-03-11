@@ -1,0 +1,57 @@
+#space complexity: O(n)
+#time complexity: O(n)
+
+class bucket:
+    def __init__(self):
+        self.bucket = []
+        
+    def update(self, key:int,value:int) -> None:
+        flag=0
+        for i,kv in enumerate(self.bucket):
+            if(kv[0]==key):
+                self.bucket[i]=(key,value)
+                flag=1
+        if flag==0:
+            self.bucket.append((key,value))
+            print(self.bucket)
+        
+    
+    def get(self, key: int) ->int:
+        
+        for i,kv in enumerate(self.bucket):
+            if kv[0]==key:
+                print(kv)
+                return kv[1]
+            
+        return -1
+    
+    def remove(self, key:int) -> None:
+        for i,kv in enumerate(self.bucket):
+            if kv[0]== key:
+                del self.bucket[i]
+        
+
+class MyHashMap:
+
+    def __init__(self):
+        self.space=2069
+        self.hashtable = [bucket() for i in range (self.space)]
+
+    def put(self, key: int, value: int) -> None:
+        bk=key%self.space
+        self.hashtable[bk].update(key,value)
+
+    def get(self, key: int) -> int:
+        bk=key%self.space
+        return self.hashtable[bk].get(key)
+
+    def remove(self, key: int) -> None:
+        bk=key%self.space
+        self.hashtable[bk].remove(key)
+
+
+# Your MyHashMap object will be instantiated and called as such:
+# obj = MyHashMap()
+# obj.put(key,value)
+# param_2 = obj.get(key)
+# obj.remove(key)
