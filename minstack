@@ -1,0 +1,51 @@
+#time complexity: O(1)
+#space complexity : O(n)
+
+#solution 1 using one stack
+
+class MinStack:
+
+    def __init__(self):
+        self.st = []
+        self.min = float('inf')
+        
+
+    def push(self, val: int) -> None:
+        if(val<=self.min):
+            self.st.append(self.min)
+            self.min=val
+        self.st.append(val)
+
+    def pop(self) -> None:
+        if(self.min==self.st.pop()):
+            self.min=self.st.pop()
+
+    def top(self) -> int:
+        return self.st[-1]    
+
+    def getMin(self) -> int:
+        return self.min
+
+#solution 2 using 2 stacks:
+
+class MinStack:
+
+    def __init__(self):
+        self.stack = []
+        
+
+    def push(self, val: int) -> None:
+        if not self.stack:
+            self.stack.append((val,val))
+            return
+        currmin=self.stack[-1][1]
+        self.stack.append((val,min(val,currmin)))
+
+    def pop(self) -> None:
+        self.stack.pop()
+
+    def top(self) -> int:
+        return self.stack[-1][0]    
+
+    def getMin(self) -> int:
+        return self.stack[-1][1]
