@@ -142,13 +142,13 @@ class MyHashMap {
         for(Node node : obj.nodes) {
             System.out.println("node = " + node);
         }
-        // obj.put(0,0);
-        // obj.put(1,111);
+        obj.put(0,0);
+        obj.put(1,111);
         obj.put(2,222);
-        // obj.put(3,333);
-        //obj.put(4,444);
-        // obj.put(5,555);
-        // obj.put(6,666);
+        obj.put(3,333);
+        obj.put(4,444);
+        obj.put(5,555);
+        obj.put(6,666);
         obj.put(7,777);
 
         obj.put(2, 313);
