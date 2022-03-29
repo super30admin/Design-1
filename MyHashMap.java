@@ -24,6 +24,17 @@ class MyHashMap {
                     ", next=" + next +
                     '}';
         }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            Node node = (Node) o;
+
+            return key == node.key;
+        }
+
     }
 
     Node[] nodes;
@@ -76,7 +87,7 @@ class MyHashMap {
             Node tempNode = head.next;
 
             while(tempNode != null && tempNode.next != null) {
-                if(tempNode.key == nodeToInsert.key){
+                if(tempNode.equals(nodeToInsert)){
                     System.out.println("Key already exists. So, updating it.");
                     tempNode.value = nodeToInsert.value;
                     return head;
@@ -84,7 +95,7 @@ class MyHashMap {
                 tempNode = tempNode.next;
             }
 
-            if(tempNode != null && tempNode.key == nodeToInsert.key) {
+            if(tempNode != null && tempNode.equals(nodeToInsert)) {
                 System.out.println("Key already exists. So, updating it.");
                 tempNode.value = nodeToInsert.value;
                 return head;
