@@ -14,6 +14,8 @@ public class MinStack {
     public void push(int val) {
         inputStack.push(val);
 
+        // If input value matches with the top of the stack (duplicate min value), still add it.
+        // Otherwise, minStack will be empty but input stack will still hold the min value.
         if(minStack.isEmpty() || val <= minStack.peek()) {
             minStack.push(val);
         }
