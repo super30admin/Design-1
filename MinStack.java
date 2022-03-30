@@ -1,6 +1,6 @@
 package design1;
-//time complexity: 0(1)
-//space complexity: 0(n)
+//time complexity: O(1)
+//space complexity: O(n)
 import java.util.Stack;
 
 class MinStack {
