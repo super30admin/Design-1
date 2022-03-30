@@ -1,7 +1,3 @@
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-
 // Time Complexity :
 // Space Complexity :
 // Did this code successfully run on Leetcode :
@@ -10,49 +6,47 @@ import java.util.List;
 
 // Your code here along with comments explaining your approach
 
-class myBucket{
-    int MAX_VALUE = 100000;
-    int array_size =100;
-    List<List<Integer>> parentList;
+class myBucket {
+    boolean [][] bucketList;
+    int buckets;
+    int bucketItems;
 
     public myBucket(){
-        parentList = new ArrayList<>(array_size);
-        for(int i=0;i<array_size;i++){
-            parentList.add(null);
-        }
+        buckets = 1000;
+        bucketItems = 1000;
+        bucketList = new boolean[buckets][];
     }
 
     public void add(int key){
-        int index = key % array_size;
-        List<Integer> childList = parentList.get(index);
-        if(childList == null){
-            List<Integer> list = new LinkedList<>();
-            list.add(key);
-            parentList.set(index, list);
-        }
-        else{
-            if(!childList.contains(key)){
-                childList.add(key);
+        int bucket = key % buckets;
+        int bucketItem = key / bucketItems;
+        if(bucketList[bucket] == null){
+            if(bucket == 0){
+                bucketList[bucket] = new boolean[bucketItems+1];
+            }
+            else{
+                bucketList[bucket] = new boolean[bucketItems];
             }
         }
+        bucketList[bucket][bucketItem] = true;
     }
 
     public void remove(int key){
-        int index = key % array_size;
-        List<Integer> childList = parentList.get(index);
-        if(childList != null){
-            childList.remove(Integer.valueOf(index));
+        int bucket = key % buckets;
+        int bucketItem = key / bucketItems;
+        if(bucketList[bucket]== null){
+            return;
         }
+        bucketList[bucket][bucketItem] = false;
     }
 
     public boolean contains(int key){
-        boolean res = false;
-        int index = key % array_size;
-        List<Integer> childList = parentList.get(index);
-        if(childList != null && childList.contains(key)){
-            res = true;
+        int bucket = key % buckets;
+        int bucketItem = key / bucketItems;
+        if(bucketList[bucket]== null){
+            return false;
         }
-        return res;
+        return bucketList[bucket][bucketItem];
     }
 
     public static void main(String[] args) {
