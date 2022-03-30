@@ -8,7 +8,7 @@
 """
 Time complexity of Hash Set with a perfect hashing function is O(1),
 but to save space, we create double hashing to avoid occurences of collision, constant access time
-and less wastage of memory
+and less wastage of memory, so Space complexity is O(n^(1/2))
 """
 class MyHashSet:
 
