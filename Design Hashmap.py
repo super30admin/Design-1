@@ -1,53 +1,63 @@
-# Time Complexity : O(1)
-# Space Complexity :O(N) where N is the number of elements
+# We consciously take a decision, that the length of the linked list will
+# not be 1000 but 10000 becaues each node will have 100 elements this way
+# which is still possible to go through in case of collisions.
+
+# Time Complexity = O(1)
+# Space Complexity = O(N)
 # Did this code successfully run on Leetcode : Yes. It got accepted, without any errors.
-# Any problem you faced while coding this :Usually with the initialization which is the constructor.
-# Don't know if it's still the right one.
+# Any problem you faced while coding this : None
 
 
-# Your code here along with comments explaining your approach
-class MyHashSet:
+class Node:
+    def __init__(self, key):
+        self.key = key
+        self.val = None
+        self.next = None
+
+
+class MyHashMap:
+
+    SIZE = 10000
 
     def __init__(self):
-        self.buckets = 1000
-        self.bucketItems = 1000
-        self.storage = [False for i in range(self.buckets)]
+        self.listValue = [Node(-1) for _ in range(self.SIZE)]
 
-    def getBucket(self, key: int) -> int:
-        return key % self.buckets
+    def put(self, key: int, value: int) -> None:
+        head = self.listValue[key % self.SIZE]
+        current = head.next
+        while current:
+            if current.key == key:
+                break
+            current = current.next
+        else:
+            current = Node(key)
+            current.next = head.next
+            head.next = current
+        current.val = value
 
-    def getBucketItem(self, key: int) -> int:
-        return key // self.bucketItems
-
-    def add(self, key: int) -> None:
-        bucket = self.getBucket(key)
-        bucketItem = self.getBucketItem(key)
-        if(self.storage[bucket] == False):
-            if(bucket == 0):
-                self.storage[bucket] = [
-                    False for i in range(self.bucketItems + 1)]
-
-            else:
-                self.storage[bucket] = [False for i in range(self.bucketItems)]
-        self.storage[bucket][bucketItem] = True
+    def get(self, key: int) -> int:
+        current = self.listValue[key % self.SIZE].next
+        while current:
+            if current.key == key:
+                break
+            current = current.next
+        else:
+            return -1
+        return current.val
 
     def remove(self, key: int) -> None:
-        bucket = self.getBucket(key)
-        bucketItem = self.getBucketItem(key)
-        if(self.storage[bucket] == False):
-            return
-        self.storage[bucket][bucketItem] = False
-
-    def contains(self, key: int) -> bool:
-        bucket = self.getBucket(key)
-        bucketItem = self.getBucketItem(key)
-        if(self.storage[bucket] == False):
-            return False
-        return self.storage[bucket][bucketItem]
+        current = self.listValue[key % self.SIZE]
+        while current and current.next:
+            if current.next.key == key:
+                break
+            current = current.next
+        else:
+            return None
+        current.next = current.next.next
 
 
-# Your MyHashSet object will be instantiated and called as such:
-# obj = MyHashSet()
-# obj.add(key)
+# Your MyHashMap object will be instantiated and called as such:
+# obj = MyHashMap()
+# obj.put(key,value)
+# param_2 = obj.get(key)
 # obj.remove(key)
-# param_3 = obj.contains(key)
