@@ -1,0 +1,60 @@
+class Node(object):
+    def __init__(self,key):
+        self.key = key
+        self.next = None
+
+class MyHashSet:
+
+    def __init__(self):
+        self.array = [None for i in range(1000)]
+        
+    def getIndex(self,key):
+        index = key % 1000
+        return index
+    
+    def getElement(self,key):
+        index = self.getIndex(key)
+        
+        if self.array[index] == None:
+            dummyNode = Node(-1)
+            self.array[index] = dummyNode
+            return dummyNode
+        
+        currentNode = self.array[index]
+        
+        while currentNode.next != None:
+            if currentNode.next.key == key:
+                return currentNode
+            currentNode = currentNode.next
+        return currentNode
+            
+    def add(self, key: int) -> None:
+        
+        currentNode = self.getElement(key)
+        
+        if currentNode.next == None:
+            currentNode.next = Node(key)
+        return  
+
+    def remove(self, key: int) -> None:
+        
+        currentNode = self.getElement(key)
+        
+        if currentNode.next != None:
+            currentNode.next = currentNode.next.next
+        return
+        
+    def contains(self, key: int) -> bool:
+        currentNode = self.getElement(key)
+        
+        if currentNode.next == None:
+            return False
+        else: 
+            return True
+        
+
+# Your MyHashSet object will be instantiated and called as such:
+# obj = MyHashSet()
+# obj.add(key)
+# obj.remove(key)
+# param_3 = obj.contains(key)
