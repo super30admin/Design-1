@@ -1,6 +1,6 @@
 #Problem 2: Minstack
 # // Time Complexity : O(1)
-# // Space Complexity : O(1)
+# // Space Complexity : O(N) as it is adding all the values to the stack
 # // Did this code successfully run on Leetcode :yes
 # // Any problem you faced while coding this :no
 
@@ -29,6 +29,7 @@ class Minstack():
     def getMin(self):
         return ( self.min)
 
+#testing
 minStack = Minstack()
 minStack.push(-2)
 minStack.push(0)
