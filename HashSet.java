@@ -1,4 +1,8 @@
-// here we used Technique of Double Hashing, there methods such as LL,BBST,       Linear probing
+// Time Complexity : o(1) for all operations
+// Space Complexity : o(n) -> for n keys we shall be using n bucket items in memory
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : no
+// here we used Technique of Double Hashing, there methods such as LL,BBST, Linear probing
 class MyHashSet {
 
     int buckets,bucketItems;
