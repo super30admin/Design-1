@@ -51,16 +51,28 @@ public:
  * int param_4 = obj->getMin();
  */
 
- //
  class MyHashSet {
     bool **storage;
     int buckets;
     int bucketItems;
 public:
     MyHashSet() {
-        buckets  = 1000;
+         buckets = 1000;
         bucketItems = 1000;
-        storage = new bool*[buckets];
+        storage =  new bool*[buckets];
+       for (int i=0;i<buckets;++i) {
+           storage[i] = NULL;
+       }
+    }
+    
+    ~MyHashSet(){
+    //Free each sub-array
+    for(int i = 0; i < buckets; ++i) {
+        delete[] storage[i];   
+    }
+        
+    //Free the array of pointers
+      delete[] storage;
     }
     
     void add(int key) {
@@ -69,8 +81,15 @@ public:
         if (storage[bucket] == NULL) {
             if(bucket == 0) {
                  storage[bucket] = new bool[bucketItems + 1];
+                
+                for (int i=0;i<(bucketItems + 1);++i) {
+                    storage[bucket][i] = false;
+                }
             } else {
                  storage[bucket] = new bool[bucketItems];
+                for (int i=0;i<(bucketItems);++i) {
+                    storage[bucket][i] = false;
+                }
             }
         }
         
