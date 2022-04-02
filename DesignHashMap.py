@@ -3,7 +3,7 @@
 # Did this code successfully run on Leetcode : Yes
 # Any problem you faced while coding this : No
 
-
+# Can be further optimised by sorting the linkedlist possibly using a previous pointer
 class Node(object):
     def __init__(self,key,value):
         self.key = key
