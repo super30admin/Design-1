@@ -1,52 +1,47 @@
-import java.util.*;
+import java.util.Stack;
 
-class MyQueue {
-    Stack<Integer> in;
-    Stack<Integer> out;
+class MinStack{
+    int minValue;
+    Stack<Integer> stack;
+    Stack<Integer> min;
 
-    public MyQueue() {
-        in = new Stack<>();
-        out = new Stack<>();
-        
+    public MinStack(){
+        minValue = Integer.MAX_VALUE;
+        stack = new Stack<>();
+        min = new Stack<>();
+        min.push(minValue);
     }
     
-    public void push(int x) {
-        in.push(x);
-        
-    }
-    
-    public int pop() {
-        if(out.isEmpty()){
-            while(!in.isEmpty()){
-                out.push(in.pop());
-            }
+
+    public void push(int val){
+        if(val <= minValue){
+            minValue = val;
         }
-        return out.pop();
+        stack.push(val);
+        min.push(minValue);
     }
-    
-    public int peek() {
-        if(out.isEmpty()){
-            while(!in.isEmpty()){
-                out.push(in.pop());
-            }
-        }
-        return out.peek();
+
+    public void pop(){
+        stack.pop();
+        min.pop();
+        minValue = min.peek();
     }
-    
-    public boolean empty() {
-        boolean res = false;
-        if(out.isEmpty() && in.isEmpty()){
-            res = true;
-        }
-        return res;
+
+    public int top(){
+        return stack.peek();
+    }
+
+    public int getMin(){
+        return min.peek();
     }
 
     public static void main(String[] args) {
-        MyQueue myQueue = new MyQueue();
-        myQueue.push(1); // queue is: [1]
-        myQueue.push(2); // queue is: [1, 2] (leftmost is front of the queue)
-        System.out.println(myQueue.peek()); // return 1
-        System.out.println(myQueue.pop()); // return 1, queue is [2]
-        System.out.println(myQueue.empty()); // return false
+        MinStack minStack = new MinStack();
+        minStack.push(-2);
+        minStack.push(0);
+        minStack.push(-3);
+        System.out.println(minStack.getMin());
+        minStack.pop();
+        System.out.println(minStack.top());
     }
 }
