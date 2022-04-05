@@ -1,3 +1,6 @@
+//Time Complexity O(logn)
+//Space Complexity O(1)
+
 class MyHashMap {
     class Node {
         int key, value;

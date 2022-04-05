@@ -1,5 +1,8 @@
 import java.util.Stack;
 
+//Time Complexity O(1)
+//Space Complexity O(1)
+
 class MinStack {
 
     int min;
