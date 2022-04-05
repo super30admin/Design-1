@@ -1,6 +1,8 @@
 /**
 
 Problem: Design a hash map.
+https://leetcode.com/problems/design-hashmap/
+
 Solution:
 
 A hashmap can be designed using an array. Collisions are handled using linked lists.

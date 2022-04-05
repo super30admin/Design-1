@@ -1,6 +1,7 @@
 /**
 
 Problem: Design a SplStack that supports all the stack operations push, pop, isEmpty, isFull and an operation getMin() which should return minimum element from the SplStack. All these operations must be O(1). To implement this, you should only use standard Stack data structure.
+https://leetcode.com/problems/min-stack/
 Solution:
 
 Implemented stack by creating a 'Node' data structure that stores the current value, the minimum value, and a pointer to the next element (node);
