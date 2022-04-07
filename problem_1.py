@@ -1,3 +1,8 @@
+'''https://leetcode.com/problems/min-stack
+ Design a SplStack that supports all the stack operations push, pop, 
+ isEmpty, isFull and an operation getMin() which should return 
+ minimum element from the SplStack. All these operations must be O(1).
+'''
 # Time Complexity : O(1) all operations
 # Space Complexity : O(N) for N elements inserted to Stack
 # Did this code successfully run on Leetcode : Yes

@@ -68,7 +68,7 @@ class MyHashMap_UsingLinkedList:
         return key % self.max
     
     
-    def _search(self, head, key): # search LinkedList for a key (pair[0])
+    def _search(self, head, key): # search LinkedList for a key
         prev = head # (-1, -1) pair dummy node
         current = head.next # first actial pair node
         while current is not None and current.key != key:
