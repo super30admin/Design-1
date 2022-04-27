@@ -1,126 +1,72 @@
 ﻿
 namespace Algorithms
 {
-
+    /// Time Complexity : O(1)
+    // Space Complexity :O(1)
+    // Did this code successfully run on Leetcode :Yes
+    // Any problem you faced while coding this :  Based on the discussion in class
     public class MyHashSet
     {
-        static int MAX_SIZE = 1000000;
-        static int ARRAY_SIZE = 100;
-        LinkedListHash[] parentList;
+        bool[][] storage;
+        int buckets;
+        int bucketItems;
 
         public MyHashSet()
         {
-            parentList = new LinkedListHash[ARRAY_SIZE];
-            for(int i = 0;i < ARRAY_SIZE; i++)
+            this.buckets = 1000;
+            this.bucketItems = 1000;
+            this.storage = new bool[buckets][];
+            for (int i = 0; i < buckets; i++)
             {
-                parentList[i] = null;
+                storage[i] = null;
             }
         }
 
-        int getIndex(int key)
+        int getBucketIndex(int key)
         {
-            return key % ARRAY_SIZE;
+            return (key % buckets);
+        }
+
+        int getBucketItemIndex(int key)
+        {
+            return (key / bucketItems);
         }
 
         public void Add(int key)
         {
-            int index = getIndex(key);
-            LinkedListHash childList = parentList[index];
-            if(childList == null)
+            int bucketIndex = getBucketIndex(key);
+            int bucketItemIndex = getBucketItemIndex(key);
+            if(storage[bucketIndex] == null)
             {
-                LinkedListHash list = new LinkedListHash();
-                list.add(key);
-                parentList[index] = list;
-            }
-            else
-            {
-                if (!childList.Contains(key))
+                if(bucketIndex == 0)
                 {
-                    childList.add(key);
+                    this.storage[bucketIndex] = new bool[bucketItems + 1];
+                }
+                else
+                {
+                    this.storage[bucketIndex] = new bool[bucketItems];
                 }
             }
+            this.storage[bucketIndex][bucketItemIndex] = true;
         }
 
         public void Remove(int key)
         {
-            int index = getIndex(key);
-            LinkedListHash chiildList = parentList[index];
-            if(chiildList != null)
-            {
-                chiildList.delete(key);
-            }
+            int bucketIndex = getBucketIndex(key);
+            int bucketItemIndex = getBucketItemIndex(key);
+
+            if (this.storage[bucketIndex] == null) return;
+            this.storage[bucketIndex][bucketItemIndex] = false;
         }
 
         public bool Contains(int key)
         {
-            int index = getIndex(key);
-            LinkedListHash childList = parentList[index];
-            bool result = false;
-            if(childList != null)
-            {
-                result =  childList.Contains(key);
-            }
-            return result;
+            int bucketIndex = getBucketIndex(key);
+            int bucketItemIndex = getBucketItemIndex(key);
+            if (this.storage[bucketIndex] == null) return false;
+            return this.storage[bucketIndex][bucketItemIndex];
         }
 
-        public class LinkedListHash
-        {
-            Node head; // head of linked list 
-
-            /* Linked list node */
-            class Node
-            {
-                public int data;
-                public Node next;
-                public Node(int d)
-                {
-                    data = d;
-                    next = null;
-                }
-            }
-
-
-            public void add(int new_data)
-            {
-                Node new_node = new Node(new_data);
-                new_node.next = head;
-                head = new_node;
-            }
-
-            public void delete(int key)
-            {
-                Node temp = head, prev = null;
-                if(temp != null && temp.data == key)
-                {
-                    head = temp.next;
-                    return;
-                }
-
-                while(temp != null && temp.data == key)
-                {
-                    prev = temp;
-                    temp = temp.next;
-                }
-                if(temp == null)
-                {
-                    return;
-                }
-                prev.next = temp.next;
-            }
-
-            public bool Contains(int data)
-            {
-                Node current = head;
-                while (current != null)
-                {
-                    if(current.data == data)
-                    {
-                        return true;
-                    }
-                    current = current.next;
-                }
-                return false;
-            }
-        }
+        
     }
 }
