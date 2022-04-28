@@ -1,3 +1,5 @@
+#Time complexity: O(1)
+#Space complexity: O(n)
 class MyHashMap:
 
     def __init__(self):
