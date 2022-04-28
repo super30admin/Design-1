@@ -1,3 +1,5 @@
+import java.util.*;
+
 class MyHashMap {
   class Node {
     int key;
