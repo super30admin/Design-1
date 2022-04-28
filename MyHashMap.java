@@ -89,6 +89,7 @@ class MyHashMap {
 
     hashMap.put(2, 4); // update the existing value
 
+    System.out.println(hashMap.get(2));
     hashMap.get(2); // returns 4
 
     hashMap.remove(2); // remove the mapping for 2
