@@ -4,8 +4,8 @@ class MinStack {
     //Two stack solution
     // Time complexity is O(1)
     // Space Complexity is O(n)
-    // SOlution is submitted to leetcode with no errors
-    
+    // Solution is submitted to leetcode with no errors
+
     private Stack<Integer> inStack;
     private Stack<Integer> minStack;
     int min;
