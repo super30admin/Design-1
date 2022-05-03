@@ -1,0 +1,87 @@
+/* class MinStack {
+    
+    Stack<Integer> inStack;
+    Stack<Integer> minStack; // Auxiliary data structure
+    int min;
+
+    public MinStack() 
+    {
+        inStack = new Stack<>();
+        minStack =  new Stack<>();
+        min = Integer.MAX_VALUE;;
+        minStack.push(min);
+    }
+    
+    public void push(int val) 
+    {
+        min = Math.min(min,val);
+      inStack.push(val);
+        minStack.push(min);
+        
+        
+    }
+    
+    public void pop() 
+    {
+        inStack.pop();
+        minStack.pop();
+        min = minStack.peek();
+    }
+    
+    public int top() 
+    {
+     return inStack.peek();   
+    }
+    
+    public int getMin() 
+    {
+        return minStack.peek();
+    }
+}*/
+
+
+// Single Stack Implementation
+class MinStack {
+    
+    Stack<Integer> inStack;
+    int min;
+
+    public MinStack() 
+    {
+        inStack = new Stack<>();
+        min = Integer.MAX_VALUE;;
+        //inStack.push(min);
+    }
+    
+    public void push(int val) 
+    {
+        // Check if min is changing
+        if(val<=min)
+        {
+            inStack.push(min);
+        min = val;
+        }
+        inStack.push(val);
+
+        
+        
+    }
+    
+    public void pop() 
+    {
+        if(inStack.pop() == min)
+        {
+            min = inStack.pop();
+        }
+    }
+    
+    public int top() 
+    {
+     return inStack.peek();   
+    }
+    
+    public int getMin() 
+    {
+        return min;
+    }
+}
