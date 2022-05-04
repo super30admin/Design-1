@@ -1,0 +1,46 @@
+// time complexity is O(1)  for pop,push,top and getMin
+// Space complexity is O(2n) same as O(n) for using 2 stacks
+class MinStack {
+    private Stack<Integer> st;
+    private Stack<Integer> minst;
+
+    public MinStack() {
+        st= new Stack<>();
+        minst=new Stack<>();
+    }
+    
+    public void push(int val) {
+        st.push(val);
+        int min=val;
+        if(!minst.empty())
+        {
+            if(min>minst.peek())
+            {
+                min=minst.peek();
+            }
+        }
+        minst.push(min);
+    }
+    
+    public void pop() {
+        st.pop();
+        minst.pop();
+    }
+    
+    public int top() {
+        return st.peek();
+    }
+    
+    public int getMin() {
+        return minst.peek();
+    }
+}
+
+/**
+ * Your MinStack object will be instantiated and called as such:
+ * MinStack obj = new MinStack();
+ * obj.push(val);
+ * obj.pop();
+ * int param_3 = obj.top();
+ * int param_4 = obj.getMin();
+ */
