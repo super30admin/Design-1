@@ -1,0 +1,77 @@
+class MyHashSet {
+    
+    int buckets;
+    int bucket_items ;
+    
+    private boolean [][] storage ;
+    
+
+    // hash for findign bucket
+    
+    private int bucket(int key)
+    {
+        return key % buckets;
+    }
+    
+     private int bucket_item(int key)
+    {
+        return key / buckets;
+    }
+    public MyHashSet()
+    {
+        this.buckets = 1000;
+        this.bucket_items = 1000;
+        this.storage = new boolean[buckets][];
+        
+    }
+    
+    public void add(int key) 
+    {
+        int bucket = bucket(key);
+        int bucket_item = bucket_item(key);
+        if(storage[bucket] == null)
+        {
+            if(bucket == 0)
+            {
+                storage[bucket] = new boolean[bucket_items + 1];
+            }
+            else
+            {
+                storage[bucket] = new boolean[bucket_items];
+            }
+        }
+        
+        storage[bucket][bucket_item] = true;
+    }
+    
+    public void remove(int key) 
+    {
+        int bucket = bucket(key);
+        int bucket_item = bucket_item(key);
+        if(storage[bucket] == null)
+        {
+            return;
+        }
+        storage[bucket][bucket_item] = false;
+        
+    }
+    
+    public boolean contains(int key) 
+    {
+        int bucket = bucket(key);
+        int bucket_item = bucket_item(key);
+         if(storage[bucket] == null)
+        {
+            return false;
+        }
+        return storage[bucket][bucket_item];
+    }
+}
+
+/**
+ * Your MyHashSet object will be instantiated and called as such:
+ * MyHashSet obj = new MyHashSet();
+ * obj.add(key);
+ * obj.remove(key);
+ * boolean param_3 = obj.contains(key);
+ */
