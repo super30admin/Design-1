@@ -1,6 +1,7 @@
 import java.io.*;
 import java.lang.*;
-
+//Time complexity: O(1)
+//Space complexity: O(n)
 class MinStack {
     Stack<Integer> st=new Stack<>();
     Stack<Integer> minst=new Stack<>();
