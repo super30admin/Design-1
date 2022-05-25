@@ -9,7 +9,7 @@ class MinStack:
     if len(self.l) <= self.size:
       self.l.append([val, min(val, self.m)])
     else:
-      print("Stack is at its capacity")
+      print("Stack is at it's capacity")
 
 
   def pop(self) -> None:
