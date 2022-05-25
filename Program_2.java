@@ -1,5 +1,5 @@
 /******************************************************************************
-// Time Complexity : O(N)
+// Time Complexity : O(2N)
 // Space Complexity : O(1)
 *******************************************************************************/
 import java.io.*;
@@ -7,21 +7,26 @@ import java.util.*;
 
 public class Main
 {
-   
+    Stack<Integer> mainStack;
+	Stack<Integer> minStack;
+    Main()
+    {
+       mainStack = new Stack<Integer>();
+	   minStack = new Stack<Integer>();
+    }
 	public static void main(String[] args) 
 	{
 	    Main program = new Main();
-		Stack<Integer> mainStack = new Stack<Integer>();
-		Stack<Integer> minStack = new Stack<Integer>();
-	    program.Add_Element(2,mainStack,minStack);
-	    program.Add_Element(0,mainStack,minStack);
-	    program.Add_Element(3,mainStack,minStack);
-	    System.out.println(program.getMin(mainStack,minStack));
-	    int deletedElement = program.Delete_Element(mainStack,minStack);
+		
+	    program.Add_Element(2);
+	    program.Add_Element(0);
+	    program.Add_Element(3);
+	    System.out.println(program.getMin());
+	    int deletedElement = program.Delete_Element();
 	    System.out.println(deletedElement); 
-	    System.out.println(program.getMin(mainStack,minStack));
+	    System.out.println(program.getMin());
 	}
-	void Add_Element(int val,Stack<Integer> mainStack,Stack<Integer> minStack)
+	void Add_Element(int val)
 	{
 	    mainStack.push(val);
 	    if(minStack.size() == 0 || val <= minStack.peek())
@@ -29,7 +34,7 @@ public class Main
 	}
 	
 	
-	int getMin(Stack<Integer> mainStack , Stack<Integer> minStack)
+	int getMin()
 	{
 	    if(minStack.size() == 0)
 	    {
@@ -38,7 +43,7 @@ public class Main
 	   int element = minStack.peek();
 	   return element;
 	}
-	int Delete_Element(Stack<Integer> mainStack , Stack<Integer> minStack)
+	int Delete_Element()
 	{
 	    if(mainStack.size() == 0)
 	    {
