@@ -1,5 +1,5 @@
 /*Time Complexity for push, pop and top operations: O(1)
- *Space Complexity : O(1) as we do not consider stacks used inside the constructor. So, there is no auxiliary space.
+ *Space Complexity : O(N)
  *Did this code successfully run on Leetcode :Yes
  */
 
