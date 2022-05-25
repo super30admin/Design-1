@@ -6,13 +6,13 @@
 // Did this code successfully run on Leetcode : yes
 // Any problem you faced while coding this : NO
 
-class MyHashSet {
+class MyHashMap {
     
     private boolean [][] storage;
     int buckets;
     int bucketlists;
 
-    public MyHashSet() {
+    public MyHashMap() {
         buckets=1000;
         bucketlists=1000;
       //Not inititalizing the secondary array here itself to save the space;
