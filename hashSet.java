@@ -1,54 +1,28 @@
-import java.io.*;
-import java.lang.*;
-
-class MyHashSet {
-    //Time complexity O(1) for all operations
-    int bucket=1000;
-    int bucketItems=1000;
-    boolean[][] storage=new boolean[bucket][];
-    public int bucket(int value){
-        return value%bucket;
-    }
-    public int bucketItem(int value){
-        return value/bucket;
-    }
-    public MyHashSet() {
-      
+class MyHashMap {
+    //Time complexity:O(1)
+    //Space complexity: O(n)
+    int[] arr=new int[1000001];
+    public MyHashMap() {
+        Arrays.fill(arr,-1);
     }
     
-    public void add(int key) {
-        int bucket=bucket(key);
-        int bucketItem=bucketItem(key);
-        if(storage[bucket]==null){
-            if(bucket==0){
-                storage[bucket]=new boolean[bucketItems+1];
-            }
-            else{
-                storage[bucket]=new boolean[bucketItems];
-            }
-        }
-        storage[bucket][bucketItem]=true;
+    public void put(int key, int value) {
+        arr[key]=value;
+    }
+    
+    public int get(int key) {
+        return arr[key];
     }
     
     public void remove(int key) {
-        int bucket=bucket(key);
-        int bucketItem=bucketItem(key);
-        if(storage[bucket]!=null){
-            storage[bucket][bucketItem]=false;
-        } 
-    }
-    
-    public boolean contains(int key) {
-        int bucket=bucket(key);
-        int bucketItem=bucketItem(key);
-        return storage[bucket]!=null && storage[bucket][bucketItem];
+        arr[key]=-1;
     }
 }
 
 /**
- * Your MyHashSet object will be instantiated and called as such:
- * MyHashSet obj = new MyHashSet();
- * obj.add(key);
+ * Your MyHashMap object will be instantiated and called as such:
+ * MyHashMap obj = new MyHashMap();
+ * obj.put(key,value);
+ * int param_2 = obj.get(key);
  * obj.remove(key);
- * boolean param_3 = obj.contains(key);
  */
