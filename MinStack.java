@@ -1,5 +1,3 @@
-
-
 /*Time Complexity for push, pop and top operations: O(1)
  *Space Complexity : O(1) as we do not consider stacks used inside the constructor. So, there is no auxiliary space.
  *Did this code successfully run on Leetcode :Yes
@@ -9,31 +7,45 @@ import java.util.Stack;
 
 class MinStack {
 	
-	 Stack<Integer> stack;
-	 Stack<Integer> minStack;
-	 int min;
+	private List<Integer> data; 
+    private int min;
+    private int indexOfLast;
+    private int indexOfMin;
 
     public MinStack() { 	
-    	this.stack = new Stack<>();
-        this.minStack = new Stack<>();
-        this.min = Integer.MAX_VALUE;
-        minStack.push(min);     
+    	data = new LinkedList<>(); 
+        min = Integer.MAX_VALUE;
+        indexOfLast = -1;
+        indexOfMin = -1;   
     }
     
     public void push(int val) {
-    	stack.push(val);
-        min = Math.min(min, val);
-        minStack.push(min);
+    	indexOfLast++;
+        if(val < min){
+            min = val;
+            indexOfMin = indexOfLast;
+        }
+        data.add(val);
     }
     
     public void pop() {
-    	stack.pop();
-        minStack.pop();
-        min = minStack.peek();
+    	data.remove(data.size()-1);
+        
+        int newMin = Integer.MAX_VALUE;
+        int indexOfNewMin = -1;
+        for(int i = 0; i < data.size(); i++){
+            if(data.get(i) < newMin){
+                newMin = data.get(i);
+                indexOfNewMin = i;
+            }
+        }
+
+        min = newMin;
+        indexOfMin = indexOfNewMin;
     }
     
     public int top() {
-    	return stack.peek();
+    	return data.get(data.size()-1);
     }
     
     public int getMin() {
