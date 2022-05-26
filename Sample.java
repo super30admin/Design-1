@@ -1,10 +1,11 @@
 // Your code here along with comments explaining your approach
 
-//****Designing a hashMap using DoubleHashing****
+//****dESIGN HASHMAP USING DOUBLE HASHING****
 //Time complexity:o(1);
 //space complexity:o(1);
 // Did this code successfully run on Leetcode : yes
 // Any problem you faced while coding this : NO
+
 
 class MyHashMap {
     
@@ -68,6 +69,10 @@ class MyHashMap {
 
 
 //****HASHMAP USING LINEAR CHAINING****
+//Time complexity:o(1);
+//space complexity:o(1);
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : NO
 class MyHashMap {
     class Node{
         int key;
