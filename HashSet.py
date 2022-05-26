@@ -1,7 +1,7 @@
 #Time Complexity : O(1)
 #Space Complexity : O(1)
 #Did this code successfully run on Leetcode :
-#Any problem you faced while coding this : I tired doing it with sir's approach
+#Any problem you faced while coding this : I tried doing it with sir's approach
 #still I am not sure and will work on it again
 
 # Your code here along with comments explaining your approach
