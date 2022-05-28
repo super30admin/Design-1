@@ -1,3 +1,5 @@
+#time complexity is O(100) which can be considered as constant
+# space complexity is O(10000)+O(n) in worst case 
 class MyHashMap(object):
     def __init__(self):
         self.arr=[None]*10000

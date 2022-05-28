@@ -1,5 +1,7 @@
 #implementing a stack which gives min for every operation
 #Using a single stack
+#space complexity is O(n)
+#time complexity is O(1)
 import sys
 
 
