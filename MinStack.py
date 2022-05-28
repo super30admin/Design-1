@@ -2,7 +2,7 @@
 // Time Complexity : O(1) for all methods
 // Space Complexity : O(n + log n ) for average case
                     O(n + n) for worst case
-                    (n) for best case
+                    O(n) for best case
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : N/A
 
