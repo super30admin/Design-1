@@ -1,10 +1,7 @@
 class MyHashMap:
     def __init__(self):
-    # As given contraint is in range 0-1000000, so we take square root of max value.
-    
         self.arr_size=int(math.sqrt(1000000))+1
         self.arr=[None]*self.arr_size
-        self.bucket= [[] for i in range(self.arr_size)]
         
     def hashfunction1(self,key:int)->int:
         ans=key%1000
@@ -18,7 +15,8 @@ class MyHashMap:
         hashkey=self.hashfunction1(key)
         hashkey2=self.hashfucntion2(key)
         if self.arr[hashkey]==None:
-            self.arr[hashkey]= [[] for i in range(self.arr_size)]
+            # not ([[] for i in range(self.arr_size)]) beasuse it create a list of lists further at nested index.
+            self.arr[hashkey]= [None for i in range(self.arr_size)] 
             self.arr[hashkey][hashkey2]=value
         else:
              self.arr[hashkey][hashkey2]=value
@@ -37,8 +35,15 @@ class MyHashMap:
         if self.arr[hashkey]!=None:
             for i in range(len(self.arr[hashkey])):
                 if self.arr[hashkey][hashkey2]:
-                    self.arr[hashkey][hashkey2]=None
+                    self.arr[hashkey][hashkey2]=-1
         return
+
+
+# Your MyHashMap object will be instantiated and called as such:
+# obj = MyHashMap()
+# obj.put(key,value)
+# param_2 = obj.get(key)
+# obj.remove(key)
 
 # Your MyHashMap object will be instantiated and called as such:
 # obj = MyHashMap()
