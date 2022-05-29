@@ -1,54 +1,35 @@
 // time complexity = O(1)
 // space complexity = O(n)
 class MinStack {
-
-    public class Element{
-        int val;
-        Element next;
-
-        public Element(int val){
-            this.val=val;
-        }
-
-    }
-    public MinStack() {
-
-    }
-
-    Element top = null;
+    Stack<Integer> currStack;
+    Stack<Integer> minStack;
     int min;
 
+    public MinStack() {
+        currStack = new Stack<>();
+         minStack = new Stack<>();
+         min = Integer.MAX_VALUE;
+    }
+    
     public void push(int val) {
-        if(top==null) {
+        if(val<min){
             min=val;
-            Element temp = new Element(val);
-            top = temp;
-        } else {
-            Element temp = new Element(val);
-            min = Math.min(min,val);
-            temp.next=top;
-            top=temp;
         }
+        currStack.push(val);
+        minStack.push(min);
     }
-
+    
     public void pop() {
-        if (top == null) {
-            return;
-        } else{
-            Element temp = top.next;
-            top=temp;
-        }
+        currStack.pop();
+        minStack.pop();
+        if(minStack.isEmpty()==false) min=minStack.peek();
     }
-
+    
     public int top() {
-        if (top == null) {
-            return -1;}
-        return top.val;
+        return currStack.peek();
     }
-
+    
     public int getMin() {
-        if (top == null) {
-            return -1;}
-        return min;
+        return minStack.peek();
     }
 }
