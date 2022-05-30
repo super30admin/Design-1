@@ -140,4 +140,67 @@ print(obj.get(2))
 # print(llist.get(10001))
 
 
+# linear chaining
+# class Node:
+#     def __init__(self, key, value):
+#         self.key = key
+#         self.value = value
+#         self.next = None
+#
+#
+# class Hashmap:
+#     def __init__(self):
+#         self.hashmap = [None] * 10000
+#
+#     def hi(self, key):
+#         return key % 10000
+#
+#     def push(self, key, value):
+#         hi = self.hi(key)
+#         if self.hashmap[hi] is None:
+#             self.hashmap[hi] = Node(key, value)
+#         else:
+#             temp = self.hashmap[hi]
+#             while temp:
+#                 if temp.key == key:
+#                     temp.value = value
+#                     return
+#                 prev = temp
+#                 temp = temp.next
+#             prev.next = Node(key, value)
+#
+#     def get(self, key):
+#         hi = self.hi(key)
+#         if self.hashmap[hi] is None:
+#             return -1
+#         else:
+#             temp = self.hashmap[hi]
+#             while temp.next and temp.key != key:
+#                 temp = temp.next
+#             if temp.key == key:  # while can break if temp.next is None
+#                 return temp.value
+#             return -1
+#
+#     def remove(self, key):
+#         hi = self.hi(key)
+#         temp = self.hashmap[hi]
+#         if temp and temp.key == key:
+#             self.hashmap[hi] = temp.next
+#         elif temp:
+#             while temp.next and temp.key != key:
+#                 prev = temp
+#                 temp = temp.next
+#             if temp.key == key:  # while can break if temp.next is None, can be last element with-out the key
+#                 prev.next = temp.next
+#
+#
+# check = Hashmap()
+# check.remove(10001)
+# check.push(1, 1)
+# check.push(1, 100)
+# check.push(1000001, 200)
+# check.remove(10001)
+# print(check.hashmap[1].next.value)
+
+
 
