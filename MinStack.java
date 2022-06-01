@@ -1,6 +1,6 @@
 // Time Complexity :O(1) 
 // Space Complexity : O(n)
-// Did this code successfully run on Leetcode : yes
+// Did this code successfully run on Leetcode : yes.
 
 ## Problem 2:
 Design MinStack (https://leetcode.com/problems/min-stack/)

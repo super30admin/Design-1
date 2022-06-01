@@ -1,6 +1,6 @@
 // Time Complexity :O(1) on average case, O(n) on worst case
 // Space Complexity : O(n)
-// Did this code successfully run on Leetcode : yes
+// Did this code successfully run on Leetcode : yes.
 
 
 // Your code here along with comments explaining your approach
