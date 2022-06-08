@@ -1,3 +1,12 @@
+# https://leetcode.com/problems/design-hashmap/
+# Time Complexity : O(1) for all of the functions
+# Space Complexity : O(n)
+# Did this code successfully run on Leetcode : Yes
+# Any problem you faced while coding this : None
+
+# Your code here along with comments explaining your approach
+
+
 # Same approach as HashSet but with values instead of boolean, use -1 to specify missing key, else a value would be present
 class MyHashMap:
 

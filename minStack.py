@@ -1,3 +1,12 @@
+# https://leetcode.com/problems/min-stack
+# Time Complexity : O(1) for all of the functions
+# Space Complexity : O(n) for stack and O(n) for minStack if every new element pushed is smaller than previous
+# Did this code successfully run on Leetcode : Yes
+# Any problem you faced while coding this : None
+
+# Your code here along with comments explaining your approach
+
+
 class MinStack:
 
     def __init__(self):
