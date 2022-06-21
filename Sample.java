@@ -1,8 +1,14 @@
 // Time Complexity :
+//   Push: O(1)
+//   POP: O(1)
+//   Top: O(1)
+//   Min: O(1)
+ 
 // Space Complexity :
+//    Best Case/Avg. O(1)
+//    Worst Case: O(n)
 // Did this code successfully run on Leetcode :
 // Any problem you faced while coding this :
-
 
 // Your code here along with comments explaining your approach
 class MinStack {
