@@ -4,39 +4,35 @@
 
 
 // Your code here along with comments explaining your approach
-// Implemented linked list with computation of minimum at each node
+// Used stack and current min and pushed min when cur<= min
 
 class MinStack {
-            
-    class Node {
-        int val;
-        int min;
-        Node next;
-            
-        Node(int val, int min, Node next) {
-            this.val = val;
-            this.min = min;
-            this.next = next;
-        }
+    Stack<Integer> st;
+    int min;
+    public MinStack(){
+        st = new Stack<Integer>();
+        min = Integer.MAX_VALUE;
     }
-	Node head;
-        
+    
     public void push(int x) {
-        if (head == null) 
-            head = new Node(x, x, null);
-        else 
-            head = new Node(x, Math.min(x, head.min), head);
+        if(x<=min){
+            st.push(min);
+            min = x;
+        }
+        st.push(x);
     }
     
     public void pop() {
-        head = head.next;
+        if(min==st.pop()){
+            min = st.pop();
+        }
     }
     
     public int top() {
-        return head.val;
+        return st.peek();
     }
     
     public int getMin() {
-        return head.min;
+        return min;
     }
 }
