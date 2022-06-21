@@ -1,7 +1,7 @@
 # Design-1
 
 ## Problem 1:
-Design Hashmap (https://leetcode.com/problems/design-hashmap/)
+Design Hashmap (https://leetcode.com/problems/design-hashset/)
 
 
 
