@@ -1,3 +1,10 @@
+// Time Complexity : O(1)
+// Space Complexity : O(N)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+// Your code here along with comments explaining your approach
+
 import java.util.Stack;
 
 public class Minstack {
@@ -5,6 +12,7 @@ public class Minstack {
     Stack<Integer> minStack;
     int min;
 
+    // Declaring and Initializing in the Constructor
     public Minstack() {
         mainStack = new Stack<>();
         minStack = new Stack<>();
@@ -12,22 +20,29 @@ public class Minstack {
         minStack.push(min);
     }
 
+    // Comparing and assigning Minimum value of actual minimum value and value
+    // passed
+    // pushing passed value in main stack and minimum value in min stack
     public void push(int val) {
         min = Math.min(min, val);
         mainStack.push(val);
         minStack.push(min);
     }
 
+    // Popping both the stacks
+    // Assigning the minimum value from top of the minimum stack
     public void pop() {
         mainStack.pop();
         minStack.pop();
         min = minStack.peek();
     }
 
+    // displaying the top value from main stack
     public int top() {
         return mainStack.peek();
     }
 
+    // displaying the top value from minimum stack
     public int getMin() {
         return minStack.peek();
     }
