@@ -1,0 +1,66 @@
+//Time Complexity 
+//Add Operation : O(1)
+//Remove Operation : O(1)
+//Contains Min : O(1)
+//Space Complexity : O(n^2) in worst case where n is the size of the bucket array choosen
+// Did this code successfully run on Leetcode : Yes
+
+
+class MyHashSet {
+
+    boolean[][] hashset;
+    public MyHashSet() 
+    {
+        hashset = new boolean[1000][];
+    }
+    public static int getBucket(int key)
+    {
+        return key%1000;
+    }
+    public static int getBucketItem(int key)
+    {
+        return key/1000;
+    }
+    public void add(int key) 
+    {
+        int bucket = getBucket(key);
+        int bucketItem = getBucketItem(key);
+        if(hashset[bucket]==null)
+        {
+            if(bucket==0)
+            {
+                hashset[bucket] = new boolean[1001];
+            }else
+            {
+                hashset[bucket] = new boolean[1000];
+            }
+        }
+        hashset[bucket][bucketItem] = true;
+    }
+    
+    public void remove(int key) 
+    {
+        if(hashset[getBucket(key)]!=null)
+        {
+            hashset[getBucket(key)][getBucketItem(key)] = false;
+        }
+    }
+    
+    public boolean contains(int key) 
+    {
+        if(hashset[getBucket(key)]==null)
+        {
+            return false;
+        }
+        
+        return hashset[getBucket(key)][getBucketItem(key)];
+    }
+}
+
+/**
+ * Your MyHashSet object will be instantiated and called as such:
+ * MyHashSet obj = new MyHashSet();
+ * obj.add(key);
+ * obj.remove(key);
+ * boolean param_3 = obj.contains(key);
+ */
