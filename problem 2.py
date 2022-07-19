@@ -1,37 +1,39 @@
-# Implement HashMap
+# Implement MinStack
 '''
 Leetcode all test cases passed: Yes
-MyHashMap:
-    Space Complexity: O(n)
-    put(self, key,value):
+MinStack:
+    Space Complexity: O(2n) = O(n)
+    push(self, val):
         Time Complexity: O(1)
-    get(self, key):
+    pop(self):
         Time Complexity: O(1)
-    remove(self, key):    
+    top(self):    
+        Time Complexity: O(1)
+    getMin(self):    
         Time Complexity: O(1)
 '''
 
 
-class MyHashMap:
+class MinStack:
 
     def __init__(self):
-        self.hashMap = [-1] * 1000
-        self.hash1 = 1000
+        self.stack = []
+        self.minStack = []
 
-    def put(self, key: int, value: int) -> None:
-        pointer = key % self.hash1
-        if self.hashMap[pointer] == -1 and pointer == 0:
-            self.hashMap[pointer] = [-1] * 1001
-        elif self.hashMap[pointer] == -1:
-            self.hashMap[pointer] = [-1] * 1000
-        self.hashMap[pointer][key // self.hash1] = value
+    def push(self, val: int) -> None:
+        self.stack.append(val)
+        if len(self.minStack) == 0 or val <= self.minStack[-1]:
+            self.minStack.append(val)
 
-    def get(self, key: int) -> int:
-        if self.hashMap[key % self.hash1] == -1:
-            return -1
-        return self.hashMap[key % self.hash1][key // self.hash1]
+    def pop(self) -> None:
+        val = self.stack.pop()
+        if val == self.minStack[-1]:
+            self.minStack.pop()
 
-    def remove(self, key: int) -> None:
-        if self.hashMap[key % self.hash1] == -1:
-            return -1
-        self.hashMap[key % self.hash1][key // self.hash1] = -1
+    def top(self) -> int:
+        return self.stack[-1]
+
+    def getMin(self) -> int:
+        if len(self.minStack) > 0:
+            return self.minStack[-1]
+        return None

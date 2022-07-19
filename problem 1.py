@@ -1,43 +1,37 @@
-# Implement Queue using Stack
+# Implement HashSet
 '''
 Leetcode all test cases passed: Yes
-MyQueue:
-    Space Complexity: Number elements in stack n = O(n)
-    push(self, x):
+MyHashSet:
+    Space Complexity: O(n)
+    add(self, key):
         Time Complexity: O(1)
-    pop(self, x):
-        Time Complexity:
-            Average Case: O(1)
-            Worst Case: O(n)
-    peek(self, x):
-        Time Complexity:
-            Average Case: O(1)
-            Worst Case: O(n)
-    empty(self, x):
+    remove(self, key):
+        Time Complexity: O(1)
+    contain(self, key):    
         Time Complexity: O(1)
 '''
 
 
-class MyQueue:
+class MyHashSet:
 
     def __init__(self):
-        self.inStack = []
-        self.outStack = []
+        self.hashSet = [None] * 1000
+        self.hash1 = 1000
 
-    def push(self, x: int) -> None:
-        self.inStack.append(x)
+    def add(self, key: int) -> None:
+        pointer = key % self.hash1
+        if self.hashSet[pointer] == None and pointer == 0:
+            self.hashSet[pointer] = [False] * 1001
+        elif self.hashSet[pointer] == None:
+            self.hashSet[pointer] = [False] * 1000
+        self.hashSet[pointer][key // self.hash1] = True
 
-    def pop(self) -> int:
-        self.peek()
-        return self.outStack.pop()
+    def remove(self, key: int) -> None:
+        if self.hashSet[key % self.hash1] == None:
+            return None
+        self.hashSet[key % self.hash1][key // self.hash1] = False
 
-    def peek(self) -> int:
-        if len(self.outStack) == 0:
-            while len(self.inStack) > 0:
-                self.outStack.append(self.inStack.pop())
-        return self.outStack[-1]
-
-    def empty(self) -> bool:
-        if len(self.inStack) == 0 and len(self.outStack) == 0:
-            return True
-        return False
+    def contains(self, key: int) -> bool:
+        if self.hashSet[key % self.hash1] == None:
+            return None
+        return self.hashSet[key % self.hash1][key // self.hash1]
