@@ -1,4 +1,4 @@
-#Time Complexity - O(n)
+#Time Complexity - O(1)
 #space complexity - O(n)
 #The code ran successfully on leetcode
 #I am yet to brush up on my concepts of data structures in general so I had to take help of youtube to solve this question.I plan to pick up pace as the class keeps going.I am yet to brush up my concepts on time and space complexity hence I can be wrong about both.
