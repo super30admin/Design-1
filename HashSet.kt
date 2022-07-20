@@ -1,7 +1,7 @@
 // Time Complexity : getHash1() - O(1), getHash2() - O(1), add()- O(1), remove - O(1), contains - O(1),  self.hashMatrix - O(n^2)
 // Space Complexity : o(n^2)
 // Did this code successfully run on Leetcode : yes
-// Any problem you faced while coding this : I see it takes more space, can you suggest what else I can do to reduce it.
+// Any problem you faced while coding this : No Problem
 
 class MyHashSet() {
 
@@ -37,14 +37,6 @@ class MyHashSet() {
     }
 
 }
-
-/**
- * Your MyHashSet object will be instantiated and called as such:
- * var obj = MyHashSet()
- * obj.add(key)
- * obj.remove(key)
- * var param_3 = obj.contains(key)
- */
 
 /**
  * Your MyHashSet object will be instantiated and called as such:
