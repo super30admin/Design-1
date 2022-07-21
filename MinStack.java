@@ -1,7 +1,7 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+// Time Complexity :O(1)
+// Space Complexity :O(N)   n--> No of Elements
+// Did this code successfully run on Leetcode :YES
+// Any problem you faced while coding this :NO
 
 
 // Your code here along with comments explaining your approach
