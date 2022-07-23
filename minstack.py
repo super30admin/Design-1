@@ -1,5 +1,7 @@
 #Time Complexity:: push() - O(1), pop - O(1), top() - O(1), getMin() - O(1)
-#Space Complexity:: O(n) where n is the maximum number of elements in the stack
+#Space Complexity:: O(n) where n is the maximum number of elements in the stack 
+#Did this code successfully run on Leetcode : Yes
+#Any problem you faced while coding this : No
 
 
 import collections
