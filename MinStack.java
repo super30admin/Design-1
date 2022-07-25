@@ -1,6 +1,10 @@
 import java.util.Stack;
 
-// Time Complexity : O(1)
+// Time Complexity :
+//1. For push, O(1)
+// 2. For pop, O(1)
+// 3. For getMin(), O(1)
+
 // Space Complexity : O(n)
 // Did this code successfully run on Leetcode :
 // Any problem you faced while coding this :
