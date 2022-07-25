@@ -1,4 +1,8 @@
-// Time Complexity : O(1)
+// Time Complexity :
+// 1. For add operation, O(1)
+// 2. For remove operation, O(1)
+// 3. For contains operation, O(1)
+
 // Space Complexity : O(n)
 // Did this code successfully run on Leetcode :
 // Any problem you faced while coding this :
