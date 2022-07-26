@@ -1,3 +1,12 @@
+// Time Complexity : O(1)
+// Space Complexity :O(n)
+// Did this code successfully run on Leetcode :
+// Any problem you faced while coding this :
+
+
+// Your code here along with comments explaining your approach
+
+
 class MinStack {
     
      private Stack<Integer> stack = new Stack<>();
