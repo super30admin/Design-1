@@ -1,67 +1,108 @@
-#design Hashmap
-# Time Complexity :best case O(1), avg case O(n)
-# Space Complexity :O(n)
-# Did this code successfully run on Leetcode : Yes
-# Any problem you faced while coding this :initially the code didnt get accepted
-
-class NodeList:
-    def __init__(self,key,value):
+#design Hashset
+#chaining solution
+#solution accepted
+#Timecomplexity:O(1)
+#spacecomplexity:O(n)
+class ListNode:
+    def __init__(self, key, val):
         self.key = key
-        self.value = value
-class MyHashMap:
+        self.val = val
+        self.next = None
+
+class MyHashSet:
+
+    def __init__(self):
+        """
+        Initialize your data structure here.
+        """
+        self.size = 1000
+        self.m = [None]*self.size
+
+    def add(self, key: int) -> None:
+        index = key%self.size
+        #If the node at given index is None then set it with given key
+        if self.m[index] == None:
+            self.m[index] = ListNode(key,True)
+        else:
+            currNode = self.m[index]
+            #If there are nodes at given index then traverse the linked-list and attach the key at the end.
+            tempHead = currNode
+            self.m[index] = ListNode(key,True)
+            self.m[index].next = currNode
+
+    def remove(self, key: int) -> None:
+        index = key%self.size
+        #If node at given index is None then do nothing. 
+        if self.m[index] == None:
+            return
+        #Otherwise find given key in the linked-list at current index and set its value to False.
+        else:
+            currNode = self.m[index]
+            while currNode:
+                if currNode.key == key:
+                    currNode.val = False
+                    break
+                currNode = currNode.next
+        
+
+    def contains(self, key: int) -> bool:
+        """
+        Returns true if this set contains the specified element
+        """
+        index = key%self.size
+        #If there's no linked-list at given index then return False.
+        if self.m[index] == None:
+            return False
+        #Otherwise traverse the linked-list to check if the desired element is present and its value is True.
+        else:
+            currNode = self.m[index]
+            while currNode:
+                if currNode.key == key:
+                    if currNode.val == True:
+                        return True
+                    else:
+                        return False
+                currNode = currNode.next
+            return False
+
+#second approach- not using linked list
+#linear probing
+#space complexity: O(n)
+#timecomplexity:O(1) 
+class MyHashSet:
+
     def __init__(self):
         self.size = 1000
-        self.hash_table = [None for i in range(self.size)]
-
-    def put(self,key,value):
-        index = key%self.size
-        #check if bin is empty, if true create a node
-        if self.hash_table[index]==None:
-            self.hash_table[index]= NodeList(key,value)
-        else:
-            #not empty , traverse to see if match key, if not just append a node at end 
-            curr_node = self.hash_table[value]
-            while True:
-                if curr_node.key == key:
-                    curr_node.value = value
-                    return
-                if curr_node.next == None:
-                    break
-                curr_node = curr_node.next
-            #No matches ->append key,value pair to it
-            curr_node.next = NodeList(key,value)
+        self.hash_set = [None for i in range (self.size)]
     
-    def get(self,key):
-        #initalize index
-        index = key%self.size
-        #initialize current node
-        curr_node = self.hash_table[index]
-        #traverse if curr node key matches in the bin return value
-        while curr_node:
-            if curr_node.key == key:
-                return curr_node.value 
-            else:
-                curr_node = curr_node.next
-        return -1
+    def calc_hash(self,key):
+        return key%self.size
 
-    def remove(self,key):
-        index = key%self.size
-        curr_node = prev_node = self.hash_table[index]
-        #remove empty bin 
-        if not curr_node:
-            return
-        if curr_node.key == key:
-            #node found to delete immediately, skip over it
-            self.hash_table[index] = curr_node.next
+    def add(self, key: int) -> None:
+        hv = self.calc_hash(key)
+        if self.hash_set[hv]==None:
+            self.hash_set[hv]=[key]
         else:
-            #node not found to delte , traverse ahead
-            curr_node = curr_node.next
+            self.hash_set[hv].append(key)
+        
 
-            while curr_node:
-                if curr_node.key == key:
-                    prev_node.next = curr_node.next
-                    break
-                else:
-                    prev_node,curr_node = prev_node.next,curr_node.next
-    
+    def remove(self, key: int) -> None:
+        hv = self.calc_hash(key)
+        if self.hash_set[hv]!=None:
+            while key in self.hash_set[hv]:
+                self.hash_set[hv].remove(key)
+        
 
+    def contains(self, key: int) -> bool:
+        hv = self.calc_hash(key)
+        if self.hash_set[hv]!=None:
+            return key in self.hash_set[hv]
+           
+        
+
+
+# Your MyHashSet object will be instantiated and called as such:
+# obj = MyHashSet()
+# obj.add(key)
+# obj.remove(key)
+# param_3 = obj.contains(key)
