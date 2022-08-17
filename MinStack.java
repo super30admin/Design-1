@@ -4,51 +4,59 @@
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : used some resources
 
-    class MinStack {
+import java.util.Stack;
 
-        private Node head;
+class MinStack {
 
-        public void push(int val) {
+    //creating a stack to store the values
+    private Stack<Integer> st1;
 
-            //initializing the min with current value
-            int min = val;
-            if (head != null) {
-                //comparing val and min
-                min = Math.min(min, head.min);
-            }
+    //creating a stack to store the min
+    private Stack<Integer> st2;
 
-            Node newNode = new Node(val, min);
-            newNode.next = head;
-            head = newNode;
-        }
+    //variable to hold the minimum value
+    int min;
 
-        public void pop() {
-            //sets the head to the next value
-            head = head.next;
-        }
+    //constructor
+    public MinStack() {
 
-        public int top() {
-            //returns the head value
-            return head.val;
-        }
+        this.st1 = new Stack<>();
+        this.st2 = new Stack<>();
+        //initializing the min with max value
+        this.min = Integer.MAX_VALUE;
+        st2.push(min);
 
-        public int getMin() {
-            return head.min;
-        }
+    }
 
-        //creating a node class with val and min
-        private static class Node {
+    //Time Complexity: O(1)
+    public void push(int val) {
 
-            private int val;
-            private int min;
-            private Node next;
+        min = Math.min(min, val);
+        st1.push(val);
+        st2.push(min);
 
-            //constructor
-            private Node(int val, int min) {
-                this.val = val;
-                this.min = min;
-            }
-        }
+    }
+
+    //Time Complexity: O(1)
+    public void pop() {
+        st1.pop();
+        st2.pop();
+        //updating the min
+        min = st2.peek();
+    }
+
+    //Time Complexity: O(1)
+    public int top() {
+        return st1.peek();
+    }
+
+    //Time Complexity: O(1)
+    public int getMin() {
+
+        //will return the min value
+        return min;
+    }
+
 
 
 
