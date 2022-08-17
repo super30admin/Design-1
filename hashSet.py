@@ -1,6 +1,6 @@
 #Time Complexity : O(N/K) where N is the number of all possible values and K is the number of predefined buckets, which is 1000
 #Space Complexity : O(1)
-#Did this code successfully run on Leetcode :
+#Did this code successfully run on Leetcode : Yes
 #Any problem you faced while coding this :
 
 class MyHashSet:
