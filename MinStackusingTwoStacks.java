@@ -1,43 +1,49 @@
+/*
+*Approach -  maintain two stacks , one for data and other for min. 
+* 1:1 mapping each time for every push and pop operation. 
+*After pop, update the min variable.
+*
+* Time Complexity - O(1) for push, pop, peek, getmin
+*Space Complexity - O(2n) ~= O(n)
+*/
+
 package Design_One_155_Leetcode_MinStack;
 
 import java.util.Stack;
 
 public class MinStackusingTwoStacks {
     /** initialize your data structure here. */
-    Stack<Integer> data_stack, min_stack;
+    Stack<Integer> stack, min_stack;
     public MinStackusingTwoStacks()
     {
-        data_stack = new Stack<Integer>();
+        stack = new Stack<Integer>();
         min_stack  = new Stack<Integer>();
         min_stack.push( Integer.MAX_VALUE);
+		int min = Integer.MAX_VALUE;
     }
 
-    public void push(int val)
+    public void push(int val) //push value and its minimum 
     {
-        if(val <= min_stack.peek())
-        {
-            min_stack.push(val);
-        }
-        else
-            min_stack.push(min_stack.peek());
-
-        data_stack.push(val);
+		min = Math.min(min, val);
+		stack.push(val);
+		min_stack.push(min);
     }
 
     public void pop()
     {
-        data_stack.pop();
+        stack.pop();
         min_stack.pop();
+		min = min_stack.peek();
     }
 
     public int top()
     {
-        return data_stack.peek();
+        return stack.peek();
     }
 
     public int getMin()
     {
-        return min_stack.peek();
+        return min();
     }
 
 }

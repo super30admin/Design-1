@@ -1,3 +1,11 @@
+/*
+*Approach -  maintain one stack, update the min variable when needed with push and pop operations. 
+* if min popped value is less than /equal to min, then we pop again and assign that to min, owise just one pop . 
+*
+* Time Complexity - O(1) for push, pop, peek, getmin
+*Space Complexity - O(n) ~= O(n)
+*/
+
 package Design_One_155_Leetcode_MinStack;
 
 import java.util.Stack;
@@ -5,34 +13,39 @@ import java.util.Stack;
 class MinStackWithOneStack {
 
     /** initialize your data structure here. */
-    Stack<Integer> data_stack, min_stack;
+    Stack<Integer> stack;
     int min;
 
     public MinStackWithOneStack()
     {
-        data_stack = new Stack<>();
+        this.stack = new Stack<>();
         min = Integer.MAX_VALUE;
     }
 
     public void push(int val)
     {
-        if(val <= min)
-        {
-            data_stack.push(min);
-            min = val;
-        }
-        data_stack.push(val);
+		//if val <= min, push min and push value and update min
+		
+		if(val <= min)
+		{
+			stack.push(min);
+			min = val;
+		}
+		stack.push(val);
     }
 
     public void pop()
     {
-        int temp = data_stack.pop();
-        min = temp <= min ? data_stack.pop(): min;
+		if(stack.pop() == min)
+		{
+			min = stack.pop();
+		}
+        
     }
 
     public int top()
     {
-        return data_stack.peek();
+        return stack.peek();
     }
 
     public int getMin()
