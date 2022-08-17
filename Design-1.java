@@ -1,14 +1,9 @@
-# Design-1
-
-## Problem 1:
-Design HashSet 
-
-```Java 
-
 // Time Complexity : O(1)
 // Space Complexity : O(n)
 // Did this code successfully run on Leetcode : yes
 // Any problem you faced while coding this : no
+
+import java.util.*;
 
 class MyHashSet {
     boolean [][] storage;
@@ -48,7 +43,7 @@ class MyHashSet {
         int hash1 = hash1(key);
         int hash2 = hash2(key);
 
-        if(storage[hash1] == null) 
+        if(storage[hash1] == null)
             return;
 
         storage[hash1][hash2] = false;
@@ -59,17 +54,21 @@ class MyHashSet {
         int hash2 = hash2(key);
 
         if(storage[hash1] == null)
-            return false;
-        
+            return;
+
         return storage[hash1][hash2];
+
+    }
+
+    public static void main(String[] args) {
+        MyHashSet obj = new MyHashSet();
+        obj.add(key);
+        obj.remove(key);
+        boolean param_3 = obj.contains(key);
     }
 }
-```
 
-## Problem 2:
-Design MinStack 
 
-```Java 
 // Time Complexity : O(1)
 // Space Complexity : O(n)
 // Did this code successfully run on Leetcode : yes
@@ -118,7 +117,7 @@ class MinStack {
         int param_4 = obj.getMin();
     }
 }
-```
+
 
 
 
