@@ -1,3 +1,4 @@
+// Did this code successfully run on Leetcode : Yes
 public class MyHashSet {
 
     boolean storage[][];

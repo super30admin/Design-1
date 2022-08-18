@@ -1,5 +1,5 @@
 import java.util.Stack;
-
+// Did this code successfully run on Leetcode : Yes
 public class MinStack {
     private Stack<Integer> stack;
     private int min;
