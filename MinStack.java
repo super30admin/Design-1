@@ -1,4 +1,4 @@
-Class MinStack {
+class MinStack {
 
     Stack<Integer> currentStack;
     Stack<Integer> minStack;
