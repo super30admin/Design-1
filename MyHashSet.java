@@ -41,9 +41,8 @@ class MyHashSet {
 		 int hash2 = hash2(key);
 		 if(storage[hash1]!=null){
 			storage[hash1][hash2] = false;
-		 } else {
-			  return;
 		 }
+		 return;
 	}
 	
 	public boolean contains(int key) {
