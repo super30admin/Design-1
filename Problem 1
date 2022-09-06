@@ -1,0 +1,70 @@
+/ Time Complexity : O(n/k); k= no. of linked Lists
+// Space Complexity : O(n)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : understanding time complexities
+
+
+// Your code here along with comments explaining your approach
+class MyHashSet {
+    private LinkedLists[] arr;
+    private int arr_length;
+
+    public MyHashSet() {
+        arr_length = 529;
+        this.arr = new LinkedLists[arr_length];
+        for(int i=0;i<arr_length;i++){
+            this.arr[i] = new LinkedLists();
+        }
+    }
+    protected int hash(int key){
+        return (key % arr_length);
+    }
+    
+    public void add(int key) {
+        int arr_idx = this.hash(key);
+        arr[arr_idx].push(key);
+    }
+    
+    public void remove(int key) {
+        int arr_idx = this.hash(key);
+        arr[arr_idx].pop(key);
+    }
+    
+    public boolean contains(int key) {
+        int arr_idx = this.hash(key);
+        return arr[arr_idx].exists(key);
+    }
+}
+
+class LinkedLists{
+    private LinkedList<Integer> chain;
+    
+    public LinkedLists(){
+        chain = new LinkedList<Integer>();
+    }
+    
+    public void push(Integer key){
+        int idx = this.chain.indexOf(key);
+        if(idx ==-1){
+            this.chain.add(key);
+        }
+    }
+    
+    public void pop(Integer key){
+        if(exists(key)==true)
+        this.chain.remove(key);
+    }
+    
+    public boolean exists(Integer key){
+        int idx = this.chain.indexOf(key);
+        return (idx != -1);
+    }
+}
+
+/**
+ * Your MyHashSet object will be instantiated and called as such:
+ * MyHashSet obj = new MyHashSet();
+ * obj.add(key);
+ * obj.remove(key);
+ * boolean param_3 = obj.contains(key);
+ */
