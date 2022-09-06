@@ -1,0 +1,54 @@
+155. Min Stack
+
+class MinStack:
+
+    def __init__(self):
+        self.st=[]
+        self.mins=[]
+    def push(self, val: int) -> None:
+        if self.mins==[]:
+            self.mins.append(val)
+        else:
+            if val<=self.mins[-1]:
+                self.mins.append(val)
+        self.st.append(val)
+    def pop(self) -> None:
+        if self.st[-1]==self.mins[-1]:
+            self.mins.pop()
+        self.st.pop()
+    def top(self) -> int:
+        return self.st[-1]
+
+    def getMin(self) -> int:
+        return self.mins[-1]
+
+705. Design HashSet
+
+class MyHashSet:
+
+    def __init__(self):
+        self.size=10000
+        self.hs=[None]*self.size
+    def calhv(self,key):
+        return key%self.size
+    def add(self, key: int) -> None:
+        hv=self.calhv(key)
+        if self.hs[hv]==None:
+            self.hs[hv]=[key]
+        else:
+            if key not in self.hs[hv]:
+                self.hs[hv].append(key)
+
+    def remove(self, key: int) -> None:
+        hv=self.calhv(key)
+        if self.hs[hv]!=None:
+            while key in self.hs[hv]:
+                self.hs[hv].remove(key)
+
+    def contains(self, key: int) -> bool:
+        hv=self.calhv(key)
+        if self.hs[hv]!=None:
+            if key in self.hs[hv]:
+                return True           
+        else:
+            return False
