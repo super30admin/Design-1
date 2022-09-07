@@ -1,4 +1,4 @@
-
+//O(1) for push , pop,top
 var MinStack = function() {
     this.stack = [];
     this.min = Infinity;
