@@ -41,7 +41,7 @@ class SHashSet:
 
         # edge case
         if not self.bucketItems[bucket] and bucket == 0:
-            self.bucketItems[bucket] = [False] * self.buckets + 1
+            self.bucketItems[bucket] = [False] * (self.buckets+1)
 
         # if there are no items in the bucket, secondary array will not initialized
         # initialize secondary array once the index for primary has been found as null
