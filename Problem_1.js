@@ -4,9 +4,8 @@
 // Contains: O(1)
 
 // Space Complexity :
-// Add: O(1)
-// Remove: O(1)
-// Contains: O(1)
+// Worst case: O(N) where N is the highest range of numbers that can be added
+// Best case: O(sqrt(N))
 
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : No
