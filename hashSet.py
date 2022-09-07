@@ -1,53 +1,50 @@
 # Time Complexity : O(1)
 # Space Complexity: O(1)
 # Did this code successfully run on Leetcode : Yes
-# Any problem you faced while coding this : Unfamiliar with double hashing, so was challenging to learn and implement
+# Any problem you faced while coding this : No
 
-class HashSet:
+class MyHashSet:
     def __init__(self):
         self.bucketSize = 1000
-        self.hashSet = [None] * self.bucketSize
+        self.bucket = [None] * 1000
 
-    def hash1(self, key):
-        return key % self.bucketSize
+    def get_bucket_id(self, key):
+        return key % len(self.bucket)
 
-    def hash2(self, key):
+    def get_secondary_bucket_id(self, key):
         return key // self.bucketSize
 
     def add(self, key):
-        hash1Val = self.hash1(key)
-        hash2Val = self.hash2(key)
+        bucket_id = self.get_bucket_id(key)
+        sec_bucket_id = self.get_secondary_bucket_id(key)
 
-        if not self.hashSet[hash1Val] and hash1Val == 0:
-            self.hashSet[hash1Val] = [False] * (self.bucketSize + 1)
-        elif not self.hashSet[hash1Val]:
-            self.hashSet[hash1Val] = [False] * self.bucketSize
-        self.hashSet[hash1Val][hash2Val] = True
+        if not self.bucket[bucket_id]:
+            if bucket_id == 0:
+                self.bucket[bucket_id] = [False] * (self.bucketSize + 1)
+            else:
+                self.bucket[bucket_id] = [False] * self.bucketSize
+        self.bucket[bucket_id][sec_bucket_id] = True
 
     def remove(self, key):
-        hash1Val = self.hash1(key)
-        hash2Val = self.hash2(key)
+        bucket_id = self.get_bucket_id(key)
+        sec_bucket_id = self.get_secondary_bucket_id(key)
 
-        if self.hashSet[hash1Val]:
-            self.hashSet[hash1Val][hash2Val] = False
+        if not self.bucket[bucket_id]:
+            return
+        else:
+            self.bucket[bucket_id][sec_bucket_id] = False
 
     def contains(self, key):
-        hash1Val = self.hash1(key)
-        hash2Val = self.hash2(key)
-
-        if self.hashSet[hash1Val]:
-            return self.hashSet[hash1Val][hash2Val]
+        bucket_id = self.get_bucket_id(key)
+        sec_bucket_id = self.get_secondary_bucket_id(key)
+        if self.bucket[bucket_id]:
+            return self.bucket[bucket_id][sec_bucket_id]
         return False
 
 
-obj = HashSet()
+obj = MyHashSet()
 obj.add(3333)
 obj.add(2343)
 obj.remove(33313)
 param_3 = obj.contains(3333)
 print(param_3)
-
-
-
-
-
