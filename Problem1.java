@@ -1,7 +1,10 @@
 import java.util.*;
 public class Problem1 {
     
-
+// Time Complexity : constant
+// Space Complexity : O(n) n-> entries in the hashSet
+// Did this code successfully run on Leetcode :
+// Any problem you faced while coding this :
 
     List<Integer> []  set;
     public Problem1() {
@@ -70,8 +73,5 @@ return false;
 
 }
 
-// Time Complexity : constant
-// Space Complexity : O(n) n-> entries in the hashSet
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+
 
