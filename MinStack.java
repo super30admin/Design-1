@@ -1,35 +1,78 @@
+//Approach - 1: 2 stacks-> st and minStack, minValue = Infinity
+//Time Complexity : O(1) 
+//Space Complexity : 
 class MinStack {
-    Stack<Integer> stack;
-    Stack<Integer> minStack;
+    
+     Stack<Integer> st;
+     Stack<Integer> minStack;
+     int min;
     
     public MinStack() {
-        this.stack = new Stack<>();
-        this.minStack = new Stack<>();
-     
+        this.min = Integer.MAX_VALUE;
+        this.st = new Stack<>();
+        this.minStack= new Stack<>();
+        minStack.push(min);
     }
     
-    public void push(int val) {
-        while(minStack.isEmpty() || val < minStack.peek()){
-            minStack.push(val);
-        }
-        stack.push(val);
+    public void push(int val) { //O(1)
+        min = Math.min(min, val);
+        st.push(val);
+        minStack.push(min);
         
     }
     
     public void pop() {
-        // if(stack.peek() == minStack.peek()){
-        if(stack.peek().equals(minStack.peek())){
-            minStack.pop();
-        }
-        stack.pop();
+        st.pop();
+        minStack.pop();
+        min = minStack.peek();
     }
     
     public int top() {
-       return stack.peek();
+        return st.peek();
     }
     
     public int getMin() {
-        return minStack.peek();
+        return min;
+    }
+}
+
+
+
+
+
+//Approach - 2: 1 stack-> st, minValue = Infinity
+//Time Complexity : O(1) 
+//Space Complexity : 
+class MinStack {
+    
+     Stack<Integer> st;
+     int min;
+    
+    public MinStack() {
+        this.min = Integer.MAX_VALUE;
+        this.st = new Stack<>();
+    }
+    
+    public void push(int val) { //O(1)
+        if(min >= val){
+             st.push(min);
+             min = val;
+        }
+        st.push(val);      
+    }
+    
+    public void pop() {
+        if(min == st.pop()){
+            min = st.pop(); // pop 2 times if min is pop
+        }
+    }
+    
+    public int top() {
+        return st.peek();
+    }
+    
+    public int getMin() {
+        return min;
     }
 }
 
