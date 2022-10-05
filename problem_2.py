@@ -1,30 +1,26 @@
-class MinStack:
+class MyHashSet:
 
     def __init__(self):
-        self.stack = list()
-        self.stack_min_arr = list()
+        self.hash = list()
+        for i in range(10):
+            self.hash.append([])
 
-    def push(self, val: int) -> None:
-        if len(self.stack) == 0:
-            self.stack_min_arr.append(val)
+    def add(self, key: int) -> None:
+        if key in self.hash[key%10]:
+            pass
         else:
-            self.stack_min_arr.append(min(self.stack_min_arr[-1],val))
-        self.stack.append(val)
-        self.stack_min = min(val,self.top())
-    def pop(self) -> None:
-        if len(self.stack) > 0:
-            self.stack.pop()
-            self.stack_min_arr.pop()
-    def top(self) -> int:
-        return self.stack[-1]
+            self.hash[key%10].append(key)
 
-    def getMin(self) -> int:
-        return self.stack_min_arr[-1]
+    def remove(self, key: int) -> None:
+        if key in self.hash[key%10]:
+            self.hash[key%10].remove(key)
+
+    def contains(self, key: int) -> bool:
+        return key in self.hash[key%10]
 
 
-# Your MinStack object will be instantiated and called as such:
-# obj = MinStack()
-# obj.push(val)
-# obj.pop()
-# param_3 = obj.top()
-# param_4 = obj.getMin()
+# Your MyHashSet object will be instantiated and called as such:
+# obj = MyHashSet()
+# obj.add(key)
+# obj.remove(key)
+# param_3 = obj.contains(key)
