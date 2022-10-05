@@ -1,0 +1,81 @@
+Array:
+    Time Complexity:
+        Average Case:
+            Access: theta(1)
+
+            Search: theta(n)
+
+            Insertion: theta(1)
+
+            Deletion: theta(n)
+        Worst Case:
+            Access: O(1)
+
+            Search: O(n)
+
+            Insertion: O(n)
+
+            Deletion: O(n)
+    Space Complexity (Worst Case):
+        O(n)
+        
+LinkedList:
+    Time Complexity:
+        Average Case:
+            Access: theta(n)
+
+            Search: theta(n)
+
+            Insertion: theta(1)
+
+            Deletion: theta(1)
+        Worst Case:
+            Access: O(n)
+
+            Search: O(n)
+
+            Insertion: O(1)
+
+            Deletion: O(1)
+    Space Complexity (Worst Case):
+        O(n)
+DynamicArray:
+    Time Complexity:
+        Average Case:
+            Access:
+
+            Search:
+
+            Insertion: 
+
+            Deletion:
+        Worst Case:
+            Access:
+
+            Search:
+
+            Insertion: 
+
+            Deletion:
+    Space Complexity (Worst Case):
+
+HashMaps:
+    Time Complexity:
+        Average Case:
+            Access: Not an Option
+
+            Search: theta(1)
+
+            Insertion: theta(1)
+
+            Deletion: theta(1)
+        Worst Case:
+            Access: Not an Option
+
+            Search: O(n)
+
+            Insertion: O(n)
+
+            Deletion: O(n)
+    Space Complexity (Worst Case):
+        O(n)
