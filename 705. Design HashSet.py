@@ -1,3 +1,5 @@
+# Time Complexity is
+# Space Complexity is O(n) in the worst case. Depending on no of calls. 
 class MyHashSet:
 
     def __init__(self):
@@ -12,6 +14,7 @@ class MyHashSet:
         return key % self.bucket_2
 
     def add(self, key: int) -> None:
+        # O(1) Time Complexity
         _hash1 = self.hash1(key)
         _hash2 = self.hash2(key)
 
@@ -21,6 +24,7 @@ class MyHashSet:
         self.hash_set[_hash1][_hash2] = True
 
     def remove(self, key: int) -> None:
+        # O(1) Time Complexity
         _hash1 = self.hash1(key)
         _hash2 = self.hash2(key)
 
@@ -28,6 +32,7 @@ class MyHashSet:
             self.hash_set[_hash1][_hash2] = False
 
     def contains(self, key: int) -> bool:
+        # O(1) Time Complexity
         _hash1 = self.hash1(key)
         _hash2 = self.hash2(key)
 
