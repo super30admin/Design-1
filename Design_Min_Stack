@@ -1,0 +1,46 @@
+//Timecomplexity O(1)
+//SpaceComplexity O(2n)
+
+class MinStack {
+Stack<Integer> st1;
+Stack<Integer> st2;
+int min;
+    public MinStack() {
+        this.st1 = new Stack<>();
+        this.st2 = new Stack<>();
+        this.min = Integer.MAX_VALUE;
+        st2.push(min);
+
+    }
+    
+    public void push(int val) {
+        st1.push(val);
+        min = Math.min(min,val);
+        st2.push(min);
+    }
+    
+    public void pop() {
+      
+            st1.pop();
+            st2.pop();
+            min = st2.peek();
+        
+    }
+    
+    public int top() {
+        return st1.peek();
+    }
+    
+    public int getMin() {
+        return min;
+    }
+}
+
+/**
+ * Your MinStack object will be instantiated and called as such:
+ * MinStack obj = new MinStack();
+ * obj.push(val);
+ * obj.pop();
+ * int param_3 = obj.top();
+ * int param_4 = obj.getMin();
+ */
