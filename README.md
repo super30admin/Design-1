@@ -1,6 +1,7 @@
 # Design-1
 
-## Problem 1:(https://leetcode.com/problems/design-hashset/)
+## Problem 1:
+Design HashSet(https://leetcode.com/problems/design-hashset/)
 
 
 
