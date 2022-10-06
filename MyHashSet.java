@@ -29,6 +29,4 @@ public class MyHashSet {
  * obj.remove(key);
  * boolean param_3 = obj.contains(key);
  */
- Main {
-    
-}
+
