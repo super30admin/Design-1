@@ -1,0 +1,47 @@
+//TimeComplexity O(1)
+//Spacecomplexity O(n) worstcase 
+
+class MyHashSet {
+boolean[][] storage;
+int buckets;
+int bucketList;
+    public MyHashSet() {
+       
+        this.buckets = 1000;
+        this.bucketList = 1000;
+         this.storage = new boolean[buckets][];
+    }
+    
+    public void add(int key) {
+        int key1 = key % 1000;
+        int key2 = key/1000;
+    if(storage[key1] == null){
+        if(key1 == 0){
+    storage[key1] = new boolean[bucketList+1];
+            }else{
+    storage[key1] = new boolean[bucketList];
+            }   
+    }
+    storage[key1][key2] = true;
+    
+        
+    }
+    
+    public void remove(int key) {
+         int key1 = key % 1000;
+        int key2 = key/1000;
+        if(storage[key1] == null)return;
+        storage[key1][key2] = false;
+    }
+    
+    public boolean contains(int key) {
+         int key1 = key % 1000;
+        int key2 = key/1000;
+        if(storage[key1] != null){
+    return storage[key1][key2];
+        }else{
+            return false;
+        }
+    
+    }
+}
