@@ -1,3 +1,5 @@
+#Time Complexity - O(1)
+# Space Complexity - O(n) (2D Array to store n values)
 class MyHashSet:
 
     def __init__(self):
