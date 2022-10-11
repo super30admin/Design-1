@@ -32,3 +32,39 @@ class MinStack {
         return min;
     }
 }
+problem 2 
+class MyHashSet {
+    boolean arr[] = new boolean[99999];
+    public MyHashSet() {
+    
+    }
+    public int hash(int key) {
+        
+        int hashfn=key%99999;
+        return hashfn;
+    }
+    public void add(int key) {
+        int i = hash(key);
+        arr[i] = true;
+    }
+    
+    public void remove(int key) {
+        int i = hash(key);
+        if (arr[i] == true){
+            arr[i] = false;
+        }
+    }
+    
+    public boolean contains(int key) {
+       int i = hash(key);
+        if (arr[i] == true){
+            return true;
+        }else{
+            return false;
+        }
+    }
+}
+// Time Complexity :O(1)
+// Space Complexity :O(n)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : time complexity
