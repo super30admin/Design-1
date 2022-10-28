@@ -3,9 +3,6 @@
 # Did this code successfully run on Leetcode : Yes
 # Any problem you faced while coding this : No
 
-from operator import index
-
-
 class MyHashSet:
     # Initialize Hashset with a value of sqrt of the range of acceptable size in the problem
     def __init__(self):
