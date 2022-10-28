@@ -3,18 +3,29 @@
 # Did this code successfully run on Leetcode : Yes
 # Any problem you faced while coding this : No
 
-class MyHashSet:
+from operator import index
 
+
+class MyHashSet:
+    # Initialize Hashset with a value of sqrt of the range of acceptable size in the problem
     def __init__(self):
         self.size = 1000
         self.arr = [None]*self.size
 
+    # Hash function for lookup in main array
     def hash1(self,key):
         return (key % self.size)
 
+    # Hash function for lookup in bucket array
     def hash2(self,key):
         return (key // self.size)
 
+    # if the main array has none at the obtained location, intialize a new boolean array
+    # now if it is in the 0th bucket we need to cover for the case where key=10^6 -> hash2= 1000
+    # which would be out of index range, so just for that case we use size+1, otherwise
+    # the bucket will have 0-999 i.e 1000 elements
+    # if there already exists an array at the location just change the bool at that index
+    # O(1)
     def add(self, key: int) -> None:
         main_idx = self.hash1(key)
         bucket_idx = self.hash2(key)
@@ -25,6 +36,8 @@ class MyHashSet:
                 self.arr[main_idx] = [False]*(self.size)
         self.arr[main_idx][bucket_idx] = True
 
+    # if arr[main_idx] is None -> location is empty, nothing to remove, then return
+    # else change the bool variable at the bucket to False
     def remove(self, key: int) -> None:
         main_idx = self.hash1(key)
         bucket_idx = self.hash2(key)
@@ -34,6 +47,8 @@ class MyHashSet:
         else:
             return
 
+    # if arr[main_idx] is None -> location is empty, nothing to remove, then return False
+    # else return the bool variable stored in the bucket
     def contains(self, key: int) -> bool:
         main_idx = self.hash1(key)
         bucket_idx = self.hash2(key)
