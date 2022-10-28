@@ -1,3 +1,11 @@
+#Time complexity - O(1) for all operations
+#Space omplexity - O(n)
+#Run on leetcode? yes
+#The approach here is to maintain a tuple of (element, min_element) in the stack. When pushing an element, chcek whether the current
+# element that is being pushed is minimum(this can be found by comparing with the minimum element so far in the stack which would be 
+#  in index 1 of topmost tuple) and push accordingly. After each push, the minimum element so far will be in index 1 of the top
+# most tuple.
+
 class MinStack:
 
     def __init__(self):
@@ -34,7 +42,6 @@ while(True):
     s=input("enter option 1-push, 2-pop, 3-top, 4-getmin, 5-quit")
     if(s=="5"):
         break
-    
     if(s=="1"):
         ip=input("enter the number")
         st.push(int(ip))
