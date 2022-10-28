@@ -1,78 +1,76 @@
-#Time complexity: 
-# Add - O(n) if all inserts chained to same node
-# Remove - O(n) if all inserts chained to same node and removal of ~ last node
-# Contains - O(n) if all inserts chained to same node and check for last node
+# Time Complexity:
+# Add - O(1), Remove - O (1), Contains - O (1)
 
-#Space complexity:
-# Add - O(1)
-# Remove - O(1) 
-# Contains - O(1)
+# Space Complexity: 
+# O(n*m) where n is bucket size and m is bucketItem size
+# O(10^6) in this case
 
-#Approach:
-# Separate chaining, maintain a linked list at each index, attach to Linked List in case of collision
+#Accepted on Leetcode
 
-#Accepted by linked list
+# Approach
+# Double Hashing approach, here we will use two hash functions
+# First Hash will select a primary index and second hash will select secondary index
+# Keys are between 0 to 10^6 so unique value we can take as size is 10^3
+# Primary bucket 10^3 and each primary bucket will have secondary bucket of size 10^3
 
 
-class Node:
-	def __init__(self, val, next = None):
-		self.val = val
-		self.next = next 
 
 class MyHashSet:
-    SIZE = 1000
+    
+    buckets = 1000
+    bucketItems = 1000
 
     def __init__(self):
-        self.storageArr = [Node(float('inf')) for i in range(MyHashSet.SIZE)]
+        self.storageArr = [False for i in range(MyHashSet.buckets)]
         
 
-    def add(self, val: int) -> None:
-        #Node to be added
-        newNode = Node(val)
-        #if already exists do nothing else add
-        hashOfVal = self.hash(val)
-        #check if hashOccupied by val
-        startNode = self.storageArr[hashOfVal]
-        curNode = startNode
-        prevNode = None
-        while curNode and curNode.val!=val:
-            prevNode = curNode
-            curNode = curNode.next
-		
-        if curNode == None:
-            prevNode.next = newNode
-            
+    def add(self, key: int) -> None:
+        primaryIdx = self.hash1(key)
+        secondaryIdx = self.hash2(key)
         
-    def hash(self, val): 
-        return val%MyHashSet.SIZE
+        bucket = self.storageArr[primaryIdx]
         
-
-    def remove(self, val: int) -> None:
-        hashOfVal = self.hash(val)
-        startNode = self.storageArr[hashOfVal]
-        curNode = startNode
-        prevNode = None
-        while curNode and curNode.val!=val:
-            prevNode = curNode
-            curNode = curNode.next
-
-        if curNode: #found node to be removed
-            prevNode.next = curNode.next
-        
-
-    def contains(self, val: int) -> bool:
-        hashOfVal = self.hash(val)
-        startNode = self.storageArr[hashOfVal]
-        return True if self.getNodeIfExists(startNode, val) else False
-    
-    def getNodeIfExists(self,head,val): #helper function
-        traverseNode = head
-        while traverseNode:
-            if traverseNode.val == val:
-                break
+        if bucket == False:
+            if bucket == 0: #handling edge case for key = 10**6
+                bucket = self.storageArr[primaryIdx] = [False for i in range(MyHashSet.bucketItems + 1)]
             else:
-                traverseNode = traverseNode.next
-        return traverseNode #will return None if does not exist
+                bucket = self.storageArr[primaryIdx] = [False for i in range(MyHashSet.bucketItems)]
+        
+        bucket[secondaryIdx] = True
         
     
+    def hash1(self, key):
+        return key % MyHashSet.buckets
+    
+    def hash2(self, key):
+        return key // MyHashSet.bucketItems
         
+
+    def remove(self, key: int) -> None:
+        primaryIdx = self.hash1(key)
+        secondaryIdx = self.hash2(key)
+        
+        bucket = self.storageArr[primaryIdx]
+        
+        if bucket != False:
+            bucket[secondaryIdx] = False
+
+    def contains(self, key: int) -> bool:
+        primaryIdx = self.hash1(key)
+        secondaryIdx = self.hash2(key)
+        
+        bucket = self.storageArr[primaryIdx]
+        
+        if bucket == False:
+            return False
+        else:
+            return bucket[secondaryIdx]
+        
+        
+
+
+# Your MyHashSet object will be instantiated and called as such:
+# obj = MyHashSet()
+# obj.add(key)
+# obj.remove(key)
+# param_3 = obj.contains(key)
