@@ -5,7 +5,7 @@
 
 
 ## Problem 2:
-Design MinStack (https://leetcode.com/problems/min-stack/)
+## Design MinStack (https://leetcode.com/problems/min-stack/)
 
 
 
