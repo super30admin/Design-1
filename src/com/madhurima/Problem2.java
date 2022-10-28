@@ -1,10 +1,11 @@
 // Time Complexity : O(1)
-// Space Complexity : O(1)
+// Space Complexity : O(n) //since we don't know the size of stack
 // Did this code successfully run on Leetcode : Yes
 
 package com.madhurima;
 
 import java.util.LinkedList;
+import java.util.Stack;
 
 public class Problem2 {
     public static void main(String[] args) {
@@ -22,42 +23,38 @@ public class Problem2 {
 }
 
 class MinStack {
-
-    LinkedList<Integer> stack = new LinkedList<>();
-    LinkedList<Integer> minVals = new LinkedList<>();
+    Stack<Integer> s;
+    int min;
 
     public MinStack() {
-
+        min = Integer.MAX_VALUE;
+        s = new Stack<>();
     }
 
     public void push(int val) {
-        stack.addFirst(val);
-
-        if(minVals.isEmpty()){
-            minVals.addFirst(val);
-        }else if(val < minVals.getFirst()){
-            minVals.addFirst(val);
+        if(val <= min){
+            s.push(min);
+            s.push(val);
+            min = val;
         }else{
-            minVals.addFirst(minVals.getFirst());
+            s.push(val);
         }
     }
 
     public void pop() {
-        if(stack.isEmpty()){
-            return;
+        if(s.peek() == min){
+            s.pop();
+            min = s.pop();
         }else{
-            stack.removeFirst();
-            minVals.removeFirst();
+            s.pop();
         }
     }
 
     public int top() {
-        return stack.getFirst();
+        return s.peek();
     }
 
     public int getMin() {
-        return minVals.getFirst();
+        return min;
     }
-
-
 }
