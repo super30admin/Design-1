@@ -6,44 +6,38 @@
 # Push, Pop, Top, getMin - O(1)
 
 #Approach
-#On pushing compare previous min value with current value and set minVal for current node accordingly - which is the global minVal when that node is on top
+# Use a single stack - instead of storing each mininmum, store a minimum variable and only modify it when minimum changes (both push and pop)
+# When pushing - store min var, compare it to each push val, if val <= min, push twice, first cur minimum and then val
+# When popping - compare each pop to min val, if popped val == min, pop twice and set min to the second pop, else pop once
+# getMin - Simply return min variable
+# Top - simply return top of the stack
 
 #Accepted on Leetcode
 
-#Problems
-# Had to use a hint on Leetcode
-# Realized was using the 'Run Code' on Leetcode to test instead of framing test cases by myself, must test thoroughly such that execution successful on first run
-
-
-
-class MinStackNode:
-    def __init__(self, val, minVal):
-        self.val = val
-        self.min = minVal
 
 class MinStack:
 
     def __init__(self):
-        self.stack = []
+        self.minStack = []
+        self.min = float('inf')
         
 
     def push(self, val: int) -> None:
-        curMinVal = self.stack[-1].min if len(self.stack) else float('inf')
-        newMinVal = val if val < curMinVal else curMinVal
-        
-        newNode = MinStackNode(val, newMinVal)
-        self.stack.append(newNode)
-        
+        if val <= self.min:
+            self.minStack.append(self.min) #appending cur min
+            self.min = val
+            
+        self.minStack.append(val) #appending val to be pushed
 
     def pop(self) -> None:
-        self.stack.pop()
-        
+        popVal = self.minStack.pop()
+        if popVal == self.min:
+            self.min = self.minStack.pop()
 
     def top(self) -> int:
-        return self.stack[-1].val
+        return self.minStack[-1]
         
 
     def getMin(self) -> int:
-        return self.stack[-1].min
+        return self.min
         
-
