@@ -92,3 +92,65 @@ class MyHashSet {
  * obj.remove(key);
  * boolean param_3 = obj.contains(key);
  */
+
+
+
+
+
+//155-Min Stack
+// Time Complexity : O(1)
+// Space Complexity :
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this :
+
+class MinStack {
+    int min;
+    Stack<Integer> st;
+    Stack<Integer> min_stack;
+
+    public MinStack() {
+        min= Integer.MAX_VALUE;
+        st =new Stack<Integer>();
+        min_stack=new Stack<Integer>();
+        min_stack.push(min);
+        
+    }
+    
+    public void push(int val) {
+        if(val<=min)
+        {
+            min=val;
+        
+        }
+        st.push(val);
+        min_stack.push(min);
+        
+        
+    }
+    
+    public void pop() {
+        st.pop();
+        min_stack.pop();
+        min=min_stack.peek();
+        
+    }
+    
+    public int top() {
+        return st.peek();
+        
+    }
+    
+    public int getMin() {
+        return min;
+        
+    }
+}
+
+/**
+ * Your MinStack object will be instantiated and called as such:
+ * MinStack obj = new MinStack();
+ * obj.push(val);
+ * obj.pop();
+ * int param_3 = obj.top();
+ * int param_4 = obj.getMin();
+ */
