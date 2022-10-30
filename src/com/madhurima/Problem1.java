@@ -1,5 +1,5 @@
 // Time Complexity : O(1)
-// Space Complexity : O(1) //since legth of 2d array is fixed
+// Space Complexity : worst case 10^6
 // Did this code successfully run on Leetcode : Yes
 
 package com.madhurima;
