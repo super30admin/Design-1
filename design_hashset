@@ -1,0 +1,69 @@
+//Time Complexity : O(1)
+//Space Complexity : O(1)
+//Does this code successfully run on leetcode : Yes
+/*Used double hashing 
+To find the index in primary array, modulo operator is used and to find the index in secondary array, divide operator is used so that tgere will be no collisions while storing similar values
+Initially matrix is set to false and the index where the element is added is set to true.
+It has constant time complexity as accessing of elements is made easier by double hashing technique
+*/
+
+class MyHashSet {
+public:
+    
+    int buckets;
+    int bucketItems;
+    vector<vector<bool>> v;
+    
+    MyHashSet() {
+        buckets = 1000;
+        bucketItems = 1000;
+        v = vector<vector<bool>>(1000, vector<bool>());
+    }
+    
+    int getBucket(int key) {
+        return key % buckets;
+    }
+    
+    int getBucketItem(int key) {
+        return key / bucketItems;
+    }
+    
+    void add(int key) {
+        int bucketidx = getBucket(key);
+        int bucketItemidx = getBucketItem(key);
+        if(v[bucketidx].empty()) {
+            //if(bucketidx == 0) {
+                v[bucketidx] = vector<bool>(1001, false);;
+            //} else {
+                //v[bucketidx] = vector<bool>(1000, false);
+            //}
+        }
+        v[bucketidx][bucketItemidx] = true;
+    }
+    
+    void remove(int key) {
+        int bucketidx = getBucket(key);
+        int bucketItemidx = getBucketItem(key);
+        if(v[bucketidx].empty()) {
+            return;
+        }
+        v[bucketidx][bucketItemidx] = false;
+    }
+    
+    bool contains(int key) {
+        int bucketidx = getBucket(key);
+        int bucketItemidx = getBucketItem(key);
+        if(v[bucketidx].empty()) {
+            return false;
+        }
+        return v[bucketidx][bucketItemidx];
+    }
+};
+
+/**
+ * Your MyHashSet object will be instantiated and called as such:
+ * MyHashSet* obj = new MyHashSet();
+ * obj->add(key);
+ * obj->remove(key);
+ * bool param_3 = obj->contains(key);
+ */

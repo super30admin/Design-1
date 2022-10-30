@@ -1,0 +1,123 @@
+//Time Complexity : O(1)
+//Space Complexity : O(1)
+//Does this problem successfully run in leetcode : Yes
+//Any problem faced : No
+ 
+/*
+initially min value value is set to INT_MAX
+ 
+While pushing -
+if element is less than or equal to minimum element
+- push the min value
+- update the min value to current value
+- push the current value to stack
+else just push the current value to stack
+ 
+While popping -
+if top value is equal to min value
+- pop the top
+- update the minimum to stack top
+- pop again as we pushed twice
+else just pop the element
+*/
+ 
+class MinStack {
+public:
+   
+    //Approach 1
+    stack<int> stk;
+    int minVal = INT_MAX;
+    int count = 0;
+    MinStack() {
+       
+    }
+    void push(int val) {
+        if(count == 0) {
+            stk.push(INT_MAX);
+        }
+        count = 1;
+        if(val <= minVal) {
+            stk.push(minVal);
+            minVal = val;
+            stk.push(val);
+        } else {
+            stk.push(val);
+        }
+    }
+   
+    void pop() {
+        if(minVal == stk.top()) {
+            stk.pop();
+            minVal = stk.top();
+            stk.pop();
+        } else {
+            stk.pop();
+        }
+    }
+   
+    int top() {
+        return stk.top();
+    }
+   
+    int getMin() {
+        return minVal;
+    }
+};
+ 
+/**
+ * Your MinStack object will be instantiated and called as such:
+ * MinStack* obj = new MinStack();
+ * obj->push(val);
+ * obj->pop();
+ * int param_3 = obj->top();
+ * int param_4 = obj->getMin();
+ */
+ 
+//Approach 2 using minStack
+ 
+//Time Complexity : O(1)
+//Space Complextity : O(N) as another stack is used which keeps track of the minimum elements
+ 
+/*
+Initially minStack is pushed with first value of push
+ 
+While Pushing
+element to be pushed is less than top of minStack, it is pushed in both the stacks
+else element is only pushed in main stack and minstack is pushed with it's top value, i.e., the minimum element
+ 
+While popping, both the stacks are popped
+top value of minStack is the minimum element
+*/
+ 
+/*class MinStack {
+public:
+    stack<int> stk;
+    stack<int> minStk;
+    MinStack() {
+       
+    }
+    void push(int val) {
+        if(stk.empty()) {
+            stk.push(val);
+            minStk.push(val);
+        } else {
+            stk.push(val);
+            minStk.push(min(val, minStk.top()));
+           
+        }
+    }
+   
+    void pop() {
+        stk.pop();
+        minStk.pop();
+    }
+   
+    int top() {
+        return stk.top();
+    }
+   
+    int getMin() {
+        return minStk.top();
+    }
+};*/
+
