@@ -1,82 +1,57 @@
-//Time Complexity :O(n)
+//Time Complexity :O(1)
 //Space Complexity :O(n)
-//Did this code successfully run on Leetcode : No
+//Did this code successfully run on Leetcode : Yes
 //Any problem you faced while coding this : Yes
 
 
 //Your code here along with comments explaining your approach
 
 class MyHashSet {
-    private Node[] hset;
-    public static final int SIZE = 10000;
+    boolean[][] storage;
+    int buckets, bucketItems;
     public MyHashSet() {
-        hset = new Node[SIZE];
+        buckets = 1000;
+        bucketItems = 1000;
+        storage = new boolean[buckets][];
     }
     
-    public int hashFunc(int key){
-        return key%1000;
+    int getBucket(int key){
+        return key%1000; 
     }
+    int getBucketItem(int key){
+        return key/1000;
+    }
+    
     public void add(int key) {
-        int k = hashFunc(key);
-        Node n = hset[k];
-        if (n == null){
-            hset[k] = new Node(key);
-        }
-        else{
-            if(!contains(key)){
-                while(n.next != null){
-                    n = n.next;
-                }
-                Node n1 = new Node(key);
-                n.next = n1;
+        int bucket = getBucket(key);
+        int bucketItem = getBucketItem(key);
+        if (storage[bucket] == null){
+            if(bucket == 0){
+                storage[bucket] = new boolean[bucketItems+1];
+            }
+            else{
+                storage[bucket] = new boolean[bucketItems];
             }
         }
+        storage[bucket][bucketItem] = true;
     }
     
     public void remove(int key) {
-        int k = hashFunc(key);
-        Node n = hset[k];
-        Node prev = hset[k];
-        if(n != null){
-            if(contains(key)){
-                if (n.next == null){
-                    hset[k] = null;
-                }
-                else{
-                    while(n.value != key){
-                        prev = n;
-                        n = n.next;
-                    }
-                    prev.next = n.next;
-                }
-            }
+        int bucket = getBucket(key);
+        int bucketItem = getBucketItem(key);
+        if (storage[bucket] == null){
+            return;
         }
+        storage[bucket][bucketItem] = false;
     }
     
     public boolean contains(int key) {
-        int k = hashFunc(key);
-        Node n = hset[k];
-        boolean contain = false;
-        if(n != null){
-           while((n != null) && (contain == false)){
-               if (n.value == key){
-                   contain = true;
-               }
-               else{
-                   n = n.next;
-               }
-           }
+        int bucket = getBucket(key);
+        int bucketItem = getBucketItem(key);
+        if (storage[bucket] == null){
+            return false;
         }
-        return contain;
-    }
-}
-
-class Node {
-    public int value;
-    public Node next;
-    public Node(int v){
-        this.value = v;
-        this.next = null;
+        return storage[bucket][bucketItem];
     }
 }
 
