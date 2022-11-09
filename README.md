@@ -1,4 +1,4 @@
-Explaining your approach in three sentences only at top of your code
+Explain your approach in **three sentences only** at top of your code
 
 # Design-1
 
