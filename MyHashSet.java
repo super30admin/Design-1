@@ -1,4 +1,4 @@
-//Time Complexity = O(n)
+//Time Complexity = O(1)
 //Space Complexity =O(1)
 /*First formed the logical relation between the nodes or buckets with the item that are bucketitems.we refer bucket as the individual indexes of the array and bucketitem as the value which gets stored in the arrays.
 Considered 2 main hashing functions to calculate the key for buckets and bucketitems. We considered mod and division operator to calculate the key of the bucket and bucketitems respectively. we use boolean array because it consumes less space then integer array If there is new insertion then we just add it to the bucket. Or else if present then we add to the item that is present in the bucket. For remove no item present then return null, and if present then make the value as false. For contains we just check whether the item is present or not */
