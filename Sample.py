@@ -15,7 +15,6 @@
 # 4. top -  we see the topmost value from stack
 # 5. getMin - we get the topmost value from min stack
 
-
 class MinStack:
 
     def __init__(self):
