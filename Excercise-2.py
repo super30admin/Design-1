@@ -1,3 +1,7 @@
+# Approch:- Used 2 lists one to store stack elements and other to store current min_element.
+# At all time both of these stacks contain same number of elements.
+# Each Min stack is appended by minimum of (current min and new value)
+
 # Time Complexity : O(1)
 # Space Complexity :O(n) #For MinStack
 # Did this code successfully run on Leetcode : Yes
