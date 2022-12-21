@@ -8,22 +8,43 @@
 #Yes
 
 # Any problem you faced while coding this :
-#This solution seems very trivial - not sure about a better way
+# Initially it had space complextiy of (O(N)) but is is more space efficient now
 
 class MyHashSet:
-
     def __init__(self):
-        self.data = [False] * ((10**6) + 1 )
-        self.max_value = 10 ** 6
+        #Create a 2D array with empty interior arrays
+        self.max_value = 10 ** 3 
+        self.num_buckets = 10**3
+        self.data = [[]] * (self.num_buckets )
 
     def hash(self,key):
-        return key % self.max_value
+        #Double has function - modulo and division
+        return key % self.max_value,int(key / self.num_buckets)
 
     def add(self, key: int) -> None:
-        self.data[self.hash(key)] = True
+        loc1,loc2 = self.hash(key)
+        if self.data[loc1] == []:
+            #If this hashed value has never been seen, then create a new internal array of bucket size
+            #and then use the second hash function to place it at the right location
+            if loc1 == 0 :
+                self.data[loc1] = [False]*(self.max_value + 1)
+            else :
+                self.data[loc1] = [False]*(self.max_value)
+            self.data[loc1][loc2] = True
+        else :
+            #If an element exist for this first hash function, then it means a collision has occured, so use the second 
+            #location and place it in position 
+            self.data[loc1][loc2] = True
 
     def remove(self, key: int) -> None:
-        self.data[self.hash(key)] = False
+        loc1,loc2 = self.hash(key)
+        #Remove it if it exists
+        if len(self.data[loc1]) != 0:
+            self.data[loc1][loc2] = False
 
     def contains(self, key: int) -> bool:
-        return self.data[self.hash(key)]
+        loc1,loc2 = self.hash(key)
+        if len(self.data[loc1]) != 0:
+            return self.data[loc1][loc2]
+        else :
+            return False
