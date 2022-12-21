@@ -7,6 +7,8 @@ const innerArraySize = 1001
    TODO:
    1. Why is inner array size bigger by just 1 ?
    2. Why is our double hashing func using / operator instead of % operator ( like the 1st hashing func )
+   - This is because using the same hash func in the nested array will result into a collision in the nested array
+   - so something SHOULD BE DIFFERENT than the outter array
 */
 
 // time: o(1)
