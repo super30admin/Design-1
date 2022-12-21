@@ -66,7 +66,7 @@ class Bucket {
  * obj.remove(key);
  * boolean param_3 = obj.contains(key);
  */
-public class Design1 {
+public class Problem1 {
 
     public static void main(String[] args) {
 
