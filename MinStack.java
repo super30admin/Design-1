@@ -1,65 +1,47 @@
-// Time Complexity : push, pop, top, getMin all run in constant time O(1)
-// Space Complexity : O(n) 
+// Time Complexity : push, pop, top, min all run in constant time O(1)
+// Space Complexity : O(2n) as we are using an extra stack
 // Did this code successfully run on Leetcode : Yes
-// Any problem you faced while coding this : null pointer assignment errors
+// Any problem you faced while coding this : No
 
 
 // Your code here along with comments explaining your approach
 
-// I am using a data structure similar to a linkedlist to solve this problem. 
-// Each node in the stack will contain - data, min value until that point & pointer to prev node.
-// Additional node is used to keep track of top of stack.
+// We solve this using an additional stack. 
+// The additional stack has 1:1 mapping and keeps track of min value at every stage in the stack.
+
 
 class MinStack {
-    class StackNode{ 
-        int data;
-        int min; //keep track of min value until this node
-        StackNode prev; //pointer to prev node
-        StackNode(){
-            data=Integer.MAX_VALUE;
-            min=Integer.MAX_VALUE;
-            prev=null;
-        }
-        StackNode(int data){
-            this.data = data;
-        }
-    }
-    StackNode top; //pointer to top of stack
-    int size;
+
+    private int min;
+    private Stack<Integer> st;
+    private Stack<Integer> minSt;
 
     public MinStack() {
-        top = new StackNode();
-        size =0;
+        this.min = Integer.MAX_VALUE;
+        this.st = new Stack<>();
+        this.minSt = new Stack<>();
+        this.minSt.push(this.min); //handles case where we try to find min in empty stack
     }
     
     public void push(int val) {
-        StackNode newNode = new StackNode(val);
-        if(size==0) //if stack is empty min value will be the new node's value
-        {
-            newNode.min = val;
-            newNode.prev = null;
-        }
-        else{ //else compare the new node's value with min value computed till now
-            newNode.min = top.min < val ? top.min : val; 
-            newNode.prev = top;
-        }
-        top = newNode;
-        size++;
+        st.push(val);
+        if(val<min) 
+            min = val;
+        minSt.push(min); 
     }
     
     public void pop() {
-        StackNode temp = top;
-        top = temp.prev;
-        temp = null;    
-        size--;  
+        st.pop();
+        minSt.pop();
+        min = minSt.peek(); 
     }
     
     public int top() {
-        return top.data;
+        return st.peek();
     }
     
     public int getMin() {
-        return top.min;
+        return min;
     }
 }
 
