@@ -1,0 +1,62 @@
+// Explanation - Distribute the 10^6 elements into an array of 1000 and 1000. Hence two hash functions will be needed, one for horizontal location finding and other for vertical. Whenever add id encountered in the horizontal aray, we create 1000 vertical locations.
+// Time Complexity = O(1)
+// Space Complexity = O(1)
+// Executed the code in LeetCode
+//
+class MyHashSet {
+
+    private boolean[][] storage;
+    private int buckets;
+    private int bucketItems;
+
+    public MyHashSet() {
+        this.buckets = 1000;
+        this.bucketItems = 1000;
+        this.storage = new boolean[buckets][];
+    }
+
+    private int hash1(int key){
+        return key%buckets;
+    }
+    
+    private int hash2(int key){
+        return key/buckets;
+    }
+
+    public void add(int key) {
+        int bucket = hash1(key);
+        int bucketItem = hash2(key);
+        if(storage[bucket] == null){
+            if(bucket == 0){
+                storage[bucket] = new boolean[bucketItems + 1];
+            }
+            else {
+                storage[bucket] = new boolean[bucketItems];
+            }
+        }
+        storage[bucket][bucketItem] = true;
+    }
+    
+    public void remove(int key) {
+        int bucket = hash1(key);
+        int bucketItem = hash2(key);
+        if(storage[bucket] == null) return;
+        storage[bucket][bucketItem] = false;
+    }
+    
+    public boolean contains(int key) {
+        int bucket = hash1(key);
+        int bucketItem = hash2(key);
+        if(storage[bucket] == null) return false;
+        return storage[bucket][bucketItem];
+        
+    }
+}
+
+/**
+ * Your MyHashSet object will be instantiated and called as such:
+ * MyHashSet obj = new MyHashSet();
+ * obj.add(key);
+ * obj.remove(key);
+ * boolean param_3 = obj.contains(key);
+ */
