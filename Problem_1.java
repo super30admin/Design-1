@@ -1,4 +1,4 @@
-// Time Complexity : O(1)
+// Time Complexity : O(1) for all operations
 // Space Complexity : O(1000) = O(1) (if we have n elements then O(n))
 // Did this code successfully run on Leetcode : yes
 // Any problem you faced while coding this : no
