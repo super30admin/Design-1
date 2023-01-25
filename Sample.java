@@ -1,13 +1,11 @@
-// Time Complexity : O(N) - contains logic require atmost N iterations to check if the element is present.
-// Space Complexity : O(N) - though array size is fixed, the list in each array grows with the number of elements (N)
+// Time Complexity : O(1) 
+// Space Complexity : O(N^2) - for the matrix of boolean type if considered, else O(1)
 // Did this code successfully run on Leetcode : yes
 // Any problem you faced while coding this : None
 
 
 // Your code here along with comments explaining your approach
 
-import java.util.Iterator;
-import java.util.LinkedList;
 // A simple approach without using any hash function. 
 // I am just using an arraylist to store the elements and everytime
 // I am checking if it is present in the list before adding or removing it.
@@ -42,61 +40,62 @@ import java.util.LinkedList;
 
 /**
  * @author akhilreddy619
- * In this class, I am using an array of linkedlist.
- * _hash: (extra function added) to calculate the index in which the element has 
+ * In this class, I am using an boolean array of arrays.
+ * hash1 & hash2: (extra function added) to calculate the index in which the element has 
  * to be inserted/removed.
- * For Add: calculating the hash and check if it has a list in that index. If so,
+ * For Add: calculating the hashes (h1 & h2) and check if it has a list in that index. If so,
  * check if the key is already inserted, if not insert it else skip it. If the list
- * is not initialized, then initialize it and insert the key. Then put that list in 
- * the array.
- * For Remove:Calcuate the hash and check if it has a list in that index. If so, 
- * iterate that list and remove the element else skip it.
- * For Contains: Calculate the hash and check if it has a list in that index. If not,
- * return false, else check if that list has this key and return boolean accordingly.
+ * is not initialized, then initialize it and insert the key in [h1][h2]. Then put that list in 
+ * the array. 
+ * For Remove:Calcuate the hashes (h1 & h2) and check if it has a list in that index. If so, 
+ * remove the element from [h1][h2] else skip it.
+ * For Contains: Calculate the hashes (h1 & h2) and check if it has a list in that index. If not,
+ * return false, else check if that list has this key in [h1][h2] and return boolean accordingly.
  *
  */
 class MyHashSet {
-    LinkedList<Integer>[] set;
+    boolean[][] set;
+    int buckets;
+    int bucketItems;
     public MyHashSet() {
-        set = new LinkedList[15];
+        this.buckets = 1000; // sqrt(1M)
+        this.bucketItems = 1000; // sqrt(1M) buckets == bucketItems
+        this.set = new boolean[buckets][];
     }
     
     public void add(int key) {
-        int hash = _hash(key);
-        LinkedList<Integer> keySet = set[hash];
-        if(keySet == null) {
-            keySet = new LinkedList<>();
-            keySet.add(key);
-            set[hash] = keySet;
-        } else {
-            if(!keySet.contains(key))
-                keySet.add(key);
+        int h1 = hash1(key);
+        int h2 = hash2(key);
+        if(set[h1] == null) {
+            if(h1 == 0)
+                set[h1] = new boolean[bucketItems + 1];
+            else
+                set[h1] = new boolean[bucketItems];
         }
+        set[h1][h2] = true;
     }
     
     public void remove(int key) {
-        int hash = _hash(key);
-        LinkedList<Integer> keySet = set[hash];
-        if(keySet != null) {
-            Iterator it = keySet.iterator();
-            while(it.hasNext()) {
-                if(key == (int) it.next()) {
-                    it.remove();
-                    break;
-                }
-            }
-        }
+        int h1 = hash1(key);
+        int h2 = hash2(key);
+        if(set[h1] == null)
+            return;
+        set[h1][h2] = false;
     }
     
     public boolean contains(int key) {
-        int hash = _hash(key);
-        LinkedList<Integer> keySet = set[hash];
-        if(keySet != null && keySet.contains(key))
-            return true;
-        return false;
+        int h1 = hash1(key);
+        int h2 = hash2(key);
+        if(set[h1] == null)
+            return false;
+        return set[h1][h2];
     }
 
-    public int _hash(int key) {
-        return key % set.length;
+    public int hash1(int key) {
+        return key % buckets;
+    }
+
+    public int hash2(int key) {
+        return key / bucketItems;
     }
 }
