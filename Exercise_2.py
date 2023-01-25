@@ -1,5 +1,8 @@
 # Explain your approach in **three sentences only** at top of your code
-
+'''This approach is the same as implementing a stack with lists, except
+that there is an extra list that keeps track of the minimum equivalent to 
+the value of the corresponding stack. 
+'''
 # Time Complexity : O(1)
 # Space Complexity : O(N), N being the length of stack. 
 # Did this code successfully run on Leetcode : Yes. 
