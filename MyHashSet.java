@@ -1,5 +1,6 @@
 //Space complexity: O(n);
 //Time complexity : O(1)
+//Author: Shubhangi
 
 /**
  * Created an array called storage with primary and secondary indexes hash1 and hash2, 
