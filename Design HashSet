@@ -1,0 +1,23 @@
+// Time Complexity : O(1)
+// Space Complexity : O(n)
+// Did this code successfully run on Leetcode : Yes
+// Created a hashmap using direct chaining. 
+
+class MyHashSet:
+
+    def __init__(self):
+        self.storage = [[] for i in range(1000)]
+
+    def add(self, key: int) -> None:
+        h1 = key % 1000
+        if not self.contains(key):
+            self.storage[h1].append(key)
+
+    def remove(self, key: int) -> None:
+        h1 = key % 1000
+        if self.contains(key):
+            self.storage[h1].remove(key)
+
+    def contains(self, key: int) -> bool:
+        h1 = key % 1000
+        return key in self.storage[h1]
