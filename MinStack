@@ -1,0 +1,36 @@
+#// Time Complexity : O(1)
+# // Space Complexity : O(n)
+# // Did this code successfully run on Leetcode : Yes
+
+
+
+class MinStack:
+
+    def __init__(self):
+        self.slots = []  
+        self.minStack = []  
+
+    def push(self, val: int) -> None:
+        self.slots.append(val)
+        if len(self.minStack) == 0:
+            self.minStack.append(val)
+        else:
+            min = self.minStack[len(self.minStack)-1]
+            if min>val:
+                self.minStack.append(val)
+            else:
+                self.minStack.append(min)
+
+
+    def pop(self) -> None:
+        self.slots.pop(len(self.slots)-1)
+        self.minSlots.pop(len(self.minStack)-1)
+
+    def top(self) -> int:
+        return self.slots[len(self.slots)-1]
+
+    def getMin(self) -> int:
+        if(self.minStack)!=0:
+           return self.minStack.pop(len(self.minStack)-1)
+        else:
+          return
