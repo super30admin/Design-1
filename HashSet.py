@@ -1,3 +1,8 @@
+# Time Complexity : O(1)
+# Space Complexity : O(1)
+# Did this code successfully run on Leetcode : yes
+# Any problem you faced while coding this : I had hard time understanding to define size and struggled for lot of time to come up with a solution, looked at few resources and then got the basic idea
+
 class MyHashSet:
 
     def __init__(self):
