@@ -1,3 +1,5 @@
+import java.util.Stack;
+
 // Time Complexity : O(1)
 // Space Complexity : O(n)
 // Did this code successfully run on Leetcode : Yes
@@ -30,3 +32,46 @@ class MyHashSet {
         }
     }
     
+// We are pushing as a pair of values and min 
+
+    class MinStack {
+    
+        class Pair {
+            int i, j;
+            public Pair (int i, int j) {
+                this.i = i;
+                this.j = j;
+            }
+        }
+    
+        Stack<Pair> s;
+        
+        public MinStack() {
+            s = new Stack<Pair>();
+        }
+        
+        public void push(int val) {
+            if (s.isEmpty()) {
+                s.push(new Pair(val, val));
+            } else {
+                int min = s.peek().j;
+                
+                if (min > val)
+                    min = val;
+                
+                s.push(new Pair(val, min));
+            }
+        }
+        
+        public void pop() {
+            s.pop();
+        }
+        
+        public int top() {
+           return s.peek().i;
+        }
+        
+        public int getMin() {
+            return s.peek().j;
+        }
+    }
