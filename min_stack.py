@@ -1,8 +1,10 @@
+# Space Complexity: O(n)
 class MinStack:
     def __init__(self):
         self.stack = []
         self.min_stack = []
 
+    # Time Complexity: O(1)
     def push(self, val: int) -> None:
         # Add val to stack
         self.stack.append(val)
@@ -14,6 +16,7 @@ class MinStack:
         elif val == self.min_stack[-1][0]:
             self.min_stack[-1][1] += 1
 
+    # Time Complexity: O(1)
     def pop(self) -> None:
         # If popping the minimum value, decrement the frequency by 1
         # and remove it completely is the frequency becomes 0
@@ -26,10 +29,12 @@ class MinStack:
         # Remove from stack
         self.stack.pop()
 
+    # Time Complexity: O(1)
     def top(self) -> int:
         # Top of stack
         return self.stack[-1]
 
+    # Time Complexity: O(1)
     def getMin(self) -> int:
         # Top of min stack
         return self.min_stack[-1][0]
