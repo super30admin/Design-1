@@ -2,6 +2,7 @@
 // Space Complexity : O(1)
 // Did this code successfully run on Leetcode : yes 
 // Any problem you faced while coding this : no
+// Implemented Hashset using Array and used chaining using LinkedList to avoid collision
 
 class MyHashSet {
 
