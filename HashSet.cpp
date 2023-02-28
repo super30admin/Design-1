@@ -1,4 +1,6 @@
 class MyHashSet {
+    // Time Complexity : O(1)
+    // Space Complexity : O(n)
 public:
 int arr[1000001];
     MyHashSet() {
