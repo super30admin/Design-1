@@ -4,7 +4,7 @@ class MinStack {
     Stack<Integer> stack;
 
     public MinStack() {
-        min = Integer.MAX_VALUE; //100
+        min = Integer.MAX_VALUE;
         stack = new Stack();
     }
 
