@@ -10,7 +10,7 @@ class MinStack:
         self.stack.append(val)
         
         # Push "val" if it is the minimum seen so far, along with its frequency
-        if not self.min_stack or val <= self.min_stack[-1][0]:
+        if not self.min_stack or val < self.min_stack[-1][0]:
             self.min_stack.append([val,1])
         # Add the frequency of times the minimum value has been seen so far
         elif val == self.min_stack[-1][0]:
