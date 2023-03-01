@@ -1,5 +1,9 @@
-
-
+"""
+time complexity-
+add - O(1)
+remove - O(n)
+contains - O(n)
+"""
 
 class MyHashSet:
 
