@@ -28,6 +28,7 @@ class MyHashSet:
         return False
         # print(self.storage)
 
+
 # Your MyHashSet object will be instantiated and called as such:
 # obj = MyHashSet()
 # obj.add(key)

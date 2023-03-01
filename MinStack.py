@@ -27,6 +27,7 @@ class MinStack:
             return None
         return self.stack[-1][1]
 
+
 m = MinStack()
 m.push(-2)
 m.push(0)
