@@ -1,82 +1,35 @@
-class Node:
-    def __init__(self, data):
-        self.data = data
-        self.next = None
-
-
-class MyHashMap:
+# Time complexity: O(1) for all three operations
+# Space Complexity: O(n)
+class MyHashSet:
 
     def __init__(self):
-        self.hashtable = [None] * 1000
+        self.bucket = 1000
+        self.storage = [None for i in range(self.bucket)]
 
-        """
-        Initialize your data structure here.
-        """
-
-    def _hash(self, data):
-
-        return hash(data) % 1000
-
-    def put(self, key: int, value: int) -> None:
-        hk = self._hash(key)
-        if self.hashtable[hk] is None:
-            self.hashtable[hk] = Node((key, value))
-        else:
-            current = self.hashtable[hk]
-            while current:
-                k, v = current.data
-                if k == key:
-                    current.data = (key, value)
-                    return
-                if current.next is None:
-                    break
-                else:
-                    current = current.next
-            current.next = Node((key, value))
-        """
-        value will always be non-negative.
-        """
-
-    def get(self, key: int) -> int:
-        hk = self._hash(key)
-        if self.hashtable[hk] is None:
-            return -1
-        current = self.hashtable[hk]
-        while current:
-            k, v = current.data
-            if k == key:
-                return v
-            current = current.next
-        return -1
-        """
-        Returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key
-        """
+    def add(self, key: int) -> None:
+        if self.storage[key % self.bucket] == None:
+            if key % self.bucket == 0:
+                self.storage[key % self.bucket] = [False for i in range(self.bucket + 1)]
+            else:
+                self.storage[key % self.bucket] = [False for i in range(self.bucket)]
+        # print(len(self.storage[key%self.bucket]))
+        self.storage[key % self.bucket][key // self.bucket] = True
+        # print("Add",self.storage)
 
     def remove(self, key: int) -> None:
-        hk = self._hash(key)
-        if self.hashtable[hk] is None:
-            return
+        if self.storage[key % self.bucket]:
+            self.storage[key % self.bucket][key // self.bucket] = False
+            # print(self.storage)
 
-        current = self.hashtable[hk]
+    def contains(self, key: int) -> bool:
+        if self.storage[key % self.bucket]:
+            # print("Contains", self.storage)
+            return self.storage[key % self.bucket][key // self.bucket]
+        return False
+        # print(self.storage)
 
-        dummy = Node(0)
-        dummy.next = current
-
-        cur = dummy
-        while cur and cur.next:
-            k, v = cur.next.data
-            if k == key:
-                cur.next = cur.next.next
-            cur = cur.next
-
-        self.hashtable[hk] = dummy.next
-
-        """
-        Removes the mapping of the specified value key if this map contains a mapping for the key
-        """
-
-# Your MyHashMap object will be instantiated and called as such:
-# obj = MyHashMap()
-# obj.put(key,value)
-# param_2 = obj.get(key)
+# Your MyHashSet object will be instantiated and called as such:
+# obj = MyHashSet()
+# obj.add(key)
 # obj.remove(key)
+# param_3 = obj.contains(key)
