@@ -1,0 +1,11 @@
+package com.sivakami.ds.implementation.hashSet;
+
+public class TreeNode {
+	  int val;
+	  TreeNode left;
+	  TreeNode right;
+
+	  TreeNode(int x) {
+	    val = x;
+	  }
+	}
