@@ -11,7 +11,7 @@ class MinStack(object):
         self.stack= []
         self.min_stack= []
         self.counter= -1
-        
+
 
     def push(self, val):
         """
