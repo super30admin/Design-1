@@ -1,6 +1,7 @@
 # TimeComplexity: O(1)
 # SpaceComplexity: O(n)
 # Accepted on Leetcode: https://leetcode.com/problems/design-hashset/submissions/915315294/
+# Approach: created a list to add, remove and check the elements of a hashset.
 
 class MyHashSet(object):
 
