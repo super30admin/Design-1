@@ -1,22 +1,25 @@
 import math
+
+
 class MinStack:
 
     def __init__(self):
         self.stack = []
-        self.minstack = []
         self.min = math.inf
-        self.minstack.append(self.min)
+    # pushing into stack takes O(1) time
+
     def push(self, val: int) -> None:
-        self.stack.append(val)
-        if(val<self.min):
-            self.minstack.append(val)
+        if(val <= self.min):
+            self.stack.append(self.min)
             self.min = val
-        else :
-            self.minstack.append(self.min)
+        self.stack.append(val)
+    # poping from the stack takes O(1)
+
     def pop(self) -> None:
-        self.stack.pop()
-        self.minstack.pop()
-        self.min = self.minstack[-1]
+        temp = self.stack.pop()
+        if(temp == self.min):
+            self.min = self.stack.pop()
+    # returning top and getting min also takes O(1) time
 
     def top(self) -> int:
         return self.stack[-1]
