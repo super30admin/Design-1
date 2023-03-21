@@ -1,0 +1,52 @@
+// Time Complexity : O(1)
+// Space Complexity :O(n)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : no
+
+
+// 2 hashing functions used to store the data. 1st hashing function will get the bucket and 2nd hashing function will get the bucketitems.
+// Code needs to handle 10^6 data. For that added extra element on 0th index secondary array.
+// First it creates list of None elements. to add element we will get the bucket and item. then check if the index is none add False list.
+// Whichever index we need to store, set that address as True. Same operations go for remove and contain part.
+
+class MyHashSet:
+
+    def __init__(self):
+        self.buckets = 1000
+        self.bucketitems = 1000
+        self.storage = [None] * self.buckets
+
+    def getbucket(self, key: int) -> int:
+        return key % self.buckets
+
+    def getitem(self, key: int) -> int:
+        return key // self.bucketitems
+        
+    def add(self, key: int) -> None:
+        bucket = self.getbucket(key)
+        item = self.getitem(key)
+        if self.storage[bucket] == None:
+            if bucket == 0:
+                self.storage[bucket] = [False] * (self.buckets + 1)
+            else:
+                self.storage[bucket] = [False] * (self.buckets)
+
+        self.storage[bucket][item] = True
+
+
+    def remove(self, key: int) -> None:
+        bucket = self.getbucket(key)
+        
+
+        if self.storage[bucket] == None:
+            return
+        item = self.getitem(key)
+        self.storage[bucket][item] = False
+
+    def contains(self, key: int) -> bool:
+        bucket = self.getbucket(key)
+        
+        if self.storage[bucket] == None:
+            return False
+        item = self.getitem(key)
+        return self.storage[bucket][item]

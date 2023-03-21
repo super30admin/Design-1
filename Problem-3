@@ -1,0 +1,37 @@
+// Time Complexity : O(1)
+// Space Complexity :O(n)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : no
+
+
+// Created 2 stacks, 1 with having the regular push and pop operations and 1 with containing minimum value at top.
+// we will be maintaining 1 to 1 connection with both the stacks.
+// whenever min value is asked we will return the top value of minstack
+
+class MinStack:
+
+    def __init__(self):
+        self.stack = []
+        self.minstack = []
+        self.min = int(sys.maxsize)
+        self.minstack.append(self.min)
+        
+
+    def push(self, val: int) -> None:
+        if val < self.min:
+            self.min = val
+        self.stack.append(val)
+        self.minstack.append(self.min)
+
+
+    def pop(self) -> None:
+        self.stack.pop()
+        self.minstack.pop()
+        self.min = self.minstack[-1]
+
+    def top(self) -> int:
+        return self.stack[-1]
+
+    def getMin(self) -> int:
+        return self.minstack[-1]
+        

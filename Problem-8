@@ -1,0 +1,59 @@
+// Time Complexity :O(logn)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : having difficulty understanding self object like why we put self.function inside class.
+
+
+// create 2 different functions to look for lower and upper index
+// check if the mid value is the target. if it is then check if the target is greater than the previous element, if it is return the index, if not set high to mid - 1
+// do the same for higher values
+
+
+class Solution:
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        if not nums:
+            return [-1,-1]
+
+        first = self.binarysearchfirst(nums,target)
+        if first == -1:
+            return [-1,-1]
+        second = self.binarysearchsecond(nums,target)
+        return [first,second]
+
+    def binarysearchfirst(self,nums: List[int], target: int) -> int:
+
+        low = 0
+        high = len(nums) - 1
+
+        while low <= high:
+            mid = (high+low) // 2
+            if nums[mid] == target:
+                if mid == 0 or nums[mid] > nums[mid - 1]:
+                    return mid
+                
+                high = mid - 1
+
+            elif target < nums[mid]:
+                high = mid - 1
+            else:
+                low = mid + 1
+        return -1
+
+
+    def binarysearchsecond(self,nums: List[int], target: int) -> int:
+
+        low = 0
+        high = len(nums) - 1
+        
+        while low <= high:
+            mid = (high+low) // 2
+            if nums[mid] == target:
+                if mid == len(nums) - 1 or nums[mid] < nums[mid + 1]:
+                    return mid
+                
+                low = mid + 1
+            elif target < nums[mid]:
+                high = mid - 1
+            else:
+                low = mid + 1
+        return -1
