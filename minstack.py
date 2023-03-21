@@ -19,9 +19,9 @@ class MinStack:
         if len(self.minstack) > 0:
             self.min = self.minstack[-1]
         else:
-            self.min = int(sys.maxsize)
+            self.min = int(sys.maxsize)  
 
-    def top(self) -> int:                       #TC - O(1)  #SC:O(1)    ,, 
+    def top(self) -> int:                          #TC - O(1)  #SC:O(1)    ,, 
         return self.stack[-1]
 
 

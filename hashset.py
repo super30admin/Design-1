@@ -12,11 +12,11 @@ class MyHashSet:
 
     def getbuckitems(self, key):   #secondary hash
         return key // self.bucketitems  #TC: O(1) #SC: 0(1)
-
+   
     def add(self, key: int) -> None:    #creating new buckets for primary and secondary hashes then checking if there are
                                         # None or Not if it  is none then no values are present then creating 2ndary hash and adding values
         bucket = self.getbuckets(key)               #TC- O(1)
-        bucketitems = self.getbuckitems(key)         #SC - O(1)
+        bucketitems = self.getbuckitems(key)             #SC - O(1)
 
         if self.storage[bucket] == None:
             if bucket == 0:
