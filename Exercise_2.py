@@ -3,7 +3,9 @@
 # Did this code successfully run on Leetcode : Yes
 # Any problem you faced while coding this : No
 
-#
+# Here I keep track of the changes in the minimum value seen so far for each index.
+# To optimize the space used to track this, I only store the minimum most value when it changes.
+# To make sure these minimums are popped at the right time, I keep track of the new minimum value as well as the index it was observed.
 
 class MinStack:
 
