@@ -3,7 +3,8 @@
 # Did this code successfully run on Leetcode : Yes
 # Any problem you faced while coding this : No
 
-# Uses a simple hashing function to obtain a bucket from the given key, and then an array within the bucket stores the elements.
+# Uses a simple hashing function using a modulo operation to obtain a bucket from the given key
+# I also use a linear chaining method and store the values in each bucket within an arraylist.
 
 
 class MyHashSet:
