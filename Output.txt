@@ -1,0 +1,12 @@
+true
+false
+true
+false
+false
+true
+78
+56
+5
+5
+98
+15
