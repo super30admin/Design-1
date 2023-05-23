@@ -2,9 +2,10 @@
 Created stack array list for regular stack operation
 Created minstack array list to store only minimum numbers in the original array till particular index
 getting last element in minstack, comparing with value being pushed, only pushing in minstack if less that what is there already
-"""
 
-"""
+Did this code successfully run on Leetcode : Yes
+Any problem you faced while coding this : No
+
 Time Complexity - 
 push - O(1)
 pop - O(1)
