@@ -1,0 +1,76 @@
+// Time Complexity :O(1)
+// Space Complexity :O(1)
+// Did this code successfully run on Leetcode :yes
+// Any problem you faced while coding this :
+
+//705. Design HashSet
+// Your code here along with comments explaining your approach
+//I have used double hasing approach
+class MyHashSet {
+    private int val;//primary storage variable
+    private int valList;//secondary storage variable
+    private boolean [][] arr; //declaration of array
+
+    public MyHashSet() {
+        this.val=1000;
+        this.valList=1000;
+        this.arr=new boolean[val][];
+    }
+    
+    public int hash1(int key){
+        return key%val; 		//returning the 1st hashed value 
+    }
+     public int hash2(int key){
+        return key/valList;		//returning the 2st hashed value
+    }
+    public void add(int key) {
+        int val1=hash1(key);
+        int val2=hash2(key);
+        
+        
+            if(arr[val1]==null){
+                if(val1==0){				//for 0th added 1 more space 
+                arr[val1]=new boolean[valList+1];
+            }else{
+            arr[val1]=new boolean[valList];
+        }
+            }
+        arr[val1][val2]=true;     //set true when element added
+
+
+    }
+    
+    public void remove(int key) {
+        int val1=hash1(key);
+        int val2=hash2(key);
+
+        if(arr[val1]==null){ //if null then element is not present
+            return;
+        }
+    
+        arr[val1][val2]=false;   //if element is present then set it to false
+        
+    }
+    
+    public boolean contains(int key) {
+        int val1=hash1(key);
+        int val2=hash2(key);
+
+        if(arr[val1]==null){   ////if null then element is not present
+            return false;
+        }
+        return arr[val1][val2]; //if element is present then return true
+
+    }
+}
+
+/**
+ * Your MyHashSet object will be instantiated and called as such:
+ * MyHashSet obj = new MyHashSet();
+ * obj.add(key);
+ * obj.remove(key);
+ * boolean param_3 = obj.contains(key);
+ */
+
+
+
