@@ -1,3 +1,8 @@
+# Time Complexity :O(1)
+#Space Complexity :O(1)
+#Did this code successfully run on Leetcode : Did not pass one test case. I was not able to find the reason.
+#Any problem you faced while coding this : I feel like something might be wrong in push() function. That might be the reason why it didnt pass all the test cases in leet code.
+
 class MinStack:
     def __init__(self):
         self.array = []
