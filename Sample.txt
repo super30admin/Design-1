@@ -1,0 +1,53 @@
+//155. Min Stack
+
+// Time Complexity :O(1)
+// Space Complexity :O(1)
+// Did this code successfully run on Leetcode :yes
+// Any problem you faced while coding this :no
+
+
+// Your code here along with comments explaining your approach
+
+class MinStack {
+    Stack<Integer>st;  //Main Stack
+    Stack<Integer>st2; //Auxiliary Stack
+    public MinStack() {
+      st=new Stack<Integer>();
+      st2=new Stack<Integer>();  
+    }
+    
+    public void push(int val) {
+        st.push(val);
+        			//Auxiliary Stack
+        if(st2.size()==0)
+        st2.push(val);
+        else{
+            if(st2.peek()>=val)		//if current value is smaller then only push to st2
+            st2.push(val);
+        }
+    }
+    
+    public void pop() {
+        int x=st.pop(); 		
+        				//Auxiliary Stack
+        if(st2.size()!=0 && st2.peek()==x)
+        st2.pop();				
+    }
+    
+    public int top() {
+        return st.peek();
+    }
+    
+    public int getMin() {
+        return st2.peek();
+    }
+}
+
+/**
+ * Your MinStack object will be instantiated and called as such:
+ * MinStack obj = new MinStack();
+ * obj.push(val);
+ * obj.pop();
+ * int param_3 = obj.top();
+ * int param_4 = obj.getMin();
+ */
