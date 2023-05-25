@@ -1,4 +1,13 @@
 class MyHashSet:
+    '''
+    Time Complexity:
+    Adding an element (add method): O(1)
+    Removing an element (remove method): O(1)
+    Checking if an element exists (contains method): O(1)
+
+    Space Complexity:
+    Storage: O(n)
+    '''
 
     def __init__(self):
         self.buckets = 1000  # Primary array size sqrt(rangelimit)
