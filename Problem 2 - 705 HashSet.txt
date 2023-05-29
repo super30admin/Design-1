@@ -1,0 +1,68 @@
+//Time Complexity O(1)
+//Space Complexity O(1)
+
+//// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : Yes, initially I face an array index out of bound error. But, later I figured out.
+
+//Double Hashing Technique
+class MyHashSet {
+    //decaring an array and 2D matrix
+        private int bucket;
+        private int bucketitems;
+        boolean [][] storage;
+
+    public MyHashSet() {
+            this.bucket = 1000;
+            this.bucketitems = 1000;
+            this.storage = new boolean [bucket][];
+        
+    }
+    private int buckets(int key){
+        return key % bucket;
+    }
+
+    private int bucketitem(int key){
+        return key / bucketitems;
+    }
+    
+    public void add(int key) {
+        int val = buckets(key);
+        int valList = bucketitem(key);
+        if(storage[val]==null){
+            if(val == 0){
+            storage[val] = new boolean[bucketitems + 1];
+            }else{
+            storage[val] = new boolean [bucketitems];
+            }
+        }
+        storage[val][valList] = true;  
+    }
+    
+    public void remove(int key) {
+        int val = buckets(key);
+        int valList = bucketitem(key);
+
+        if(storage[val] == null)return;
+
+        storage[val][valList] = false;
+        
+    }
+    
+    public boolean contains(int key) {
+        int val = buckets(key);
+        int valList = bucketitem(key);
+
+        if(storage[val] == null)return false;
+
+        return storage[val][valList];
+        
+    }
+}
+
+/**
+ * Your MyHashSet object will be instantiated and called as such:
+ * MyHashSet obj = new MyHashSet();
+ * obj.add(key);
+ * obj.remove(key);
+ * boolean param_3 = obj.contains(key);
+ */
