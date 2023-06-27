@@ -5,7 +5,10 @@
 
 
 // Your code here along with comments explaining your approach
-
+//Using a boolean array to keey the track of each unique key. 
+//push: Sets true at the index of the element passed
+//remove: sets false at the index of the element passed
+//contains: returns the boolean value of the given index
 class MyHashSet {
 
 boolean[] arr;
