@@ -3,17 +3,17 @@
 class MyHashSet:
 
     def __init__(self):
-        self.bucket_size = 1000
-        self.bucket = [[] for _ in range(self.bucket_size)]
+        self.bucket_size = 1000 # declare the size of array 
+        self.bucket = [[] for _ in range(self.bucket_size)]  # create a nested list
 
     def add(self, key: int) -> None:
-        index = key % self.bucket_size
+        index = key % self.bucket_size      # calculate index and secodary index using modulo and integer division operations
         secondary_index = key // self.bucket_size
-        if not self.contains(key):
-            self.bucket[index].append(secondary_index)
+        if not self.contains(key):  # check if key present in contains
+            self.bucket[index].append(secondary_index) # if not: append key into index 
 
     def remove(self, key: int) -> None:
-        index = key % self.bucket_size
+        index = key % self.bucket_size      # delete the key 
         secondary_index = key // self.bucket_size
         if (
                 index < len(self.bucket)
