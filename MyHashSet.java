@@ -1,4 +1,10 @@
 
+// Time Complexity : add, remove and contains operations have worst case time complexity of O(n)
+// Space Complexity : O(n)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+
 import java.util.*;
 
 public class MyHashSet {
