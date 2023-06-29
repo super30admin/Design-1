@@ -60,4 +60,54 @@ class MyHashSet {
     }
 }
 
+Problem 2 
+class MinStack {
+
+    Stack<Integer> mainStack;
+    Stack<Integer> minStack;
+    int min;
+
+    public MinStack() {
+        this.mainStack = new Stack<>();
+        this.minStack = new Stack<>();
+        this.min = Integer.MAX_VALUE;
+        this.minStack.push(this.min);
+
+    }
+    
+    public void push(int val) {
+        if(val<=this.min){
+           this.minStack.push(val);
+           this.min = val;
+        }else{
+           this.minStack.push(min);
+        }
+        this.mainStack.push(val);
+    }
+    
+    public void pop() {
+        this.mainStack.pop();
+        this.minStack.pop();
+        this.min = minStack.peek();
+
+    }
+    
+    public int top() {
+        return this.mainStack.peek();
+    }
+    
+    public int getMin() {
+        return this.minStack.peek();
+    }
+}
+
+/**
+ * Your MinStack object will be instantiated and called as such:
+ * MinStack obj = new MinStack();
+ * obj.push(val);
+ * obj.pop();
+ * int param_3 = obj.top();
+ * int param_4 = obj.getMin();
+ */
+
 // Your code here along with comments explaining your approach
