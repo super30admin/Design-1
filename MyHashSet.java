@@ -1,12 +1,12 @@
-class MyHashMap {
-    int[][] storage;
+class MyHashSet {
+    boolean[][] storage;
     int buckets;
     int bucketItems;
 
-    public MyHashMap() {
+    public MyHashSet() {
         this.buckets = 1000;
         this.bucketItems = 1000;
-        this.storage = new int[buckets][];
+        this.storage = new boolean[buckets][];
     }
 
     private int hash1(int key) {
@@ -17,29 +17,29 @@ class MyHashMap {
         return key / bucketItems;
     }
 
-    public void put(int key, int value) {
+    public void add(int key) {
         int bucket = hash1(key);
         int bucketItem = hash2(key);
         if (storage[bucket] == null) {
-            storage[bucket] = new int[bucketItems];
+            storage[bucket] = new boolean[bucketItems];
         }
-        storage[bucket][bucketItem] = value;
+        storage[bucket][bucketItem] = true;
     }
 
     public void remove(int key) {
         int bucket = hash1(key);
         int bucketItem = hash2(key);
         if (storage[bucket] != null) {
-            storage[bucket][bucketItem] = -1;
+            storage[bucket][bucketItem] = false;
         }
     }
 
-    public int get(int key) {
+    public boolean contains(int key) {
         int bucket = hash1(key);
         int bucketItem = hash2(key);
         if (storage[bucket] != null) {
             return storage[bucket][bucketItem];
         }
-        return -1;
+        return false;
     }
 }
