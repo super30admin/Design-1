@@ -1,3 +1,8 @@
+// Stack implementation using two stack figures to compare and add or delete operations
+// push: Checks if stack is empty and whether 1st value exusts of not, before adding new value to stack
+// Time Complexity: O(1)
+// Space Complexity: O(n)
+
 class MinStack {
 
     private Stack<Integer> stack = new Stack<>();
