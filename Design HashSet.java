@@ -1,3 +1,8 @@
+// Created HashSet procedures to add, remove, and search the array
+// used parentList to declare list with ARRAY Size of 100 and childList as a bucket within parentList to store values
+// Space Complexity: O(K+M) where K is number of pre-defined buckets and M is number of keys
+// Time Complexity: O(N/K) where n is all possible values, and k is number of buckets in the hashmap
+
 class MyHashSet {
     
     private final int MAX_VALUE = 10000000;
