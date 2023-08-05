@@ -3,6 +3,10 @@
 #Did this code successfully run on Leetcode : Yes
 #Any problem you faced while coding this : No
 
+# Approach: We use data structure in data structure method. In storage array of size buckets, we create a boolean array of size bucketItems.
+# Then we apply hash1 fuction to the key to get the bucket index and then apply hash2 function to get the bucketItem index. We set that bucketItem
+# as true to store the value. 
+
 class MyHashSet:
 
     def __init__(self):

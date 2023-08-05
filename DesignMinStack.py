@@ -3,6 +3,9 @@
 #Did this code successfully run on Leetcode : Yes
 #Any problem you faced while coding this : No
 
+#Approach: We use array to implement stack. We check for minimum in every push and append it if the minimum changes along with the value. 
+#When popping, if the popped element if equal to the minimum, we pop again.
+
 class MinStack:
 
     def __init__(self):
