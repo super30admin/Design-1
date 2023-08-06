@@ -1,3 +1,17 @@
+
+// Time Complexity : O(1)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+
+// Your code here along with comments explaining your approach
+//take 2 stacks and one min element
+//push an infinite element on the minStack- 
+//push the element on the stack and push the min element on the minStack
+//Pop the element from the stack and min Stack and assign the min element with ninStack peek
+
+
 class MinStack {
     Stack<Integer> stack;
     Stack<Integer> minStack;

@@ -1,3 +1,18 @@
+// Time Complexity : O(1)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+
+// Your code here along with comments explaining your approach
+// Created an double array of capacity 1000 and 1000
+// in  case of collision - we can use double hashing, linear probing or linear chaining
+// used double hashing in the below example
+// if add an element then set it as true
+//if remove an element then set it as false
+// if bucket is 0 we need to add 1001 elements - otherwise we get arrayIndexOutofbounds exception as we 
+// index only till 999
+
 class MyHashSet {
 
     boolean[][]  storage ;
