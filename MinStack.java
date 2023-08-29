@@ -1,5 +1,7 @@
 import java.util.Stack;
 
+//Space complexity will be O(n)
+//time complexity will be O(1)
 class MinStack {
     //variable declaration
     Stack<Integer> s;
@@ -11,13 +13,13 @@ class MinStack {
         s=new Stack<>();
         minStack=new Stack<>();
         min=Integer.MAX_VALUE;   //to give infinity value
-        minStack.push(min);  //Time complexity is linear time i.e O(1)
+        minStack.push(min);
     }
 
     public void push(int val) {
         if (val<=min){  //condn to check if the val is smaller than the min
             min=val;
-        }
+        }               //Time complexity is constant time i.e O(1)
         s.push(val);
         minStack.push(min);
     }
@@ -25,17 +27,17 @@ class MinStack {
     public void pop() {
         s.pop(); //pop the top element
         minStack.pop(); //pop the top element from minStack
-        min=minStack.peek();
+        min=minStack.peek();  //Time complexity is constant time i.e O(1)
 
     }
 
     public int top() {
         return s.peek();
-    }
+    } //Time complexity is constant time i.e O(1)
 
     public int getMin() {
         return min;
-    }
+    } //Time complexity is constant time i.e O(1)
 
     public static void main(String[] args){
         MinStack ms= new MinStack();
