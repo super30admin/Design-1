@@ -1,5 +1,6 @@
 import java.util.Stack;
 
+//Creating minStack using 2 stacks
 //Space complexity will be O(n)
 //time complexity will be O(1)
 class MinStack {
