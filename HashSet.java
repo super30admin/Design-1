@@ -1,8 +1,7 @@
 // Time Complexity :O(1)
 // Space Complexity :O(n)
-// Did this code successfully run on Leetcode :No 6 cases failed
+// Did this code successfully run on Leetcode :Yes
 // Any problem you faced while coding this :
-I am finding the setting of 2-D array storage confusing
 
 // Your code here along with comments explaining your approach
 class MyHashSet {
@@ -21,25 +20,25 @@ class MyHashSet {
     }
     int getbucketitems(int key)
     {
-        return key%bucketitems;
+        return key/bucketitems;
     }
     public void add(int key) {
       int bucket=getbucket(key);
-      int bucketitem=getbucket(key);
-      if (storage[bucket]==null) {
-          if (bucket==0){
-              storage[bucket]=new boolean[bucketitems+1];
-          }
-          else{
-          storage[bucket]=new boolean[bucketitems];
-      }
-      }
-      storage[bucket][bucketitem]=true;
+      int bucketitem=getbucketitems(key);
+      if(storage[bucket] == null) {
+        if(bucket == 0){
+        storage[bucket] = new boolean[bucketitems+1];
+        }
+        else{
+        storage[bucket] = new boolean[bucketitems];
+        }
+     }
+       storage[bucket][bucketitem] = true;
     }
     
     public void remove(int key) {
       int bucket=getbucket(key);
-      int bucketitem=getbucket(key);
+      int bucketitem=getbucketitems(key);
       if (storage[bucket]==null){
           return;
       }
@@ -49,7 +48,7 @@ class MyHashSet {
     
     public boolean contains(int key) {
      int bucket=getbucket(key);
-      int bucketitem=getbucket(key);
+      int bucketitem=getbucketitems(key);
 
       if (storage[bucket]==null){
           return false;
@@ -58,13 +57,4 @@ class MyHashSet {
 
     }
     
-    }
-
-
-/**
- * Your MyHashSet object will be instantiated and called as such:
- * MyHashSet obj = new MyHashSet();
- * obj.add(key);
- * obj.remove(key);
- * boolean param_3 = obj.contains(key);
- */
+}
