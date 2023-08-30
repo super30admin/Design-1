@@ -1,3 +1,4 @@
+//Time Complexity O(1) and O(1)
 class MyHashSet {
 
     boolean[][] hashSet;

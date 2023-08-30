@@ -1,5 +1,6 @@
 import java.util.Stack;
 
+// Time Complexity O(1) space complexity O(n)
 class MinStack {
 
     Stack<Integer> minStack;
