@@ -44,7 +44,8 @@ class MinStack {
     }
     
     // Time Complexity: O(1)
-    public int getMin() // returns int - min value {
+    public int getMin() // returns int - min value 
+    {
         if (this.minStack.empty()) // taking care of edge case ig the minStack is empty return infinity
         {
             return Integer.MAX_VALUE;
