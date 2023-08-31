@@ -1,9 +1,9 @@
 class MyHashSet:
 
     def __init__(self):
-        """
-        Initialize your data structure here.
-        """
+
+        # Initializing defined size here
+
         self.size = 10000
         self.bucket = [None] * self.size
 
@@ -26,9 +26,9 @@ class MyHashSet:
                 self.bucket[hf].remove(key)
 
     def contains(self, key: int) -> bool:
-        """
-        Returns true if this set contains the specified key
-        """
+
+        # Returns true if this set contains the specified key
+
         hf = self.hash_func(key)
 
         if self.bucket[hf] != None:
