@@ -1,9 +1,13 @@
 // MyHashSet using Double Hashing
 
 // Time Complexity : O(1)
-// Space Complexity : O(1)
+// Space Complexity : O(1) - constant space
 // Did this code successfully run on Leetcode : Yes - https://leetcode.com/problems/design-hashset/submissions/1036435444/
 // Any problem you faced while coding this : No
+/*
+ * HashSet implementation is to avoid duplicates, collision and maintaining unique hash keys using hashfunction
+ * Capacity of hashset is 10^6; First hashing: 10^3 (square root of capacity) and Second Hashing: 10^3
+ */
 
 /* Algorithm:
 1. Maintain 2 arrays of sizes 1000: primary array - bucket, secondary array- bucketItems
