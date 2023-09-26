@@ -1,5 +1,5 @@
 //Time Complexity: O(1)
-//Space Complexity: O(N*N)
+//Space Complexity: O(N)
 Issue Faced: 
 class MyHashSet:
     
