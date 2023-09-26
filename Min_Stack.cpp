@@ -6,7 +6,6 @@ class MinStack {
 public:
 vector<pair<int,int>> stack;
     MinStack() {
-        vector<pair<int,int>> stack;
 
     }
     
