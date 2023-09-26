@@ -1,5 +1,7 @@
-// Time O(1)
-// Space O(n)
+// Time Complexity : O(1)
+// Space Complexity : O(n)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : Needed to remember the syntax's.
 
 #include <vector>
 class MinStack {
