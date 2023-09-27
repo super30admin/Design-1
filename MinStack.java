@@ -4,6 +4,7 @@
 
 // Space Complexity :
 // * O(2n) = O(n) --> THe space required for the 2 stacks
+// * No relevant extra space is created in other functions so their space complexity is 0(1)
 
 // Did this code successfully run on Leetcode : Ran successsfully on Leetcode
 // Any problem you faced while coding this : --
