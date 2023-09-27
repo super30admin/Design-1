@@ -4,7 +4,7 @@
    //          If adding secondary array value for that key will be true and if removing secondary array value for that key will be false.
 
 
-// Time Complexity : Add - O(N), Remove - O(N) and Contains - O(N)
+// Time Complexity : Add - O(1), Remove - O(1) and Contains - O(1)
 // Space Complexity : Considering the large dataset O(N)
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : No
