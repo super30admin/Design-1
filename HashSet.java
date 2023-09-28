@@ -43,6 +43,10 @@ import java.util.List;
 
 public class HashSet {
 
+    /**
+     * Implemented using Double Chaining
+     */
+
     private static final int SIZE = (int) 1e3;
     private boolean[][] primary;
 
