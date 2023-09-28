@@ -4,10 +4,8 @@
 // Any problem you faced while coding this : I was initializing the bool array wrongily with -1
 
 
-// Your code here along with comments explaining your approach
-// Technique: Double hashing
-// We store the numbers [0,100000] into 1000 arrays of 1000 size (except nested array at pos 0).
-// For the main array we calculate the hash as key%1000.
+// Your code here along with comments explaining your approach: Technique Double hashing
+// For the main array we calculate the hash as key%1000. We store the numbers [0,100000] into 1000 arrays of 1000 size (except nested array at pos 0). 
 // Insertion: Now in that position say pos1, we create a new nested array if not already present. Then we take second hash as key/2 which gives say pos2. We just update the pos2 as true denoting the element now exists.
 // Search: we calculate similar pos1 and pos2, then check if the elem at pos2 is true.
 // Removal: we check if key exists and then mark it as false to denote removal of the element.
