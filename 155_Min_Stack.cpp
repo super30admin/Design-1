@@ -5,14 +5,9 @@
 
 
 // Your code here along with comments explaining your approach
-// We maintain a minStack along with a mainStack.
-// mainStack works as the normal stack.
+// We maintain a minStack along with a mainStack. mainStack works as the normal stack.
 // minStack stores the minimum value in the mainStack for every corresponding element in mainStack in the same order.
 // While pushing we update the minValue till now (in current stack) and similar with pop.
-// While pushing we see if the new value is smaller than minVal and update it, then push this minVal to minStack and original elem to mainStack
-// Wihile popping, we pop the element from both main and min stack. Then set current minValue as the top of min stack
-// because it is the smalles value for the remaining stack
-
 
 
 #include<bits/stdc++.h>
