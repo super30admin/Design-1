@@ -3,6 +3,8 @@ import java.util.Stack;
 // the solution is such that i will have one stack taking input and the other keeping track of the minimum elements
 // stack 1 -> 1,2,3,4,5,6,7,4,3,6
 // stack 2 -> 1,1,1,1,1,1,1,1,1,1
+//time complexity for all : O(1)
+//space complexity for all: O(1)
 
 public class MinStackImplement {
     //operations are push, pop, top and getMin

@@ -16,6 +16,8 @@ public class HashSetImplement {
 
     // i am assuming that i will be getting elements in the range 1 to 1000000
 
+    //space complexity for all: O(1)
+
     private boolean [][] storage;
     private int buckets;
 
