@@ -55,8 +55,23 @@ class MyHashSet {
             return false;
         } else {
             int iIndex = innerHash(key);
-            return(storage[oIndex][iIndex]);
+            return storage[oIndex][iIndex];
         }
+    }
+
+    public static void main(String args[]) {
+        MyHashSet set = new MyHashSet();
+        set.add(30);
+        set.add(50);
+        set.add(40);
+
+        set.remove(40);
+
+        System.out.println("Check if set contains 40: "+set.contains(40));
+        System.out.println("Check if set contains 50: "+set.contains(50));
+        System.out.println("Check if set contains 10: "+set.contains(10));
+
+
     }
 }
 
