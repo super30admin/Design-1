@@ -1,3 +1,7 @@
+// Time Complexity : O(1) for all operations
+// Space Complexity : O(n)
+// Method used : Stack approach
+
 class MinStack {
     
     Stack<Integer> stack;

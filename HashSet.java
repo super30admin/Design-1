@@ -1,10 +1,14 @@
+// Time Complexity : For add() its O(1) and it's O(x) for other operations, Here x denotes the length of the chain at an hash index.
+// Space Complexity : O(1) for this problem because the size is always 1000 but in general its O(M + N) where M denotes the table size and N denotes the buckets.
+// Method used : Chaining
+
 class MyHashSet {
     
     int size = 1000;
-    boolean[][] primary = new boolean[size][];
+    boolean[][] primary;
 
     public MyHashSet() {
-        
+        primary = new boolean[size][];
     }
     
     public void add(int key) {
