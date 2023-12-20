@@ -12,7 +12,7 @@
    on the space.
 */
 
-
+#include <iostream>
 #include <stack>
 #include <climits>
 
@@ -52,6 +52,32 @@ public:
         return min;
     }
 };
+
+int main() {
+    // Create a MinStack object
+    MinStack* minStack = new MinStack();
+
+    // Test case 1: Push elements onto the stack
+    minStack->push(-2);
+    minStack->push(0);
+    minStack->push(-3);
+    std::cout << "Test Case 1 - Get Min: " << minStack->getMin() << std::endl; // Expected output: -3
+
+    // Test case 2: Pop the top element
+    minStack->pop();
+    std::cout << "Test Case 2 - Top element: " << minStack->top() << std::endl; // Expected output: 0
+    std::cout << "Test Case 2 - Get Min: " << minStack->getMin() << std::endl; // Expected output: -2
+
+    // Test case 3: Push another element
+    minStack->push(-1);
+    std::cout << "Test Case 3 - Top element: " << minStack->top() << std::endl; // Expected output: -1
+    std::cout << "Test Case 3 - Get Min: " << minStack->getMin() << std::endl; // Expected output: -2
+
+    // Clean up
+    delete minStack;
+
+    return 0;
+}
 
 /**
  * Your MinStack object will be instantiated and called as such:
