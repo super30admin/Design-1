@@ -1,0 +1,49 @@
+type MinStack struct {
+	nums   []int
+	minVal int
+}
+
+func Constructor() MinStack {
+	return MinStack{
+		nums:   []int{},
+		minVal: 1<<63 - 1,
+	}
+}
+
+func (this *MinStack) Push(val int) {
+	this.nums = append(this.nums, val)
+
+	if val < this.minVal {
+		this.minVal = val
+	}
+}
+
+func (this *MinStack) Pop() {
+	topElement := this.nums[len(this.nums)-1]
+
+	this.nums = this.nums[:len(this.nums)-1]
+
+	if topElement == this.minVal && len(this.nums) > 0 {
+		newMinVal := this.nums[0]
+
+		for _, num := range this.nums {
+			if num < newMinVal {
+				newMinVal = num
+			}
+		}
+
+		this.minVal = newMinVal
+	}
+
+	if len(this.nums) == 0 {
+		this.minVal = 1<<63 - 1
+	}
+}
+
+func (this *MinStack) Top() int {
+	return this.nums[len(this.nums)-1]
+}
+
+func (this *MinStack) GetMin() int {
+	return this.minVal
+}
