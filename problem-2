@@ -1,49 +1,52 @@
+/* Time complexity:
+Push : O(1)
+Pop : O(1)
+Top : O(1)
+GetMin : O(1)
+
+Space complexity:
+O(n) */
+
 type MinStack struct {
-	nums   []int
-	minVal int
+	els []int
+	min []int
 }
 
 func Constructor() MinStack {
 	return MinStack{
-		nums:   []int{},
-		minVal: 1<<63 - 1,
+		els: []int{},
+		min: []int{},
 	}
 }
 
 func (this *MinStack) Push(val int) {
-	this.nums = append(this.nums, val)
+	this.els = append(this.els, val)
 
-	if val < this.minVal {
-		this.minVal = val
+	if len(this.els) == 1 {
+		this.min = []int{val}
+
+		return
+	}
+
+	if val <= this.min[len(this.min)-1] {
+		this.min = append(this.min, val)
 	}
 }
 
 func (this *MinStack) Pop() {
-	topElement := this.nums[len(this.nums)-1]
+	el := this.els[len(this.els)-1]
 
-	this.nums = this.nums[:len(this.nums)-1]
-
-	if topElement == this.minVal && len(this.nums) > 0 {
-		newMinVal := this.nums[0]
-
-		for _, num := range this.nums {
-			if num < newMinVal {
-				newMinVal = num
-			}
-		}
-
-		this.minVal = newMinVal
+	if el == this.min[len(this.min)-1] {
+		this.min = this.min[:len(this.min)-1]
 	}
 
-	if len(this.nums) == 0 {
-		this.minVal = 1<<63 - 1
-	}
+	this.els = this.els[:len(this.els)-1]
 }
 
 func (this *MinStack) Top() int {
-	return this.nums[len(this.nums)-1]
+	return this.els[len(this.els)-1]
 }
 
 func (this *MinStack) GetMin() int {
-	return this.minVal
+	return this.min[len(this.min)-1]
 }

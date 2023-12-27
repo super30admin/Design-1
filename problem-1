@@ -3,6 +3,12 @@ package main
 /*
 Initiated a struct with var list (bool array)
 have 3 functions Add (to add new key), Remove (to remove existing key), Contains (returns bool value for a key)
+
+Time complexity:
+Add - O(1)
+Remove - O(1)
+Contains - O(1)
+Space complexity: O(n)
 */
 
 type MyHashSet struct {
