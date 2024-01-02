@@ -1,0 +1,44 @@
+class MyHashSet {
+    private boolean [][] storage;
+    int buckets; //size of primary array
+    int bucketItems;//size of secondary array
+    public MyHashSet() {
+        this.buckets = 1000;
+        this.bucketItems = 1000;
+        this.storage = new boolean[buckets][];
+    }
+    private int bucket(int key){ // primary hash function
+        return key%this.buckets;
+    }
+    private int bucketItems(int key){ // secondary hash function
+        return key/this.bucketItems;
+    }
+    public void add(int key) {
+        int bucketindex = bucket(key);  // index in first array
+        int bucketItemsindex = bucketItems(key); // index in second array
+        if (storage[bucketindex] == null)
+        {
+            if (bucketindex == 0)
+            {
+                storage[bucketindex] = new boolean[bucketItems+1];
+            }
+            else
+            {
+                storage[bucketindex] = new boolean[bucketItems];
+            }
+        }
+        storage[bucketindex][bucketItemsindex] = true;
+    }
+    public void remove(int key) {
+        int bucketindex = bucket(key);  // index in first array
+        int bucketItemsindex = bucketItems(key); // index in second array
+        if (storage[bucketindex] == null) return;
+        storage[bucketindex][bucketItemsindex] = false;
+    }
+    public boolean contains(int key) {
+        int bucketindex = bucket(key);  // index in first array
+        int bucketItemsindex = bucketItems(key); // index in second array
+        if (storage[bucketindex] == null) return false;
+        return storage[bucketindex][bucketItemsindex];
+    }
+}
