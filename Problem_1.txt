@@ -1,0 +1,52 @@
+class MyHashSet(object):
+
+    def __init__(self):
+        self.my_list = [None]*1001
+        self.bucket = 1000
+        
+    def __hashfunc1(self, key):
+        return key//self.bucket
+    def __hashfunc2(self, key):
+        return key%self.bucket
+        
+    def add(self, key):
+        """
+        :type key: int
+        :rtype: None
+        """
+        first_location = self.__hashfunc1(key)
+        second_location = self.__hashfunc2(key)
+        if self.my_list[first_location] == None:
+            self.my_list[first_location] = [None]*self.bucket
+        self.my_list[first_location][second_location] = key
+        
+    def remove(self, key):
+        """
+        :type key: int
+        :rtype: None
+        """
+        first_location = self.__hashfunc1(key)
+        second_location = self.__hashfunc2(key)
+        if self.my_list[first_location] != None:
+            self.my_list[first_location][second_location] = None 
+
+    def contains(self, key):
+        """
+        :type key: int
+        :rtype: bool
+        """
+        first_location = self.__hashfunc1(key)
+        second_location = self.__hashfunc2(key)
+        if (self.my_list[first_location] != None) and (self.my_list[first_location][second_location] != None) :
+            return True
+        else:
+            return False
+
+        
+
+
+# Your MyHashSet object will be instantiated and called as such:
+# obj = MyHashSet()
+# obj.add(key)
+# obj.remove(key)
+# param_3 = obj.contains(key)
