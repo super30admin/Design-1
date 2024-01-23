@@ -1,4 +1,5 @@
-//time complexity - O(1). The approach for Min stack involves 2 stacks. One does normal stack operations the other one minstack keeps track of min element.
+//time complexity - O(1), space complexity- O(n) n- num of elements in stack. 
+//The approach for Min stack involves 2 stacks. One does normal stack operations the other one minstack keeps track of min element.
 class MinStack {
     private Stack<Integer> stack;
     private Stack<Integer> minstack;
