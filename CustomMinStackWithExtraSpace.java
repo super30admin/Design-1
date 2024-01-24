@@ -6,7 +6,7 @@ import java.util.Stack;
 // top() : O(1)
 // getMin() : O(1)
 
-// Space Complexity - Previous min saved on same stack
+// Space Complexity - O(N) for extra stack
 // push() : O(1)
 // pop() : O(1)
 // top() : O(1)
@@ -17,33 +17,30 @@ import java.util.Stack;
 // Methods pop, top and getMin operations will always be called on non-empty stacks.
 // At most 3 * 104 calls will be made to push, pop, top, and getMin.
 
-public class CustomMinStack {
+public class CustomMinStackWithExtraSpace {
     class MinStack {
         private Stack<Integer> stack;
-        private int min;
+        private Stack<Integer> minStack;
 
         public MinStack() {
             stack = new Stack<>();
-            min = Integer.MAX_VALUE;
+            minStack = new Stack<>();
         }
 
         public void push(int val) {
-            if (val <= min) {
-                stack.push(min); // Save previous min on stack
-                min = val; // New min
+            stack.push(val);
+            if (minStack.isEmpty() || val <= minStack.peek()) {
+                minStack.push(val);
             }
-            stack.push(val); // Push current value
         }
 
         public void pop() {
             if (stack.isEmpty()) {
                 return;
             }
-
-            int currentTop = stack.pop();
-
-            if (currentTop == min) {
-                min = stack.pop(); // Set min to previous min
+            int val = stack.pop();
+            if (val == minStack.peek()) {
+                minStack.pop();
             }
         }
 
@@ -52,7 +49,7 @@ public class CustomMinStack {
         }
 
         public int getMin() {
-            return min;
+            return minStack.peek();
         }
     }
 
