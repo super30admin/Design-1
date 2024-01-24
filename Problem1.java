@@ -10,7 +10,10 @@
 //      contains: O(1) 
 
 // Did this code successfully run on Leetcode : Yes
-// Any problem you faced while coding this : No
+// Any problem you faced while coding this : Yes
+//      To what scope do we define space complexity?
+//      In this case we are using an array to store the elements,
+//      So, would I say that the space complexity of the class is O(N) where N is the number of input elements?
 
 
 // Your code here along with comments explaining your approach
