@@ -28,9 +28,6 @@ class MyHashSet:
                 arr = self.secondary.copy()
                 arr.extend([None])
                 self.primary[primaryIndex] = arr
-                if key == 1000000:
-                    self.primary[primaryIndex][-1] = True
-                    return
         if self.primary[primaryIndex] != None:
             self.primary[primaryIndex][secondaryIndex] = True
         else:
@@ -40,9 +37,6 @@ class MyHashSet:
     def remove(self, key: int) -> None:
         primaryIndex = self.hash1(key)
         secondaryIndex = self.hash2(key)
-        if key == 1000000:
-            self.primary[primaryIndex][-1] = False
-            return None
         if self.primary[primaryIndex] != None:
             self.primary[primaryIndex][secondaryIndex] = False
         
@@ -50,10 +44,7 @@ class MyHashSet:
         primaryIndex = self.hash1(key)
         secondaryIndex = self.hash2(key)
         if self.primary[primaryIndex] != None:
-            if key == 1000000:
-                return self.primary[primaryIndex][-1]
-            else:
-                return self.primary[primaryIndex][secondaryIndex]
+            return self.primary[primaryIndex][secondaryIndex]
         return False
         
 # Your MyHashSet object will be instantiated and called as such:
