@@ -1,0 +1,17 @@
+
+r	java:S1174"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Î¤¶òûÿÿÿÿ8””ÉøŞ1
+r	java:S1175"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(óÄšùÿÿÿÿ8•”ÉøŞ1
+m
+java:S1149"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(ÒÜ¤¸8àÊøŞ1
+m
+java:S1149"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(Œ‘ÙÁ8àÊøŞ1
+]
+java:S18545";Remove this useless assignment to local variable "param_4".(óÄšùÿÿÿÿ8”ÉøŞ1
+]
+java:S18544";Remove this useless assignment to local variable "param_3".(Î¤¶òûÿÿÿÿ8”ÉøŞ1
+L
+java:S1197-"*Move the array designators [] to the type.(¡şÏÖøÿÿÿÿ8”ÉøŞ1
+N
+java:S14814",Remove this unused "param_3" local variable.(Î¤¶òûÿÿÿÿ8”ÉøŞ1
+N
+java:S14815",Remove this unused "param_4" local variable.(óÄšùÿÿÿÿ8Ÿ”ÉøŞ1
