@@ -10,61 +10,63 @@ class MyHashSet {
     
     Implementation - Double Hashing
     1. Buckets -> key % 1000
-    2. BucketItems -> key / 1000
+    2. BucketItems -> key / 1001
     
-    DS -> 2D Array (storage) = Initializing storage[Buckets][]
+    DS -> 2D Array = Initializing storage[Buckets][]
     Allocating storage bucketitems whenever bucket has null bucketitems. So saving memory.
     
     Add -> if (storage[bucket] is null) make new storage[bucket][bucketitem] and add to it
     Remove -> if not exist / null, return. Otherwise mark false
+
+    TC : All the methods - add, remove and contains work at O(1) time since we use hash function.
+    SC : O(N) in worst case scenario.
+    Aby problems faces: No
+    Runs on Leetcode: Yes
     **/
 
-    int buckets;
+    int bucket;
     int bucketItems;
-    boolean[][] storage;
-    /** Initialize your data structure here. */
+    boolean[][] mySet;
+
     public MyHashSet() {
-        buckets = 1000;
-        //Edge case
-        bucketItems = 1001;
-        storage = new boolean[buckets][];
+        this.bucket = 1000;
+        this.bucketItems = 1001;
+        this.mySet = new boolean[bucket][];
     }
-    
-    public int bucketHashValue(int key){
-        return key % buckets;
+
+    public int hash1(int key){
+        return key % bucket;
     }
-    
-    public int bucketItemsHashValue(int key){
-        return key % bucketItems;
+
+    public int hash2(int key){
+        return key / bucketItems;
     }
     
     public void add(int key) {
-        int bucketHashVal = bucketHashValue(key);
-        int bucketItemsHashVal = bucketItemsHashValue(key);
-        
-        if(storage[bucketHashVal] == null){
-            storage[bucketHashVal] = new boolean[bucketItems];
+        int bucketHashVal = hash1(key);
+        int bucketItemHashVal = hash2(key);
+        if(this.mySet[bucketHashVal] == null){
+            this.mySet[bucketHashVal] = new boolean[bucketItems];
         }
-        storage[bucketHashVal][bucketItemsHashVal] = true;
+        this.mySet[bucketHashVal][bucketItemHashVal] = true;
     }
     
     public void remove(int key) {
-        
-        int bucketHashVal = bucketHashValue(key);
-        int bucketItemsHashVal = bucketItemsHashValue(key);
-        
-        if(storage[bucketHashVal] == null) return;
-        storage[bucketHashVal][bucketItemsHashVal] = false;
+        int bucketHashVal = hash1(key);
+        int bucketItemHashVal = hash2(key);
+        if(this.mySet[bucketHashVal] == null){
+            return;
+        }
+        this.mySet[bucketHashVal][bucketItemHashVal] = false;
     }
     
-    /** Returns true if this set contains the specified element */
     public boolean contains(int key) {
-        
-        int bucketHashVal = bucketHashValue(key);
-        int bucketItemsHashVal = bucketItemsHashValue(key);
-        
-        if(storage[bucketHashVal] == null) return false;
-        return storage[bucketHashVal][bucketItemsHashVal];
+        int bucketHashVal = hash1(key);
+        int bucketItemHashVal = hash2(key);
+        if(this.mySet[bucketHashVal] == null){
+            return false;
+        }
+        return this.mySet[bucketHashVal][bucketItemHashVal];
     }
 }
 
