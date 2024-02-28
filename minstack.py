@@ -1,3 +1,4 @@
+#Time complexity is O(1) and space complexity is O(N)
 class MinStack:
     def __init__(self):
         self.stack =[]
