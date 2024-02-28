@@ -1,0 +1,54 @@
+public class MyHashSet {
+
+    private boolean[][] storage;
+    private int buckets;
+    private int bucketItems;
+
+    public MyHashSet() {
+        this.buckets = 1000;
+        this.bucketItems = 1000;
+        storage = new boolean[buckets][];
+    }
+
+    public int hash1(int key) {
+        return key % this.buckets;
+    }
+
+    public int hash2(int key) {
+        return key / this.bucketItems;
+    }
+
+    public void add(int key) {
+        int primBucket = hash1(key);
+        int secBucket = hash2(key);
+        if (storage[primBucket] == null) {
+            if (primBucket == 0) {
+                storage[primBucket] = new boolean[this.bucketItems + 1];
+            } else {
+                storage[primBucket] = new boolean[this.bucketItems];
+            }
+        }
+        storage[primBucket][secBucket] = true;
+    }
+
+    public void remove(int key) {
+        int primBucket = hash1(key);
+        int secBucket = hash2(key);
+        if (storage[primBucket] == null) return;
+        storage[primBucket][secBucket] = false;
+    }
+
+    public boolean contains(int key) {
+        int primBucket = hash1(key);
+        int secBucket = hash2(key);
+        if (storage[primBucket] == null) return false;
+        return storage[primBucket][secBucket];
+    }
+}
+/**
+ * Your MyHashSet object will be instantiated and called as such:
+ * MyHashSet obj = new MyHashSet();
+ * obj.add(key);
+ * obj.remove(key);
+ * boolean param_3 = obj.contains(key);
+ */
