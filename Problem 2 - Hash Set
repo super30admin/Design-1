@@ -1,0 +1,38 @@
+// Time Complexity : O(1)
+// Space Complexity : O(N)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : I didn't have as many problems with this one, because I felt like it was pretty straightforward.
+
+
+// Your code here along with comments explaining your approach
+My thought process with this was that I should make a large array that can contain many integers, that way it can cover all the integers that might be added. The add and remove methods will just set the value at the index
+to true/false, in order to check if the integer corresponding to that index is in the set already. As a result, contains will return true/false based on the key to check if the number being passed into the method is in the 
+set.
+
+class MyHashSet {
+    private boolean[] set;
+
+    public MyHashSet() {
+        set = new boolean[1000001];
+    }
+    
+    public void add(int key) {
+        set[key]=true;
+    }
+    
+    public void remove(int key) {
+        set[key]=false;
+    }
+    
+    public boolean contains(int key) {
+        return set[key];
+    }
+}
+
+/**
+ * Your MyHashSet object will be instantiated and called as such:
+ * MyHashSet obj = new MyHashSet();
+ * obj.add(key);
+ * obj.remove(key);
+ * boolean param_3 = obj.contains(key);
+ */
