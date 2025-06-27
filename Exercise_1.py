@@ -38,8 +38,8 @@ class MyHashSet:
             Time: O(1), Space: O(N) (N = length of primary array)
         '''
         print(f"\n --- Hashset --- ")
-        self.len_primary = 1000
-        self.len_secondary = 1000
+        self.len_primary = 1000 # sqrt(max key) = sqrt(10^6)
+        self.len_secondary = 1000 # sqrt(max key) = sqrt(10^6)
         # create a list of head nodes; head node is a dummy node
         # with no information in key. Hence, key = None
         self.set = [False]*self.len_primary
