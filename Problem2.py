@@ -1,0 +1,68 @@
+"""
+TC: 
+    push: O(1)
+    pop: O(1)
+    top: O(1)
+    getMin: O(1)
+
+SC: O(N) {we maintain two stacks: one for actual values and one for tracking the minimum at each step}
+
+This problem successfully ran on LeetCode.
+
+The main difficulty in this problem was figuring out how to retrieve the minimum value in constant time. 
+At first, it seemed like we would need to scan the entire stack to find the minimum after each pop, which is inefficient. 
+The key insight is to maintain an auxiliary stack (`min_stack`) that always keeps track of the current minimum.
+
+Approach:
+
+We use two stacks:
+- `main_stack` stores all values normally.
+- `min_stack` stores the minimum value at each corresponding level of the stack.
+
+For `push`, we add the value to `main_stack` and push either the new value (if it’s smaller) or the previous minimum again onto `min_stack`.
+For `pop`, we remove the top element from both stacks.
+For `top`, we return the last element of `main_stack`.
+For `getMin`, we simply return the last element of `min_stack`, which always holds the current minimum in O(1) time.
+
+By mirroring values in `min_stack`, we avoid rescanning and guarantee constant-time access to the minimum element.
+"""
+
+
+class MinStack:
+
+    def __init__(self):
+        self.main_stack = []
+        self.min_stack = []
+        
+
+    def push(self, val: int) -> None:
+        if self.min_stack :
+            if val < self.min_stack[-1]:
+                self.min_stack.append(val)
+            else:
+                self.min_stack.append(self.min_stack[-1])
+        else:
+            self.min_stack.append(val)
+        self.main_stack.append(val)
+        
+
+    def pop(self) -> None:
+        self.min_stack.pop()
+        self.main_stack.pop()
+        
+
+    def top(self) -> int:
+        return self.main_stack[-1]
+        
+
+    def getMin(self) -> int:
+        return self.min_stack[-1] if self.min_stack else -1
+        
+
+
+# Your MinStack object will be instantiated and called as such:
+# obj = MinStack()
+# obj.push(val)
+# obj.pop()
+# param_3 = obj.top()
+# param_4 = obj.getMin()

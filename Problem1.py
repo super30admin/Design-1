@@ -1,0 +1,75 @@
+"""
+TC: Best Case: O(1) {assuming no collisions occur}
+    Worst Case: O(N) {assuming every other key collide with some other key}
+
+SC: O(N) {since we are using a list of ListNode which are of length 10**4}
+
+This problem successfully ran on LeetCode
+
+Getting the intuition for this problem was the biggest problem that I faced. I did not even think in the way that LinkedList
+could be used in this way. Once I learned about the use of linked list, it was still non trivial to get the correct approach.
+
+Approach:
+
+
+We first create a listnode class to enable the usage of linked lists.
+In the constructor, we create a list of empty listnode for our size of the hash set (10^4 in our case). 
+For adding and finding a key, we define a simple hashing function, i.e. a mod. We then iterate for the linked list on that key index.
+If we already find that key in any node of that key, we do not add, else we add at the end.
+
+For remove: we do the same thing almost, and instead of doing nothing when we find that value, we remove that node.
+
+For containes, we simply return True if we find that node in that key.
+
+"""
+
+
+class ListNode:
+    def __init__(self, key):
+        self.key = key
+        self.next = None
+
+class MyHashSet:
+
+    def __init__(self):
+        self.set = [ListNode(None) for _ in range(10**4)]
+        
+
+    def add(self, key: int) -> None:
+        idx = key % len(self.set)
+        curr = self.set[idx]
+
+        while curr.next:
+            if curr.next.key == key:
+                return
+            curr = curr.next
+        curr.next = ListNode(key)
+        
+
+    def remove(self, key: int) -> None:
+        idx = key % len(self.set)
+        curr = self.set[idx]
+
+        while curr.next:
+            if curr.next.key == key:
+                curr.next = curr.next.next
+                return
+            curr = curr.next
+        
+
+    def contains(self, key: int) -> bool:
+        idx = key % len(self.set)
+        curr = self.set[idx]
+
+        while curr.next:
+            if curr.next.key == key:
+                return True
+            curr = curr.next
+        
+        return False
+
+# Your MyHashSet object will be instantiated and called as such:
+# obj = MyHashSet()
+# obj.add(key)
+# obj.remove(key)
+# param_3 = obj.contains(key)
