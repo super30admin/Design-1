@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - MyHashSet",
+            "request": "launch",
+            "mainClass": "MyHashSet",
+            "projectName": "Design-1_a59143f0"
+        }
+    ]
+}
