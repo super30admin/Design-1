@@ -1,0 +1,32 @@
+class MyHashSet:
+    def __init__(self):
+        self.primaryBuckets = 1000
+        self.secondaryBuckets = 1000
+        # lazy allocate rows; None means the row hasn't been created yet
+        self.storage = [None] * self.primaryBuckets
+
+    def _bucket(self, key):
+        return key % self.primaryBuckets
+
+    def _bucket_item(self, key):
+        return key // self.primaryBuckets  # integer division
+
+    def add(self, key):
+        b = self._bucket(key)
+        bi = self._bucket_item(key)
+        if self.storage[b] is None:                               
+            # bucket 0 needs one extra slot to support key = 1_000_000
+            size = self.secondaryBuckets + 1 if b == 0 else self.secondaryBuckets
+            self.storage[b] = [False] * size
+        self.storage[b][bi] = True
+
+    def remove(self, key):
+        b = self._bucket(key)
+        bi = self._bucket_item(key)
+        if self.storage[b] is not None:
+            self.storage[b][bi] = False
+
+    def contains(self, key):
+        b = self._bucket(key)
+        bi = self._bucket_item(key)
+        return self.storage[b] is not None and self.storage[b][bi]
