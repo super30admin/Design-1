@@ -1,46 +1,40 @@
-#  Time Complexity : O(1)
-#  Space Complexity : O(n) n=> number of elements added
-#  Did this code successfully run on Leetcode : Yes
-#  Any problem you faced while coding this : I was using a variable to store min values first and was not able to come up with a solution to use an array
+class MinStack:
+    # Maintain 2 stacks i.e lists a normal one and the other to keep track of the minimum
+    # Push: push normally in my_stack and for min_stack check the min val and push
+    # Pop: pop from both stacks
+    # Top: return the top of the my_stack i.e the last value
+    # Getmin: return the last value of min_stack
 
-
-#  Your code here along with comments explaining your approach
-class MinStack(object):
+    # Time: O(1) for every operation
+    # Space: O(n) + O(n) for 2 different stacks which is O(n)
 
     def __init__(self):
-        self.stack = []
-        # Using arr to update when current min is removed
+        self.my_stack = []
         self.min_stack = []
 
-    def push(self, val):
-        """
-        :type val: int
-        :rtype: None
-        """
-        self.stack.append(val)
+    def push(self, val: int) -> None:
+        self.my_stack.append(val)
+        min_val = 0
         if not self.min_stack:
-            self.min_stack.append(val)
+            min_val = val
         else:
-            self.min_stack.append(min(val,self.min_stack[-1]))
-        
+            min_val = min(self.min_stack[-1], val)
+        self.min_stack.append(min_val)
 
-    def pop(self):
-        """
-        :rtype: None
-        """
-        self.stack.pop()
+    def pop(self) -> None:
+        self.my_stack.pop()
         self.min_stack.pop()
-        
 
-    def top(self):
-        """
-        :rtype: int
-        """
-        return self.stack[-1]
-        
+    def top(self) -> int:
+        return self.my_stack[len(self.my_stack) - 1]
 
-    def getMin(self):
-        """
-        :rtype: int
-        """
-        return self.min_stack[-1]
+    def getMin(self) -> int:
+        return self.min_stack[len(self.min_stack) - 1]
+
+
+# Your MinStack object will be instantiated and called as such:
+# obj = MinStack()
+# obj.push(val)
+# obj.pop()
+# param_3 = obj.top()
+# param_4 = obj.getMin()

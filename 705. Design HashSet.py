@@ -1,51 +1,44 @@
-#  Time Complexity : O(1)
-#  Space Complexity : O(n) n=> number of elements added
-#  Did this code successfully run on Leetcode : Yes
-#  Any problem you faced while coding this : It was a bit hard to figure out the code in python
-
-
-#  Your code here along with comments explaining your approach
-
-
 class MyHashSet(object):
 
-    def __init__(self):
-        self.primary_arr = 1000
-        self.secondary_arr = 1000
-        self.storage = [None] * self.primary_arr # it is assigned with None initially
-    def hash1(self,key):
-        # to get indexes in the primary arr
-        return key % 1000
-    def hash2(self,key):
-        # to get indexes in the secondary arr
-        return key // 1000
+    # Trying to make a 2D matrix so when we have 10^6 elements we make the primary arr of size 1000 which is the square root of 10^6
+    # Then we define 2 funtions one which gives the % and the other for // so that we optimise on space which is called lazy allocation. First just initialise the arr of length 1000 and then assign the secondary array as we need.
+    # Use boolean for less space and perform the operations accordingly
 
+    # Time complexity : O(1) for every operation
+    # Space complexity: O(n)
+    def __init__(self):
+        self.primary_arr = [None] * 1001
+
+    def hash1(self, num):
+        return num % 1000
+    def hash2(self, num):
+        return num // 1000
+        
 
     def add(self, key):
         """
         :type key: int
         :rtype: None
         """
-        idx1 = self.hash1(key)
-        idx2 = self.hash2(key)
-        if self.storage[idx1] == None:
-            # handling edge case of including 0 in secondary  arr
-            if idx1 == 0:
-                self.storage[idx1] = [False] * (self.secondary_arr + 1)
-            else:
-                self.storage[idx1] = [False] * self.secondary_arr
-        self.storage[idx1][idx2] = True
+        primary_num = self.hash1(key)
+        secondary_num = self.hash2(key)
+
+        if self.primary_arr[primary_num] == None:
+            self.primary_arr[primary_num] = [None] * 1001
+        self.primary_arr[primary_num][secondary_num] = True
+        
 
     def remove(self, key):
         """
         :type key: int
         :rtype: None
         """
-        idx1 = self.hash1(key)
-        idx2 = self.hash2(key)
-        if self.storage[idx1] == None:
+        primary_num = self.hash1(key)
+        secondary_num = self.hash2(key)
+        if self.primary_arr[primary_num] == None:
             return
-        self.storage[idx1][idx2] = False
+        self.primary_arr[primary_num][secondary_num] = False
+        
         
 
     def contains(self, key):
@@ -53,9 +46,18 @@ class MyHashSet(object):
         :type key: int
         :rtype: bool
         """
-        idx1 = self.hash1(key)
-        idx2 = self.hash2(key)
-        if self.storage[idx1] == None:
+        primary_num = self.hash1(key)
+        secondary_num = self.hash2(key)
+        if self.primary_arr[primary_num] == None:
             return False
-        else:
-            return self.storage[idx1][idx2]
+        elif self.primary_arr[primary_num][secondary_num] == True:
+            return True
+        return False
+        
+
+
+# Your MyHashSet object will be instantiated and called as such:
+# obj = MyHashSet()
+# obj.add(key)
+# obj.remove(key)
+# param_3 = obj.contains(key)
