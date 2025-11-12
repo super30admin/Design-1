@@ -1,28 +1,50 @@
-import java.util.ArrayList;
-import java.util.List;
-
 class MyHashSet {
-    private List<Integer> a;
+    private boolean[][] storage;
+    private int main;
+    private int secondry;
+
+    private int hashkey1(int val){
+        return val%main;
+    }
+
+    private int hashkey2(int val){
+        return val/secondry;
+    }
 
     public MyHashSet() {
-        a=new ArrayList<Integer>();
-
+        this.main=1000;
+        this.secondry=1000;
+        storage = new boolean[main][];
     }
 
     public void add(int key) {
-        if(!a.contains(key)){
-            a.add(key);
+        int a=hashkey1(key);
+        int b=hashkey2(key);
+        if(storage[a]==null && a==0){
+            storage[a] = new boolean[secondry+1];
+        }else if(storage[a]==null){
+            storage[a] = new boolean[secondry];
         }
+        storage[a][b]=true;
     }
 
     public void remove(int key) {
-        if(!a.isEmpty()){
-            a.remove((Object) key);}
-
+        int a=hashkey1(key);
+        int b=hashkey2(key);
+        if(storage[a]==null){
+            return;
+        }
+        storage[a][b]=false;
     }
 
     public boolean contains(int key) {
-        return  a.contains((Object) key);
+        int a=hashkey1(key);
+        int b=hashkey2(key);
+        if(storage[a]==null){
+            return false;
+        }
+        return storage[a][b];
+
 
     }
 }
