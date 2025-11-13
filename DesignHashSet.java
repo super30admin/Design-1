@@ -1,3 +1,24 @@
+// Time Complexity : O(1) for all operations
+// Space Complexity : O(n) for the boolean array
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+
+// Your code here along with comments explaining your approach
+/*
+ * Initialized a boolean[][] array storage with size as 1000
+ * 
+ * In add, the key is hashed initally with % operator and retrieved the idx of storage []
+ * Then key is again hashed but with / operator to retrieve the vertical idx of storage[][]
+ * the idx of 2nd hash function is set to true to indicate its presence.
+ * 
+ * In remove, repeat the same steps but the idx of 2nd hash function is set to false
+ * 
+ * In contains, we do the same but if the storage[idx1] is null, return false. Else return whatever is present 
+ * in storage[idx1][idx2]
+ */
+
+
 public class DesignHashSet {
     int buckets;
     int innerBuckets;
