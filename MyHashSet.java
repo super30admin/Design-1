@@ -31,23 +31,47 @@ class MyHashSet {
                     ? new boolean[secondaryBucketsSize + 1]
                     : new boolean[secondaryBucketsSize];
         }
-        int secondHashIndex = secondHash(key);
-        storage[firstHashIndex][secondHashIndex] = true;
+        storage[firstHashIndex][secondHash(key)] = true;
     }
     
     public void remove(int key) {
-        // Reuse contains() and remove only if present
-        if (contains(key)) {
-            storage[firstHash(key)][secondHash(key)] = false;
+        // Did not reuse contains() to avoid same computations for firstHash and secondHash again
+        int firstHash = this.firstHash(key);
+        int secondHash = this.secondHash(key);
+        if (storage[firstHash] == null) {
+            System.out.println("Does not exist");
+            return;
         }
+        storage[firstHash][secondHash] = false;
     }
     
     public boolean contains(int key) {
-        if (storage[firstHash(key)] == null) {
+        int firstHash = this.firstHash(key);
+        if (storage[firstHash] == null) {
             return false;
         }
         // Returns true if the key is present, else returns false
-        return storage[firstHash(key)][secondHash(key)];
+        return storage[firstHash][secondHash(key)];
+    }
+
+    // Driver method to test above 
+    public static void main(String args[]) throws Exception 
+    { 
+        // Test 1
+        MyHashSet ob1 = new MyHashSet(); 
+        ob1.remove(0); // Does not exist
+        
+        // Test 2
+        MyHashSet ob2 = new MyHashSet();
+        System.out.println(ob2.contains(1)); // false
+
+        // Test 3
+        MyHashSet ob3 = new MyHashSet();
+        ob3.add(1);
+        ob3.add(2);
+        ob3.remove(1);
+        System.out.println(ob3.contains(2)); // true
+        System.out.println(ob3.contains(1)); // false
     }
 }
 

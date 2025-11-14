@@ -43,6 +43,32 @@ class MinStack {
     public int getMin() {
         return minValue;
     }
+    // Driver method to test above 
+    public static void main(String args[]) throws Exception 
+    { 
+        // Test 1
+        MinStack ob1 = new MinStack(); 
+        ob1.pop(); // java.util.EmptyStackException
+        
+        // Test 2
+        MinStack ob2 = new MinStack();
+        ob2.push(1);
+        ob2.push(7);
+        System.out.println(ob2.getMin()); // 1
+        System.out.println(ob2.top()); // 7
+        ob2.pop();
+        System.out.println(ob2.top()); // 1
+        ob2.pop();
+        System.out.println(ob2.getMin()); // Integer.MAX_VALUE
+
+        // Test 3
+        MinStack ob3 = new MinStack();
+        ob3.top(); // java.util.EmptyStackException
+
+        // Test 4
+        MinStack ob4 = new MinStack();
+        ob4.getMin(); // Integer.MAX_VALUE
+    }
 }
 
 /**
