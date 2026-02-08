@@ -5,21 +5,41 @@
 class MyHashSet:
 
     def __init__(self):
-        self.hash_set = []
+        self.primary_size = 1000 
+        self.secondary_size = 1000
+        self.storage = [None]*1000
+
+    def getPrimaryHash(self,val):
+        return val%self.primary_size
+
+    def getSecondaryHash(self,val):
+        return val // self.secondary_size
 
     def add(self, key: int) -> None:
         # add only if it doesnt exist
-        if not self.contains(key):
-            self.hash_set.append(key)
+        primary_hash = self.getPrimaryHash(key)
+        secondary_hash = self.getSecondaryHash(key)
+        if self.storage[primary_hash] == None:
+            if primary_hash == 0:
+                self.storage[primary_hash] = [False]* (self.secondary_size+1)
+            else:
+                self.storage[primary_hash] = [False]*self.secondary_size
+        self.storage[primary_hash][secondary_hash] = True 
 
     def remove(self, key: int) -> None:
-        if self.contains(key):
-            self.hash_set.remove(key)
+        primary_hash = self.getPrimaryHash(key)
+        secondary_hash = self.getSecondaryHash(key)
+        if self.storage[primary_hash] == None:
+            return None
+        else:
+            self.storage[primary_hash][secondary_hash] = False 
 
     def contains(self, key: int) -> bool:
-        if key in self.hash_set:
-            return True 
-        return False
+        primary_hash = self.getPrimaryHash(key)
+        secondary_hash = self.getSecondaryHash(key)
+        if self.storage[primary_hash] == None:
+            return False
+        return self.storage[primary_hash][secondary_hash] 
 
 
 # Your MyHashSet object will be instantiated and called as such:
