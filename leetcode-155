@@ -1,0 +1,46 @@
+'''
+Docstring for leetcode-155
+Time Complexity:
+push(): O(1)
+pop: O(1)
+top: O(1)
+getMin: O(1)
+
+Space Complexity: O(n)
+'''
+import math
+class MinStack:
+
+    def __init__(self):
+        self.stack = []
+        self.minm = math.inf
+        
+    def push(self, val: int) -> None:
+        print(self.minm)
+        self.minm = min(self.minm, val)
+        self.stack.append((val, self.minm))
+
+    def pop(self) -> None:
+        self.stack.pop()
+        # tricky situation: when the last element. is popped, you should update minm to inf, otherwise it would be previous value if you dont use the "else" here..
+        if self.stack:
+            self.minm = self.stack[-1][1]
+        else:
+            self.minm = math.inf
+
+    def top(self) -> int:
+        if self.stack:
+            return self.stack[-1][0]
+
+    def getMin(self) -> int:
+        if self.stack:
+            return self.stack[-1][1]
+        
+
+
+# Your MinStack object will be instantiated and called as such:
+# obj = MinStack()
+# obj.push(val)
+# obj.pop()
+# param_3 = obj.top()
+# param_4 = obj.getMin()
