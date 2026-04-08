@@ -14,7 +14,7 @@ class MyHashSet(object):
         return key % self.buckets
     
     def hashfunc2(self,key):
-        return key // self.bucket_size
+        return key // self.buckets
 
     def add(self, key):
         """
