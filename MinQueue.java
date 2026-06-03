@@ -1,3 +1,8 @@
+// Time Complexity : O(1) for push, O(1) for min and O(1) for top
+// Space Complexity : O(n)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this :No
+    
 class MinStack {
 
     int min;
