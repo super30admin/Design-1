@@ -1,7 +1,7 @@
 # Time Complexity : O(1)
 # Space Complexity : O(N)
 # Did this code successfully run on Leetcode : Yes
-# Any problem you faced while coding this : had to use module division when calculating key hash for secondary array.
+# Any problem you faced while coding this : had to initialize minStack with inifinity to check the minimum first time.
 
 
 # Your code here along with comments explaining your approach
