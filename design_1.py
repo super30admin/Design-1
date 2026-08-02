@@ -1,6 +1,6 @@
-// Time Complexity : O(1)
-// Space Complexity : O(10^6)
-// Did this code successfully run on Leetcode :Yes
+#Time Complexity : O(1)
+#Space Complexity : O(10^6)
+#Did this code successfully run on Leetcode :Yes
 class MyHashSet(object):
 
     def __init__(self):
