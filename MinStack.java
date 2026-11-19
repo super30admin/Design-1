@@ -58,12 +58,12 @@ public class MinStack{
         }
     }
 
-    int topElement(){
+    int top(){
         int Element = s1.peek();
         return Element;
     }
 
-    int getminElement(){
+    int getMin(){
         int minElement = minStack.peek();
         return minElement;
     }
@@ -74,18 +74,18 @@ public class MinStack{
         obj.push(7);
         obj.push(4);
         obj.pop();
-        System.out.println("Top Element is :" + obj.topElement());
+        System.out.println("Top Element is :" + obj.top());
         obj.push(6);
-        System.out.println("Min Element is :" + obj.getminElement());
+        System.out.println("Min Element is :" + obj.getMin());
         obj.push(10);
-        System.out.println("Top Element is :" + obj.topElement());
-        System.out.println("Min Element is :" + obj.getminElement());
+        System.out.println("Top Element is :" + obj.top());
+        System.out.println("Min Element is :" + obj.getMin());
         obj.push(4);
         obj.push(8);
         obj.pop();
         obj.push(2);
-        System.out.println("Top Element is :" + obj.topElement());
-        System.out.println("Min Element is :" + obj.getminElement());
+        System.out.println("Top Element is :" + obj.top());
+        System.out.println("Min Element is :" + obj.getMin());
     }
 }
 
