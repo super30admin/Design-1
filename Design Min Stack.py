@@ -1,6 +1,7 @@
+#Problem 2
 #Using two stack approach.
 #T: O(1) for push, pop, top and getMin
-#S: O(1)
+#S: O(n)
 
 
 class MinStack(object):
